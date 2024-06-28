@@ -1,0 +1,81 @@
+@charset "UTF-8";
+/******************************************* file : customer.css publisher :  reporting date : 2018.06 ~ 07수정 email :  explanation : 에너지 관제시스템 ******************************************/
+.form_row .inputBox button[type=button].iconSearch { background-image: url(/poc/images/btn_search_1.png); }
+
+.thumbBox .fileBox label:after { background-color: #8b774d; }
+
+.comboBox .fileBox label:after { background-color: #8b774d; }
+
+.auto_login label:before, .checkbox label:before { background: url(/poc/images/bg_checkbox.png) no-repeat 0 0; background-size: 16px 50px; }
+
+.btn_search_1 { background-image: url(/poc/images/btn_search_1.png); }
+
+/***** loading *****/
+#viewLoadingImg { background-image: url(/poc/images/viewLoading.gif); }
+
+/***** CM0101 로그인 *****/
+.logo { background: url(/poc/images/login_logo.png) no-repeat center 0; background-size: 159px 66px; height: 66px; }
+
+.logo img { width: 159px; height: 66px; }
+
+.btn_login a { background-color: #bb933d; }
+
+.id_input input[type=text], .pw_input input[type=password] { border-color: #bb933d; }
+
+/***** CM0102 사용자 약관 *****/
+.clauseBox { border-top-color: #e5a51c; }
+
+.btn_close a:before { background: url(/poc/images/icon_btns.png) no-repeat 0 -60px; background-size: 60px 90px; }
+
+/***** 버튼 *****/
+.clause .btn_aree_start a { background-color: #bb933d; }
+
+.setting_area .btn_save a { background-color: #bb933d; }
+
+/***** 토글버튼 *****/
+.cmToggle > .tgBtn.on > a { background: #8b774d; }
+
+/***** 탭 *****/
+.tab a.tab_on, .tab span.tab_on { color: #e5a51c; border-color: #e5a51c; }
+
+/***** base *****/
+select, textarea, input[type="text"], input[type="password"] { border-color: #8b774d; }
+
+select { background-image: url(/poc/images/bg_select.png); }
+
+/***** CM0401 점포조회 *****/
+.search_list .list_setting .order .new .on { color: #e5a51c; }
+
+.search_list .list.st2 li .list_text_detail .btn_grp a { background-color: #8b774d; }
+
+/***** VM0101 메인 *****/
+.this_month p { color: #e5a51c; }
+
+.info_facilities { background-color: #8b774d; }
+.info_facilities .list li { background-color: #6f6331; }
+.info_facilities .list li.link:hover, .info_facilities .list li.link:focus, .info_facilities .list li.link:active { background-color: #5d5329; }
+.info_facilities .list li.refrigerator p.on { color: #e5a51c; }
+
+/***** VM0501 냉장비 상태조회 *****/
+.condition_list .title_area .btn_graph:after { background-color: #8b774d; }
+.condition_list .detail_area .body_temperature { color: #e5a51c; }
+
+/***** VM0601 간판설정 *****/
+.time_group li.off_time span { color: #e5a51c; }
+
+/***** VM0701 알림메세지함 *****/
+.message_list .title_area .btn_graph:after { background-color: #8b774d; }
+
+.message_list .detail_area .action { color: #e5a51c; }
+
+/***** VM0901 설정 *****/
+.setting_group .btn_save a { background-color: #bb933d; }
+
+.user .btn_logout a { background-color: #8b774d; }
+
+.form_pw_modify .btn_save a { background-color: #bb933d; }
+
+/***** other *****/
+.blue { color: #e5a51c !important; }
+
+/*# sourceMappingURL=customer.css.map */

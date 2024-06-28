@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM0701Mapper">
+
+	<select id="retreiveProcessList" parameterType="map" resultType="AlarmList">
+	/* VM0701Mapper.retreiveProcessList */
+	<!-- TEMON_TYPE AS deviceType ==> T : temon , I : iNV, B : 하콘몬 -->
+	<![CDATA[
+		SELECT   PAR.PUSH_NO AS no
+			, PAR.STR_CD AS strCd
+			, PAR.STR_NM AS strNm
+			, PAR.ALARM_COUNT AS alarmCnt
+			, PAR.DEVICE_LOC AS deviceLoc
+			, DATE_FORMAT(PAR.ALARM_DATE_S, '%Y.%m.%d %H:%i') AS startDate
+			, DATE_FORMAT(PAR.ALARM_DATE_E, '%Y.%m.%d %H:%i') AS endDate
+			, PAR.ALARM_TYPE AS alarmType
+			, SUBSTRING(SUBSTRING_INDEX( PAR.ALARM_MESSAGE,'<',1 ),23,50) AS message
+			, IFNULL((
+				SELECT	CONCAT(SUBSTRING(SUBSTRING_INDEX( PAR.ALARM_MESSAGE,'<',1 ),23,4), ' [', B.CONTENTS, '] (알람 코드 : ', SUBSTRING_INDEX(SUBSTRING_INDEX( PAR.ALARM_MESSAGE,'알람 코드 : ',-1 ), '. 관련', 1), ' / ', B.ERROR_GRP_CD_NM, ')' )
+				FROM	TH_STR_REMS_DEVICE_MST A
+					, TH_ERROR_CD B
+				WHERE A.STR_CD			= PAR.STR_CD
+					AND A.TEMON_ID		= PAR.TEMON_ID
+					AND A.TEMON_TYPE	= PAR.TEMON_TYPE
+					AND A.PORT_NO		= PAR.PORT_NO
+					AND PAR.ALARM_TYPE	= 'E'
+					AND B.DEVICE_TYPE	= A.DEVICE_TYPE
+					AND B.ERROR_GRP_CD	= A.CONTENTS
+					AND B.ERROR_CD		= SUBSTRING_INDEX(SUBSTRING_INDEX( ALARM_MESSAGE,'알람 코드 : ',-1 ), '. 관련', 1)
+			), '')				AS message2
+			, PAR.AS_VENDOR_NM	AS asVendorNm
+			, PAR.TEMON_ID		AS temonId
+			, PAR.TEMON_TYPE	AS temonType
+			, PAR.TEMON_ID		AS moduleId
+			, PAR.PORT_NO		AS portNo
+			, CASE	WHEN PAR.TEMON_TYPE = 'I' THEN 'INV'
+					WHEN PAR.TEMON_TYPE = 'T' THEN 'TEMON'
+					WHEN PAR.TEMON_TYPE = 'B' THEN 'HACONMON'
+				END AS moduleNm
+			, PAR.AS_RESULT		AS asResult
+			, PAR.AS_METHOD		AS asMethod
+			, CASE	WHEN IM.OWNER_TYPE = 'H'	THEN '[하이브리드]'
+					WHEN IM.OWNER_TYPE = 'U'	THEN '[무인]'
+					WHEN IM.OWNER_TYPE = 'M'	THEN '[유인]'
+				END AS ownerType
+		FROM TH_PUSH_AS_RESULT PAR
+			, TH_STR_INFO_MST IM
+	]]>
+	<!-- GS담당자인 경우 -->
+	<if test='managerYn == "Y" '>
+				INNER JOIN TH_MANAGER_STR_MAP MS
+					ON IM.STR_CD = MS.STR_CD
+						AND MS.USER_ID = #{userId}
+	</if>
+	<choose>
+		<!-- 엔지니어인 경우 -->
+		<when test='authSp.equals("E") || authSp.equals("M")'>
+			, TH_VENDOR_USER_STR_MAP VUM
+		</when>
+		<!-- 경영주인 경우 -->
+		<when test='authSp.equals("S")'>
+			, TH_USER_STR_MAP USM
+		</when>
+		<!-- 본사담당자인 경우 -->
+		<when test='authSp.equals("H") || authSp.equals("D")'>
+			, TH_COMPANY_MST CM
+			, TH_USER_MST UM
+		</when>
+	</choose>
+	<![CDATA[
+		WHERE PAR.STR_CD = IM.STR_CD
+			AND PAR.REPORT_DTTM >= DATE_SUB(NOW(), INTERVAL 4 MONTH)
+	]]>
+	<choose>
+		<!-- 엔지니어인 경우 -->
+		<when test='authSp.equals("E") || authSp.equals("M")'>
+			AND PAR.STR_CD = VUM.STR_CD
+			AND VUM.USER_ID = #{userId}
+		</when>
+		<!-- 경영주인 경우 -->
+		<when test='authSp.equals("S")'>
+			AND PAR.STR_CD = USM.STR_CD
+			AND USM.MAP_YN = 'Y'
+			AND USM.USER_ID = #{userId}
+		</when>
+		<!-- 본사담당자인 경우 -->
+		<when test='authSp.equals("H") || authSp.equals("D")'>
+			AND IM.COMPANY_CD = CM.COMPANY_CD AND IM.COMPANY_CD = UM.COMPANY_CD
+			AND UM.USER_ID = #{userId}
+		</when>
+	</choose>
+		<if test="qStrNm != null || qStrNm != ''">
+			AND INSTR( PAR.STR_NM, #{qStrNm} )      > 0
+		</if>
+		<if test='ownerType != "" and ownerType != null '>
+			<if test='ownerType.equals("normal")'>
+				AND IM.OWNER_TYPE = 'M'
+			</if>
+			<if test='ownerType.equals("special")'>
+				AND IM.OWNER_TYPE IN ('U','H')
+			</if>
+		</if>
+		<!-- 경영주가 아닌 경우 -->
+		<if test='!authSp.equals("S")'>
+			AND   PAR.AS_RESULT IN ('N','O')
+		</if>
+		<!-- 경영주인 경우 -->
+		<if test='authSp.equals("S")'>
+			AND   PAR.AS_RESULT IN ('N','O','R')
+		</if>
+		ORDER BY endDate DESC;
+	</select>
+
+	<select id="retreiveProcessSpecialList" parameterType="map" resultType="AlarmList">
+	<!-- TEMON_TYPE AS deviceType ==> T : temon , I : iNV, B : 하콘몬 -->
+	<![CDATA[
+		SELECT	GAR.PUSH_NO														AS no
+				, GAR.STR_CD													AS strCd
+				, GAR.STR_NM													AS strNm
+				, GAR.ALARM_COUNT												AS alarmCnt
+				, GAR.DEVICE_LOC												AS deviceLoc
+				, DATE_FORMAT(GAR.ALARM_DATE_S, '%Y.%m.%d %H:%i')				AS startDate
+				, DATE_FORMAT(GAR.ALARM_DATE_E, '%Y.%m.%d %H:%i')				AS endDate
+				, GAR.ALARM_TYPE												AS alarmType
+				, SUBSTRING(SUBSTRING_INDEX( GAR.ALARM_MESSAGE,'<',1 ),23,50)	AS message
+				, IFNULL((
+					SELECT	CONCAT(SUBSTRING(SUBSTRING_INDEX( GAR.ALARM_MESSAGE,'<',1 ),23,4), ' [', B.CONTENTS, '] (알람 코드 : ', SUBSTRING_INDEX(SUBSTRING_INDEX( GAR.ALARM_MESSAGE,'알람 코드 : ',-1 ), '. 관련', 1), ' / ', B.ERROR_GRP_CD_NM, ')' )
+					FROM	TH_STR_REMS_DEVICE_MST A
+							, TH_ERROR_CD B
+					WHERE	A.STR_CD		= GAR.STR_CD
+						AND	A.TEMON_ID		= GAR.TEMON_ID
+						AND	A.TEMON_TYPE	= GAR.TEMON_TYPE
+						AND	A.PORT_NO		= GAR.PORT_NO
+						AND	GAR.ALARM_TYPE	= 'E'
+						AND	B.DEVICE_TYPE	= A.DEVICE_TYPE
+						AND	B.ERROR_GRP_CD	= A.CONTENTS
+						AND	B.ERROR_CD		= SUBSTRING_INDEX(SUBSTRING_INDEX( ALARM_MESSAGE,'알람 코드 : ',-1 ), '. 관련', 1)
+				), '')		AS message2
+				, GAR.AS_VENDOR_NM												AS asVendorNm
+				, GAR.TEMON_ID													AS temonId
+				, GAR.TEMON_TYPE												AS temonType
+				, GAR.TEMON_ID													AS moduleId
+				, GAR.PORT_NO													AS portNo
+				, CASE	WHEN GAR.TEMON_TYPE = 'I' THEN 'INV'
+						WHEN GAR.TEMON_TYPE = 'T' THEN 'TEMON'
+						WHEN GAR.TEMON_TYPE = 'B' THEN 'HACONMON'
+				END																AS moduleNm
+				, GAR.AS_RESULT													AS asResult
+				, IFNULL((
+					SELECT	COMM_CD_NM	AS commCdNm
+					FROM	TH_COMM_CD
+					WHERE	COMM_GRP_CD	= 'MAST10'
+						AND	COMM_CD		= AS_METHOD
+						AND USE_YN = 'Y'
+				), '확인 후')												AS asMethod
+				, CASE	WHEN IM.OWNER_TYPE = 'H'	THEN '[하이브리드]'
+						WHEN IM.OWNER_TYPE = 'U'	THEN '[무인]'
+						WHEN IM.OWNER_TYPE = 'M'	THEN '[유인]'
+				END																AS ownerType
+		FROM	TH_PUSH_AS_RESULT GAR
+				,TH_STR_INFO_MST IM
+	]]>
+	<!-- GS담당자인 경우 -->
+	<if test='managerYn == "Y" '>
+				INNER JOIN TH_MANAGER_STR_MAP MS
+					ON IM.STR_CD = MS.STR_CD
+						AND MS.USER_ID = #{userId}
+	</if>
+	<![CDATA[
+		WHERE	GAR.STR_CD = IM.STR_CD
+	]]>
+			<!-- 경영주가 아닌 경우 -->
+			<if test='!authSp.equals("S")'>
+				AND IM.OWNER_TYPE IN ('H','U')
+			</if>
+	<![CDATA[
+			AND	GAR.AS_RESULT IN ('N','O','R')
+	]]>
+		<if test="qStrNm != null || qStrNm != ''">
+			AND	INSTR( GAR.STR_NM, #{qStrNm} )		> 0
+		</if>
+		<choose>
+			<!-- 엔지니어인 경우 -->
+			<when test='authSp.equals("E") || authSp.equals("M")'>
+				AND GAR.STR_CD IN	(
+										SELECT	STR_CD
+										FROM	TH_VENDOR_USER_STR_MAP
+										WHERE	USER_ID = #{userId}
+									)
+			</when>
+			<!-- 경영주인 경우 -->
+			<when test='authSp.equals("S")'>
+				AND GAR.STR_CD IN	(
+										SELECT	STR_CD
+										FROM	TH_USER_STR_MAP
+										WHERE	1 = 1
+											AND	USER_ID	= #{userId}
+											AND	MAP_YN	= 'Y'
+									)
+			</when>
+			<!-- 본사담당자인 경우 -->
+			<when test='authSp.equals("H") || authSp.equals("D")'>
+				AND GAR.STR_CD IN	(
+										SELECT	A.STR_CD
+										FROM	TH_STR_INFO_MST A
+												, TH_COMPANY_MST B
+												, TH_USER_MST C
+										WHERE	1 = 1
+											AND	A.COMPANY_CD	= B.COMPANY_CD
+											AND	B.COMPANY_CD	= C.COMPANY_CD
+											AND	C.USER_ID		= #{userId}
+									)
+			</when>
+		</choose>
+		ORDER BY endDate DESC
+	</select>
+
+	<select id="retreiveRecoveryList" parameterType="map" resultType="AlarmList">
+	<!-- TEMON_TYPE AS deviceType ==> T : temon , I : iNV, B : 하콘몬 -->
+	/* VM0701Mapper.retreiveRecoveryList */
+	<![CDATA[
+		SELECT	PR.PUSH_NO AS no
+			, PR.STR_CD AS strCd
+			, PR.STR_NM AS strNm
+			, PR.ALARM_COUNT AS alarmCnt
+			, PR.DEVICE_LOC AS deviceLoc
+			, DATE_FORMAT(PR.ALARM_DATE_S, '%Y.%m.%d %H:%i') AS startDate
+			, DATE_FORMAT(PR.ALARM_DATE_E, '%Y.%m.%d %H:%i') AS endDate
+			, PR.ALARM_TYPE AS alarmType
+			, SUBSTRING(SUBSTRING_INDEX( PR.ALARM_MESSAGE,'<',1 ),23,50) AS message
+			, IFNULL((
+					SELECT	CONCAT(SUBSTRING(SUBSTRING_INDEX( PR.ALARM_MESSAGE,'<',1 ),23,4), ' [', B.CONTENTS, '] (알람 코드 : ', SUBSTRING_INDEX(SUBSTRING_INDEX( PR.ALARM_MESSAGE,'알람 코드 : ',-1 ), '. 관련', 1), ' / ', B.ERROR_GRP_CD_NM, ')' )
+					FROM	TH_STR_REMS_DEVICE_MST A
+						,	TH_ERROR_CD B
+					WHERE	A.STR_CD		= PR.STR_CD
+						AND	A.TEMON_ID		= PR.TEMON_ID
+						AND	A.TEMON_TYPE	= PR.TEMON_TYPE
+						AND	A.PORT_NO		= PR.PORT_NO
+						AND	PR.ALARM_TYPE	= 'E'
+						AND	B.DEVICE_TYPE	= A.DEVICE_TYPE
+						AND	B.ERROR_GRP_CD	= A.CONTENTS
+						AND	B.ERROR_CD		= SUBSTRING_INDEX(SUBSTRING_INDEX( ALARM_MESSAGE,'알람 코드 : ',-1 ), '. 관련', 1)
+				), '')		AS message2
+			, PR.AS_VENDOR_NM AS asVendorNm
+			, PR.TEMON_ID AS temonId
+			, PR.TEMON_TYPE AS temonType
+			, PR.TEMON_ID AS moduleId
+			, PR.PORT_NO AS portNo
+			, CASE	WHEN PR.TEMON_TYPE = 'I' THEN 'INV'
+					WHEN PR.TEMON_TYPE = 'T' THEN 'TEMON'
+					WHEN PR.TEMON_TYPE = 'B' THEN 'HACONMON'
+				END AS moduleNm
+			, PR.AS_RESULT AS asResult
+			, IFNULL(CC.COMM_CD_NM, '확인 후') AS asMethod
+			, CASE	WHEN IM.OWNER_TYPE = 'H'	THEN '[하이브리드]'
+					WHEN IM.OWNER_TYPE = 'U'	THEN '[무인]'
+					WHEN IM.OWNER_TYPE = 'M'	THEN '[유인]'
+				END AS ownerType
+		FROM	TH_PUSH_AS_RESULT PR
+			LEFT OUTER JOIN TH_COMM_CD CC
+				ON CC.COMM_GRP_CD = 'MAST10'
+					AND	CC.COMM_CD = PR.AS_METHOD
+					AND CC.USE_YN = 'Y'
+			, TH_STR_INFO_MST IM
+	]]>
+		<!-- GS담당자인 경우 -->
+	<if test='managerYn == "Y" '>
+				INNER JOIN TH_MANAGER_STR_MAP MS
+					ON IM.STR_CD = MS.STR_CD
+						AND MS.USER_ID = #{userId}
+	</if>
+	<choose>
+		<!-- 엔지니어인 경우 -->
+		<when test='authSp.equals("E") || authSp.equals("M")'>
+			, TH_VENDOR_USER_STR_MAP EUS
+		</when>
+		<!-- 경영주인 경우 -->
+		<when test='authSp.equals("S")'>
+			, TH_USER_STR_MAP US
+		</when>
+		<!-- 본사담당자인 경우 -->
+		<when test='authSp.equals("H") || authSp.equals("D")'>
+			, TH_COMPANY_MST CM
+			, TH_USER_MST UM
+		</when>
+	</choose>
+	<![CDATA[
+		WHERE	PR.STR_CD = IM.STR_CD
+			AND PR.REPORT_DTTM >= DATE_SUB(NOW(), INTERVAL 4 MONTH)
+			AND PR.AS_DTTM >= DATE_SUB(NOW(), INTERVAL 4 MONTH)
+			AND	PR.AS_RESULT = 'R'
+	]]>
+	<if test="qStrNm != null || qStrNm != ''">
+			AND	INSTR( PR.STR_NM, #{qStrNm} )		> 0
+	</if>
+	<choose>
+		<!-- 엔지니어인 경우 -->
+		<when test='authSp.equals("E") || authSp.equals("M")'>
+			AND IM.STR_CD	= EUS.STR_CD
+			AND EUS.USER_ID	= 'dn12'#{userId}
+		</when>
+		<!-- 경영주인 경우 -->
+		<when test='authSp.equals("S")'>
+			AND IM.STR_CD	= US.STR_CD
+			AND US.USER_ID	= #{userId}
+		</when>
+		<!-- 본사담당자인 경우 -->
+		<when test='authSp.equals("H") || authSp.equals("D")'>
+			AND	IM.COMPANY_CD	= CM.COMPANY_CD
+			AND	IM.COMPANY_CD	= UM.COMPANY_CD
+			AND	UM.USER_ID		= #{userId}
+		</when>
+	</choose>
+	<if test='ownerType != "" and ownerType != null '>
+		<if test='ownerType.equals("normal")'>
+			AND IM.OWNER_TYPE = 'M'
+		</if>
+		<if test='ownerType.equals("special")'>
+			AND IM.OWNER_TYPE IN ('U','H')
+		</if>
+	</if>
+		ORDER BY endDate DESC
+	</select>
+
+	<select id="retreiveResultList" parameterType="map" resultType="AlarmList">
+	/* VM0701Mapper.retreiveResultList */
+	<![CDATA[
+		SELECT	PR.PUSH_NO AS no
+			, PR.STR_CD AS strCd
+			, PR.STR_NM AS strNm
+			, PR.ALARM_COUNT AS alarmCnt
+			, PR.DEVICE_LOC AS deviceLoc
+			, DATE_FORMAT(PR.ALARM_DATE_S, '%Y.%m.%d %H:%i') AS startDate
+			, DATE_FORMAT(PR.ALARM_DATE_E, '%Y.%m.%d %H:%i') AS endDate
+			, PR.ALARM_TYPE AS alarmType
+			, SUBSTRING(SUBSTRING_INDEX(PR.ALARM_MESSAGE,'<',1 ),20,50) AS message
+			, PR.AS_VENDOR_NM AS asVendorNm
+			, PR.AS_ENGINEER AS asEngineer
+			, DATE_FORMAT(PR.AS_DTTM, '%Y-%m-%d %H:%i') AS asDate
+			, PR.AS_NOTE AS asNote
+			, PR.AS_METHOD AS asMethod
+			, PR.TEMON_ID AS temonId
+			, PR.TEMON_TYPE AS temonType
+			, PR.TEMON_ID AS moduleId
+			, PR.PORT_NO AS portNo
+			, CASE	WHEN PR.TEMON_TYPE = 'I'	THEN 'INV'
+					WHEN PR.TEMON_TYPE = 'T'	THEN 'TEMON'
+					WHEN PR.TEMON_TYPE = 'Z'	THEN 'ZIGBEE'
+					WHEN PR.TEMON_TYPE = 'B'	THEN 'HACONMON'
+				END AS moduleNm
+			, CASE	WHEN IM.OWNER_TYPE = 'H'	THEN '[하이브리드]'
+					WHEN IM.OWNER_TYPE = 'U'	THEN '[무인]'
+					WHEN IM.OWNER_TYPE = 'M'	THEN '[유인]'
+				END AS ownerType
+		FROM	TH_PUSH_AS_RESULT PR
+			,	TH_STR_INFO_MST IM
+	]]>
+		<choose>
+			<!-- 엔지니어인 경우 -->
+			<when test='authSp.equals("E") || authSp.equals("M")'>
+				, TH_VENDOR_USER_STR_MAP EUS
+			</when>
+			<!-- 경영주인 경우 -->
+			<when test='authSp.equals("S")'>
+				, TH_USER_STR_MAP US
+			</when>
+			<!-- 본사담당자인 경우 -->
+			<when test='authSp.equals("H") || authSp.equals("D")'>
+				, TH_COMPANY_MST CM
+				, TH_USER_MST UM
+			</when>
+		</choose>
+		WHERE	PR.STR_CD		= IM.STR_CD
+			AND	PR.AS_RESULT	= 'Y'
+			AND PR.REPORT_DTTM	>= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+			AND	PR.AS_DTTM		>= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+		<if test="qStrNm != null || qStrNm != ''">
+			AND	INSTR( PR.STR_NM, #{qStrNm} )		> 0
+		</if>
+		<choose>
+			<!-- 엔지니어인 경우 -->
+			<when test='authSp.equals("E") || authSp.equals("M")'>
+				AND IM.STR_CD	= EUS.STR_CD
+				AND EUS.USER_ID	= #{userId}
+			</when>
+			<!-- 경영주인 경우 -->
+			<when test='authSp.equals("S")'>
+				AND IM.STR_CD	= US.STR_CD
+				AND US.USER_ID	= #{userId}
+			</when>
+			<!-- 본사담당자인 경우 -->
+			<when test='authSp.equals("H") || authSp.equals("D")'>
+				AND	IM.COMPANY_CD	= CM.COMPANY_CD
+				AND	IM.COMPANY_CD	= UM.COMPANY_CD
+				AND	UM.USER_ID		= #{userId}
+			</when>
+		</choose>
+		<if test='ownerType != "" and ownerType != null '>
+			<if test='ownerType.equals("normal")'>
+				AND IM.OWNER_TYPE = 'M'
+			</if>
+			<if test='ownerType.equals("special")'>
+				AND IM.OWNER_TYPE IN ('U','H')
+			</if>
+		</if>
+		ORDER BY asDate DESC
+	</select>
+
+	<select id="retrieveCommCdList" resultType="map">
+		SELECT	COMM_CD			AS commCd
+				, COMM_CD_NM	AS commCdNm
+		FROM	TH_COMM_CD
+		WHERE	COMM_GRP_CD = 'MAST10'
+			AND USE_YN = 'Y'
+		ORDER BY ORDER_SEQ ASC
+	</select>
+
+	<select id="retrieveCommCdList_new" resultType="map" parameterType="Map">
+		SELECT	COMM_CD			AS commCd
+				, COMM_CD_NM	AS commCdNm
+		FROM	TH_COMM_CD
+		WHERE	COMM_GRP_CD = 'MAST10'
+			AND USE_YN = 'Y'
+		<if test='asResult == "R" '>
+			AND COMM_CD NOT IN ('D')
+		</if>
+		<if test='asResult == "N" '>
+			AND COMM_CD NOT IN ('D','E')
+		</if>
+		ORDER BY ORDER_SEQ ASC
+	</select>
+
+	<select id="retrieveAsTypeList" resultType="map" parameterType="Map">
+		SELECT	COMM_CD			AS commCd
+				, COMM_CD_NM	AS commCdNm
+		FROM	TH_COMM_CD
+		WHERE	COMM_GRP_CD = 'MAST15'
+			AND USE_YN = 'Y'
+		<if test='asResult == "R" '>
+			AND COMM_CD NOT IN ('3')
+		</if>
+		<if test='asResult == "N" '>
+			AND COMM_CD NOT IN ('3','4')
+		</if>
+		ORDER BY ORDER_SEQ ASC
+	</select>
+
+	<select id="saveAlarmResult" parameterType="map">
+	<![CDATA[
+		UPDATE	TH_PUSH_AS_RESULT
+		SET
+	]]>
+			<if test='"2step".equals(steps)'>
+				<choose>
+					<when test='"N".equals(asResult)'>
+					AS_RESULT = 'O'
+					</when>
+					<when test='"O".equals(asResult)'>
+					AS_RESULT = 'Y'
+					</when>
+				</choose>
+			</if>
+			<if test='"1step".equals(steps)'>
+				AS_RESULT = 'Y'
+			</if>
+	<![CDATA[
+				, AS_VENDOR_NM		= #{asVendorNm}
+				, AS_ENGINEER		= #{asEngineer}
+				, AS_METHOD			= #{asMethod}
+				, AS_TYPE			= #{asType}
+				, AS_NOTE			= #{asNote}
+				, AS_DTTM			= NOW()
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= NOW()
+		WHERE	1 = 1
+			AND	PUSH_NO		= #{no}
+			AND	STR_CD		= #{strCd}
+			AND	TEMON_ID	= #{temonId}
+			AND	TEMON_TYPE	= #{temonType}
+			AND	PORT_NO		= #{temonPort}
+			AND	AS_RESULT	= #{asResult}
+	]]>
+	</select>
+
+	<select id="insertPushMessage" parameterType="map">
+		INSERT
+		INTO	TH_PUSH_MESSAGE
+		SET		REPORT_DTTM = NOW()
+				, USER_ID			=	(
+											SELECT	A.USER_ID
+											FROM	TH_USER_MST A
+													, TH_USER_AUTH B
+													, TH_AUTH_MST C
+											WHERE	1=1
+												AND	A.USER_ID		= B.USER_ID
+												AND	B.AUTH_ID		= C.AUTH_ID
+												AND	B.COMPANY_CD	= C.COMPANY_CD
+												AND	STR_CD			= #{strCd}
+												AND	C.AUTH_SP		= 'S'
+											LIMIT 1
+										)
+				, STR_CD			= #{strCd}
+				, STR_NM			= #{strNm}
+				, TEMON_ID			= #{temonId}
+				, TEMON_TYPE		= #{temonType}
+				, PORT_NO			= #{temonPort}
+				, DEVICE_LOC		= #{deviceLoc}
+				, TITLE				= 'SEMS 관제시스템 알람'
+				<if test='"2step".equals(steps)'>
+					<choose>
+						<!-- 조치 예정 내용 입력 -->
+						<when test='"N".equals(asResult)'>
+						, MESSAGE			= CONCAT( DATE_FORMAT( now(), '%Y.%m.%d %H:%i'), ' [', #{strNm}, '] ', #{deviceLoc}, ' 장비 점검 예정' )
+						</when>
+						<!-- 조치 내역 입력 -->
+						<when test='"O".equals(asResult)'>
+						, MESSAGE			= CONCAT( DATE_FORMAT( now(), '%Y.%m.%d %H:%i'), ' [', #{strNm}, '] ', #{deviceLoc}, ' 장비 점검 완료' )
+						</when>
+					</choose>
+				</if>
+				<if test='"1step".equals(steps)'>
+					<!-- 조치 내역 입력 -->
+					, MESSAGE			= CONCAT( DATE_FORMAT( now(), '%Y.%m.%d %H:%i'), ' [', #{strNm}, '] ', #{deviceLoc}, ' 장비 점검 완료' )
+				</if>
+				, SEND_SP			= '1'
+				, REGI_ID			= #{userId}
+				, REGI_DTTM			= NOW()
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= NOW()
+				, YYYYMMDDHHMISS	= DATE_FORMAT( NOW(), '%Y-%m-%d %H:%i:%s')
+	</select>
+
+	<select id="getAsResult" parameterType="map" resultType="String">
+		SELECT	AS_RESULT	AS asResult
+		FROM	TH_PUSH_AS_RESULT
+		WHERE	PUSH_NO		= #{no}
+			AND	STR_CD		= #{strCd}
+			AND	TEMON_ID	= #{temonId}
+			AND	TEMON_TYPE	= #{temonType}
+			AND	PORT_NO		= #{temonPort}
+	</select>
+
+	<!-- 조치완료시 6시간동안 푸시생성 방지 -->
+	<select id="updatePushInterval" parameterType="map">
+		UPDATE TH_PUSH_INTERVAL_REMS_DEVICE_USER
+		SET YYYYMMDD 			= DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 HOUR),'%Y%m%d')
+			,HHMIN 				= DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 HOUR),'%H%i')
+			,FINAL_MOD_ID 		= #{userId}
+			,FINAL_MOD_DTTM 	= NOW()
+		WHERE STR_CD 		= #{strCd}
+		  AND TEMON_ID 		= #{temonId}
+		  AND TEMON_TYPE 	= #{temonType}
+		  AND PORT_NO 		= #{temonPort}
+		  AND MESSAGE_TYPE = 'O'
+	</select>
+
+	<insert id="updateAlarmStatus" parameterType="Map" >
+	<![CDATA[
+		UPDATE TH_PUSH_STATUS
+		SET ALARM_STATUS = #{alarmStatus}
+	]]>
+			<if test='alarmStatus == "I"'>
+			,IDENTIFY_DTTM = NOW()
+			</if>
+			<if test='alarmStatus == "T"'>
+			,TERMINATE_DTTM = NOW()
+			</if>
+	<![CDATA[
+			,FINAL_MOD_ID = #{userId}
+			,FINAL_MOD_DTTM = NOW()
+		WHERE AS_RESULT_NO = #{no}
+			AND STR_CD = #{strCd}
+			AND TEMON_ID = #{temonId}
+			AND TEMON_TYPE = #{temonType}
+			AND PORT_NO = #{temonPort}
+			AND ALARM_STATUS <> #{alarmStatus}
+	]]>
+	</insert>
+
+	<select id="retrieveManagerYnByCurUser" parameterType="Map" resultType="String">
+		SELECT IF(VENDOR_CD = 'GSR', 'Y', 'N')
+		FROM TH_USER_MST
+		WHERE USER_ID = #{userId}
+	</select>
+
+	<select id="retrieveMonthAlarm" parameterType="Map" resultType="Map">
+	SELECT PUSH_NO AS pushNo
+		, DATE_FORMAT( REPORT_DTTM, '%Y/%m/%d %h:%m') AS dttm
+	    , TITLE AS title , MESSAGE AS message
+	    , P.DEVICE_LOC AS deviceLoc
+	    , D.MAX_TEMP AS maxTemp
+	    , D.MIN_TEMP AS minTemp
+	FROM (
+		SELECT *
+	    FROM TH_PUSH_MESSAGE
+	    WHERE SEND_SP IN ('2', '6')
+			AND REPORT_DTTM BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW()
+	        AND USER_ID = #{userId}
+	        AND STR_CD IN (
+			SELECT STR_CD
+	        FROM TH_USER_STR_MAP
+	        WHERE USER_ID = #{userId} AND MAP_YN='Y'
+			)
+		) P
+	INNER JOIN TH_STR_REMS_DEVICE_MST D
+		ON P.STR_CD = D.STR_CD AND P.TEMON_ID = D.TEMON_ID AND P.TEMON_TYPE = D.TEMON_TYPE AND P.PORT_NO = D.PORT_NO
+	ORDER BY P.REPORT_DTTM DESC
+	</select>
+
+	<select id="retrieveMonthAlarmCount" parameterType="String" resultType="Integer">
+		SELECT IFNULL(COUNT(*), 0) AS alarmCount
+		FROM TH_PUSH_MESSAGE
+		WHERE SEND_SP IN ('2', '6')
+		  AND USER_ID = #{userId}
+		  AND REPORT_DTTM BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW()
+		ORDER BY REPORT_DTTM DESC
+	</select>
+
+
+
+	<!--간판 알람 미조치 리스트-->
+	<select id="retreiveProcessSignList" parameterType="map" resultType="AlarmList">
+		/* VM0701Mapper.retreiveProcessSignList */
+		<![CDATA[
+		SELECT   PSAR.PUSH_NO AS no
+			, PSAR.STR_CD AS strCd
+			, PSAR.STR_NM AS strNm
+			, PSAR.ALARM_COUNT AS alarmCnt
+			, DATE_FORMAT(PSAR.ALARM_DATE_S, '%Y.%m.%d %H:%i') AS startDate
+			, DATE_FORMAT(PSAR.ALARM_DATE_E, '%Y.%m.%d %H:%i') AS endDate
+			, SUBSTRING_INDEX(ALARM_MESSAGE, ' ', -5) AS message
+			, PSAR.AS_VENDOR_NM		AS asVendorNm
+			, PSAR.AS_RESULT		AS asResult
+			, PSAR.AS_METHOD		AS asMethod
+			, CASE	WHEN IM.OWNER_TYPE = 'H'	THEN '[하이브리드]'
+					WHEN IM.OWNER_TYPE = 'U'	THEN '[무인]'
+					WHEN IM.OWNER_TYPE = 'M'	THEN '[유인]'
+				END AS ownerType
+		FROM TH_PUSH_SIGN_AS_RESULT PSAR
+			, TH_STR_SIGN_MST SM
+			, TH_STR_INFO_MST IM
+	]]>
+		<!-- GS담당자인 경우 -->
+		<if test='managerYn == "Y" '>
+			INNER JOIN TH_MANAGER_STR_MAP MS
+				ON IM.STR_CD = MS.STR_CD
+				AND SM.STR_CD = MS.STR_CD
+				AND MS.USER_ID = #{userId}
+		</if>
+		<choose>
+			<!-- 엔지니어인 경우 -->
+			<when test='authSp.equals("G") || authSp.equals("M")'>
+				, TH_SIGN_VENDOR_USER_STR_MAP VUSM
+			</when>
+			<!-- 본사담당자인 경우 -->
+			<when test='authSp.equals("H")'>
+				, TH_COMPANY_MST CM
+				, TH_USER_MST UM
+			</when>
+		</choose>
+		<![CDATA[
+		WHERE PSAR.STR_CD = SM.STR_CD
+		  	AND SM.STR_CD = IM.STR_CD
+		  	AND PSAR.AS_RESULT = 'N'
+			AND PSAR.REPORT_DTTM >= DATE_SUB(NOW(), INTERVAL 4 MONTH)
+		]]>
+		<choose>
+			<!-- 엔지니어인 경우 -->
+			<when test='authSp.equals("G") || authSp.equals("M")'>
+				AND PSAR.STR_CD = VUSM.STR_CD
+				AND VUSM.USER_ID = #{userId}
+			</when>
+			<!-- 본사담당자인 경우 -->
+			<when test='authSp.equals("H")'>
+				AND IM.COMPANY_CD = CM.COMPANY_CD
+				AND IM.COMPANY_CD = UM.COMPANY_CD
+				AND UM.USER_ID = #{userId}
+			</when>
+		</choose>
+		<if test="qStrNm != null || qStrNm != ''">
+			AND INSTR( PSAR.STR_NM, #{qStrNm} )      > 0
+		</if>
+		<if test='ownerType != "" and ownerType != null '>
+			<if test='ownerType.equals("normal")'>
+				AND IM.OWNER_TYPE = 'M'
+			</if>
+			<if test='ownerType.equals("special")'>
+				AND IM.OWNER_TYPE IN ('U','H')
+			</if>
+		</if>
+		ORDER BY endDate DESC;
+	</select>
+
+	<!--간판 알람 조치완료 리스트-->
+	<select id="retreiveResultSignList" parameterType="map" resultType="AlarmList">
+		/* VM0701Mapper.retreiveResultSignList */
+		<![CDATA[
+		SELECT	PSAR.PUSH_NO AS no
+			, PSAR.STR_CD AS strCd
+			, PSAR.STR_NM AS strNm
+			, PSAR.ALARM_COUNT AS alarmCnt
+			, DATE_FORMAT(PSAR.ALARM_DATE_S, '%Y.%m.%d %H:%i') AS startDate
+			, DATE_FORMAT(PSAR.ALARM_DATE_E, '%Y.%m.%d %H:%i') AS endDate
+			, SUBSTRING(SUBSTRING_INDEX(PSAR.ALARM_MESSAGE,'<',1 ),20,50) AS message
+			, PSAR.AS_VENDOR_NM AS asVendorNm
+			, PSAR.AS_ENGINEER AS asEngineer
+			, DATE_FORMAT(PSAR.AS_DTTM, '%Y-%m-%d %H:%i') AS asDate
+			, PSAR.AS_NOTE AS asNote
+			, PSAR.AS_METHOD AS asMethod
+			, CASE	WHEN IM.OWNER_TYPE = 'H'	THEN '[하이브리드]'
+					WHEN IM.OWNER_TYPE = 'U'	THEN '[무인]'
+					WHEN IM.OWNER_TYPE = 'M'	THEN '[유인]'
+				END AS ownerType
+		FROM	TH_PUSH_SIGN_AS_RESULT PSAR
+			, 	TH_STR_SIGN_MST SM
+			,	TH_STR_INFO_MST IM
+	]]>
+		<choose>
+			<!-- 엔지니어인 경우 -->
+			<when test='authSp.equals("G") || authSp.equals("M")'>
+				, TH_SIGN_VENDOR_USER_STR_MAP VUSM
+			</when>
+			<!-- 본사담당자인 경우 -->
+			<when test='authSp.equals("H")'>
+				, TH_COMPANY_MST CM
+				, TH_USER_MST UM
+			</when>
+		</choose>
+		WHERE	PSAR.STR_CD		= IM.STR_CD
+		AND SM.STR_CD = IM.STR_CD
+		AND	PSAR.AS_RESULT	= 'Y'
+		AND PSAR.REPORT_DTTM	>= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+		AND	PSAR.AS_DTTM		>= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+		<if test="qStrNm != null || qStrNm != ''">
+			AND	INSTR( PSAR.STR_NM, #{qStrNm} )		> 0
+		</if>
+		<choose>
+			<!-- 엔지니어인 경우 -->
+			<when test='authSp.equals("G") || authSp.equals("M")'>
+				AND IM.STR_CD	= VUSM.STR_CD
+				AND VUSM.USER_ID	= #{userId}
+			</when>
+			<!-- 본사담당자인 경우 -->
+			<when test='authSp.equals("H")'>
+				AND	IM.COMPANY_CD	= CM.COMPANY_CD
+				AND	IM.COMPANY_CD	= UM.COMPANY_CD
+				AND	UM.USER_ID		= #{userId}
+			</when>
+		</choose>
+		<if test='ownerType != "" and ownerType != null '>
+			<if test='ownerType.equals("normal")'>
+				AND IM.OWNER_TYPE = 'M'
+			</if>
+			<if test='ownerType.equals("special")'>
+				AND IM.OWNER_TYPE IN ('U','H')
+			</if>
+		</if>
+		ORDER BY asDate DESC
+	</select>
+
+	<select id="getAsSignResult" parameterType="map" resultType="String">
+		SELECT	AS_RESULT	AS asResult
+		FROM	TH_PUSH_SIGN_AS_RESULT
+		WHERE	PUSH_NO		= #{no}
+		  AND	STR_CD		= #{strCd}
+	</select>
+
+	<select id="saveAlarmSignResult" parameterType="map">
+		<![CDATA[
+		UPDATE	TH_PUSH_SIGN_AS_RESULT
+		SET
+	]]>
+		<if test='"2step".equals(steps)'>
+			<choose>
+				<when test='"N".equals(asResult)'>
+					AS_RESULT = 'O'
+				</when>
+			</choose>
+		</if>
+		<if test='"1step".equals(steps)'>
+			AS_RESULT = 'Y'
+		</if>
+		<![CDATA[
+				, AS_VENDOR_NM		= #{asVendorNm}
+				, AS_ENGINEER		= #{asEngineer}
+				, AS_METHOD			= #{asMethod}
+				, AS_TYPE			= #{asType}
+				, AS_NOTE			= #{asNote}
+				, AS_DTTM			= NOW()
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= NOW()
+		WHERE	1 = 1
+			AND	PUSH_NO		= #{no}
+			AND	STR_CD		= #{strCd}
+			AND	AS_RESULT	= #{asResult}
+		]]>
+	</select>
+
+	<!-- 조치완료시 3시간동안 푸시생성 방지 -->
+	<select id="updateSignPushInterval" parameterType="map">
+		UPDATE TH_PUSH_INTERVAL_SIGN
+		SET YYYYMMDD 			= DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 HOUR),'%Y%m%d')
+		  ,HHMIN 				= DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 HOUR),'%H%i')
+		  ,FINAL_MOD_ID 		= #{userId}
+		  ,FINAL_MOD_DTTM 	= NOW()
+		WHERE STR_CD 		= #{strCd}
+	</select>
+
+	<select id="retrieveCommCd" parameterType="Map" resultType="Map">
+		SELECT	COMM_CD			AS commCd
+				, COMM_CD_NM	AS commCdNm
+		FROM	TH_COMM_CD
+		WHERE	COMM_GRP_CD = #{grpCd}
+			AND USE_YN = 'Y'
+	</select>
+</mapper>

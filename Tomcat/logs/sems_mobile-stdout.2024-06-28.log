@@ -1,0 +1,423 @@
+
+2024-06-28 11:05:04 Commons Daemon procrun stdout initialized
+11:05:22,101 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+11:05:22,101 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+11:05:22,101 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [file:/C:/WAS/SEMS_MOBILE/webapps/ROOT/WEB-INF/classes/logback.xml]
+11:05:22,163 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+11:05:22,163 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Setting ReconfigureOnChangeFilter scanning period to 30 seconds
+11:05:22,163 |-INFO in ReconfigureOnChangeFilter{invocationCounter=0} - Will scan for changes in [[C:\WAS\SEMS_MOBILE\webapps\ROOT\WEB-INF\classes\logback.xml]] every 30 seconds. 
+11:05:22,163 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Adding ReconfigureOnChangeFilter as a turbo filter
+11:05:22,179 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Adding LoggerContextListener of type [ch.qos.logback.classic.jul.LevelChangePropagator] to the object stack
+11:05:22,257 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@3f1a851e - Setting level of jul logger [org.apache.catalina.core.ContainerBase.[Catalina].[localhost]] to null
+11:05:22,257 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@3f1a851e - Propagating DEBUG level on Logger[ROOT] onto the JUL framework
+11:05:22,257 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Starting LoggerContextListener
+11:05:22,257 |-INFO in ch.qos.logback.classic.joran.action.JMXConfiguratorAction - begin
+11:05:22,273 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+11:05:22,273 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [console]
+11:05:22,288 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+11:05:22,429 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+11:05:22,429 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [file]
+11:05:22,445 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+11:05:22,460 |-ERROR in ch.qos.logback.core.joran.spi.Interpreter@29:18 - no applicable action for [totalSizeCap], current ElementPath  is [[configuration][appender][rollingPolicy][totalSizeCap]]
+11:05:22,476 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - No compression will be used
+11:05:22,476 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - Will use the pattern D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log for the active file
+11:05:22,476 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - The date pattern is 'yyyy-MM-dd' from file name pattern 'D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log'.
+11:05:22,476 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Roll-over at midnight.
+11:05:22,476 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Setting initial period to Fri Jun 28 11:05:22 KST 2024
+11:05:22,476 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - Active log file name: D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.2024-06-28.log
+11:05:22,476 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - File property is set to [null]
+11:05:22,491 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@3f1a851e - Propagating DEBUG level on Logger[sems] onto the JUL framework
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - sems level set to DEBUG
+11:05:22,491 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@3f1a851e - Propagating ERROR level on Logger[org.springframework.core] onto the JUL framework
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.core level set to ERROR
+11:05:22,491 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@3f1a851e - Propagating ERROR level on Logger[org.springframework.beans] onto the JUL framework
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.beans level set to ERROR
+11:05:22,491 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@3f1a851e - Propagating ERROR level on Logger[org.springframework.context] onto the JUL framework
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.context level set to ERROR
+11:05:22,491 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@3f1a851e - Propagating ERROR level on Logger[org.springframework.web] onto the JUL framework
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.web level set to ERROR
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultsettable] to false
+11:05:22,491 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@3f1a851e - Propagating ERROR level on Logger[jdbc.resultsettable] onto the JUL framework
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultsettable level set to ERROR
+11:05:22,491 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultsettable]
+11:05:22,491 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultsettable]
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.audit] to false
+11:05:22,491 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@3f1a851e - Propagating OFF level on Logger[jdbc.audit] onto the JUL framework
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.audit level set to OFF
+11:05:22,491 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.audit]
+11:05:22,491 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.audit]
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultset] to false
+11:05:22,491 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@3f1a851e - Propagating OFF level on Logger[jdbc.resultset] onto the JUL framework
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultset level set to OFF
+11:05:22,491 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultset]
+11:05:22,491 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultset]
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqltiming] to false
+11:05:22,491 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@3f1a851e - Propagating INFO level on Logger[jdbc.sqltiming] onto the JUL framework
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqltiming level set to INFO
+11:05:22,491 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqltiming]
+11:05:22,491 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqltiming]
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqlonly] to false
+11:05:22,491 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@3f1a851e - Propagating ERROR level on Logger[jdbc.sqlonly] onto the JUL framework
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqlonly level set to ERROR
+11:05:22,491 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqlonly]
+11:05:22,491 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqlonly]
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to ERROR
+11:05:22,491 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@3f1a851e - Propagating ERROR level on Logger[ROOT] onto the JUL framework
+11:05:22,491 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[ROOT]
+11:05:22,491 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[ROOT]
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+11:05:22,491 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@6496b803 - Registering current configuration as safe fallback point
+
+
+2024-06-28 11:06:16 Commons Daemon procrun stdout initialized
+11:06:22,057 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+11:06:22,057 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+11:06:22,057 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [file:/C:/WAS/SEMS_MOBILE/webapps/ROOT/WEB-INF/classes/logback.xml]
+11:06:22,120 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+11:06:22,120 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Setting ReconfigureOnChangeFilter scanning period to 30 seconds
+11:06:22,120 |-INFO in ReconfigureOnChangeFilter{invocationCounter=0} - Will scan for changes in [[C:\WAS\SEMS_MOBILE\webapps\ROOT\WEB-INF\classes\logback.xml]] every 30 seconds. 
+11:06:22,120 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Adding ReconfigureOnChangeFilter as a turbo filter
+11:06:22,182 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Adding LoggerContextListener of type [ch.qos.logback.classic.jul.LevelChangePropagator] to the object stack
+11:06:22,198 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6a513b5 - Setting level of jul logger [org.apache.catalina.core.ContainerBase.[Catalina].[localhost]] to null
+11:06:22,198 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6a513b5 - Propagating DEBUG level on Logger[ROOT] onto the JUL framework
+11:06:22,198 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Starting LoggerContextListener
+11:06:22,198 |-INFO in ch.qos.logback.classic.joran.action.JMXConfiguratorAction - begin
+11:06:22,229 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+11:06:22,229 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [console]
+11:06:22,245 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+11:06:22,276 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+11:06:22,291 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [file]
+11:06:22,291 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+11:06:22,291 |-ERROR in ch.qos.logback.core.joran.spi.Interpreter@29:18 - no applicable action for [totalSizeCap], current ElementPath  is [[configuration][appender][rollingPolicy][totalSizeCap]]
+11:06:22,307 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - No compression will be used
+11:06:22,307 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - Will use the pattern D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log for the active file
+11:06:22,354 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - The date pattern is 'yyyy-MM-dd' from file name pattern 'D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log'.
+11:06:22,354 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Roll-over at midnight.
+11:06:22,354 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Setting initial period to Fri Jun 28 11:06:22 KST 2024
+11:06:22,354 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - Active log file name: D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.2024-06-28.log
+11:06:22,354 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - File property is set to [null]
+11:06:22,354 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6a513b5 - Propagating DEBUG level on Logger[sems] onto the JUL framework
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - sems level set to DEBUG
+11:06:22,354 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6a513b5 - Propagating ERROR level on Logger[org.springframework.core] onto the JUL framework
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.core level set to ERROR
+11:06:22,354 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6a513b5 - Propagating ERROR level on Logger[org.springframework.beans] onto the JUL framework
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.beans level set to ERROR
+11:06:22,354 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6a513b5 - Propagating ERROR level on Logger[org.springframework.context] onto the JUL framework
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.context level set to ERROR
+11:06:22,354 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6a513b5 - Propagating ERROR level on Logger[org.springframework.web] onto the JUL framework
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.web level set to ERROR
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultsettable] to false
+11:06:22,354 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6a513b5 - Propagating ERROR level on Logger[jdbc.resultsettable] onto the JUL framework
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultsettable level set to ERROR
+11:06:22,354 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultsettable]
+11:06:22,354 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultsettable]
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.audit] to false
+11:06:22,354 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6a513b5 - Propagating OFF level on Logger[jdbc.audit] onto the JUL framework
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.audit level set to OFF
+11:06:22,354 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.audit]
+11:06:22,354 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.audit]
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultset] to false
+11:06:22,354 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6a513b5 - Propagating OFF level on Logger[jdbc.resultset] onto the JUL framework
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultset level set to OFF
+11:06:22,354 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultset]
+11:06:22,354 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultset]
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqltiming] to false
+11:06:22,354 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6a513b5 - Propagating INFO level on Logger[jdbc.sqltiming] onto the JUL framework
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqltiming level set to INFO
+11:06:22,354 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqltiming]
+11:06:22,354 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqltiming]
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqlonly] to false
+11:06:22,354 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6a513b5 - Propagating ERROR level on Logger[jdbc.sqlonly] onto the JUL framework
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqlonly level set to ERROR
+11:06:22,354 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqlonly]
+11:06:22,354 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqlonly]
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to ERROR
+11:06:22,354 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6a513b5 - Propagating ERROR level on Logger[ROOT] onto the JUL framework
+11:06:22,354 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[ROOT]
+11:06:22,354 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[ROOT]
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+11:06:22,354 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@3cc96ef7 - Registering current configuration as safe fallback point
+
+
+2024-06-28 11:09:22 Commons Daemon procrun stdout initialized
+11:09:29,275 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+11:09:29,275 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+11:09:29,275 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [file:/C:/WAS/SEMS_MOBILE/webapps/ROOT/WEB-INF/classes/logback.xml]
+11:09:29,322 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+11:09:29,338 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Setting ReconfigureOnChangeFilter scanning period to 30 seconds
+11:09:29,338 |-INFO in ReconfigureOnChangeFilter{invocationCounter=0} - Will scan for changes in [[C:\WAS\SEMS_MOBILE\webapps\ROOT\WEB-INF\classes\logback.xml]] every 30 seconds. 
+11:09:29,338 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Adding ReconfigureOnChangeFilter as a turbo filter
+11:09:29,338 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Adding LoggerContextListener of type [ch.qos.logback.classic.jul.LevelChangePropagator] to the object stack
+11:09:29,353 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6917e081 - Setting level of jul logger [org.apache.catalina.core.ContainerBase.[Catalina].[localhost]] to null
+11:09:29,353 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6917e081 - Propagating DEBUG level on Logger[ROOT] onto the JUL framework
+11:09:29,353 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Starting LoggerContextListener
+11:09:29,353 |-INFO in ch.qos.logback.classic.joran.action.JMXConfiguratorAction - begin
+11:09:29,369 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+11:09:29,369 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [console]
+11:09:29,416 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+11:09:29,463 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+11:09:29,478 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [file]
+11:09:29,478 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+11:09:29,510 |-ERROR in ch.qos.logback.core.joran.spi.Interpreter@29:18 - no applicable action for [totalSizeCap], current ElementPath  is [[configuration][appender][rollingPolicy][totalSizeCap]]
+11:09:29,510 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - No compression will be used
+11:09:29,510 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - Will use the pattern D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log for the active file
+11:09:29,541 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - The date pattern is 'yyyy-MM-dd' from file name pattern 'D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log'.
+11:09:29,541 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Roll-over at midnight.
+11:09:29,541 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Setting initial period to Fri Jun 28 11:09:29 KST 2024
+11:09:29,541 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - Active log file name: D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.2024-06-28.log
+11:09:29,541 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - File property is set to [null]
+11:09:29,541 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6917e081 - Propagating DEBUG level on Logger[sems] onto the JUL framework
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - sems level set to DEBUG
+11:09:29,541 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6917e081 - Propagating ERROR level on Logger[org.springframework.core] onto the JUL framework
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.core level set to ERROR
+11:09:29,541 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6917e081 - Propagating ERROR level on Logger[org.springframework.beans] onto the JUL framework
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.beans level set to ERROR
+11:09:29,541 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6917e081 - Propagating ERROR level on Logger[org.springframework.context] onto the JUL framework
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.context level set to ERROR
+11:09:29,541 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6917e081 - Propagating ERROR level on Logger[org.springframework.web] onto the JUL framework
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.web level set to ERROR
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultsettable] to false
+11:09:29,541 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6917e081 - Propagating ERROR level on Logger[jdbc.resultsettable] onto the JUL framework
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultsettable level set to ERROR
+11:09:29,541 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultsettable]
+11:09:29,541 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultsettable]
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.audit] to false
+11:09:29,541 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6917e081 - Propagating OFF level on Logger[jdbc.audit] onto the JUL framework
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.audit level set to OFF
+11:09:29,541 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.audit]
+11:09:29,541 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.audit]
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultset] to false
+11:09:29,541 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6917e081 - Propagating OFF level on Logger[jdbc.resultset] onto the JUL framework
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultset level set to OFF
+11:09:29,541 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultset]
+11:09:29,541 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultset]
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqltiming] to false
+11:09:29,541 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6917e081 - Propagating INFO level on Logger[jdbc.sqltiming] onto the JUL framework
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqltiming level set to INFO
+11:09:29,541 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqltiming]
+11:09:29,541 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqltiming]
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqlonly] to false
+11:09:29,541 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6917e081 - Propagating ERROR level on Logger[jdbc.sqlonly] onto the JUL framework
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqlonly level set to ERROR
+11:09:29,541 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqlonly]
+11:09:29,541 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqlonly]
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to ERROR
+11:09:29,541 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6917e081 - Propagating ERROR level on Logger[ROOT] onto the JUL framework
+11:09:29,541 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[ROOT]
+11:09:29,541 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[ROOT]
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+11:09:29,541 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@4b7c0c3a - Registering current configuration as safe fallback point
+
+
+2024-06-28 11:22:05 Commons Daemon procrun stdout initialized
+11:22:11,705 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+11:22:11,705 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+11:22:11,705 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [file:/C:/WAS/SEMS_MOBILE/webapps/ROOT/WEB-INF/classes/logback.xml]
+11:22:11,767 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+11:22:11,767 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Setting ReconfigureOnChangeFilter scanning period to 30 seconds
+11:22:11,767 |-INFO in ReconfigureOnChangeFilter{invocationCounter=0} - Will scan for changes in [[C:\WAS\SEMS_MOBILE\webapps\ROOT\WEB-INF\classes\logback.xml]] every 30 seconds. 
+11:22:11,767 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Adding ReconfigureOnChangeFilter as a turbo filter
+11:22:11,861 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Adding LoggerContextListener of type [ch.qos.logback.classic.jul.LevelChangePropagator] to the object stack
+11:22:11,877 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Setting level of jul logger [org.apache.catalina.core.ContainerBase.[Catalina].[localhost]] to null
+11:22:11,877 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating DEBUG level on Logger[ROOT] onto the JUL framework
+11:22:11,877 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Starting LoggerContextListener
+11:22:11,877 |-INFO in ch.qos.logback.classic.joran.action.JMXConfiguratorAction - begin
+11:22:11,892 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+11:22:11,892 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [console]
+11:22:11,892 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+11:22:11,955 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+11:22:11,955 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [file]
+11:22:11,955 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+11:22:11,971 |-ERROR in ch.qos.logback.core.joran.spi.Interpreter@29:18 - no applicable action for [totalSizeCap], current ElementPath  is [[configuration][appender][rollingPolicy][totalSizeCap]]
+11:22:11,971 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - No compression will be used
+11:22:11,986 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - Will use the pattern D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log for the active file
+11:22:11,986 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - The date pattern is 'yyyy-MM-dd' from file name pattern 'D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log'.
+11:22:11,986 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Roll-over at midnight.
+11:22:11,986 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Setting initial period to Fri Jun 28 11:22:11 KST 2024
+11:22:11,986 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - Active log file name: D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.2024-06-28.log
+11:22:11,986 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - File property is set to [null]
+11:22:11,986 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating DEBUG level on Logger[sems] onto the JUL framework
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - sems level set to DEBUG
+11:22:11,986 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[org.springframework.core] onto the JUL framework
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.core level set to ERROR
+11:22:11,986 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[org.springframework.beans] onto the JUL framework
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.beans level set to ERROR
+11:22:11,986 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[org.springframework.context] onto the JUL framework
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.context level set to ERROR
+11:22:11,986 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[org.springframework.web] onto the JUL framework
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.web level set to ERROR
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultsettable] to false
+11:22:11,986 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[jdbc.resultsettable] onto the JUL framework
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultsettable level set to ERROR
+11:22:11,986 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultsettable]
+11:22:11,986 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultsettable]
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.audit] to false
+11:22:11,986 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating OFF level on Logger[jdbc.audit] onto the JUL framework
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.audit level set to OFF
+11:22:11,986 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.audit]
+11:22:11,986 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.audit]
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultset] to false
+11:22:11,986 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating OFF level on Logger[jdbc.resultset] onto the JUL framework
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultset level set to OFF
+11:22:11,986 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultset]
+11:22:11,986 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultset]
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqltiming] to false
+11:22:11,986 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating INFO level on Logger[jdbc.sqltiming] onto the JUL framework
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqltiming level set to INFO
+11:22:11,986 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqltiming]
+11:22:11,986 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqltiming]
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqlonly] to false
+11:22:11,986 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[jdbc.sqlonly] onto the JUL framework
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqlonly level set to ERROR
+11:22:11,986 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqlonly]
+11:22:11,986 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqlonly]
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to ERROR
+11:22:11,986 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[ROOT] onto the JUL framework
+11:22:11,986 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[ROOT]
+11:22:11,986 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[ROOT]
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+11:22:11,986 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@6826f3f5 - Registering current configuration as safe fallback point
+
+
+2024-06-28 11:23:31 Commons Daemon procrun stdout initialized
+11:23:37,678 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+11:23:37,678 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+11:23:37,678 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [file:/C:/WAS/SEMS_MOBILE/webapps/ROOT/WEB-INF/classes/logback.xml]
+11:23:37,741 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+11:23:37,756 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Setting ReconfigureOnChangeFilter scanning period to 30 seconds
+11:23:37,756 |-INFO in ReconfigureOnChangeFilter{invocationCounter=0} - Will scan for changes in [[C:\WAS\SEMS_MOBILE\webapps\ROOT\WEB-INF\classes\logback.xml]] every 30 seconds. 
+11:23:37,756 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Adding ReconfigureOnChangeFilter as a turbo filter
+11:23:37,819 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Adding LoggerContextListener of type [ch.qos.logback.classic.jul.LevelChangePropagator] to the object stack
+11:23:37,834 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Setting level of jul logger [org.apache.catalina.core.ContainerBase.[Catalina].[localhost]] to null
+11:23:37,834 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating DEBUG level on Logger[ROOT] onto the JUL framework
+11:23:37,834 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Starting LoggerContextListener
+11:23:37,834 |-INFO in ch.qos.logback.classic.joran.action.JMXConfiguratorAction - begin
+11:23:37,834 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+11:23:37,850 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [console]
+11:23:37,850 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+11:23:37,897 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+11:23:37,897 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [file]
+11:23:37,897 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+11:23:37,912 |-ERROR in ch.qos.logback.core.joran.spi.Interpreter@29:18 - no applicable action for [totalSizeCap], current ElementPath  is [[configuration][appender][rollingPolicy][totalSizeCap]]
+11:23:37,912 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - No compression will be used
+11:23:37,912 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - Will use the pattern D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log for the active file
+11:23:37,944 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - The date pattern is 'yyyy-MM-dd' from file name pattern 'D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log'.
+11:23:37,944 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Roll-over at midnight.
+11:23:37,944 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Setting initial period to Fri Jun 28 11:23:37 KST 2024
+11:23:37,944 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - Active log file name: D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.2024-06-28.log
+11:23:37,944 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - File property is set to [null]
+11:23:37,944 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating DEBUG level on Logger[sems] onto the JUL framework
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - sems level set to DEBUG
+11:23:37,944 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[org.springframework.core] onto the JUL framework
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.core level set to ERROR
+11:23:37,944 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[org.springframework.beans] onto the JUL framework
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.beans level set to ERROR
+11:23:37,944 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[org.springframework.context] onto the JUL framework
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.context level set to ERROR
+11:23:37,944 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[org.springframework.web] onto the JUL framework
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.web level set to ERROR
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultsettable] to false
+11:23:37,944 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[jdbc.resultsettable] onto the JUL framework
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultsettable level set to ERROR
+11:23:37,944 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultsettable]
+11:23:37,944 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultsettable]
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.audit] to false
+11:23:37,944 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating OFF level on Logger[jdbc.audit] onto the JUL framework
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.audit level set to OFF
+11:23:37,944 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.audit]
+11:23:37,944 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.audit]
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultset] to false
+11:23:37,944 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating OFF level on Logger[jdbc.resultset] onto the JUL framework
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultset level set to OFF
+11:23:37,944 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultset]
+11:23:37,944 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultset]
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqltiming] to false
+11:23:37,944 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating INFO level on Logger[jdbc.sqltiming] onto the JUL framework
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqltiming level set to INFO
+11:23:37,944 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqltiming]
+11:23:37,944 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqltiming]
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqlonly] to false
+11:23:37,944 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[jdbc.sqlonly] onto the JUL framework
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqlonly level set to ERROR
+11:23:37,944 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqlonly]
+11:23:37,944 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqlonly]
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to ERROR
+11:23:37,944 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@1ba17994 - Propagating ERROR level on Logger[ROOT] onto the JUL framework
+11:23:37,944 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[ROOT]
+11:23:37,944 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[ROOT]
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+11:23:37,944 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@6826f3f5 - Registering current configuration as safe fallback point
+
+
+2024-06-28 11:34:49 Commons Daemon procrun stdout initialized
+11:34:55,433 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+11:34:55,433 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+11:34:55,433 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [file:/C:/WAS/SEMS_MOBILE/webapps/ROOT/WEB-INF/classes/logback.xml]
+11:34:55,496 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+11:34:55,496 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Setting ReconfigureOnChangeFilter scanning period to 30 seconds
+11:34:55,496 |-INFO in ReconfigureOnChangeFilter{invocationCounter=0} - Will scan for changes in [[C:\WAS\SEMS_MOBILE\webapps\ROOT\WEB-INF\classes\logback.xml]] every 30 seconds. 
+11:34:55,496 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Adding ReconfigureOnChangeFilter as a turbo filter
+11:34:55,527 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Adding LoggerContextListener of type [ch.qos.logback.classic.jul.LevelChangePropagator] to the object stack
+11:34:55,527 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@4f1361ff - Setting level of jul logger [org.apache.catalina.core.ContainerBase.[Catalina].[localhost]] to null
+11:34:55,527 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@4f1361ff - Propagating DEBUG level on Logger[ROOT] onto the JUL framework
+11:34:55,527 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Starting LoggerContextListener
+11:34:55,527 |-INFO in ch.qos.logback.classic.joran.action.JMXConfiguratorAction - begin
+11:34:55,543 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+11:34:55,543 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [console]
+11:34:55,558 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+11:34:55,746 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+11:34:55,746 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [file]
+11:34:55,761 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+11:34:55,777 |-ERROR in ch.qos.logback.core.joran.spi.Interpreter@29:18 - no applicable action for [totalSizeCap], current ElementPath  is [[configuration][appender][rollingPolicy][totalSizeCap]]
+11:34:55,777 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - No compression will be used
+11:34:55,777 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - Will use the pattern D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log for the active file
+11:34:55,777 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - The date pattern is 'yyyy-MM-dd' from file name pattern 'D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log'.
+11:34:55,777 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Roll-over at midnight.
+11:34:55,777 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Setting initial period to Fri Jun 28 11:34:55 KST 2024
+11:34:55,777 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - Active log file name: D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.2024-06-28.log
+11:34:55,777 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - File property is set to [null]
+11:34:55,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@4f1361ff - Propagating DEBUG level on Logger[sems] onto the JUL framework
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - sems level set to DEBUG
+11:34:55,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@4f1361ff - Propagating ERROR level on Logger[org.springframework.core] onto the JUL framework
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.core level set to ERROR
+11:34:55,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@4f1361ff - Propagating ERROR level on Logger[org.springframework.beans] onto the JUL framework
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.beans level set to ERROR
+11:34:55,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@4f1361ff - Propagating ERROR level on Logger[org.springframework.context] onto the JUL framework
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.context level set to ERROR
+11:34:55,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@4f1361ff - Propagating ERROR level on Logger[org.springframework.web] onto the JUL framework
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.web level set to ERROR
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultsettable] to false
+11:34:55,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@4f1361ff - Propagating ERROR level on Logger[jdbc.resultsettable] onto the JUL framework
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultsettable level set to ERROR
+11:34:55,793 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultsettable]
+11:34:55,793 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultsettable]
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.audit] to false
+11:34:55,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@4f1361ff - Propagating OFF level on Logger[jdbc.audit] onto the JUL framework
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.audit level set to OFF
+11:34:55,793 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.audit]
+11:34:55,793 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.audit]
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultset] to false
+11:34:55,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@4f1361ff - Propagating OFF level on Logger[jdbc.resultset] onto the JUL framework
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultset level set to OFF
+11:34:55,793 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultset]
+11:34:55,793 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultset]
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqltiming] to false
+11:34:55,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@4f1361ff - Propagating INFO level on Logger[jdbc.sqltiming] onto the JUL framework
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqltiming level set to INFO
+11:34:55,793 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqltiming]
+11:34:55,793 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqltiming]
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqlonly] to false
+11:34:55,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@4f1361ff - Propagating ERROR level on Logger[jdbc.sqlonly] onto the JUL framework
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqlonly level set to ERROR
+11:34:55,793 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqlonly]
+11:34:55,793 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqlonly]
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to ERROR
+11:34:55,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@4f1361ff - Propagating ERROR level on Logger[ROOT] onto the JUL framework
+11:34:55,793 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[ROOT]
+11:34:55,793 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[ROOT]
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+11:34:55,793 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@73ac1fa9 - Registering current configuration as safe fallback point
+
+2024-06-28 14:43:07,477 DEBUG ErrorCtrl - Error handler[404] 7FE009C0149DB6B5B7428E01E453C287
+2024-06-28 16:25:38,798 DEBUG ErrorCtrl - Error handler[404] B01174C92C74FA24F0A0BCC3CBF56CD0
+2024-06-28 16:29:01,589 DEBUG ErrorCtrl - Error handler[404] BD2BA07D5E2C95EB0B3C18C06F6138DA

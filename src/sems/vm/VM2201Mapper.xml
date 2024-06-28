@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM2201Mapper">
+	<insert id="saveDimmingCtrlLog" parameterType="Map">
+		INSERT
+		INTO TH_LOG_DIMMING_CTRL
+		SET UUID = #{mqttId}
+			, STR_CD = #{strCd}
+			, USER_ID = #{userId}
+			, CTRL_DTTM = NOW()
+			, POWER = #{power}
+			, BRIGHTNESS_LEVEL = #{brightnessLevel}
+	</insert>
+	
+	<update id="updateDimmingCtrlLog" parameterType="Map">
+		UPDATE TH_LOG_DIMMING_CTRL
+		SET RESULT_YN = #{resultYn}
+			,RESULT_DTTM = NOW()
+		WHERE UUID = #{mqttId}
+	</update>
+	
+	<select id="retrieveDimmStrPolicy" parameterType="Map" resultType="Map">
+		SELECT STR_CD AS strCd, HUB_ID AS hubId, DIMMING_WEATHER_CODE AS weatherCd, BRIGHTNESS_LEVEL AS value, USE_YN as useYn, W.COMM_CD_NM AS weather
+		FROM TH_DIMMING_POLICY P
+			LEFT OUTER JOIN (
+				SELECT COMM_CD, COMM_CD_NM 
+				FROM TH_COMM_CD 
+				WHERE COMM_GRP_CD = 'DIMMCD'
+			) W
+				ON W.COMM_CD = P.DIMMING_WEATHER_CODE
+		WHERE STR_CD = #{strCd} AND TARGET_TYPE = 'Hub'
+		ORDER BY DIMMING_WEATHER_CODE
+	</select>
+	
+	<select id="retrieveDimmGrpList" parameterType="Map" resultType="Map">
+		SELECT T.*, COUNT(M2.LIGHTING_ID) AS count 
+		FROM (
+			SELECT M.STR_CD as strCd, M.HUB_ID as hubId, M.GROUP_ID as grpId, M.GROUP_NAME as grpNm, IF(P.USE_YN='Y', 'N', 'Y') AS basicYn
+			FROM th_dimming_device_mst M
+				LEFT OUTER JOIN TH_DIMMING_POLICY P
+					ON M.STR_CD = P.STR_CD AND M.HUB_ID = P.HUB_ID AND M.GROUP_ID = P.GROUP_ID AND P.TARGET_TYPE = 'Group'
+			WHERE M.DEVICE_TYPE='G' AND M.STR_CD = #{strCd} 
+			GROUP BY M.GROUP_ID
+			)T
+			LEFT OUTER JOIN (
+				SELECT STR_CD, HUB_ID, GROUP_ID, LIGHTING_ID 
+				FROM TH_DIMMING_DEVICE_MST 
+				WHERE STR_CD = #{strCd} AND DEVICE_TYPE = 'L'
+			) M2
+				ON T.strCd = M2.STR_CD AND T.hubId = M2.HUB_ID AND T.grpId = M2.GROUP_ID
+		GROUP BY T.grpId
+	</select>
+	<select id="retrieveDimmGrpPolicy" parameterType="Map" resultType="Map">
+		SELECT STR_CD as strCd, HUB_ID as hubId, GROUP_ID as grpId, DIMMING_WEATHER_CODE as weatherCd, BRIGHTNESS_LEVEL as value, W.COMM_CD_NM AS weather
+		FROM TH_DIMMING_POLICY P
+			LEFT OUTER JOIN (
+				SELECT COMM_CD, COMM_CD_NM 
+				FROM TH_COMM_CD 
+				WHERE COMM_GRP_CD = 'DIMMCD'
+			) W
+				ON W.COMM_CD = P.DIMMING_WEATHER_CODE
+		WHERE STR_CD = #{strCd} AND HUB_ID = #{hubId} AND GROUP_ID = #{grpId} AND USE_YN = 'Y' AND TARGET_TYPE = 'Group'
+		ORDER BY DIMMING_WEATHER_CODE
+	</select>
+	<select id="retrieveDimmSystemPolicy" parameterType="Map" resultType="Map">
+		SELECT DIMMING_WEATHER_CODE as weatherCd, BRIGHTNESS_LEVEL as value, P.MANAGE_TYPE AS manageType, W.COMM_CD_NM AS weather
+		<if test="strCd != null and strCd != ''">
+			, IF(P.MANAGE_TYPE='A', 'Y', IF(S.STR_CD IS NOT NULL, 'Y', 'N')) AS targetYn
+		</if>
+		FROM TH_DIMMING_POLICY P
+			LEFT OUTER JOIN (
+				SELECT COMM_CD, COMM_CD_NM 
+				FROM TH_COMM_CD 
+				WHERE COMM_GRP_CD = 'DIMMCD'
+			) W
+				ON W.COMM_CD = P.DIMMING_WEATHER_CODE
+			<if test="strCd != null and strCd != ''">
+				LEFT OUTER JOIN TH_STR_INFO_MST S
+				ON P.MANAGE_TYPE=S.MANAGE_TYPE AND S.STR_CD = #{strCd}
+			</if>
+		WHERE P.USE_YN = 'Y' AND P.TARGET_TYPE = 'System'
+		ORDER BY DIMMING_WEATHER_CODE
+	</select>
+	
+	<update id="saveDimmStrPolicy" parameterType="Map">
+		INSERT
+		INTO TH_DIMMING_POLICY
+			(STR_CD, HUB_ID, GROUP_ID, USE_YN, TARGET_TYPE, DIMMING_WEATHER_CODE, BRIGHTNESS_LEVEL, REGI_ID, REGI_DTTM, FINAL_MOD_ID, FINAL_MOD_DTTM)
+		VALUES
+		<foreach collection="list" item="main" separator="," >
+		(
+			#{main.strCd}
+			, (SELECT HUB_ID FROM TH_DIMMING_DEVICE_MST WHERE STR_CD = #{main.strCd} AND DEVICE_TYPE='H')
+			, '0'
+			, 'Y'
+			, 'Hub'
+			, #{main.weatherCd}
+			, #{main.value}
+			, #{main.userId}
+			, NOW()
+			, #{main.userId}
+			, NOW()
+		)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+			USE_YN = VALUES(USE_YN)
+			, BRIGHTNESS_LEVEL = VALUES(BRIGHTNESS_LEVEL)
+			, FINAL_MOD_ID = VALUES(FINAL_MOD_ID)
+			, FINAL_MOD_DTTM = NOW()
+	</update>
+	
+	<update id="saveDimmStrPolicyN" parameterType="Map">
+		UPDATE TH_DIMMING_POLICY
+		SET USE_YN = 'N'
+			, FINAL_MOD_ID = #{userId}
+			, FINAL_MOD_DTTM = NOW()
+		WHERE STR_CD = #{strCd} AND TARGET_TYPE = 'Hub' AND USE_YN = 'Y'
+	</update>
+	
+	<update id="saveDimmGrpPolicy" parameterType="Map">
+		INSERT
+		INTO TH_DIMMING_POLICY
+			(STR_CD, HUB_ID, GROUP_ID, USE_YN, TARGET_TYPE, DIMMING_WEATHER_CODE, BRIGHTNESS_LEVEL, REGI_ID, REGI_DTTM, FINAL_MOD_ID, FINAL_MOD_DTTM)
+		VALUES
+		<foreach collection="list" item="main" separator="," >
+		(
+			#{main.strCd}
+			, #{main.hubId}
+			, #{main.grpId}
+			, 'Y'
+			, 'Group'
+			, #{main.weatherCd}
+			, #{main.value}
+			, #{main.userId}
+			, NOW()
+			, #{main.userId}
+			, NOW()
+		)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+			USE_YN = VALUES(USE_YN)
+			, BRIGHTNESS_LEVEL = VALUES(BRIGHTNESS_LEVEL)
+			, FINAL_MOD_ID = VALUES(FINAL_MOD_ID)
+			, FINAL_MOD_DTTM = NOW()
+	</update>
+	
+	<update id="saveDimmGrpPolicyN" parameterType="Map">
+		UPDATE TH_DIMMING_POLICY
+		SET USE_YN = 'N'
+			, FINAL_MOD_ID = #{userId}
+			, FINAL_MOD_DTTM = NOW()
+		WHERE STR_CD = #{strCd} AND HUB_ID = #{hubId} AND GROUP_ID = #{grpId} 
+			AND TARGET_TYPE = 'Group' AND USE_YN = 'Y'
+	</update>
+	
+	<select id="getAffectedRows" resultType="java.lang.Integer">
+		SELECT ROW_COUNT() AS affectedRows
+	</select>
+	
+	<update id="insertNull" parameterType="Map">
+		INSERT INTO TH_DIMMING_POLICY
+		SET
+			STR_CD = #{strCd}
+			, HUB_ID = (SELECT IFNULL(  
+					(SELECT HUB_ID 
+					FROM TH_DIMMING_DEVICE_MST 
+					WHERE STR_CD = #{strCd} AND DEVICE_TYPE = 'H'), '_'))
+			, GROUP_ID = '0'
+			, USE_YN = 'N'
+			, TARGET_TYPE = 'Hub'
+			, DIMMING_WEATHER_CODE = '999'
+			, BRIGHTNESS_LEVEL = NULL
+			, REGI_ID = #{userId}
+			, REGI_DTTM = NOW()
+			, FINAL_MOD_ID = #{userId}
+			, FINAL_MOD_DTTM = NOW()
+	</update>
+	
+	<select id="retrieveDimmDeviceInfo" parameterType="Map" resultType="Map">
+		SELECT STR_CD as strCd, HUB_ID as hubId, GROUP_ID as groupId, LIGHTING_ID as lightingId
+			, VENDOR as vendor, HUB_NAME as hubName, GROUP_NAME as groupName, LIGHTING_NAME as lightingName, DEVICE_TYPE as deviceType
+		FROM TH_DIMMING_DEVICE_MST
+		WHERE STR_CD = #{strCd}
+		<if test='hubId != null and hubId != "" '>
+			AND HUB_ID = #{hubId}
+		</if>
+		<if test='groupId != null and groupId != "" '>
+			AND GROUP_ID = #{groupId}
+		</if>
+		<if test='lightingId != null and lightingId != "" '>
+			AND LIGHTING_ID = #{lightingId}
+		</if>
+		<if test='deviceType != null and deviceType != "" '>
+			AND DEVICE_TYPE = #{deviceType}
+		</if>
+	</select>
+</mapper>

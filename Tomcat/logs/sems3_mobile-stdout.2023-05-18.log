@@ -1,0 +1,169 @@
+
+2023-05-18 15:43:09 Commons Daemon procrun stdout initialized
+15:43:16,287 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+15:43:16,287 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+15:43:16,288 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [file:/C:/WAS/SEMS_MOBILE/webapps/ROOT/WEB-INF/classes/logback.xml]
+15:43:16,387 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Setting ReconfigureOnChangeFilter scanning period to 30 seconds
+15:43:16,387 |-INFO in ReconfigureOnChangeFilter{invocationCounter=0} - Will scan for changes in [[C:\WAS\SEMS_MOBILE\webapps\ROOT\WEB-INF\classes\logback.xml]] every 30 seconds. 
+15:43:16,387 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Adding ReconfigureOnChangeFilter as a turbo filter
+15:43:16,397 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Adding LoggerContextListener of type [ch.qos.logback.classic.jul.LevelChangePropagator] to the object stack
+15:43:16,422 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@2a030425 - Setting level of jul logger [org.apache.catalina.core.ContainerBase.[Catalina].[localhost]] to null
+15:43:16,424 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@2a030425 - Propagating DEBUG level on Logger[ROOT] onto the JUL framework
+15:43:16,424 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Starting LoggerContextListener
+15:43:16,424 |-INFO in ch.qos.logback.classic.joran.action.JMXConfiguratorAction - begin
+15:43:16,431 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+15:43:16,437 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [console]
+15:43:16,453 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+15:43:16,520 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+15:43:16,525 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [file]
+15:43:16,552 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - No compression will be used
+15:43:16,555 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - Will use the pattern D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log for the active file
+15:43:16,563 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - The date pattern is 'yyyy-MM-dd' from file name pattern 'D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log'.
+15:43:16,564 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Roll-over at midnight.
+15:43:16,564 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Setting initial period to Thu May 18 15:21:59 KST 2023
+15:43:16,566 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+15:43:16,570 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - Active log file name: D:\SEMS3\WEBMOBILE_LOGS\SEMS_MOBILE.log
+15:43:16,571 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - File property is set to [D:\SEMS3\WEBMOBILE_LOGS\SEMS_MOBILE.log]
+15:43:16,574 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@2a030425 - Propagating ERROR level on Logger[sems] onto the JUL framework
+15:43:16,574 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - sems level set to ERROR
+15:43:16,574 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@2a030425 - Propagating ERROR level on Logger[org.springframework.core] onto the JUL framework
+15:43:16,575 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.core level set to ERROR
+15:43:16,575 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@2a030425 - Propagating ERROR level on Logger[org.springframework.beans] onto the JUL framework
+15:43:16,575 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.beans level set to ERROR
+15:43:16,575 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@2a030425 - Propagating ERROR level on Logger[org.springframework.context] onto the JUL framework
+15:43:16,576 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.context level set to ERROR
+15:43:16,576 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@2a030425 - Propagating ERROR level on Logger[org.springframework.web] onto the JUL framework
+15:43:16,576 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.web level set to ERROR
+15:43:16,576 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultsettable] to false
+15:43:16,576 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@2a030425 - Propagating ERROR level on Logger[jdbc.resultsettable] onto the JUL framework
+15:43:16,577 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultsettable level set to ERROR
+15:43:16,577 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultsettable]
+15:43:16,578 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.audit] to false
+15:43:16,578 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@2a030425 - Propagating OFF level on Logger[jdbc.audit] onto the JUL framework
+15:43:16,579 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.audit level set to OFF
+15:43:16,579 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.audit]
+15:43:16,579 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultset] to false
+15:43:16,579 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@2a030425 - Propagating OFF level on Logger[jdbc.resultset] onto the JUL framework
+15:43:16,579 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultset level set to OFF
+15:43:16,579 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultset]
+15:43:16,580 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqltiming] to false
+15:43:16,580 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@2a030425 - Propagating INFO level on Logger[jdbc.sqltiming] onto the JUL framework
+15:43:16,580 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqltiming level set to INFO
+15:43:16,580 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqltiming]
+15:43:16,580 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqlonly] to false
+15:43:16,580 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@2a030425 - Propagating ERROR level on Logger[jdbc.sqlonly] onto the JUL framework
+15:43:16,580 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqlonly level set to ERROR
+15:43:16,580 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqlonly]
+15:43:16,581 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to ERROR
+15:43:16,581 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@2a030425 - Propagating ERROR level on Logger[ROOT] onto the JUL framework
+15:43:16,581 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[ROOT]
+15:43:16,581 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[ROOT]
+15:43:16,581 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+15:43:16,582 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@2f992249 - Registering current configuration as safe fallback point
+##########Session ID 61ABA14942AF6CD08B8570EAACC974C8 destroyed at Thu May 18 16:54:25 KST 2023
+##########Session ID 97EE4F64E90FC0B96C0C72D169037C77 destroyed at Thu May 18 17:03:25 KST 2023
+##########Session ID 47C000BFA7B8A5D552C59D7E74ADB3D8 destroyed at Thu May 18 17:04:25 KST 2023
+##########Session ID 249D03D87351FD729D0D24A0C9B045F7 destroyed at Thu May 18 17:05:25 KST 2023
+##########Session ID 1385213BA38859B35A7CC5DDA2D04D0B destroyed at Thu May 18 17:10:25 KST 2023
+##########Session ID 3E3DDCA5D95025562F43EDAB88664CEB destroyed at Thu May 18 17:21:25 KST 2023
+##########Session ID 0EFFA467A4B97E647A1459604BB25A1E destroyed at Thu May 18 17:22:25 KST 2023
+##########Session ID A36F0DC0D8DEBBFA86CC02DA646957D7 destroyed at Thu May 18 17:23:25 KST 2023
+##########Session ID EC3B1C492FDCB704C74534B3D5685A49 destroyed at Thu May 18 18:02:25 KST 2023
+##########Session ID E66E55F82093844B7BD30033EFD39E80 destroyed at Thu May 18 18:04:26 KST 2023
+##########Session ID 9E86D070C70FF009162250634DAB76B1 destroyed at Fri May 19 03:11:33 KST 2023
+##########Session ID 8D42160A9856C708BF1ADFBAAACF5CFC destroyed at Fri May 19 03:11:33 KST 2023
+##########Session ID 1922EBB4BDACA4ECF9E2225F31347DF1 destroyed at Fri May 19 03:12:33 KST 2023
+##########Session ID 1AB6B8DADCD2593716B1C695F5AFC6F2 destroyed at Fri May 19 03:12:33 KST 2023
+##########Session ID A487AAD378761722F30C4584281E1B6A destroyed at Fri May 19 03:12:33 KST 2023
+##########Session ID 42B2837A214CED653E29060595AB9A11 destroyed at Fri May 19 03:12:33 KST 2023
+##########Session ID 72404359A59E59E9B92B6D6E5726ABFB destroyed at Fri May 19 03:12:33 KST 2023
+##########Session ID 53090735DDDA5A140CE4D23E916B592A destroyed at Fri May 19 09:58:39 KST 2023
+##########Session ID 8A9BD75FE215EB7BC7CE8001E7253852 destroyed at Fri May 19 10:23:40 KST 2023
+##########Session ID 3CBFCCC5EC7411F0496CE0322D395736 destroyed at Fri May 19 11:33:41 KST 2023
+##########Session ID 741D0AA00A35356D98B89FAB4EE41246 created at Fri May 19 12:03:05 KST 2023
+##########Session ID 0855F0FA8BAAB43911D5E09FD3DEECAA created at Fri May 19 12:03:05 KST 2023
+##########Session ID 85A8BCD6DE24D8640CEDCDF59ADE5E5C created at Fri May 19 12:03:05 KST 2023
+##########Session ID B4782B755F7A87CE63E9C080FA87AE31 created at Fri May 19 12:03:06 KST 2023
+##########Session ID EDE748D4157C104006C3432CE2D2DB56 created at Fri May 19 12:03:06 KST 2023
+##########Session ID E32D63957CB8E17AD1F4DF70F25BADBF created at Fri May 19 12:03:06 KST 2023
+##########Session ID 1696D977251B4DB1605B1B4B06B9298C created at Fri May 19 12:03:06 KST 2023
+##########Session ID 94D9D8E61C77E67886D427AF9CFF6AF8 created at Fri May 19 12:03:06 KST 2023
+##########Session ID 3AC301FC77240923C156F0A6CFF3B340 created at Fri May 19 13:44:41 KST 2023
+##########Session ID 4C19FCB48D426D059580545889B0B723 created at Fri May 19 13:44:48 KST 2023
+##########Session ID CDF74FF199D060AFB5C69407B6616861 created at Fri May 19 13:44:49 KST 2023
+##########Session ID 02030503F0885C2E57285439947F6353 destroyed at Fri May 19 14:53:43 KST 2023
+##########Session ID D73F456ADB0516505039C89FCFEB9D26 destroyed at Fri May 19 15:11:44 KST 2023
+##########Session ID F8FFD0F0FFDEB3CEF945D422C1DE1C90 destroyed at Fri May 19 15:12:44 KST 2023
+##########Session ID 57414FAF94799717B75DC8149E1B2889 destroyed at Fri May 19 15:22:44 KST 2023
+##########Session ID 05F32AEF608660CF7DD183328D1BD5CB destroyed at Fri May 19 15:47:44 KST 2023
+##########Session ID B920A4A8D7F69FE68F7BF25D3C26FC62 destroyed at Fri May 19 15:47:44 KST 2023
+##########Session ID 6307144EA84C5237CF1F57B6D34CDE1A destroyed at Fri May 19 16:11:45 KST 2023
+##########Session ID 0BA2753F007CFD9EDCBC9E40324BBF69 destroyed at Fri May 19 16:11:45 KST 2023
+##########Session ID 03B3623FB3D2AAABAD42BEF881212B39 destroyed at Fri May 19 19:01:47 KST 2023
+##########Session ID 2ED1758F3CA1BB82D379C089ABA310FD destroyed at Sat May 20 08:36:59 KST 2023
+##########Session ID 2BC8A03F62C13FA157E9C7511DDCE88C destroyed at Sat May 20 11:06:01 KST 2023
+##########Session ID 741D0AA00A35356D98B89FAB4EE41246 destroyed at Sat May 20 12:04:02 KST 2023
+##########Session ID 94D9D8E61C77E67886D427AF9CFF6AF8 destroyed at Sat May 20 12:04:02 KST 2023
+##########Session ID 3D8A5DACB6B5E083CDF3EF02CB02F335 destroyed at Sat May 20 12:04:02 KST 2023
+##########Session ID EDE748D4157C104006C3432CE2D2DB56 destroyed at Sat May 20 12:04:02 KST 2023
+##########Session ID 1696D977251B4DB1605B1B4B06B9298C destroyed at Sat May 20 12:04:02 KST 2023
+##########Session ID 0855F0FA8BAAB43911D5E09FD3DEECAA destroyed at Sat May 20 12:04:02 KST 2023
+##########Session ID B4782B755F7A87CE63E9C080FA87AE31 destroyed at Sat May 20 12:04:02 KST 2023
+##########Session ID 1AE2689C67E9629D06C5948F88820F01 destroyed at Sat May 20 12:04:02 KST 2023
+##########Session ID 85A8BCD6DE24D8640CEDCDF59ADE5E5C destroyed at Sat May 20 12:04:02 KST 2023
+##########Session ID E32D63957CB8E17AD1F4DF70F25BADBF destroyed at Sat May 20 12:04:02 KST 2023
+##########Session ID E6BB9C7AB431647FB0DC4D1B42065689 destroyed at Sat May 20 12:21:02 KST 2023
+##########Session ID 19BE5A74310E0B45B025CCB0E28421FF destroyed at Sat May 20 12:35:02 KST 2023
+##########Session ID F7CF8A041F80D4F668960DAD2C92DC65 destroyed at Sat May 20 12:35:02 KST 2023
+##########Session ID CDF74FF199D060AFB5C69407B6616861 destroyed at Sat May 20 13:45:03 KST 2023
+##########Session ID D3622D41063453AB817D5E79859EB8A5 destroyed at Sat May 20 13:45:03 KST 2023
+##########Session ID C6CA9D9D509936A4DDDDDC2D795E6AF7 destroyed at Sat May 20 13:45:03 KST 2023
+##########Session ID 4C19FCB48D426D059580545889B0B723 destroyed at Sat May 20 13:45:03 KST 2023
+##########Session ID 3AC301FC77240923C156F0A6CFF3B340 destroyed at Sat May 20 13:45:03 KST 2023
+##########Session ID 20BC59FD1EEB80602A68220E2F30AB28 destroyed at Sat May 20 16:58:06 KST 2023
+##########Session ID 29B97214E845971ABC3E8FC1A08E90F4 destroyed at Sat May 20 16:58:06 KST 2023
+##########Session ID D947DA45134C960877BBA5765E6F8904 created at Sat May 20 19:22:33 KST 2023
+##########Session ID EBE67805D3A0323E64351439AD02C723 destroyed at Sun May 21 11:18:22 KST 2023
+##########Session ID 9C730DB75353FB279F60B8B87B74F347 destroyed at Sun May 21 11:18:22 KST 2023
+##########Session ID D947DA45134C960877BBA5765E6F8904 destroyed at Sun May 21 19:23:29 KST 2023
+##########Session ID F8ECED3E90790D58F5D7DA08A9C8AAD4 destroyed at Sun May 21 19:23:29 KST 2023
+##########Session ID 5D977B6C92290E0DF781E42E39DE4D75 destroyed at Sun May 21 19:23:29 KST 2023
+##########Session ID 53EBCF63106CC1CC898D7AD9729A5B69 destroyed at Mon May 22 11:14:42 KST 2023
+##########Session ID 4D2FAE9B70DEBF3DECCDAA4E9FDE9ABE created at Mon May 22 11:44:25 KST 2023
+##########Session ID FD262E165E657369C70CFACFB22E3B41 created at Mon May 22 11:44:45 KST 2023
+##########Session ID 36536F2B2FDCC7CC523A7AD16E1A9AE4 created at Mon May 22 14:14:56 KST 2023
+##########Session ID CEF795A3D375C509BDA1E1E68188429B created at Mon May 22 14:21:58 KST 2023
+##########Session ID 5F24E325750648449C5082CF90FCCA23 created at Mon May 22 14:22:04 KST 2023
+##########Session ID 716CE913BE32BB280F67813DE6C84878 created at Mon May 22 14:22:37 KST 2023
+##########Session ID F7A49726EDCA2E7D799E3307EFC72282 created at Mon May 22 14:22:43 KST 2023
+##########Session ID D9840C9F8FD157AA1676E905B17F20EA created at Mon May 22 17:03:20 KST 2023
+##########Session ID E6F4C4DD15EFB0CF301A348B7FBD1D48 created at Tue May 23 10:18:04 KST 2023
+##########Session ID 77AE757DDBE1E9C0709D810CF9C5D5D6 created at Tue May 23 10:21:34 KST 2023
+##########Session ID FCA40EE887D561E9216BCB9AAACB3CA4 created at Tue May 23 10:22:36 KST 2023
+##########Session ID 377EC8151E8DCAE7E7D5C8E3D6CBA206 created at Tue May 23 10:22:48 KST 2023
+##########Session ID F00B0E02CB3583B4FABB46D6BA5F1D5D created at Tue May 23 10:35:37 KST 2023
+##########Session ID 18B8260806612033A4A2F0FA685B785A created at Tue May 23 11:19:34 KST 2023
+##########Session ID 722F6F4045B30FA32EC9A0081508D114 created at Tue May 23 11:24:17 KST 2023
+##########Session ID E802E0E01E2699A908DA795C44346566 created at Tue May 23 11:41:33 KST 2023
+##########Session ID A839A58A96BB21555A787249341256A0 created at Tue May 23 11:44:31 KST 2023
+##########Session ID 175527D8E408858C34081DDBC6E8939F created at Tue May 23 11:47:03 KST 2023
+##########Session ID EFEABF483779721F25D3A172395D8023 created at Tue May 23 11:51:31 KST 2023
+##########Session ID 1B31F370C1545A6173C622EC91B268D8 created at Tue May 23 11:55:15 KST 2023
+##########Session ID 947760BB9A0E5D7A880FBA6B0F3E3595 created at Tue May 23 11:57:08 KST 2023
+##########Session ID B8D4E62C084657E522D10835DE8DE9B6 created at Tue May 23 12:10:07 KST 2023
+##########Session ID 512A44544FAEAA1C4537C10C10F29B00 created at Tue May 23 13:37:27 KST 2023
+##########Session ID DE3C653A7F4228F1CA652EE8F00D3694 created at Tue May 23 13:41:47 KST 2023
+##########Session ID 6C823D2F63C386B69102AC76B117521F created at Tue May 23 13:46:59 KST 2023
+##########Session ID 8C089AD92BB3BF083BBFFFD774CDB013 created at Tue May 23 14:00:32 KST 2023
+##########Session ID F09CA237EB497752A11760861BC815F3 created at Tue May 23 14:04:39 KST 2023
+##########Session ID D65CC98F899657301246D50A04C1D1E0 created at Tue May 23 14:07:22 KST 2023
+##########Session ID B31E4A4C682B03CD0DCF99DD181FEA0B created at Tue May 23 14:19:40 KST 2023
+##########Session ID FCFC8EB1755586595C9F3CAA3EDEDAF9 created at Tue May 23 14:36:37 KST 2023
+##########Session ID AAA8164D2242EB844E8F0901712E7ACF created at Tue May 23 14:45:11 KST 2023
+##########Session ID 6E59EB0394CCD8167FDC9A5FECFB1E9B created at Tue May 23 14:45:52 KST 2023
+##########Session ID 7725CD04BAE5350BAA110BA87E107037 created at Tue May 23 14:45:57 KST 2023
+##########Session ID E8F80B8D1088FD139D02BA55BC90B31F created at Tue May 23 14:46:01 KST 2023
+##########Session ID A6FB1F275B0D826FB109D267CF8CB365 created at Tue May 23 15:25:20 KST 2023
+##########Session ID 7192B4E5C728AB9438369603107A9BE9 created at Thu May 25 06:57:17 KST 2023
+##########Session ID 901EC2D4BAF0E3FAF2A4EF0D14DB86C3 created at Thu May 25 09:37:12 KST 2023
+##########Session ID 91D4791E4936C4D2306E17DFEA95E674 created at Thu May 25 09:37:20 KST 2023

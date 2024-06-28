@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sems.cm.persistence.CM0101Mapper">
+
+	<select id="retrieveLoginUser" parameterType="UserVo" resultType="UserVo">
+	<![CDATA[
+		SELECT	A.USER_ID				AS userId
+				, A.USER_NM				AS userNm
+				, A.COMPANY_CD			AS companyCd
+				, E.AUTH_SP				AS authSp
+				, A.USE_YN				AS useYn
+				, A.EULA_YN				AS eulaYn
+				, IFNULL(B.TIME_DIFF,0)	AS timeDiff
+				, C.PUSH_KEY			AS gcmRegiId
+				, E.AUTH_ID				AS authId
+		FROM	TH_USER_MST A
+				LEFT JOIN TH_STR_INFO_MST B
+						ON	A.STR_CD		= B.STR_CD
+						AND	A.COMPANY_CD	= B.COMPANY_CD
+				LEFT JOIN TH_PUSH_USER_MAP C
+						ON	A.USER_ID		= C.USER_ID
+						AND	C.USE_YN		= 'Y'
+				LEFT JOIN TH_USER_AUTH D
+						ON	A.COMPANY_CD	= D.COMPANY_CD
+						AND	A.USER_ID		= D.USER_ID
+						AND D.AUTH_ID		NOT IN ('8', '9', '10')
+				JOIN TH_AUTH_MST E
+						ON	D.COMPANY_CD	= E.COMPANY_CD
+						AND	D.AUTH_ID		= E.AUTH_ID
+		WHERE	A.USER_ID = #{userId}
+	]]>
+			<if test="userPw != null and userPw != ''">
+			AND	A.USER_PW = AES_ENCRYPT(#{userPw},#{encKey})
+			</if>
+			AND A.USE_YN  = 'Y'
+	</select>
+
+	<select id="retrieveUserPw" parameterType="Map" resultType="String">
+		SELECT	CAST(AES_DECRYPT(A.USER_PW, #{encKey}) AS CHAR(50))  AS userPw
+		FROM	TH_USER_MST A
+		WHERE	A.USER_ID	= #{userId}
+			AND	A.USE_YN	= 'Y'
+	</select>
+
+	<select id="retrieveUserLoginInfo" parameterType="Map" resultType="int">
+		SELECT	IFNULL(ID,0) + IFNULL(PW,0) AS userValid
+		FROM	(
+					SELECT	(SELECT 1 FROM TH_USER_MST WHERE USER_ID=#{userId} AND USE_YN='Y') AS ID
+							, (SELECT 1 FROM TH_USER_MST WHERE USER_ID=#{userId} AND USER_PW=AES_ENCRYPT(#{passWord}, 'REMS_ADM') AND USE_YN='Y') AS PW
+				) T
+	</select>
+
+	<select id="changeMblPw" parameterType="UserVo" resultType="UserVo">
+		UPDATE	TH_USER_MST
+		SET		USER_PW				= AES_ENCRYPT(#{userNewPw},#{encKey})
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= #{now}
+		WHERE	1 = 1
+			AND	USER_ID = #{userId}
+			AND	USE_YN = 'Y'
+	</select>
+
+	<select id="retrieveStoreList" parameterType="UserVo" resultType="HashMap">
+		SELECT	@RNUM:=@RNUM+1 as no,	A.*,	B.*
+		FROM	(
+					SELECT	B.STR_CD as strCd	, C.STR_NM as strNm
+							, TEMON as temon	, SIGN as sign
+							, HACON as hacon	, C.VIEW_STR_CD AS vCd
+							, C.BOX_VER AS boxVer
+							, CASE WHEN TEMON	> 0 THEN "Y" ELSE "N" END AS temonYn
+							, CASE WHEN INV		> 0 THEN "Y" ELSE "N" END AS invYn
+							, CASE WHEN SIGN	> 0 THEN "Y" ELSE "N" END AS signYn
+							, CASE WHEN HACON	> 0 THEN "Y" ELSE "N" END AS haconYn
+							, CONCAT(C.BOX_VER, ' | ',
+								CASE
+									WHEN C.OWNER_TYPE = 'M' THEN '유'
+									WHEN C.OWNER_TYPE = 'U' THEN '무'
+									WHEN C.OWNER_TYPE = 'H' THEN '하'
+									ELSE '유'
+								END
+							) AS strAddInfo
+					FROM	TH_USER_MST A			, TH_USER_STR_MAP B
+							, TH_STR_INFO_MST C		, TH_STR_REMS_DEVICE_CNT_MNT E
+					WHERE	A.USER_ID	= B.USER_ID		AND	B.STR_CD	= C.STR_CD
+						AND	B.STR_CD	= E.STR_CD		AND	B.MAP_YN	= 'Y'
+						AND	A.USER_ID	= #{userId}
+				) A
+				, (
+					SELECT	COUNT(*) AS storeListCnt
+					FROM	TH_USER_MST A, TH_USER_STR_MAP B
+					WHERE	A.USER_ID	= B.USER_ID		AND	A.USER_ID = #{userId}
+						AND	B.MAP_YN	= 'Y'
+				) B
+				, (SELECT @RNUM:=-1) C
+		ORDER BY	vCd + CASE	WHEN vCd = #{userId} THEN 1
+								ELSE 0
+					END DESC
+	</select>
+
+	<select id="insertSystemConfig" parameterType="SystemMobileConfig">
+	<![CDATA[
+	INSERT INTO TH_USER_MOBILE_PUSH_CONFIG
+	(
+		USER_ID,
+		CONF_SP,
+		CONF_VAL,
+		REGI_ID,
+		REGI_DTTM,
+		FINAL_MOD_ID,
+		FINAL_MOD_DTTM
+	)
+	 VALUES
+	(
+		#{userId},
+		#{confSp},
+		#{confVal},
+		#{userId},
+		#{now},
+		#{userId},
+		#{now}
+	)
+	 ON DUPLICATE KEY UPDATE
+	 	CONF_VAL			= #{confVal}
+	 	,FINAL_MOD_ID		= #{userId}
+	 	,FINAL_MOD_DTTM		= #{now}
+	]]>
+	</select>
+
+	<select id="retrieveSystemConfig" parameterType="UserVo" resultType="SystemMobileConfig">
+		SELECT CONF_SP as confSp, CONF_VAL as confVal
+		FROM TH_USER_MOBILE_PUSH_CONFIG
+		WHERE  USER_ID = #{userId}
+	</select>
+
+	<select id="insertGCMRegiId" parameterType="UserVo" resultType="UserVo">
+		INSERT
+		INTO	TH_PUSH_USER_MAP
+		SET		USER_ID				= #{userId}
+				, PUSH_KEY			= #{gcmRegiId}
+				, REGI_ID			= #{userId}
+				, REGI_DTTM			= #{now}
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= #{now}
+		ON DUPLICATE KEY
+		UPDATE	PUSH_KEY			= #{gcmRegiId}
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= #{now}
+	</select>
+
+	<update id="saveEulaYn" parameterType="Map">
+	UPDATE TH_USER_MST A
+	   SET A.EULA_YN        = #{eulaYn}
+	     , A.FINAL_MOD_ID   = #{userId}
+	     , A.FINAL_MOD_DTTM = #{now}
+	 WHERE A.USER_ID = #{userId}
+	</update>
+
+	<update id="updateAllPushEnableNo" parameterType="String">
+	UPDATE	TH_PUSH_USER_MAP
+	SET		USE_YN		= 'N'
+	WHERE	USER_ID 	= #{userId}
+	</update>
+
+	<update id="updateCurrentDevicePushEnableYes" parameterType="String">
+	INSERT
+	INTO	TH_PUSH_USER_MAP
+	SET		USER_ID				= #{userId}
+			, PUSH_KEY			= #{pushToken}
+			, REGI_ID			= #{userId}
+			, REGI_DTTM			= DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s' )
+			, FINAL_MOD_ID		= #{userId}
+			, FINAL_MOD_DTTM	= DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s' )
+			, FCM_YN			= #{fcmyn}
+			, USE_YN			= 'Y'
+			, OSTYPE			= #{deviceType}
+			, OS_VERSION		= #{osVersion}
+			, APP_VERSION		= #{appVersion}
+	ON DUPLICATE KEY
+	UPDATE	FINAL_MOD_ID		= #{userId}
+			, FINAL_MOD_DTTM	= DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s' )
+			, FCM_YN 			= #{fcmyn}
+			, USE_YN			= 'Y'
+			, OSTYPE			= #{deviceType}
+			, OS_VERSION		= #{osVersion}
+			, APP_VERSION		= #{appVersion}
+	</update>
+
+	<select id="getStrNm" parameterType="String" resultType="String">
+		SELECT STR_NM
+		FROM TH_ABS_STR_INFO_MST
+		WHERE VIEW_STR_CD = #{userId}
+	</select>
+
+	<select id="getMessage" parameterType="String" resultType="String">
+		SELECT MESSAGE
+		FROM TH_PUSH_MESSAGE
+		WHERE PUSH_NO = #{pushNo}
+	</select>
+
+	<select id="getMessageTypeByPushNo" parameterType="String" resultType="String">
+		SELECT MESSAGE_TYPE
+		FROM TH_PUSH_MESSAGE
+		WHERE PUSH_NO = #{pushNo}
+	</select>
+
+	<select id="getUserByUsername" parameterType="String" resultType="UserVo">
+		SELECT	A.USER_ID				AS userId
+				, A.USER_NM				AS userNm
+				, A.COMPANY_CD			AS companyCd
+				, E.AUTH_SP				AS authSp
+				, A.USE_YN				AS useYn
+				, A.EULA_YN				AS eulaYn
+				, IFNULL(B.TIME_DIFF,0)	AS timeDiff
+				, C.PUSH_KEY			AS gcmRegiId
+				, E.AUTH_ID				AS authId
+		FROM	TH_USER_MST A
+				LEFT JOIN TH_STR_INFO_MST B
+						ON	A.STR_CD		= B.STR_CD
+						AND	A.COMPANY_CD	= B.COMPANY_CD
+				LEFT JOIN TH_PUSH_USER_MAP C
+						ON	A.USER_ID		= C.USER_ID
+						AND	C.USE_YN		= 'Y'
+				LEFT JOIN TH_USER_AUTH D
+						ON	A.COMPANY_CD	= D.COMPANY_CD
+						AND	A.USER_ID		= D.USER_ID
+						AND D.AUTH_ID		NOT IN ('8', '9', '10')
+				JOIN TH_AUTH_MST E
+						ON	D.COMPANY_CD	= E.COMPANY_CD
+						AND	D.AUTH_ID		= E.AUTH_ID
+		WHERE	A.USER_ID = #{username}
+		AND A.USE_YN  = 'Y'
+	</select>
+	
+	<select id="getUserPwCheck" parameterType="Map" resultType="int">
+	<![CDATA[
+		SELECT	COUNT(A.USER_ID)
+		FROM	TH_USER_MST A
+		WHERE	A.USER_ID = #{userId}
+	]]>
+			AND	A.USER_PW = AES_ENCRYPT(#{userPw},#{encKey})
+			AND A.USE_YN  = 'Y'
+	</select>
+</mapper>

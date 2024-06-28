@@ -1,0 +1,396 @@
+
+2024-04-09 15:38:53 Commons Daemon procrun stdout initialized
+##########Session ID C86A397D4F328F5B642DFA8430404EF4 destroyed at Tue Apr 09 18:39:20 KST 2024 Session Counts:  2
+ERROR 18:39:20.979 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C86A397D4F328F5B642DFA8430404EF4 destroyed at Tue Apr 09 18:39:20 KST 2024 2
+##########Session ID FB5125F8F48D213692D2189411474ED8 destroyed at Tue Apr 09 18:40:20 KST 2024 Session Counts:  1
+ERROR 18:40:20.994 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID FB5125F8F48D213692D2189411474ED8 destroyed at Tue Apr 09 18:40:20 KST 2024 1
+##########Session ID A3B176A520A74080F380B755FFE84AE2 destroyed at Tue Apr 09 18:42:21 KST 2024 Session Counts:  0
+ERROR 18:42:21.006 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A3B176A520A74080F380B755FFE84AE2 destroyed at Tue Apr 09 18:42:21 KST 2024 0
+##########Session ID 32DB3A19B7581C3FAE1DEC4342E085DF destroyed at Fri Apr 12 14:07:18 KST 2024 Session Counts:  0
+ERROR 14:07:18.637 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 32DB3A19B7581C3FAE1DEC4342E085DF destroyed at Fri Apr 12 14:07:18 KST 2024 0
+##########Session ID 8DE783DE3F924706B180235289802BDF created at Mon Apr 15 11:08:32 KST 2024 Session Counts: 1
+ERROR 11:08:32.063 [http-bio-12443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 8DE783DE3F924706B180235289802BDF created at Mon Apr 15 11:08:32 KST 2024 1
+##########Session ID 766E52F82EC678759542E62E5B8978EB created at Mon Apr 15 11:45:50 KST 2024 Session Counts: 3
+ERROR 11:45:50.106 [http-bio-12443-exec-7] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 766E52F82EC678759542E62E5B8978EB created at Mon Apr 15 11:45:50 KST 2024 3
+##########Session ID 8DE783DE3F924706B180235289802BDF destroyed at Mon Apr 15 14:08:34 KST 2024 Session Counts:  2
+ERROR 14:08:34.650 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8DE783DE3F924706B180235289802BDF destroyed at Mon Apr 15 14:08:34 KST 2024 2
+##########Session ID 766E52F82EC678759542E62E5B8978EB destroyed at Mon Apr 15 14:46:35 KST 2024 Session Counts:  1
+ERROR 14:46:35.347 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 766E52F82EC678759542E62E5B8978EB destroyed at Mon Apr 15 14:46:35 KST 2024 1
+##########Session ID 4F2DB3DEEEE89DF20D71D969EBD37652 destroyed at Mon Apr 15 14:46:35 KST 2024 Session Counts:  0
+ERROR 14:46:35.347 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 4F2DB3DEEEE89DF20D71D969EBD37652 destroyed at Mon Apr 15 14:46:35 KST 2024 0
+##########Session ID 9A7C5763EFC65F5D7C0B0125C85FC59C destroyed at Tue Apr 16 20:15:08 KST 2024 Session Counts:  4
+ERROR 20:15:08.035 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 9A7C5763EFC65F5D7C0B0125C85FC59C destroyed at Tue Apr 16 20:15:08 KST 2024 4
+##########Session ID 673A14DDCA3C6036403A2E8D317B2DBC destroyed at Tue Apr 16 20:15:08 KST 2024 Session Counts:  3
+ERROR 20:15:08.035 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 673A14DDCA3C6036403A2E8D317B2DBC destroyed at Tue Apr 16 20:15:08 KST 2024 3
+##########Session ID 71F2FBE7141733206D7BC8CE1F7CC29B destroyed at Tue Apr 16 20:16:08 KST 2024 Session Counts:  2
+ERROR 20:16:08.049 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 71F2FBE7141733206D7BC8CE1F7CC29B destroyed at Tue Apr 16 20:16:08 KST 2024 2
+##########Session ID A801D60F7BA0F15586CE212DDC2FF9AC destroyed at Tue Apr 16 21:02:09 KST 2024 Session Counts:  1
+ERROR 21:02:09.032 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A801D60F7BA0F15586CE212DDC2FF9AC destroyed at Tue Apr 16 21:02:09 KST 2024 1
+##########Session ID 2A9AF19868EB413380E5F326DA5ED880 destroyed at Tue Apr 16 22:58:10 KST 2024 Session Counts:  1
+ERROR 22:58:10.943 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 2A9AF19868EB413380E5F326DA5ED880 destroyed at Tue Apr 16 22:58:10 KST 2024 1
+##########Session ID 3CC9F321CEAB2CB1F214F7F8107AF113 destroyed at Wed Apr 17 00:48:12 KST 2024 Session Counts:  0
+ERROR 00:48:12.993 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 3CC9F321CEAB2CB1F214F7F8107AF113 destroyed at Wed Apr 17 00:48:12 KST 2024 0
+##########Session ID 9A2088F86F14026777B2421B6AD549D6 created at Wed Apr 17 11:35:43 KST 2024 Session Counts: 2
+ERROR 11:35:43.537 [http-bio-12443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 9A2088F86F14026777B2421B6AD549D6 created at Wed Apr 17 11:35:43 KST 2024 2
+##########Session ID 902EC1C06ECE1613A3A90337D5281043 destroyed at Wed Apr 17 14:36:28 KST 2024 Session Counts:  5
+ERROR 14:36:28.122 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 902EC1C06ECE1613A3A90337D5281043 destroyed at Wed Apr 17 14:36:28 KST 2024 5
+##########Session ID A0611DEC2F2C8F47FF0314668E077035 destroyed at Wed Apr 17 14:36:28 KST 2024 Session Counts:  4
+ERROR 14:36:28.122 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A0611DEC2F2C8F47FF0314668E077035 destroyed at Wed Apr 17 14:36:28 KST 2024 4
+##########Session ID 8373CFE3FFD10CF7F90804283A435379 destroyed at Wed Apr 17 14:36:28 KST 2024 Session Counts:  3
+ERROR 14:36:28.122 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8373CFE3FFD10CF7F90804283A435379 destroyed at Wed Apr 17 14:36:28 KST 2024 3
+##########Session ID 137C3343FC059A460ED5173CD048D1DB destroyed at Wed Apr 17 17:13:30 KST 2024 Session Counts:  4
+ERROR 17:13:30.651 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 137C3343FC059A460ED5173CD048D1DB destroyed at Wed Apr 17 17:13:30 KST 2024 4
+##########Session ID 7D13EB1CFEE46125B58C549756D3513E destroyed at Wed Apr 17 17:25:30 KST 2024 Session Counts:  3
+ERROR 17:25:30.809 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 7D13EB1CFEE46125B58C549756D3513E destroyed at Wed Apr 17 17:25:30 KST 2024 3
+##########Session ID 0841F7DD645FA6AD0D4FF3927E8858B2 destroyed at Wed Apr 17 17:37:31 KST 2024 Session Counts:  2
+ERROR 17:37:31.006 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0841F7DD645FA6AD0D4FF3927E8858B2 destroyed at Wed Apr 17 17:37:31 KST 2024 2
+##########Session ID 1EFFE89E890A56FA2B114396E1259CFF destroyed at Wed Apr 17 17:43:31 KST 2024 Session Counts:  1
+ERROR 17:43:31.088 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 1EFFE89E890A56FA2B114396E1259CFF destroyed at Wed Apr 17 17:43:31 KST 2024 1
+##########Session ID 9DF2E51AA3A9CA987CA39BD230E36D51 destroyed at Wed Apr 17 17:49:31 KST 2024 Session Counts:  0
+ERROR 17:49:31.223 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 9DF2E51AA3A9CA987CA39BD230E36D51 destroyed at Wed Apr 17 17:49:31 KST 2024 0
+##########Session ID D190F1CCEF9ACDF4840101B9EA5D06B5 created at Thu Apr 18 17:00:06 KST 2024 Session Counts: 1
+ERROR 17:00:06.825 [http-bio-12443-exec-9] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID D190F1CCEF9ACDF4840101B9EA5D06B5 created at Thu Apr 18 17:00:06 KST 2024 1
+##########Session ID 84844ADF638CEED4BD404B74778AB20B destroyed at Thu Apr 18 20:07:00 KST 2024 Session Counts:  0
+ERROR 20:07:00.827 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 84844ADF638CEED4BD404B74778AB20B destroyed at Thu Apr 18 20:07:00 KST 2024 0
+##########Session ID EE230A21BD47D55E208D2471B91F0EEF destroyed at Mon Apr 22 13:20:33 KST 2024 Session Counts:  1
+ERROR 13:20:33.974 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID EE230A21BD47D55E208D2471B91F0EEF destroyed at Mon Apr 22 13:20:33 KST 2024 1
+##########Session ID E87AD6B19EF8FD3758C5865BFE9E0510 destroyed at Mon Apr 22 13:21:33 KST 2024 Session Counts:  0
+ERROR 13:21:33.983 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E87AD6B19EF8FD3758C5865BFE9E0510 destroyed at Mon Apr 22 13:21:33 KST 2024 0
+##########Session ID 0FA52F0F0EBAE18F580F874D80D2850D created at Mon Apr 22 13:58:43 KST 2024 Session Counts: 2
+ERROR 13:58:43.663 [http-bio-12443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 0FA52F0F0EBAE18F580F874D80D2850D created at Mon Apr 22 13:58:43 KST 2024 2
+##########Session ID 955201CEC663C2749D625ACDCB97004B created at Mon Apr 22 14:50:37 KST 2024 Session Counts: 12
+ERROR 14:50:37.558 [http-apr-9092-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 955201CEC663C2749D625ACDCB97004B created at Mon Apr 22 14:50:37 KST 2024 12
+##########Session ID 22AEB2D63DC3A3A3A73F43F201B04CC5 created at Mon Apr 22 15:01:21 KST 2024 Session Counts: 15
+ERROR 15:01:21.376 [http-apr-9092-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 22AEB2D63DC3A3A3A73F43F201B04CC5 created at Mon Apr 22 15:01:21 KST 2024 15
+>>> Publish to IoT server.
+##########Session ID 654E056EB519A5505B8069BEE60E65FB created at Mon Apr 22 15:11:35 KST 2024 Session Counts: 19
+ERROR 15:11:35.139 [http-bio-12443-exec-18] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 654E056EB519A5505B8069BEE60E65FB created at Mon Apr 22 15:11:35 KST 2024 19
+##########Session ID 68936481EDA576F85504EC24F18DCE95 created at Mon Apr 22 15:12:43 KST 2024 Session Counts: 20
+ERROR 15:12:43.805 [http-bio-12443-exec-15] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 68936481EDA576F85504EC24F18DCE95 created at Mon Apr 22 15:12:43 KST 2024 20
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"4619f259-71cd-44e2-9ae1-3b2d7cf00485","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":0,"GroupId":0,"LightingId":0,"ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":"on","ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":"50","ControlResult":1}]}],"GatewayID":10000}}
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"cf8149ef-1a54-4d1f-b76a-4621d385b77c","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":0,"GroupId":0,"LightingId":0,"ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":"on","ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":"50","ControlResult":1}]}],"GatewayID":10000}}
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"7922cdf5-fc01-48c5-b821-d56a9635021f","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":0,"GroupId":0,"LightingId":0,"ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":"on","ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":"50","ControlResult":1}]}],"GatewayID":10000}}
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"cfbd120a-45c0-4f17-b3fc-99c21492d60a","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":0,"GroupId":0,"LightingId":0,"ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":"on","ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":"50","ControlResult":1}]}],"GatewayID":10000}}
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"29b22b8d-5395-4b22-97e9-72e4d689ae72","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":0,"GroupId":0,"LightingId":0,"ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":"on","ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":"50","ControlResult":1}]}],"GatewayID":10000}}
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"73b34e13-84e2-4410-a971-cf76be525aab","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":0,"GroupId":0,"LightingId":0,"ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":"on","ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":"50","ControlResult":1}]}],"GatewayID":10000}}
+##########Session ID 4EE5B0E58548956C16374114E738E8AD created at Mon Apr 22 15:55:49 KST 2024 Session Counts: 29
+ERROR 15:55:49.508 [http-apr-9092-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 4EE5B0E58548956C16374114E738E8AD created at Mon Apr 22 15:55:49 KST 2024 29
+##########Session ID 92CA59A94B432C850EBB9298F26E0810 created at Mon Apr 22 15:55:50 KST 2024 Session Counts: 31
+ERROR 15:55:50.467 [http-bio-12443-exec-17] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 92CA59A94B432C850EBB9298F26E0810 created at Mon Apr 22 15:55:50 KST 2024 31
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"036d8c70-4c83-4135-8203-5d6e4d4bfa37","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":"0","GroupId":"0","LightingId":"0","ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":"1","ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":"50","ControlResult":1}]}],"GatewayID":10000}}
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"ca9c0d4b-f2f9-4b0a-9c4c-555aa90c4cf9","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":"0","GroupId":"0","LightingId":"0","ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":1,"ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":50,"ControlResult":1}]}],"GatewayID":10000}}
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"61b5fc5b-bb50-4a06-bd1f-bee6a6d1e5f2","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":"0","GroupId":"0","LightingId":"0","ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":1,"ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":50,"ControlResult":1}]}],"GatewayID":10000}}
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"f7289d83-d722-4e85-b623-4839987d8ad6","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":"0","GroupId":"0","LightingId":"0","ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":1,"ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":50,"ControlResult":1}]}],"GatewayID":10000}}
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"e0d00fd6-ae71-486a-82e8-08081f47f91f","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":"0","GroupId":"0","LightingId":"0","ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":1,"ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":50,"ControlResult":1}]}],"GatewayID":10000}}
+##########Session ID C0F4D4AC3034DD2AD45895476DB7C4A3 created at Mon Apr 22 17:03:39 KST 2024 Session Counts: 2
+ERROR 17:03:39.335 [http-bio-12443-exec-46] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID C0F4D4AC3034DD2AD45895476DB7C4A3 created at Mon Apr 22 17:03:39 KST 2024 2
+##########Session ID BA5629F9EA69D8B234D17AB66C238562 created at Mon Apr 22 17:04:03 KST 2024 Session Counts: 4
+ERROR 17:04:03.402 [http-bio-12443-exec-63] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID BA5629F9EA69D8B234D17AB66C238562 created at Mon Apr 22 17:04:03 KST 2024 4
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"38d511c7-1279-4347-8ebf-33a8ecc53042","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":"0","GroupId":"0","LightingId":"0","ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":1,"ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":50,"ControlResult":1}]}],"GatewayID":10000}}
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"8381e7b7-0256-4050-a38d-e12b370622c3","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":"0","GroupId":"0","LightingId":"0","ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":1,"ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":50,"ControlResult":1}]}],"GatewayID":10000}}
+##########Session ID 1B1C1B1B9F4FA31D74474BCAFF0F95D8 destroyed at Mon Apr 22 20:04:14 KST 2024 Session Counts:  8
+ERROR 20:04:14.112 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 1B1C1B1B9F4FA31D74474BCAFF0F95D8 destroyed at Mon Apr 22 20:04:14 KST 2024 8
+##########Session ID D0F5241D1214EF01A1B952D49344D64B destroyed at Mon Apr 22 20:04:14 KST 2024 Session Counts:  7
+ERROR 20:04:14.112 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID D0F5241D1214EF01A1B952D49344D64B destroyed at Mon Apr 22 20:04:14 KST 2024 7
+##########Session ID 1F991EFB12429E8B8E85838BD326EB08 destroyed at Mon Apr 22 20:04:14 KST 2024 Session Counts:  6
+ERROR 20:04:14.112 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 1F991EFB12429E8B8E85838BD326EB08 destroyed at Mon Apr 22 20:04:14 KST 2024 6
+##########Session ID 4EEA3252A9D6B537CFF48C69AE318C4D destroyed at Mon Apr 22 20:04:14 KST 2024 Session Counts:  5
+ERROR 20:04:14.112 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 4EEA3252A9D6B537CFF48C69AE318C4D destroyed at Mon Apr 22 20:04:14 KST 2024 5
+##########Session ID 8EC5A6F912DEB4194DE62CD948CA0603 destroyed at Mon Apr 22 20:04:14 KST 2024 Session Counts:  4
+ERROR 20:04:14.112 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8EC5A6F912DEB4194DE62CD948CA0603 destroyed at Mon Apr 22 20:04:14 KST 2024 4
+##########Session ID B0CAAC1120348A859882CC66DBA82F4A destroyed at Mon Apr 22 20:05:14 KST 2024 Session Counts:  3
+ERROR 20:05:14.138 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID B0CAAC1120348A859882CC66DBA82F4A destroyed at Mon Apr 22 20:05:14 KST 2024 3
+##########Session ID F6F3CEC7C8A2A5EB4A5EC318DFF0DB85 destroyed at Mon Apr 22 20:07:14 KST 2024 Session Counts:  2
+ERROR 20:07:14.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID F6F3CEC7C8A2A5EB4A5EC318DFF0DB85 destroyed at Mon Apr 22 20:07:14 KST 2024 2
+##########Session ID 8BBA066196DF75FA932298995D5614CB destroyed at Mon Apr 22 20:07:14 KST 2024 Session Counts:  1
+ERROR 20:07:14.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8BBA066196DF75FA932298995D5614CB destroyed at Mon Apr 22 20:07:14 KST 2024 1
+##########Session ID 616847FCEED610BA3990737156927EC2 destroyed at Mon Apr 22 20:08:14 KST 2024 Session Counts:  0
+ERROR 20:08:14.178 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 616847FCEED610BA3990737156927EC2 destroyed at Mon Apr 22 20:08:14 KST 2024 0
+##########Session ID 5E2255EB8AAA677D4A338C653EA8EB62 destroyed at Tue Apr 23 10:52:28 KST 2024 Session Counts:  0
+ERROR 10:52:28.877 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 5E2255EB8AAA677D4A338C653EA8EB62 destroyed at Tue Apr 23 10:52:28 KST 2024 0
+##########Session ID 7BF8BB2A18BBDB195CE6EFDE59A691AB created at Tue Apr 23 13:47:47 KST 2024 Session Counts: 5
+ERROR 13:47:47.652 [http-apr-9092-exec-38] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 7BF8BB2A18BBDB195CE6EFDE59A691AB created at Tue Apr 23 13:47:47 KST 2024 5
+##########Session ID D7B84101B67621079165F95A5DD513CD destroyed at Tue Apr 23 13:54:32 KST 2024 Session Counts:  4
+ERROR 13:54:32.184 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID D7B84101B67621079165F95A5DD513CD destroyed at Tue Apr 23 13:54:32 KST 2024 4
+##########Session ID 74332821E7FF9D9B955726D855CDCB4C destroyed at Tue Apr 23 14:17:32 KST 2024 Session Counts:  3
+ERROR 14:17:32.631 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 74332821E7FF9D9B955726D855CDCB4C destroyed at Tue Apr 23 14:17:32 KST 2024 3
+##########Session ID 9734C2E811BC69E6DA40FCEAC2FE610B destroyed at Tue Apr 23 14:35:32 KST 2024 Session Counts:  2
+ERROR 14:35:32.923 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 9734C2E811BC69E6DA40FCEAC2FE610B destroyed at Tue Apr 23 14:35:32 KST 2024 2
+##########Session ID 1C661A3156F5EB4AF673845335FCA21C destroyed at Tue Apr 23 15:17:33 KST 2024 Session Counts:  2
+ERROR 15:17:33.772 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 1C661A3156F5EB4AF673845335FCA21C destroyed at Tue Apr 23 15:17:33 KST 2024 2
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"55f142c5-d4b1-40a4-b1fe-9a98bebc7977","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":"0","GroupId":"0","LightingId":"0","ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":1,"ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":50,"ControlResult":1}]}],"GatewayID":10000}}
+##########Session ID 1561CC0A8B69070E0AEE422BABEB8A5C created at Tue Apr 23 15:56:39 KST 2024 Session Counts: 8
+ERROR 15:56:39.002 [http-bio-12443-exec-57] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 1561CC0A8B69070E0AEE422BABEB8A5C created at Tue Apr 23 15:56:39 KST 2024 8
+>>> Publish to IoT server.
+<<< Subscribe from IoT server. topic : RequestAPIRes/10000, message : {"MessageID":63505,"Result":1,"ErrorCode":0,"MqttUUID":"d5206247-1a3b-4f09-9986-e487158494d2","Caller":"API","ControlFacilityResInfo":{"ControlUser":"tnm","ControlDeviceInfoList":[{"HubId":"0","GroupId":"0","LightingId":"0","ControlPropertyInfoList":[{"ControlProperty":"power","ControlPropertyValue":1,"ControlResult":1},{"ControlProperty":"brightnessLevel","ControlPropertyValue":50,"ControlResult":1}]}],"GatewayID":10000}}
+##########Session ID 7BF8BB2A18BBDB195CE6EFDE59A691AB destroyed at Tue Apr 23 16:48:35 KST 2024 Session Counts:  13
+ERROR 16:48:35.285 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 7BF8BB2A18BBDB195CE6EFDE59A691AB destroyed at Tue Apr 23 16:48:35 KST 2024 13
+##########Session ID 376D02B9D119E7A986636B41C9C6F1E9 created at Tue Apr 23 16:50:16 KST 2024 Session Counts: 15
+ERROR 16:50:16.635 [http-bio-12443-exec-63] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 376D02B9D119E7A986636B41C9C6F1E9 created at Tue Apr 23 16:50:16 KST 2024 15
+##########Session ID 2B59A72234E9BC80D3C7DBD3CD358FAE created at Tue Apr 23 17:13:11 KST 2024 Session Counts: 78
+ERROR 17:13:11.390 [http-bio-12443-exec-58] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 2B59A72234E9BC80D3C7DBD3CD358FAE created at Tue Apr 23 17:13:11 KST 2024 78
+##########Session ID 27150297DAA7148CEC3BF11F1CA56835 created at Tue Apr 23 17:15:44 KST 2024 Session Counts: 81
+ERROR 17:15:44.434 [http-bio-12443-exec-65] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 27150297DAA7148CEC3BF11F1CA56835 created at Tue Apr 23 17:15:44 KST 2024 81
+##########Session ID 97F00FFD37A8E5CC68486625BBD82E04 created at Tue Apr 23 17:18:40 KST 2024 Session Counts: 86
+ERROR 17:18:40.716 [http-bio-12443-exec-68] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 97F00FFD37A8E5CC68486625BBD82E04 created at Tue Apr 23 17:18:40 KST 2024 86
+##########Session ID 8A92ACBC26BBFE983BE1D7BECD7015C5 created at Tue Apr 23 17:23:00 KST 2024 Session Counts: 89
+ERROR 17:23:00.645 [http-bio-12443-exec-61] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 8A92ACBC26BBFE983BE1D7BECD7015C5 created at Tue Apr 23 17:23:00 KST 2024 89
+##########Session ID 3877DC21F351E18CE94EF6DB8912CA87 created at Tue Apr 23 17:27:10 KST 2024 Session Counts: 93
+ERROR 17:27:10.802 [http-bio-12443-exec-57] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 3877DC21F351E18CE94EF6DB8912CA87 created at Tue Apr 23 17:27:10 KST 2024 93
+##########Session ID 111A8D35EC1211E8005AD4F58D414FE3 created at Tue Apr 23 17:32:05 KST 2024 Session Counts: 96
+ERROR 17:32:05.365 [http-bio-12443-exec-61] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 111A8D35EC1211E8005AD4F58D414FE3 created at Tue Apr 23 17:32:05 KST 2024 96
+##########Session ID C4CB03EF0854F191121ED5C05A6075B0 created at Tue Apr 23 17:44:44 KST 2024 Session Counts: 99
+ERROR 17:44:44.976 [http-bio-12443-exec-57] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID C4CB03EF0854F191121ED5C05A6075B0 created at Tue Apr 23 17:44:44 KST 2024 99
+##########Session ID CFCA776E91B4ED11A53B9C30E69ED6C1 created at Tue Apr 23 17:45:30 KST 2024 Session Counts: 102
+ERROR 17:45:30.791 [http-bio-12443-exec-62] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID CFCA776E91B4ED11A53B9C30E69ED6C1 created at Tue Apr 23 17:45:30 KST 2024 102
+##########Session ID 840E7881E35B9975DE30ECF64B37A23A created at Tue Apr 23 17:46:06 KST 2024 Session Counts: 105
+ERROR 17:46:06.059 [http-bio-12443-exec-67] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 840E7881E35B9975DE30ECF64B37A23A created at Tue Apr 23 17:46:06 KST 2024 105
+##########Session ID B7641E9C4C893B2BAB4AF2AC256B16D0 created at Tue Apr 23 17:46:50 KST 2024 Session Counts: 109
+ERROR 17:46:50.861 [http-bio-12443-exec-61] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID B7641E9C4C893B2BAB4AF2AC256B16D0 created at Tue Apr 23 17:46:50 KST 2024 109
+##########Session ID A588F4D627CB4C055616D23F0CCEC97B created at Tue Apr 23 17:46:51 KST 2024 Session Counts: 112
+ERROR 17:46:51.150 [http-bio-12443-exec-65] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID A588F4D627CB4C055616D23F0CCEC97B created at Tue Apr 23 17:46:51 KST 2024 112
+##########Session ID 4A8348207AB9E31126449B1C3185E63F destroyed at Tue Apr 23 18:23:36 KST 2024 Session Counts:  115
+ERROR 18:23:36.782 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 4A8348207AB9E31126449B1C3185E63F destroyed at Tue Apr 23 18:23:36 KST 2024 115
+##########Session ID E0D2DB93F964CEDA6B8F07E7EC08650E destroyed at Tue Apr 23 18:38:36 KST 2024 Session Counts:  114
+ERROR 18:38:36.985 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E0D2DB93F964CEDA6B8F07E7EC08650E destroyed at Tue Apr 23 18:38:36 KST 2024 114
+##########Session ID ACAF0D44B40EF0C6AD7CDC99BC884C4A destroyed at Tue Apr 23 18:56:37 KST 2024 Session Counts:  113
+ERROR 18:56:37.264 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID ACAF0D44B40EF0C6AD7CDC99BC884C4A destroyed at Tue Apr 23 18:56:37 KST 2024 113
+##########Session ID 1561CC0A8B69070E0AEE422BABEB8A5C destroyed at Tue Apr 23 18:58:37 KST 2024 Session Counts:  112
+ERROR 18:58:37.286 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 1561CC0A8B69070E0AEE422BABEB8A5C destroyed at Tue Apr 23 18:58:37 KST 2024 112
+##########Session ID A9F202426B6BCE2C736BB244B9AD1217 destroyed at Tue Apr 23 19:33:37 KST 2024 Session Counts:  111
+ERROR 19:33:37.658 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A9F202426B6BCE2C736BB244B9AD1217 destroyed at Tue Apr 23 19:33:37 KST 2024 111
+##########Session ID 967C685D893A8271A896E5051BDB6D53 destroyed at Tue Apr 23 19:47:37 KST 2024 Session Counts:  110
+ERROR 19:47:37.840 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 967C685D893A8271A896E5051BDB6D53 destroyed at Tue Apr 23 19:47:37 KST 2024 110
+##########Session ID 8D2BE09E90A1ED2F3A8561DEFE5BA6D6 destroyed at Tue Apr 23 19:47:37 KST 2024 Session Counts:  109
+ERROR 19:47:37.840 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8D2BE09E90A1ED2F3A8561DEFE5BA6D6 destroyed at Tue Apr 23 19:47:37 KST 2024 109
+##########Session ID 0E545BD2BCDA136FEE54F29A42DB0285 destroyed at Tue Apr 23 19:47:37 KST 2024 Session Counts:  108
+ERROR 19:47:37.840 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0E545BD2BCDA136FEE54F29A42DB0285 destroyed at Tue Apr 23 19:47:37 KST 2024 108
+##########Session ID FED1DB2111001B37EA514CA2FF60E4A8 destroyed at Tue Apr 23 19:48:37 KST 2024 Session Counts:  107
+ERROR 19:48:37.841 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID FED1DB2111001B37EA514CA2FF60E4A8 destroyed at Tue Apr 23 19:48:37 KST 2024 107
+##########Session ID C8059D36B0829450B88C2B51988AC389 destroyed at Tue Apr 23 19:50:37 KST 2024 Session Counts:  106
+ERROR 19:50:37.888 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C8059D36B0829450B88C2B51988AC389 destroyed at Tue Apr 23 19:50:37 KST 2024 106
+##########Session ID 376D02B9D119E7A986636B41C9C6F1E9 destroyed at Tue Apr 23 19:50:37 KST 2024 Session Counts:  105
+ERROR 19:50:37.888 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 376D02B9D119E7A986636B41C9C6F1E9 destroyed at Tue Apr 23 19:50:37 KST 2024 105
+##########Session ID 582CF8131E88B26ECEA10B357DA14E3A destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  104
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 582CF8131E88B26ECEA10B357DA14E3A destroyed at Tue Apr 23 19:51:37 KST 2024 104
+##########Session ID FB87356B364EE9548AC1CFE5E26AFB54 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  103
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID FB87356B364EE9548AC1CFE5E26AFB54 destroyed at Tue Apr 23 19:51:37 KST 2024 103
+##########Session ID CF3EBCD4DABF761B65E530D8D8E1BEF4 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  102
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID CF3EBCD4DABF761B65E530D8D8E1BEF4 destroyed at Tue Apr 23 19:51:37 KST 2024 102
+##########Session ID DF72FF07E5EB05F760FC39FDA971CD78 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  101
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID DF72FF07E5EB05F760FC39FDA971CD78 destroyed at Tue Apr 23 19:51:37 KST 2024 101
+##########Session ID B5147B0B78C1C87DFCB2C40DDD7413AC destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  100
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID B5147B0B78C1C87DFCB2C40DDD7413AC destroyed at Tue Apr 23 19:51:37 KST 2024 100
+##########Session ID 14D29390CF607ABA5634BF6EB4238B7F destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  99
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 14D29390CF607ABA5634BF6EB4238B7F destroyed at Tue Apr 23 19:51:37 KST 2024 99
+##########Session ID 5C805DF9687CD9E71CC26C91DE5C2810 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  98
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 5C805DF9687CD9E71CC26C91DE5C2810 destroyed at Tue Apr 23 19:51:37 KST 2024 98
+##########Session ID FD5AB8DE4EC2CE98799FF4594AA605AD destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  97
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID FD5AB8DE4EC2CE98799FF4594AA605AD destroyed at Tue Apr 23 19:51:37 KST 2024 97
+##########Session ID 007AF9AE1EF19C985C58EA68EB271959 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  96
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 007AF9AE1EF19C985C58EA68EB271959 destroyed at Tue Apr 23 19:51:37 KST 2024 96
+##########Session ID B4A0FC64FDE7544B019B71B85313B004 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  95
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID B4A0FC64FDE7544B019B71B85313B004 destroyed at Tue Apr 23 19:51:37 KST 2024 95
+##########Session ID B1155C3E478D351BECCE04C73E210981 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  94
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID B1155C3E478D351BECCE04C73E210981 destroyed at Tue Apr 23 19:51:37 KST 2024 94
+##########Session ID 326350A6CCEA2E7B7262C6F302A5CAEF destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  93
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 326350A6CCEA2E7B7262C6F302A5CAEF destroyed at Tue Apr 23 19:51:37 KST 2024 93
+##########Session ID E9C9C6CBD3A367B19C3C01CCB8BB127B destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  92
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E9C9C6CBD3A367B19C3C01CCB8BB127B destroyed at Tue Apr 23 19:51:37 KST 2024 92
+##########Session ID 34B454DEEDAB79D58992AEE0B71BE5BD destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  91
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 34B454DEEDAB79D58992AEE0B71BE5BD destroyed at Tue Apr 23 19:51:37 KST 2024 91
+##########Session ID F6BD1125D2707481BB1F1110F6FF32C2 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  90
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID F6BD1125D2707481BB1F1110F6FF32C2 destroyed at Tue Apr 23 19:51:37 KST 2024 90
+##########Session ID 894B82E900F42A40855708D13819CEB2 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  89
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 894B82E900F42A40855708D13819CEB2 destroyed at Tue Apr 23 19:51:37 KST 2024 89
+##########Session ID DE13B51192EA99CA4A13BF8C93E24E9C destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  88
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID DE13B51192EA99CA4A13BF8C93E24E9C destroyed at Tue Apr 23 19:51:37 KST 2024 88
+##########Session ID 78234EC207A9E13753123E2B950D5FEB destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  87
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 78234EC207A9E13753123E2B950D5FEB destroyed at Tue Apr 23 19:51:37 KST 2024 87
+##########Session ID D264893290042BD3087AF3366201676C destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  86
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID D264893290042BD3087AF3366201676C destroyed at Tue Apr 23 19:51:37 KST 2024 86
+##########Session ID CA8B5DA0186341FF6D4FD165F7AE14A7 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  85
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID CA8B5DA0186341FF6D4FD165F7AE14A7 destroyed at Tue Apr 23 19:51:37 KST 2024 85
+##########Session ID 282A35F8F068179058871BF91881F1EC destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  84
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 282A35F8F068179058871BF91881F1EC destroyed at Tue Apr 23 19:51:37 KST 2024 84
+##########Session ID 7688BDD9F0C28AD49D60D9640E4D0943 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  83
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 7688BDD9F0C28AD49D60D9640E4D0943 destroyed at Tue Apr 23 19:51:37 KST 2024 83
+##########Session ID E409327B89DB8DE0BDBE33106FF2E82F destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  82
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E409327B89DB8DE0BDBE33106FF2E82F destroyed at Tue Apr 23 19:51:37 KST 2024 82
+##########Session ID E5CF2792385C5EA21EDBFC1FD35ADF0C destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  81
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E5CF2792385C5EA21EDBFC1FD35ADF0C destroyed at Tue Apr 23 19:51:37 KST 2024 81
+##########Session ID 340C89DFBC95C17C46DCD2B9E43F74EC destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  80
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 340C89DFBC95C17C46DCD2B9E43F74EC destroyed at Tue Apr 23 19:51:37 KST 2024 80
+##########Session ID FB5825B853F8FA14C5C17F242D85B781 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  79
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID FB5825B853F8FA14C5C17F242D85B781 destroyed at Tue Apr 23 19:51:37 KST 2024 79
+##########Session ID CE562624164D232C535473A215DDFA70 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  78
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID CE562624164D232C535473A215DDFA70 destroyed at Tue Apr 23 19:51:37 KST 2024 78
+##########Session ID C6D85F2202E80AEE0697CB7E14717507 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  77
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C6D85F2202E80AEE0697CB7E14717507 destroyed at Tue Apr 23 19:51:37 KST 2024 77
+##########Session ID 4DF05102827562481B7011083C2FB450 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  76
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 4DF05102827562481B7011083C2FB450 destroyed at Tue Apr 23 19:51:37 KST 2024 76
+##########Session ID EAB664D698BBEFD2F702909FC3177413 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  75
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID EAB664D698BBEFD2F702909FC3177413 destroyed at Tue Apr 23 19:51:37 KST 2024 75
+##########Session ID 3F330737E0D43642FD084B1A9B8A1F9E destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  74
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 3F330737E0D43642FD084B1A9B8A1F9E destroyed at Tue Apr 23 19:51:37 KST 2024 74
+##########Session ID 6FE9993C96FD86D33823083A7EF5A4A7 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  73
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 6FE9993C96FD86D33823083A7EF5A4A7 destroyed at Tue Apr 23 19:51:37 KST 2024 73
+##########Session ID C2DDDC5379A5DE0C606D7E80C653BE44 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  72
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C2DDDC5379A5DE0C606D7E80C653BE44 destroyed at Tue Apr 23 19:51:37 KST 2024 72
+##########Session ID F1A7F04A0E9245ECE7FC8CAA43CC320C destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  71
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID F1A7F04A0E9245ECE7FC8CAA43CC320C destroyed at Tue Apr 23 19:51:37 KST 2024 71
+##########Session ID 8D47BD0D259C163CE2A6CD3C7C713B34 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  70
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8D47BD0D259C163CE2A6CD3C7C713B34 destroyed at Tue Apr 23 19:51:37 KST 2024 70
+##########Session ID 87D892939CDAC29CE62AA065303E3D2E destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  69
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 87D892939CDAC29CE62AA065303E3D2E destroyed at Tue Apr 23 19:51:37 KST 2024 69
+##########Session ID 36FC4757422F4E69309DADBE0BADCE68 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  68
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 36FC4757422F4E69309DADBE0BADCE68 destroyed at Tue Apr 23 19:51:37 KST 2024 68
+##########Session ID 5E3EF280750DCEA9C359BD6F40B9F04A destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  67
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 5E3EF280750DCEA9C359BD6F40B9F04A destroyed at Tue Apr 23 19:51:37 KST 2024 67
+##########Session ID 8B0A41573565FB42DB27306DB846E9E6 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  66
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8B0A41573565FB42DB27306DB846E9E6 destroyed at Tue Apr 23 19:51:37 KST 2024 66
+##########Session ID E5C2EACBCB019A27220D70A82552065F destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  65
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E5C2EACBCB019A27220D70A82552065F destroyed at Tue Apr 23 19:51:37 KST 2024 65
+##########Session ID 8199EBDD8099C86728651A4A110F846E destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  64
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8199EBDD8099C86728651A4A110F846E destroyed at Tue Apr 23 19:51:37 KST 2024 64
+##########Session ID C9FEA7E3B177DB3A6618B18CE6F88355 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  63
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C9FEA7E3B177DB3A6618B18CE6F88355 destroyed at Tue Apr 23 19:51:37 KST 2024 63
+##########Session ID 4BC80AB75D61C4B9D5D6B05B7A869E40 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  62
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 4BC80AB75D61C4B9D5D6B05B7A869E40 destroyed at Tue Apr 23 19:51:37 KST 2024 62
+##########Session ID 325A3EE2B9A3568938AD0E98B5B32056 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  61
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 325A3EE2B9A3568938AD0E98B5B32056 destroyed at Tue Apr 23 19:51:37 KST 2024 61
+##########Session ID F521151AE64B0B2E6F39DB75138D274D destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  60
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID F521151AE64B0B2E6F39DB75138D274D destroyed at Tue Apr 23 19:51:37 KST 2024 60
+##########Session ID CC693643BB3018760751980DAB6CD757 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  59
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID CC693643BB3018760751980DAB6CD757 destroyed at Tue Apr 23 19:51:37 KST 2024 59
+##########Session ID AE7DA653C96B43053D4803FFB7EBAA58 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  58
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID AE7DA653C96B43053D4803FFB7EBAA58 destroyed at Tue Apr 23 19:51:37 KST 2024 58
+##########Session ID 0ABFAC68C1B93D98680A1602B1552FDE destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  57
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0ABFAC68C1B93D98680A1602B1552FDE destroyed at Tue Apr 23 19:51:37 KST 2024 57
+##########Session ID 58FB64210F2277FA4F3124F3B1B07539 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  56
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 58FB64210F2277FA4F3124F3B1B07539 destroyed at Tue Apr 23 19:51:37 KST 2024 56
+##########Session ID 0B2DFF04A6C34963FEB075AC5DFF02B5 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  55
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0B2DFF04A6C34963FEB075AC5DFF02B5 destroyed at Tue Apr 23 19:51:37 KST 2024 55
+##########Session ID A00A72B75A8E5CBFE0CC5BFD56BCF0DC destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  54
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A00A72B75A8E5CBFE0CC5BFD56BCF0DC destroyed at Tue Apr 23 19:51:37 KST 2024 54
+##########Session ID 759B053282197243A13748B069A7675F destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  53
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 759B053282197243A13748B069A7675F destroyed at Tue Apr 23 19:51:37 KST 2024 53
+##########Session ID 2725EF743C5C42300230FB7D773D47E1 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  52
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 2725EF743C5C42300230FB7D773D47E1 destroyed at Tue Apr 23 19:51:37 KST 2024 52
+##########Session ID 002A9C6E0C81ACA554ED4761C8B470B0 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  51
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 002A9C6E0C81ACA554ED4761C8B470B0 destroyed at Tue Apr 23 19:51:37 KST 2024 51
+##########Session ID 050D2C78B452437B6E4F4B28426EB3D5 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  50
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 050D2C78B452437B6E4F4B28426EB3D5 destroyed at Tue Apr 23 19:51:37 KST 2024 50
+##########Session ID 56DF27786B3DA6538F159BEAAE3D7CC0 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  49
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 56DF27786B3DA6538F159BEAAE3D7CC0 destroyed at Tue Apr 23 19:51:37 KST 2024 49
+##########Session ID 4DAABE5D815027A20F8631B2169B87B5 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  48
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 4DAABE5D815027A20F8631B2169B87B5 destroyed at Tue Apr 23 19:51:37 KST 2024 48
+##########Session ID 060C5EC0BA934A5406469DBA556D0884 destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  47
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 060C5EC0BA934A5406469DBA556D0884 destroyed at Tue Apr 23 19:51:37 KST 2024 47
+##########Session ID 12147BDA15F3FC5D7818DF561D751F9C destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  46
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 12147BDA15F3FC5D7818DF561D751F9C destroyed at Tue Apr 23 19:51:37 KST 2024 46
+##########Session ID 2074A7764B7DE411F8AE2F26EB25DFEF destroyed at Tue Apr 23 19:51:37 KST 2024 Session Counts:  45
+ERROR 19:51:37.895 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 2074A7764B7DE411F8AE2F26EB25DFEF destroyed at Tue Apr 23 19:51:37 KST 2024 45
+##########Session ID D13C4B3F204F5864A23ED7C082743911 destroyed at Tue Apr 23 19:52:37 KST 2024 Session Counts:  44
+ERROR 19:52:37.935 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID D13C4B3F204F5864A23ED7C082743911 destroyed at Tue Apr 23 19:52:37 KST 2024 44
+##########Session ID 3DCB67771906E541BFC5443E2701F9A1 destroyed at Tue Apr 23 19:57:38 KST 2024 Session Counts:  43
+ERROR 19:57:38.024 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 3DCB67771906E541BFC5443E2701F9A1 destroyed at Tue Apr 23 19:57:38 KST 2024 43
+##########Session ID 1F3885BF0A3E80F09E3385D53A4395FB destroyed at Tue Apr 23 20:10:38 KST 2024 Session Counts:  42
+ERROR 20:10:38.214 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 1F3885BF0A3E80F09E3385D53A4395FB destroyed at Tue Apr 23 20:10:38 KST 2024 42
+##########Session ID 2B59A72234E9BC80D3C7DBD3CD358FAE destroyed at Tue Apr 23 20:13:38 KST 2024 Session Counts:  41
+ERROR 20:13:38.233 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 2B59A72234E9BC80D3C7DBD3CD358FAE destroyed at Tue Apr 23 20:13:38 KST 2024 41
+##########Session ID D1C038A1B30790E8DE9E56675B1155A0 destroyed at Tue Apr 23 20:13:38 KST 2024 Session Counts:  40
+ERROR 20:13:38.233 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID D1C038A1B30790E8DE9E56675B1155A0 destroyed at Tue Apr 23 20:13:38 KST 2024 40
+##########Session ID A5FE33B94CAD7E0E8F4617DE2049E135 destroyed at Tue Apr 23 20:15:38 KST 2024 Session Counts:  39
+ERROR 20:15:38.251 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A5FE33B94CAD7E0E8F4617DE2049E135 destroyed at Tue Apr 23 20:15:38 KST 2024 39
+##########Session ID 8E7EDCF8D4DD2DA8F9C901B0FB024E04 destroyed at Tue Apr 23 20:15:38 KST 2024 Session Counts:  38
+ERROR 20:15:38.251 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8E7EDCF8D4DD2DA8F9C901B0FB024E04 destroyed at Tue Apr 23 20:15:38 KST 2024 38
+##########Session ID 27150297DAA7148CEC3BF11F1CA56835 destroyed at Tue Apr 23 20:16:38 KST 2024 Session Counts:  37
+ERROR 20:16:38.252 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 27150297DAA7148CEC3BF11F1CA56835 destroyed at Tue Apr 23 20:16:38 KST 2024 37
+##########Session ID C138631A9D4142CB57FD57ED21C43FA7 destroyed at Tue Apr 23 20:16:38 KST 2024 Session Counts:  36
+ERROR 20:16:38.252 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C138631A9D4142CB57FD57ED21C43FA7 destroyed at Tue Apr 23 20:16:38 KST 2024 36
+##########Session ID 788618BD32AF438C7C482881A9642014 destroyed at Tue Apr 23 20:18:38 KST 2024 Session Counts:  35
+ERROR 20:18:38.273 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 788618BD32AF438C7C482881A9642014 destroyed at Tue Apr 23 20:18:38 KST 2024 35
+##########Session ID CB63EF66C5FBD4DD9491C6FAAF581050 destroyed at Tue Apr 23 20:18:38 KST 2024 Session Counts:  34
+ERROR 20:18:38.273 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID CB63EF66C5FBD4DD9491C6FAAF581050 destroyed at Tue Apr 23 20:18:38 KST 2024 34
+##########Session ID 3AD3A064A38B36F75F3B91CC56C67152 destroyed at Tue Apr 23 20:18:38 KST 2024 Session Counts:  33
+ERROR 20:18:38.273 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 3AD3A064A38B36F75F3B91CC56C67152 destroyed at Tue Apr 23 20:18:38 KST 2024 33
+##########Session ID 6C344708EEEA3E9AE4B300AFC74B8F0B destroyed at Tue Apr 23 20:19:38 KST 2024 Session Counts:  32
+ERROR 20:19:38.274 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 6C344708EEEA3E9AE4B300AFC74B8F0B destroyed at Tue Apr 23 20:19:38 KST 2024 32
+##########Session ID 97F00FFD37A8E5CC68486625BBD82E04 destroyed at Tue Apr 23 20:19:38 KST 2024 Session Counts:  31
+ERROR 20:19:38.274 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 97F00FFD37A8E5CC68486625BBD82E04 destroyed at Tue Apr 23 20:19:38 KST 2024 31
+##########Session ID 1C5653AC6289E26800306005241A233B destroyed at Tue Apr 23 20:19:38 KST 2024 Session Counts:  30
+ERROR 20:19:38.274 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 1C5653AC6289E26800306005241A233B destroyed at Tue Apr 23 20:19:38 KST 2024 30
+##########Session ID 8A92ACBC26BBFE983BE1D7BECD7015C5 destroyed at Tue Apr 23 20:23:38 KST 2024 Session Counts:  29
+ERROR 20:23:38.316 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8A92ACBC26BBFE983BE1D7BECD7015C5 destroyed at Tue Apr 23 20:23:38 KST 2024 29
+##########Session ID 72A8B576CEDF639105668BF387CE3F65 destroyed at Tue Apr 23 20:23:38 KST 2024 Session Counts:  28
+ERROR 20:23:38.316 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 72A8B576CEDF639105668BF387CE3F65 destroyed at Tue Apr 23 20:23:38 KST 2024 28
+##########Session ID B26C247CFF05C358EF5001605EB654B5 destroyed at Tue Apr 23 20:27:38 KST 2024 Session Counts:  27
+ERROR 20:27:38.354 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID B26C247CFF05C358EF5001605EB654B5 destroyed at Tue Apr 23 20:27:38 KST 2024 27
+##########Session ID 560E6B20DF0671D9CFA4587AD9F40A2B destroyed at Tue Apr 23 20:27:38 KST 2024 Session Counts:  26
+ERROR 20:27:38.354 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 560E6B20DF0671D9CFA4587AD9F40A2B destroyed at Tue Apr 23 20:27:38 KST 2024 26
+##########Session ID F668658923BB1B3BCBE133F98AA96849 destroyed at Tue Apr 23 20:27:38 KST 2024 Session Counts:  25
+ERROR 20:27:38.354 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID F668658923BB1B3BCBE133F98AA96849 destroyed at Tue Apr 23 20:27:38 KST 2024 25
+##########Session ID 3877DC21F351E18CE94EF6DB8912CA87 destroyed at Tue Apr 23 20:27:38 KST 2024 Session Counts:  24
+ERROR 20:27:38.354 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 3877DC21F351E18CE94EF6DB8912CA87 destroyed at Tue Apr 23 20:27:38 KST 2024 24
+##########Session ID B4802B24AD1BBA7D5C4CC13BA3F945C8 destroyed at Tue Apr 23 20:27:38 KST 2024 Session Counts:  23
+ERROR 20:27:38.354 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID B4802B24AD1BBA7D5C4CC13BA3F945C8 destroyed at Tue Apr 23 20:27:38 KST 2024 23
+##########Session ID EEDFE6964D53C5450FE8477035B6100E destroyed at Tue Apr 23 20:32:38 KST 2024 Session Counts:  22
+ERROR 20:32:38.446 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID EEDFE6964D53C5450FE8477035B6100E destroyed at Tue Apr 23 20:32:38 KST 2024 22
+##########Session ID 111A8D35EC1211E8005AD4F58D414FE3 destroyed at Tue Apr 23 20:32:38 KST 2024 Session Counts:  21
+ERROR 20:32:38.446 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 111A8D35EC1211E8005AD4F58D414FE3 destroyed at Tue Apr 23 20:32:38 KST 2024 21
+##########Session ID 8B05593C7E5E336EF3851230BA6B2629 destroyed at Tue Apr 23 20:32:38 KST 2024 Session Counts:  20
+ERROR 20:32:38.446 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8B05593C7E5E336EF3851230BA6B2629 destroyed at Tue Apr 23 20:32:38 KST 2024 20
+##########Session ID 3CE57449EE13A3DF39B89B4B728FEF0C destroyed at Tue Apr 23 20:45:38 KST 2024 Session Counts:  19
+ERROR 20:45:38.708 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 3CE57449EE13A3DF39B89B4B728FEF0C destroyed at Tue Apr 23 20:45:38 KST 2024 19
+##########Session ID 3C902F631E5E96E20066FFC9BE75A676 destroyed at Tue Apr 23 20:45:38 KST 2024 Session Counts:  18
+ERROR 20:45:38.708 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 3C902F631E5E96E20066FFC9BE75A676 destroyed at Tue Apr 23 20:45:38 KST 2024 18
+##########Session ID 7C2DBD2CCB3743C66C7DF8EF96D2C5FE destroyed at Tue Apr 23 20:45:38 KST 2024 Session Counts:  17
+ERROR 20:45:38.708 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 7C2DBD2CCB3743C66C7DF8EF96D2C5FE destroyed at Tue Apr 23 20:45:38 KST 2024 17
+##########Session ID C4CB03EF0854F191121ED5C05A6075B0 destroyed at Tue Apr 23 20:45:38 KST 2024 Session Counts:  16
+ERROR 20:45:38.708 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C4CB03EF0854F191121ED5C05A6075B0 destroyed at Tue Apr 23 20:45:38 KST 2024 16
+##########Session ID 28FCB6E81835A63BEE9EB27BA1673C0A destroyed at Tue Apr 23 20:45:38 KST 2024 Session Counts:  15
+ERROR 20:45:38.708 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 28FCB6E81835A63BEE9EB27BA1673C0A destroyed at Tue Apr 23 20:45:38 KST 2024 15
+##########Session ID CFCA776E91B4ED11A53B9C30E69ED6C1 destroyed at Tue Apr 23 20:45:38 KST 2024 Session Counts:  14
+ERROR 20:45:38.708 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID CFCA776E91B4ED11A53B9C30E69ED6C1 destroyed at Tue Apr 23 20:45:38 KST 2024 14
+##########Session ID C2B7B9A4B4E84587ABB1F0CA0221B127 destroyed at Tue Apr 23 20:46:38 KST 2024 Session Counts:  13
+ERROR 20:46:38.710 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C2B7B9A4B4E84587ABB1F0CA0221B127 destroyed at Tue Apr 23 20:46:38 KST 2024 13
+##########Session ID 92CA40429007B95D72654F88F850652E destroyed at Tue Apr 23 20:46:38 KST 2024 Session Counts:  12
+ERROR 20:46:38.710 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 92CA40429007B95D72654F88F850652E destroyed at Tue Apr 23 20:46:38 KST 2024 12
+##########Session ID 840E7881E35B9975DE30ECF64B37A23A destroyed at Tue Apr 23 20:46:38 KST 2024 Session Counts:  11
+ERROR 20:46:38.710 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 840E7881E35B9975DE30ECF64B37A23A destroyed at Tue Apr 23 20:46:38 KST 2024 11
+##########Session ID 56557D80D9E0F6FC7E8D1F079615A35D destroyed at Tue Apr 23 20:46:38 KST 2024 Session Counts:  10
+ERROR 20:46:38.710 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 56557D80D9E0F6FC7E8D1F079615A35D destroyed at Tue Apr 23 20:46:38 KST 2024 10
+##########Session ID 0EAAF05F42A6AFAD09BBA12B7ACED3BF destroyed at Tue Apr 23 20:47:38 KST 2024 Session Counts:  9
+ERROR 20:47:38.753 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0EAAF05F42A6AFAD09BBA12B7ACED3BF destroyed at Tue Apr 23 20:47:38 KST 2024 9
+##########Session ID 19E7202EFF943BA4BF1459006AC6EFD8 destroyed at Tue Apr 23 20:47:38 KST 2024 Session Counts:  8
+ERROR 20:47:38.753 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 19E7202EFF943BA4BF1459006AC6EFD8 destroyed at Tue Apr 23 20:47:38 KST 2024 8
+##########Session ID 43DBA10FCDB4DDA0CAED0D37EA07C8C7 destroyed at Tue Apr 23 20:47:38 KST 2024 Session Counts:  7
+ERROR 20:47:38.753 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 43DBA10FCDB4DDA0CAED0D37EA07C8C7 destroyed at Tue Apr 23 20:47:38 KST 2024 7
+##########Session ID A588F4D627CB4C055616D23F0CCEC97B destroyed at Tue Apr 23 20:47:38 KST 2024 Session Counts:  6
+ERROR 20:47:38.753 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A588F4D627CB4C055616D23F0CCEC97B destroyed at Tue Apr 23 20:47:38 KST 2024 6
+##########Session ID B7641E9C4C893B2BAB4AF2AC256B16D0 destroyed at Tue Apr 23 20:47:38 KST 2024 Session Counts:  5
+ERROR 20:47:38.753 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID B7641E9C4C893B2BAB4AF2AC256B16D0 destroyed at Tue Apr 23 20:47:38 KST 2024 5
+##########Session ID 3C1641A4AC79BFD657689ED82B4A8F50 destroyed at Tue Apr 23 20:49:38 KST 2024 Session Counts:  4
+ERROR 20:49:38.772 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 3C1641A4AC79BFD657689ED82B4A8F50 destroyed at Tue Apr 23 20:49:38 KST 2024 4
+##########Session ID 261B7E07ED6CE371CCE33DA82DD9295B destroyed at Tue Apr 23 20:49:38 KST 2024 Session Counts:  3
+ERROR 20:49:38.772 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 261B7E07ED6CE371CCE33DA82DD9295B destroyed at Tue Apr 23 20:49:38 KST 2024 3
+##########Session ID 808D32D22C841BA4110C221FF94CAEE5 destroyed at Tue Apr 23 20:50:38 KST 2024 Session Counts:  2
+ERROR 20:50:38.814 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 808D32D22C841BA4110C221FF94CAEE5 destroyed at Tue Apr 23 20:50:38 KST 2024 2
+##########Session ID 88EFAD8186282E523FC052C3D513C659 destroyed at Tue Apr 23 20:52:38 KST 2024 Session Counts:  1
+ERROR 20:52:38.837 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 88EFAD8186282E523FC052C3D513C659 destroyed at Tue Apr 23 20:52:38 KST 2024 1
+##########Session ID 34C19335EA923B451983BD180270769F destroyed at Tue Apr 23 21:03:38 KST 2024 Session Counts:  0
+ERROR 21:03:38.960 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 34C19335EA923B451983BD180270769F destroyed at Tue Apr 23 21:03:38 KST 2024 0

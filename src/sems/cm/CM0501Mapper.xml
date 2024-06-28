@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.cm.persistence.CM0501Mapper">
+
+	<select id="getFridgeStatChartData1" parameterType="Map" resultType="Map">
+	/* CM0501Mapper.getFridgeStatChartData1 */
+		<choose>
+			<!-- 테몬인 경우  -->
+			<when test='moduleNm.equals("TEMON")'>
+			<![CDATA[
+				SELECT A.STR_CD AS strCd
+					, DATE_FORMAT(A.REPORT_DTTM, '%Y%m%d') 	AS yyyymmdd
+					, DATE_FORMAT(A.REPORT_DTTM, '%H%i') 	AS hhmin
+					, A.TEMON_ID AS temonId
+					, A.TEMON_TYPE AS temonType
+					, A.PORT_NO AS portNo
+					, CASE WHEN A.ALARM_YN = 'H' THEN '고온'
+							WHEN A.ALARM_YN = 'L' THEN '저온'
+							WHEN A.ALARM_YN = 'Y' THEN '이상'
+							WHEN A.ALARM_YN = 'E' THEN '통신'
+							WHEN A.ALARM_YN = 'N' THEN '정상' ELSE '' END as alarmYn
+					, CASE WHEN A.SENS_TEMP = '-50.0' OR A.SENS_TEMP ='109.0' THEN NULL ELSE A.SENS_TEMP END AS sensTemp
+					, B.DEVICE_LOC AS deviceLoc
+					, CASE WHEN B.CONTENTS IS NULL THEN ''
+							WHEN B.CONTENTS = '' THEN ''
+							ELSE CONCAT('(',B.CONTENTS, ')') END AS contents
+					, B.MAX_TEMP AS maxTemp
+					, B.MIN_TEMP AS minTemp
+					, B.DELAY_TIME AS delayTime
+					, B.PUSH_TERM AS pushTerm
+				FROM TH_STR_REMS_DEVICE_BASE A
+					, TH_STR_REMS_DEVICE_MST B
+				WHERE A.STR_CD = B.STR_CD
+					AND A.TEMON_ID = B.TEMON_ID
+					AND A.PORT_NO = B.PORT_NO
+					AND A.TEMON_TYPE = B.TEMON_TYPE
+					AND A.STR_CD = #{strCd}
+					AND A.REPORT_DTTM >= DATE_FORMAT(#{startDate}, '%Y-%m-%d 00:00:00')
+					AND A.REPORT_DTTM < DATE_FORMAT(#{endDate} + INTERVAL 1 DAY,'%Y-%m-%d 00:00:00')
+					AND A.TEMON_ID = #{moduleId}
+					AND A.TEMON_TYPE = #{temonType}
+					AND A.PORT_NO = #{portNo}
+				ORDER BY A.REPORT_DTTM ASC
+				 ]]>
+			</when>
+			<!-- 하콘몬인 경우  -->
+			<when test='moduleNm.equals("HACONMON")'>
+			<![CDATA[
+				SELECT A.STR_CD AS strCd
+					, DATE_FORMAT(A.REPORT_DTTM, '%Y%m%d')	AS yyyymmdd
+					, DATE_FORMAT(A.REPORT_DTTM, '%H%i') 	AS hhmin
+					, A.TEMON_ID AS temonId
+					, A.TEMON_TYPE AS temonType
+					, A.PORT_NO AS portNo
+					, CASE WHEN A.ALARM_YN = 'H' THEN '고온'
+							WHEN A.ALARM_YN = 'L' THEN '저온'
+							WHEN A.ALARM_YN = 'Y' THEN '이상'
+							WHEN A.ALARM_YN = 'E' THEN '통신'
+							WHEN A.ALARM_YN = 'N' THEN '정상' ELSE '' END as alarmYn
+					, CASE WHEN A.SENS_TEMP = '-50.0' OR A.SENS_TEMP ='109.0' THEN NULL ELSE ROUND(A.SENS_TEMP/10, 2) END AS sensTemp
+					, B.DEVICE_LOC AS deviceLoc
+					, CASE WHEN B.CONTENTS IS NULL THEN ''
+							WHEN B.CONTENTS = '' THEN ''
+							ELSE CONCAT('(',B.CONTENTS, ')') END AS contents
+					, B.MAX_TEMP AS maxTemp
+					, B.MIN_TEMP AS minTemp
+					, B.DELAY_TIME AS delayTime
+					, B.PUSH_TERM AS pushTerm
+				FROM TH_STR_REMS_DEVICE_BASE A
+					, TH_STR_REMS_DEVICE_MST B
+				WHERE A.STR_CD = B.STR_CD
+					AND A.TEMON_ID = B.TEMON_ID
+					AND A.PORT_NO = B.PORT_NO
+					AND A.TEMON_TYPE = B.TEMON_TYPE
+					AND A.STR_CD = #{strCd}
+					AND A.REPORT_DTTM >= DATE_FORMAT(#{startDate}, '%Y-%m-%d 00:00:00')
+					AND A.REPORT_DTTM < DATE_FORMAT(#{endDate} + INTERVAL 1 DAY,'%Y-%m-%d 00:00:00')
+					AND A.TEMON_ID = #{moduleId}
+					AND A.TEMON_TYPE = #{temonType}
+					AND A.PORT_NO = #{portNo}
+				 ORDER BY A.REPORT_DTTM ASC
+				 ]]>
+			</when>
+			<!-- 지그비인 경우  -->
+			<when test='moduleNm.equals("ZIGBEE")'>
+			<![CDATA[
+				SELECT A.STR_CD AS strCd
+					, DATE_FORMAT(A.REPORT_DTTM, '%Y%m%d') 	AS yyyymmdd
+					, DATE_FORMAT(A.REPORT_DTTM, '%H%i') 	AS 	hhmin
+					, A.TEMON_ID AS temonId
+					, A.TEMON_TYPE AS temonType
+					, A.PORT_NO AS portNo
+					, CASE WHEN A.ALARM_YN = 'H' THEN '고온'
+							WHEN A.ALARM_YN = 'L' THEN '저온'
+							WHEN A.ALARM_YN = 'Y' THEN '이상'
+							WHEN A.ALARM_YN = 'E' THEN '통신'
+							WHEN A.ALARM_YN = 'N' THEN '정상' ELSE '' END as alarmYn
+					, CASE WHEN A.SENS_TEMP = '-50.0' OR A.SENS_TEMP ='109.0' THEN NULL ELSE A.SENS_TEMP END AS sensTemp
+					, B.DEVICE_LOC AS deviceLoc
+					, CASE WHEN B.CONTENTS IS NULL THEN ''
+							WHEN B.CONTENTS = '' THEN ''
+							ELSE CONCAT('(',B.CONTENTS, ')') END AS contents
+					, B.MAX_TEMP AS maxTemp
+					, B.MIN_TEMP AS minTemp
+					, B.DELAY_TIME AS delayTime
+					, B.PUSH_TERM AS pushTerm
+				FROM TH_STR_REMS_DEVICE_BASE A
+					, TH_STR_REMS_DEVICE_MST B
+				WHERE A.STR_CD = B.STR_CD
+					AND A.TEMON_ID = B.TEMON_ID
+					AND A.PORT_NO = B.PORT_NO
+					AND A.TEMON_TYPE = B.TEMON_TYPE
+					AND A.STR_CD = #{strCd}
+					AND A.REPORT_DTTM >= DATE_FORMAT(#{startDate}, '%Y-%m-%d 00:00:00')
+					AND A.REPORT_DTTM < DATE_FORMAT(#{endDate} + INTERVAL 1 DAY,'%Y-%m-%d 00:00:00')
+					AND A.TEMON_ID = #{moduleId}
+					AND A.TEMON_TYPE = #{temonType}
+					AND A.PORT_NO = #{portNo}
+				ORDER BY A.REPORT_DTTM ASC
+				 ]]>
+			</when>
+			<!-- 인버터 경우 -->
+			<when test='moduleNm.equals("INV")'>
+			<![CDATA[
+				SELECT A.STR_CD AS strCd
+				    , DATE_FORMAT(A.REPORT_DTTM, '%Y%m%d') 	AS yyyymmdd
+				    , DATE_FORMAT(A.REPORT_DTTM, '%H%i') 	AS hhmin
+					, A.HUB_ID AS hubId
+					, A.PORT_NO AS portNo
+					, CASE WHEN length(REPLACE(A.ALARM_SP , "0",'')) > 1 THEN '복합'
+							WHEN SUBSTRING(A.ALARM_SP,1,1) = 1 THEN '기타'
+							WHEN SUBSTRING(A.ALARM_SP,2,1) = 1 THEN '기타'
+							WHEN SUBSTRING(A.ALARM_SP,3,1) = 1 THEN '기타'
+							WHEN SUBSTRING(A.ALARM_SP,4,1) = 1 THEN '기타'
+							WHEN SUBSTRING(A.ALARM_SP,5,1) = 1 THEN '기타'
+							WHEN SUBSTRING(A.ALARM_SP,6,1) = 1 THEN '기타'
+							WHEN SUBSTRING(A.ALARM_SP,7,1) = 1 THEN '기타'
+							WHEN SUBSTRING(A.ALARM_SP,8,1) = 1 THEN '기타'
+							WHEN SUBSTRING(A.ALARM_SP,9,1) = 1 THEN '링크'
+							WHEN SUBSTRING(A.ALARM_SP,10,1) = 1 THEN '압축'
+							WHEN SUBSTRING(A.ALARM_SP,11,1) = 1 THEN '저압'
+							WHEN SUBSTRING(A.ALARM_SP,12,1) = 1 THEN '고압'
+							WHEN SUBSTRING(A.ALARM_SP,13,1) = 1 THEN 'TDF'
+							WHEN SUBSTRING(A.ALARM_SP,14,1) = 1 THEN 'TRA'
+							WHEN SUBSTRING(A.ALARM_SP,15,1) = 1 THEN '저온'
+							WHEN SUBSTRING(A.ALARM_SP,16,1) = 1 THEN '고온' 
+							ELSE ( CASE WHEN A.OPER_MODE  != '0' THEN '정상' ELSE '통신' END ) END  AS alarmYn
+					, CASE WHEN ( A.ALARM_SP = '0000000000000000' AND A.OPER_MODE = '0' ) THEN '0'
+							ELSE IFNULL(A.SENS_TEMP,'0') END AS sensTemp
+					, B.DEVICE_LOC AS deviceLoc
+					, CASE WHEN B.CONTENTS IS NULL THEN ''
+							WHEN B.CONTENTS = '' THEN ''
+							ELSE CONCAT('(',B.CONTENTS, ')') END AS contents
+					, B.PUSH_TERM AS pushTerm
+				FROM TH_STR_INV_HUB_BASE A
+					, TH_STR_INV_HUB_MST B
+				WHERE A.STR_CD = B.STR_CD
+					AND A.HUB_ID = B.HUB_ID
+					AND A.PORT_NO = B.PORT_NO
+					AND A.STR_CD = #{strCd}
+					AND A.REPORT_DTTM >= DATE_FORMAT(#{startDate}, '%Y-%m-%d 00:00:00')
+					AND A.REPORT_DTTM < DATE_FORMAT(#{endDate} + INTERVAL 1 DAY,'%Y-%m-%d 00:00:00')
+					AND	A.HUB_ID = #{moduleId}
+					AND	A.PORT_NO = #{portNo}
+				ORDER BY A.REPORT_DTTM ASC
+				]]>
+			</when>
+		</choose>
+	</select>
+    
+	<select id="getFridgeStatChartData2" parameterType="Map" resultType="Map">
+	/* CM0501Mapper.getFridgeStatChartData2 */
+		<choose>
+			<!-- 테몬인 경우  -->
+            <when test='moduleNm.equals("TEMON")'>
+            <![CDATA[
+				SELECT A.STR_CD AS strCd
+				     , DATE_FORMAT(A.REPORT_DTTM, '%Y%m%d') AS yyyymmdd
+				     , DATE_FORMAT(A.REPORT_DTTM, '%H%i') 	AS hhmin
+				     , A.TEMON_ID AS temonId
+				     , A.TEMON_TYPE AS temonType
+				     , A.PORT_NO AS portNo
+				     , CASE WHEN A.ALARM_YN = 'H' THEN '고온'
+				            WHEN A.ALARM_YN = 'L' THEN '저온'
+				            WHEN A.ALARM_YN = 'Y' THEN '이상'
+				            WHEN A.ALARM_YN = 'E' THEN '통신'
+				            WHEN A.ALARM_YN = 'N' THEN '정상' ELSE '' END as alarmYn
+				     , CASE WHEN A.SENS_TEMP = '-50.0' OR A.SENS_TEMP ='109.0' THEN NULL ELSE A.SENS_TEMP END AS sensTemp
+				     , B.DEVICE_LOC AS deviceLoc
+				     , CASE WHEN B.CONTENTS IS NULL THEN ''
+				            WHEN B.CONTENTS = '' THEN ''
+				            ELSE CONCAT('(',B.CONTENTS, ')') END AS contents
+				     , B.MAX_TEMP AS maxTemp
+				     , B.MIN_TEMP AS minTemp
+				     , B.DELAY_TIME AS delayTime
+				     , B.PUSH_TERM AS pushTerm
+				  FROM TH_STR_REMS_DEVICE_BASE A
+				     , TH_STR_REMS_DEVICE_MST B
+				 WHERE A.STR_CD = B.STR_CD
+				   AND A.TEMON_ID = B.TEMON_ID
+				   AND A.PORT_NO = B.PORT_NO
+				   AND A.TEMON_TYPE = B.TEMON_TYPE
+				   AND A.STR_CD = #{strCd}
+				   AND A.REPORT_DTTM >= DATE_FORMAT(#{startDate}, '%Y-%m-%d 00:00:00')
+				   AND A.REPORT_DTTM < DATE_FORMAT(#{endDate} + INTERVAL 1 DAY,'%Y-%m-%d 00:00:00')
+				   AND A.TEMON_ID = #{moduleId}
+				   AND A.TEMON_TYPE = 'T'
+				   AND A.PORT_NO = #{portNo}
+				 ORDER BY A.REPORT_DTTM ASC
+				 ]]>
+            </when>
+			<!-- 하콘몬, 온도 알람인 경우  -->
+            <when test='moduleNm.equals("HACONMON")'>
+            <![CDATA[
+				SELECT A.STR_CD AS strCd
+				     , DATE_FORMAT(A.REPORT_DTTM, '%Y%m%d') AS yyyymmdd
+				     , DATE_FORMAT(A.REPORT_DTTM, '%H%i') 	AS hhmin
+				     , A.TEMON_ID AS temonId
+				     , A.TEMON_TYPE AS temonType
+				     , A.PORT_NO AS portNo
+				     , CASE WHEN A.ALARM_YN = 'H' THEN '고온'
+				            WHEN A.ALARM_YN = 'L' THEN '저온'
+				            WHEN A.ALARM_YN = 'Y' THEN '이상'
+				            WHEN A.ALARM_YN = 'E' THEN '통신'
+				            WHEN A.ALARM_YN = 'N' THEN '정상' ELSE '' END as alarmYn
+				     , CASE WHEN A.SENS_TEMP = '-50.0' OR A.SENS_TEMP ='109.0' THEN NULL ELSE ROUND(A.SENS_TEMP/10, 2) END AS sensTemp
+				     , B.DEVICE_LOC AS deviceLoc
+				     , CASE WHEN B.CONTENTS IS NULL THEN ''
+				            WHEN B.CONTENTS = '' THEN ''
+				            ELSE CONCAT('(',B.CONTENTS, ')') END AS contents
+				     , B.MAX_TEMP AS maxTemp
+				     , B.MIN_TEMP AS minTemp
+				     , B.DELAY_TIME AS delayTime
+				     , B.PUSH_TERM AS pushTerm
+				  FROM TH_STR_REMS_DEVICE_BASE A
+				     , TH_STR_REMS_DEVICE_MST B
+				 WHERE A.STR_CD = B.STR_CD
+				   AND A.TEMON_ID = B.TEMON_ID
+				   AND A.PORT_NO = B.PORT_NO
+				   AND A.TEMON_TYPE = B.TEMON_TYPE
+				   AND A.STR_CD = #{strCd}
+				   AND A.REPORT_DTTM >= DATE_FORMAT(#{startDate}, '%Y-%m-%d 00:00:00')
+				   AND A.REPORT_DTTM < DATE_FORMAT(#{endDate} + INTERVAL 1 DAY,'%Y-%m-%d 00:00:00')
+				   AND A.TEMON_ID = #{moduleId}
+				   AND A.TEMON_TYPE = 'B'
+				   AND A.PORT_NO = #{portNo}
+				 ORDER BY A.REPORT_DTTM ASC
+				 ]]>
+            </when>
+            <!-- 인버터인 경우 -->
+            <when test='moduleNm.equals("INV")'>
+            <![CDATA[
+				SELECT A.STR_CD AS strCd
+				     , DATE_FORMAT(A.REPORT_DTTM, '%Y%m%d') AS yyyymmdd
+				     , DATE_FORMAT(A.REPORT_DTTM, '%H%i') 	AS hhmin
+					 , A.HUB_ID AS hubId
+				     , A.PORT_NO AS portNo
+					 , CASE WHEN length(REPLACE(A.ALARM_SP , "0",'')) > 1 THEN '복합'
+				            WHEN SUBSTRING(A.ALARM_SP,1,1) = 1 THEN '기타'
+				            WHEN SUBSTRING(A.ALARM_SP,2,1) = 1 THEN '기타'
+				            WHEN SUBSTRING(A.ALARM_SP,3,1) = 1 THEN '기타'
+				            WHEN SUBSTRING(A.ALARM_SP,4,1) = 1 THEN '기타'
+				            WHEN SUBSTRING(A.ALARM_SP,5,1) = 1 THEN '기타'
+				            WHEN SUBSTRING(A.ALARM_SP,6,1) = 1 THEN '기타'
+				            WHEN SUBSTRING(A.ALARM_SP,7,1) = 1 THEN '기타'
+				            WHEN SUBSTRING(A.ALARM_SP,8,1) = 1 THEN '기타'
+				            WHEN SUBSTRING(A.ALARM_SP,9,1) = 1 THEN '링크'
+				            WHEN SUBSTRING(A.ALARM_SP,10,1) = 1 THEN '압축'
+				            WHEN SUBSTRING(A.ALARM_SP,11,1) = 1 THEN '저압'
+				            WHEN SUBSTRING(A.ALARM_SP,12,1) = 1 THEN '고압'
+				            WHEN SUBSTRING(A.ALARM_SP,13,1) = 1 THEN 'TDF'
+				            WHEN SUBSTRING(A.ALARM_SP,14,1) = 1 THEN 'TRA'
+				            WHEN SUBSTRING(A.ALARM_SP,15,1) = 1 THEN '저온'
+				            WHEN SUBSTRING(A.ALARM_SP,16,1) = 1 THEN '고온' 
+				            ELSE ( CASE WHEN A.OPER_MODE  != '0' THEN '정상' ELSE '통신' END ) END  AS alarmYn
+				     , CASE WHEN ( A.ALARM_SP = '0000000000000000' AND A.OPER_MODE = '0' ) THEN '0'
+				            ELSE IFNULL(A.SENS_TEMP,'0') END AS sensTemp
+				     , B.DEVICE_LOC AS deviceLoc
+				     , CASE WHEN B.CONTENTS IS NULL THEN ''
+				            WHEN B.CONTENTS = '' THEN ''
+				            ELSE CONCAT('(',B.CONTENTS, ')') END AS contents
+				     , B.PUSH_TERM AS pushTerm
+				  FROM TH_STR_INV_HUB_BASE A
+				     , TH_STR_INV_HUB_MST B
+				 WHERE A.STR_CD = B.STR_CD
+				   AND A.HUB_ID = B.HUB_ID
+				   AND A.PORT_NO = B.PORT_NO
+				   AND A.STR_CD = #{strCd}
+				   AND A.REPORT_DTTM >= DATE_FORMAT(#{startDate}, '%Y-%m-%d 00:00:00')
+				   AND A.REPORT_DTTM < DATE_FORMAT(#{endDate} + INTERVAL 1 DAY,'%Y-%m-%d 00:00:00')
+				   AND	A.HUB_ID = #{moduleId}
+				   AND	A.PORT_NO = #{portNo}
+				 ORDER BY A.REPORT_DTTM ASC
+				 ]]>
+            </when>
+        </choose>
+    </select>
+    
+</mapper>

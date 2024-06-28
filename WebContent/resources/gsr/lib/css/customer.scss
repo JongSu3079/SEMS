@@ -1,0 +1,33 @@
+/*******************************************
+ * file : customer.css
+ * publisher : 
+ * reporting date : 2018.06 ~ 07수정
+ * email : 
+ * explanation : 에너지 관제시스템
+ *******************************************/
+@charset "utf-8";
+
+$C100:#34b5ff;
+$C200:#5cb6ea;
+$C300:#407c9f;
+$C400:#346988;
+$C500:#2a546c;
+
+.thumbBox .fileBox label:after {background-color:$C300;}
+
+.auto_login label:before {background:url(/gsr/images/bg_checkbox.png) no-repeat 0 0;background-size:16px 50px;}
+
+
+/***** CM0101 로그인 *****/
+.logo img {width:158px;height:66px;}
+.btn_login a {background-color:$C200;}
+.id_input input[type=text],
+.pw_input input[type=password] {border-color:$C200;}
+
+/***** CM0102 사용자 약관 *****/
+.clauseBox {border-top-color:$C100;}
+
+.checkbox label:before {background:url(/gsr/images/bg_checkbox.png) no-repeat 0 0;background-size:16px 50px;}
+
+/***** other *****/
+.blue {color:$C100 !important;}

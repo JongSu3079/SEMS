@@ -1,0 +1,136 @@
+
+2024-03-07 16:20:46 Commons Daemon procrun stderr initialized
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Server version:        Apache Tomcat/7.0.69
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Server built:          Apr 11 2016 07:57:09 UTC
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Server number:         7.0.69.0
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: OS Name:               Windows Server 2012 R2
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: OS Version:            6.3
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Architecture:          amd64
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Java Home:             C:\Program Files\Java\openjdk-1.8.0\jre
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: JVM Version:           1.8.0_201-1-ojdkbuild-b09
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: JVM Vendor:            Oracle Corporation
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: CATALINA_BASE:         C:\WAS\SEMS_MOBILE
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: CATALINA_HOME:         C:\WAS\SEMS_MOBILE
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Command line argument: -Dcatalina.home=C:\WAS\SEMS_MOBILE
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Command line argument: -Dcatalina.base=C:\WAS\SEMS_MOBILE
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Command line argument: -Djava.endorsed.dirs=C:\WAS\SEMS_MOBILE\endorsed
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Command line argument: -Djava.io.tmpdir=C:\WAS\SEMS_MOBILE\temp
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Command line argument: -Djava.util.logging.config.file=C:\WAS\SEMS_MOBILE\conf\logging.properties
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Command line argument: exit
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Command line argument: -Xms128m
+3월 07, 2024 4:20:47 오후 org.apache.catalina.startup.VersionLoggerListener log
+정보: Command line argument: -Xmx256m
+3월 07, 2024 4:20:47 오후 org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+정보: Loaded APR based Apache Tomcat Native library 1.1.33 using APR version 1.5.1.
+3월 07, 2024 4:20:47 오후 org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+정보: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+3월 07, 2024 4:20:49 오후 org.apache.catalina.core.AprLifecycleListener initializeSSL
+정보: OpenSSL successfully initialized (OpenSSL 1.0.1m 19 Mar 2015)
+3월 07, 2024 4:20:49 오후 org.apache.coyote.AbstractProtocol init
+정보: Initializing ProtocolHandler ["http-apr-9092"]
+3월 07, 2024 4:20:49 오후 org.apache.coyote.AbstractProtocol init
+정보: Initializing ProtocolHandler ["http-bio-12443"]
+3월 07, 2024 4:20:49 오후 org.apache.coyote.AbstractProtocol init
+정보: Initializing ProtocolHandler ["ajp-apr-9100"]
+3월 07, 2024 4:20:49 오후 org.apache.catalina.startup.Catalina load
+정보: Initialization processed in 2530 ms
+3월 07, 2024 4:20:49 오후 org.apache.catalina.core.StandardService startInternal
+정보: Starting service Catalina
+3월 07, 2024 4:20:49 오후 org.apache.catalina.core.StandardEngine startInternal
+정보: Starting Servlet Engine: Apache Tomcat/7.0.69
+3월 07, 2024 4:20:49 오후 org.apache.catalina.startup.HostConfig deployWAR
+정보: Deploying web application archive C:\WAS\SEMS_MOBILE\webapps\ROOT.war
+3월 07, 2024 4:20:52 오후 org.apache.catalina.startup.TldConfig execute
+정보: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployWAR
+정보: Deployment of web application archive C:\WAS\SEMS_MOBILE\webapps\ROOT.war has finished in 10,553 ms
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deploying web application directory C:\WAS\SEMS_MOBILE\webapps\2402124-2
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deployment of web application directory C:\WAS\SEMS_MOBILE\webapps\2402124-2 has finished in 51 ms
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deploying web application directory C:\WAS\SEMS_MOBILE\webapps\240215
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deployment of web application directory C:\WAS\SEMS_MOBILE\webapps\240215 has finished in 48 ms
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deploying web application directory C:\WAS\SEMS_MOBILE\webapps\240220
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deployment of web application directory C:\WAS\SEMS_MOBILE\webapps\240220 has finished in 50 ms
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deploying web application directory C:\WAS\SEMS_MOBILE\webapps\240220-2
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deployment of web application directory C:\WAS\SEMS_MOBILE\webapps\240220-2 has finished in 52 ms
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deploying web application directory C:\WAS\SEMS_MOBILE\webapps\240226
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deployment of web application directory C:\WAS\SEMS_MOBILE\webapps\240226 has finished in 54 ms
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deploying web application directory C:\WAS\SEMS_MOBILE\webapps\240304
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deployment of web application directory C:\WAS\SEMS_MOBILE\webapps\240304 has finished in 51 ms
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deploying web application directory C:\WAS\SEMS_MOBILE\webapps\240307
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deployment of web application directory C:\WAS\SEMS_MOBILE\webapps\240307 has finished in 50 ms
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deploying web application directory C:\WAS\SEMS_MOBILE\webapps\docs
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deployment of web application directory C:\WAS\SEMS_MOBILE\webapps\docs has finished in 65 ms
+3월 07, 2024 4:21:00 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deploying web application directory C:\WAS\SEMS_MOBILE\webapps\examples
+3월 07, 2024 4:21:01 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deployment of web application directory C:\WAS\SEMS_MOBILE\webapps\examples has finished in 261 ms
+3월 07, 2024 4:21:01 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deploying web application directory C:\WAS\SEMS_MOBILE\webapps\host-manager
+3월 07, 2024 4:21:01 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deployment of web application directory C:\WAS\SEMS_MOBILE\webapps\host-manager has finished in 62 ms
+3월 07, 2024 4:21:01 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deploying web application directory C:\WAS\SEMS_MOBILE\webapps\manager
+3월 07, 2024 4:21:01 오후 org.apache.catalina.startup.HostConfig deployDirectory
+정보: Deployment of web application directory C:\WAS\SEMS_MOBILE\webapps\manager has finished in 62 ms
+3월 07, 2024 4:21:01 오후 org.apache.coyote.AbstractProtocol start
+정보: Starting ProtocolHandler ["http-apr-9092"]
+3월 07, 2024 4:21:01 오후 org.apache.coyote.AbstractProtocol start
+정보: Starting ProtocolHandler ["http-bio-12443"]
+3월 07, 2024 4:21:01 오후 org.apache.coyote.AbstractProtocol start
+정보: Starting ProtocolHandler ["ajp-apr-9100"]
+3월 07, 2024 4:21:01 오후 org.apache.catalina.startup.Catalina start
+정보: Server startup in 11479 ms
+3월 08, 2024 11:23:17 오전 org.apache.coyote.AbstractProtocol pause
+정보: Pausing ProtocolHandler ["http-apr-9092"]
+3월 08, 2024 11:23:17 오전 org.apache.coyote.AbstractProtocol pause
+정보: Pausing ProtocolHandler ["http-bio-12443"]
+3월 08, 2024 11:23:18 오전 org.apache.coyote.AbstractProtocol pause
+정보: Pausing ProtocolHandler ["ajp-apr-9100"]
+3월 08, 2024 11:23:18 오전 org.apache.catalina.core.StandardService stopInternal
+정보: Stopping service Catalina
+3월 08, 2024 11:23:18 오전 org.apache.catalina.loader.WebappClassLoaderBase clearReferencesJdbc
+심각: The web application [] registered the JDBC driver [org.mariadb.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+3월 08, 2024 11:23:18 오전 org.apache.catalina.loader.WebappClassLoaderBase clearReferencesJdbc
+심각: The web application [] registered the JDBC driver [net.sf.log4jdbc.DriverSpy] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+3월 08, 2024 11:23:18 오전 org.apache.coyote.AbstractProtocol stop
+정보: Stopping ProtocolHandler ["http-apr-9092"]
+3월 08, 2024 11:23:18 오전 org.apache.coyote.AbstractProtocol stop
+정보: Stopping ProtocolHandler ["http-bio-12443"]
+3월 08, 2024 11:23:18 오전 org.apache.coyote.AbstractProtocol stop
+정보: Stopping ProtocolHandler ["ajp-apr-9100"]

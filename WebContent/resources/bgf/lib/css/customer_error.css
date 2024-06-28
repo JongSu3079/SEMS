@@ -1,0 +1,9 @@
+@charset "UTF-8";
+/******************************************* file : error.css publisher :  reporting date :  email :  explanation : 에너지 관제시스템 ******************************************/
+/************************************** reset **************************************/
+/***** border removal *****/
+#errorbox { background: url(/bgf/images/empty_icon.png) no-repeat center 40px; }
+
+#errorbox a { background-color: #566728; }
+
+/*# sourceMappingURL=customer_error.css.map */

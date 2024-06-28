@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM1001Mapper">
+	
+	<!-- 유지보수 내역 가져오기 -->
+	<select id="VM1001getList" parameterType="Map" resultType="Map">
+		SELECT	AM.NO			AS no			, IM.STR_NM		AS strNm
+				,IM.STR_CD		AS strCd		, CC.COMM_CD_NM	AS errorType
+				, AM.SOLVE_DTTM	AS solveDt		, AM.SOLVE_NM	AS solveNm
+		FROM	TH_STR_INFO_MST IM
+				, TH_STR_AS_MST AM
+				LEFT OUTER JOIN TH_COMM_CD CC
+						ON	CC.COMM_GRP_CD	='MAST17'
+						AND	CC.COMM_CD		= AM.ERROR_TYPE	AND CC.USE_YN = 'Y'
+		WHERE	IM.STR_CD		= AM.STR_CD
+			AND IM.STR_CD		= #{strCd}
+			AND	AM.SOLVE_DTTM	>= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+		ORDER BY SOLVE_DTTM DESC, AM.NO DESC
+	</select>
+	
+	<!-- 유지보수 상세 정보 가져오기 -->
+	<select id="VM1001getDetail" parameterType="String" resultType="Map">
+	SELECT	AM.NO				AS no			, IM.STR_CD			AS strCd
+			, IM.STR_NM			AS strNm		, AM.RECV_TYPE		AS recvType
+			, DATE_FORMAT(AM.RECV_DTTM,'%Y-%m-%d')					AS recvDt
+			, DATE_FORMAT(AM.SOLVE_DTTM,'%Y-%m-%d')					AS solveDt
+			, AM.BOX_VER		AS boxVer		, AM.HACON_CNT		AS haconCnt
+			, AM.TSENSOR_CNT	AS tSensorCnt	, AM.TEMON_CNT		AS temonCnt
+			, AM.HACONMON_CNT	AS haconmonCnt	, AM.INVHUB_CNT		AS invHubCnt
+			, AM.INV_WIC_CNT	AS invWicCnt	, AM.INV_OSC_CNT	AS invOscCnt
+			, AM.RIF_CNT		AS rifCnt		, AM.RIC_CNT		AS ricCnt
+			, AM.OSC_CNT		AS oscCnt		, AM.ICC_CNT		AS iccCnt
+			, AM.IFT_CNT		AS iftCnt		, AM.IFB_CNT		AS ifbCnt
+			, AM.CFT_CNT		AS cftCnt		, AM.CFB_CNT		AS cfbCnt
+			, AM.PIC_1			AS pic1			, AM.PIC_2			AS pic2
+			, AM.PIC_3			AS pic3			, AM.PIC_4			AS pic4
+			, AM.SOLVE_NM		AS solveNm		, AM.ERROR_TYPE		AS errorType
+			, AM.ERROR_MSG		AS errorMsg		, AM.SOLVE_MSG		AS solveMsg
+			, AM.SOLVE_RESULT	AS solveResult	, AM.NOTE_MSG		AS noteMsg
+	FROM	TH_STR_INFO_MST IM
+			, TH_STR_AS_MST AM
+	WHERE	IM.STR_CD= AM.STR_CD
+		AND	AM.NO= #{no}
+	</select>
+	
+	<select id="retrieveAsRecvList" parameterType="Map" resultType="Map">
+		SELECT COMM_CD AS commCd, COMM_CD_NM AS commCdNm
+		FROM TH_COMM_CD
+		WHERE COMM_GRP_CD = 'MAST16'
+			AND USE_YN = 'Y' 
+	</select>
+	
+	<select id="retrieveAsErrorList" parameterType="Map" resultType="Map">
+		SELECT COMM_CD AS commCd, COMM_CD_NM AS commCdNm
+		FROM TH_COMM_CD
+		WHERE COMM_GRP_CD = 'MAST17'
+			AND USE_YN = 'Y'
+	</select>
+	
+	<select id="retrieveAsSolveList" parameterType="Map" resultType="Map">
+		SELECT COMM_CD AS commCd, COMM_CD_NM AS commCdNm
+		FROM TH_COMM_CD
+		WHERE COMM_GRP_CD = 'MAST18'
+			AND USE_YN = 'Y'
+	</select>
+	
+	<insert id="insertAS" parameterType="Map" >
+	INSERT
+	INTO	TH_STR_AS_MST
+	SET		STR_CD			= #{scrStrCd}
+			, RECV_DTTM		= REPLACE(#{recvDate},'-','')
+			, RECV_TYPE		= #{recvType}
+			, SOLVE_DTTM	= REPLACE(#{solveDate},'-','')
+			, SOLVE_NM		= #{solveName}
+			, BOX_VER		= #{boxVer}
+			, HACON_CNT		= #{haconCnt}
+			, TSENSOR_CNT	= #{tSensorCnt}
+			, TEMON_CNT		= #{temonCnt}
+			, HACONMON_CNT	= #{haconmonCnt}
+			, INVHUB_CNT	= #{invHubCnt}
+			, INV_WIC_CNT	= #{invWicCnt}
+			, INV_OSC_CNT	= #{invOscCnt}
+			, RIF_CNT		= #{rifCnt}
+			, RIC_CNT		= #{ricCnt}
+			, OSC_CNT		= #{oscCnt}
+			, ICC_CNT		= #{iccCnt}
+			, IFT_CNT		= #{iftCnt}
+			, IFB_CNT		= #{ifbCnt}
+			, CFT_CNT		= #{cftCnt}
+			, CFB_CNT		= #{cfbCnt}
+			, ERROR_TYPE	= #{errorType}
+			, ERROR_MSG		= #{errorMsg}
+			, SOLVE_MSG		= #{solveMsg}
+			, SOLVE_RESULT	= #{solveResult}
+			, NOTE_MSG		= #{noteMsg}
+			, PIC_1			= #{file1}
+			, PIC_2			= #{file2}
+			, PIC_3			= #{file3}
+			, PIC_4			= #{file4}
+			, REGI_ID		= #{userId}
+			, REGI_DTTM		= NOW()
+			, FINAL_MOD_ID	= #{userId}
+			, FINAL_MOD_DTTM= NOW()
+	</insert>
+	
+	<update id="updateAS" parameterType="Map">
+		UPDATE	TH_STR_AS_MST
+		SET		STR_CD				= #{scrStrCd}
+				, RECV_DTTM			= REPLACE(#{recvDate},'-','')
+				, RECV_TYPE			= #{recvType}
+				, SOLVE_DTTM		= REPLACE(#{solveDate},'-','')
+				, SOLVE_NM			= #{solveName}
+				, BOX_VER			= #{boxVer}
+				, HACON_CNT			= #{haconCnt}
+				, TSENSOR_CNT		= #{tSensorCnt}
+				, TEMON_CNT			= #{temonCnt}
+				, HACONMON_CNT		= #{haconmonCnt}
+				, INVHUB_CNT		= #{invHubCnt}
+				, INV_WIC_CNT		= #{invWicCnt}
+				, INV_OSC_CNT		= #{invOscCnt}
+				, RIF_CNT			= #{rifCnt}
+				, RIC_CNT			= #{ricCnt}
+				, OSC_CNT			= #{oscCnt}
+				, ICC_CNT			= #{iccCnt}
+				, IFT_CNT			= #{iftCnt}
+				, IFB_CNT			= #{ifbCnt}
+				, CFT_CNT			= #{cftCnt}
+				, CFB_CNT			= #{cfbCnt}
+				<if test='"true" eq file1flag'>
+					, PIC_1				= #{file1}
+				</if>
+				<if test='"true" eq file2flag'>
+					, PIC_2				= #{file2}
+				</if>
+				<if test='"true" eq file3flag'>
+					, PIC_3				= #{file3}
+				</if>
+				<if test='"true" eq file4flag'>
+					, PIC_4				= #{file4}
+				</if>
+				, ERROR_TYPE		= #{errorType}
+				, ERROR_MSG			= #{errorMsg}
+				, SOLVE_MSG			= #{solveMsg}
+				, SOLVE_RESULT		= #{solveResult}
+				, NOTE_MSG			= #{noteMsg}
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= NOW()
+		WHERE	NO = #{no}
+	</update>
+	
+</mapper>

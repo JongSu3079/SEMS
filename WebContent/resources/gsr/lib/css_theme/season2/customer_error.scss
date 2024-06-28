@@ -1,0 +1,25 @@
+/*******************************************
+ * file : error.css
+ * publisher : 
+ * reporting date : 
+ * email : 
+ * explanation : 에너지 관제시스템
+ *******************************************/
+
+
+
+
+
+/************************************** reset **************************************/
+@charset "utf-8";
+
+
+$C400:#377396;
+
+
+
+/***** border removal *****/
+
+#errorbox {background:url(/gsr/images_theme/season2/empty_icon.png) no-repeat center 40px;}
+#errorbox a {background-color:$C400;}
+

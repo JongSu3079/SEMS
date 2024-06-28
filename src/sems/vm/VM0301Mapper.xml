@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM0301Mapper">
+
+	
+	<select id="getRecommTemp" parameterType="map" resultType="String">
+		SELECT	RECOMM_TEMP 
+		FROM	TH_HAC_RECOMM_TEMP_MNT 
+		WHERE	YYYYMM		= DATE_FORMAT( NOW(), '%Y%m' )
+			AND	COMPANY_CD	= #{companyCd}
+	</select>
+	
+	<select id="VM0301Chart" parameterType="Map" resultType="Map">
+		SELECT	YYYYMMDD					AS yyyymmdd
+				, HH						AS hh
+				, ROUND(USE_WATAGE, 1)	AS useWatage
+		FROM	(
+					SELECT	YYYYMMDD
+							, HH
+							, ROUND((IFNULL(EP_2CH_EFT_WATAGE,0)+IFNULL(EP_3CH_EFT_WATAGE,0))/1000,1) AS USE_WATAGE
+					FROM	TH_STR_CHN_ELEC_USE_HH_AGGR
+					WHERE	STR_CD		= #{strCd}
+						AND	YYYYMMDD	>= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y%m%d')
+				) A
+		ORDER BY YYYYMMDD ASC, HH ASC
+	</select>
+</mapper>

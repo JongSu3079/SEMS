@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM0401Mapper">
+	
+	<select id="VM0401TempList" parameterType="Map" resultType="Map">
+	/* VM0401Mapper.VM0401TempList */
+	<![CDATA[
+		SELECT	IM.STR_NM AS strNm, DATE_FORMAT(HCL.REPORT_DTTM, '%Y.%m.%d %H:%i') AS ctrlTime
+		FROM	TH_STR_INFO_MST IM
+				, TH_LOG_STR_HACON_CTRL HCL
+				, TH_STR_ENV_CONF_MST ECM
+		WHERE	IM.STR_CD = HCL.STR_CD
+			AND	IM.STR_CD = ECM.STR_CD
+			AND IM.USE_YN = 'Y'
+			AND IM.COMPANY_CD = #{companyCd}
+			AND	ECM.CONF_SP = 'SIGN_OPER'
+	]]>
+			<if test='authId == "3"'>
+				AND	IM.STR_CD IN (SELECT STR_CD FROM TH_VENDOR_USER_STR_MAP WHERE USER_ID = #{userId})
+			</if>
+			<if test='strNm != null and strNm != ""'>
+			<![CDATA[
+				AND	(
+						INSTR(IM.STR_NM, #{strNm}) > 0
+						OR INSTR(IM.VIEW_STR_CD, #{strNm}) > 0
+					)
+			]]>
+			</if>
+	<![CDATA[
+			AND HCL.REPORT_DTTM >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+			AND (
+					SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1) = SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1)
+					OR	(
+							REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','') > REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+							AND (
+									DATE_FORMAT(HCL.REPORT_DTTM,'%H%i') > REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','')
+									OR DATE_FORMAT(HCL.REPORT_DTTM,'%H%i') < REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+								)
+						)
+					OR	(
+							REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','') < REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+							AND DATE_FORMAT(HCL.REPORT_DTTM,'%H%i') > REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','')
+							AND	DATE_FORMAT(HCL.REPORT_DTTM,'%H%i') < REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+						)
+				)
+		UNION ALL
+		SELECT	IM.STR_NM AS strNm, DATE_FORMAT(HCL.REPORT_DTTM, '%Y.%m.%d %H:%i') AS ctrlTime
+		FROM	TH_STR_INFO_MST IM
+				, TH_LOG_STR_HACON_CTRL_VER_1 HCL
+				, TH_STR_ENV_CONF_MST ECM
+		WHERE	IM.STR_CD = HCL.STR_CD
+			AND	IM.STR_CD = ECM.STR_CD
+			AND IM.USE_YN = 'Y'
+			AND IM.COMPANY_CD = #{companyCd}
+			AND	ECM.CONF_SP = 'SIGN_OPER'
+	]]>
+			<if test='authId == "3"'>
+				AND	IM.STR_CD IN (SELECT STR_CD FROM TH_VENDOR_USER_STR_MAP WHERE USER_ID = #{userId})
+			</if>
+			<if test='strNm != null and strNm != ""'>
+			<![CDATA[
+				AND	(
+						INSTR(IM.STR_NM, #{strNm}) > 0
+						OR INSTR(IM.VIEW_STR_CD, #{strNm}) > 0
+					)
+			]]>
+			</if>
+	<![CDATA[
+			AND HCL.REPORT_DTTM >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+			AND (
+					SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1) = SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1)
+					OR	(
+							REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','') > REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+							AND (
+									DATE_FORMAT(HCL.REPORT_DTTM, '%H%i') > REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','')
+									OR DATE_FORMAT(HCL.REPORT_DTTM, '%H%i') < REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+								)
+						)
+					OR	(
+							REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','') < REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+							AND DATE_FORMAT(HCL.REPORT_DTTM, '%H%i') > REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','')
+							AND	DATE_FORMAT(HCL.REPORT_DTTM, '%H%i') < REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+						)
+				)
+		ORDER BY ctrlTime DESC
+		LIMIT #{starRowInt}, #{pagingRowCntInt}
+	]]>
+	</select>
+	
+	<select id="VM0401TempListTotalCnt" parameterType="Map" resultType="int">
+	/* VM0401Mapper.VM0401TempListTotalCnt */
+	<![CDATA[
+		SELECT	SUM(cnt)
+		FROM	(
+					SELECT	COUNT(*) AS cnt
+					FROM	TH_STR_INFO_MST IM
+							, TH_LOG_STR_HACON_CTRL HCL
+							, TH_STR_ENV_CONF_MST ECM
+					WHERE	IM.STR_CD = HCL.STR_CD
+						AND	IM.STR_CD = ECM.STR_CD
+						AND IM.USE_YN = 'Y'
+						AND IM.COMPANY_CD = #{companyCd}
+						AND	ECM.CONF_SP = 'SIGN_OPER'
+	]]>
+						<if test='authId == "3"'>
+							AND	IM.STR_CD IN (SELECT STR_CD FROM TH_VENDOR_USER_STR_MAP WHERE USER_ID = #{userId})
+						</if>
+						<if test='strNm != null and strNm != ""'>
+						<![CDATA[
+							AND	(
+									INSTR(IM.STR_NM, #{strNm}) > 0
+									OR INSTR(IM.VIEW_STR_CD, #{strNm}) > 0
+								)
+						]]>
+						</if>
+	<![CDATA[
+						AND HCL.REPORT_DTTM >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+						AND (
+								SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1) = SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1)
+								OR	(
+										REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','') > REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+										AND (
+												DATE_FORMAT(HCL.REPORT_DTTM,'%H%i') > REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','')
+												OR DATE_FORMAT(HCL.REPORT_DTTM,'%H%i') < REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+											)
+									)
+								OR	(
+										REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','') < REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+										AND DATE_FORMAT(HCL.REPORT_DTTM,'%H%i') > REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','')
+										AND	DATE_FORMAT(HCL.REPORT_DTTM,'%H%i') < REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+									)
+							)
+					UNION ALL
+					SELECT	COUNT(*) AS cnt
+					FROM	TH_STR_INFO_MST IM
+							, TH_LOG_STR_HACON_CTRL_VER_1 HCL
+							, TH_STR_ENV_CONF_MST ECM
+					WHERE	IM.STR_CD = HCL.STR_CD
+						AND	IM.STR_CD = ECM.STR_CD
+						AND IM.USE_YN = 'Y'
+						AND IM.COMPANY_CD = #{companyCd}
+						AND	ECM.CONF_SP = 'SIGN_OPER'
+	]]>
+						<if test='authId == "3"'>
+							AND	IM.STR_CD IN (SELECT STR_CD FROM TH_VENDOR_USER_STR_MAP WHERE USER_ID = #{userId})
+						</if>
+						<if test='strNm != null and strNm != ""'>
+						<![CDATA[
+							AND	(
+									INSTR(IM.STR_NM, #{strNm}) > 0
+									OR INSTR(IM.VIEW_STR_CD, #{strNm}) > 0
+								)
+						]]>
+						</if>
+	<![CDATA[
+						AND HCL.REPORT_DTTM >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+						AND (
+								SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1) = SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1)
+								OR	(
+										REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','') > REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+										AND (
+												DATE_FORMAT(HCL.REPORT_DTTM, '%H%i') > REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','')
+												OR DATE_FORMAT(HCL.REPORT_DTTM, '%H%i') < REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+											)
+									)
+								OR	(
+										REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','') < REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+										AND DATE_FORMAT(HCL.REPORT_DTTM, '%H%i') > REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',1),':','')
+										AND	DATE_FORMAT(HCL.REPORT_DTTM, '%H%i') < REPLACE(SUBSTRING_INDEX(ECM.STR_CONF_VAL,',',-1),':','')
+									)
+							)
+				) T
+	]]>
+	</select>
+	
+	<select id="VM0401PeakList" parameterType="Map" resultType="Map">
+		SELECT	IM.STR_NM		AS strNm
+				, DATE_FORMAT( CONCAT( PA.YYYYMMDD, PA.HHMIN, '00' ), '%Y.%m.%d %H:%i') AS ctrlTime
+		FROM	TH_VENDOR_USER_STR_MAP EM
+				, TH_STR_INFO_MST IM
+				, (
+					SELECT STR_CD, DATE_FORMAT(REPORT_DTTM, '%Y%m%d') YYYYMMDD, DATE_FORMAT(REPORT_DTTM, '%H%i') HHMIN, REPORT_DTTM
+					FROM TH_LOG_STR_PEAK_ALARM
+					WHERE PEAK_CONTROL_YN	= 'Y'
+						AND	REPORT_DTTM	>= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+					UNION ALL
+					SELECT STR_CD, DATE_FORMAT(REPORT_DTTM, '%Y%m%d') YYYYMMDD, DATE_FORMAT(REPORT_DTTM, '%H%i') HHMIN, REPORT_DTTM
+					FROM TH_LOG_STR_PEAK_ALARM_LOW_VOLTAGE_IF
+					WHERE CONTROL_YN 	= 'Y'
+						AND REPORT_DTTM	>= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+				) PA
+		WHERE	EM.STR_CD			= IM.STR_CD
+			AND	IM.STR_CD			= PA.STR_CD
+			AND	IM.USE_YN			= 'Y'
+		<if test='authId == "3"'>
+			AND EM.USER_ID	= #{userId}
+		</if>
+			AND	IM.COMPANY_CD	= #{companyCd}
+		<if test='strNm != null and strNm != ""'>
+		<![CDATA[
+			AND (
+				INSTR(IM.STR_NM, #{strNm}) > 0
+				OR
+				INSTR(IM.VIEW_STR_CD, #{strNm}) > 0
+			)
+		]]>
+		</if>
+		GROUP BY IM.STR_NM, PA.YYYYMMDD, PA.HHMIN
+		ORDER BY PA.YYYYMMDD DESC, PA.HHMIN DESC, IM.STR_NM ASC
+		LIMIT #{starRowInt}, #{pagingRowCntInt}
+	</select>
+	
+	<select id="VM0401PeakListTotalCnt" parameterType="Map" resultType="int">
+		SELECT	COUNT(T.STR_NM)
+		FROM	(
+					SELECT	IM.STR_NM
+					FROM	TH_VENDOR_USER_STR_MAP EM
+							, TH_STR_INFO_MST IM
+							, (
+								SELECT STR_CD, DATE_FORMAT(REPORT_DTTM, '%Y%m%d') YYYYMMDD, DATE_FORMAT(REPORT_DTTM, '%H%i') HHMIN, REPORT_DTTM
+								FROM TH_LOG_STR_PEAK_ALARM
+								WHERE PEAK_CONTROL_YN	= 'Y'
+									AND	REPORT_DTTM	>= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+								UNION ALL
+								SELECT STR_CD, DATE_FORMAT(REPORT_DTTM, '%Y%m%d') YYYYMMDD, DATE_FORMAT(REPORT_DTTM, '%H%i') HHMIN, REPORT_DTTM
+								FROM TH_LOG_STR_PEAK_ALARM_LOW_VOLTAGE_IF
+								WHERE CONTROL_YN 	= 'Y'
+									AND REPORT_DTTM	>= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+							) PA
+					WHERE	EM.STR_CD			= IM.STR_CD
+						AND	IM.STR_CD			= PA.STR_CD
+						AND	IM.USE_YN			= 'Y'
+					<if test='authId == "3"'>
+						AND	EM.USER_ID	= #{userId}
+					</if>
+						AND	IM.COMPANY_CD = #{companyCd}
+					<if test='strNm != null and strNm != ""'>
+					<![CDATA[
+						AND (
+							INSTR(IM.STR_NM, #{strNm}) > 0
+							OR
+							INSTR(IM.VIEW_STR_CD, #{strNm}) > 0
+						)
+					]]>
+					</if>
+					GROUP BY IM.STR_NM, PA.YYYYMMDD, PA.HHMIN
+				) T
+	</select>
+</mapper>

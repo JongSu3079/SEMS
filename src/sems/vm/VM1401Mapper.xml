@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM1401Mapper">
+
+	<select id="retrieveFaqList" parameterType="Map" resultType="Map">
+		SELECT COMPANY_CD AS companyCd, FAQ_ID as faqId, TITLE as title, PUB_YN as pubYn
+		FROM TH_FAQ
+		WHERE COMPANY_CD = #{companyCd}
+			<if test='faqGroup != null and faqGroup != "" '>
+				AND FAQ_GROUP = #{faqGroup}
+			</if>
+			AND PUB_YN = 'Y'
+	</select>
+	
+	<select id="findFaqById" parameterType="Map" resultType="Map">
+		SELECT COMPANY_CD AS companyCd, FAQ_ID as faqId, TITLE as title, PUB_YN as pubYn, CONTENTS AS contents
+		FROM TH_FAQ
+		WHERE COMPANY_CD = #{companyCd}
+			AND FAQ_ID = #{faqId}
+			AND PUB_YN = 'Y'
+	</select>
+	
+	<select id="findFaqByGroup" parameterType="Map" resultType="Map">
+		SELECT COMPANY_CD AS companyCd, FAQ_ID as faqId, TITLE as title, PUB_YN as pubYn
+		FROM TH_FAQ
+		WHERE COMPANY_CD = #{companyCd}
+			AND FAQ_GROUP = #{faqGroup}
+			AND PUB_YN = 'Y'
+	</select>
+</mapper>

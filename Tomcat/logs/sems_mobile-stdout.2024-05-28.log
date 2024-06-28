@@ -1,0 +1,1210 @@
+
+2024-05-28 10:20:14 Commons Daemon procrun stdout initialized
+##########Session ID 4E42E85DA9C11F8DE956DF406B1676BE created at Tue May 28 12:31:22 KST 2024 Session Counts: 3
+ERROR 12:31:22.462 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 4E42E85DA9C11F8DE956DF406B1676BE created at Tue May 28 12:31:22 KST 2024 3
+ERROR 12:31:22.462 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-05-28 12:31:22,/error/404,start,null,4E42E85DA9C11F8DE956DF406B1676BE
+ERROR 12:31:22.462 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 4E42E85DA9C11F8DE956DF406B1676BE
+ERROR 12:31:22.462 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-05-28 12:31:22,/error/404,end,null,4E42E85DA9C11F8DE956DF406B1676BE
+##########Session ID 3591705F986A86670C7EE48DCED63B0E created at Tue May 28 12:31:54 KST 2024 Session Counts: 6
+ERROR 12:31:54.854 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 3591705F986A86670C7EE48DCED63B0E created at Tue May 28 12:31:54 KST 2024 6
+ERROR 12:31:54.854 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-05-28 12:31:54,/error/404,start,null,3591705F986A86670C7EE48DCED63B0E
+ERROR 12:31:54.854 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 3591705F986A86670C7EE48DCED63B0E
+ERROR 12:31:54.854 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-05-28 12:31:54,/error/404,end,null,3591705F986A86670C7EE48DCED63B0E
+##########Session ID ED7154C7F90D251D3128ECB3174A1F58 destroyed at Tue May 28 13:20:53 KST 2024 Session Counts:  5
+ERROR 13:20:53.480 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID ED7154C7F90D251D3128ECB3174A1F58 destroyed at Tue May 28 13:20:53 KST 2024 5
+##########Session ID 2B813CF1ED84FB502DDEF2D211229D66 destroyed at Tue May 28 13:20:53 KST 2024 Session Counts:  4
+ERROR 13:20:53.480 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 2B813CF1ED84FB502DDEF2D211229D66 destroyed at Tue May 28 13:20:53 KST 2024 4
+##########Session ID AA7C2821118D725081A787DB451EEB95 destroyed at Tue May 28 13:41:54 KST 2024 Session Counts:  3
+ERROR 13:41:54.320 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID AA7C2821118D725081A787DB451EEB95 destroyed at Tue May 28 13:41:54 KST 2024 3
+##########Session ID D3C5CD18066A497B7074362B9C12DA9C destroyed at Tue May 28 15:31:58 KST 2024 Session Counts:  2
+ERROR 15:31:58.795 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID D3C5CD18066A497B7074362B9C12DA9C destroyed at Tue May 28 15:31:58 KST 2024 2
+##########Session ID 4E42E85DA9C11F8DE956DF406B1676BE destroyed at Tue May 28 15:31:58 KST 2024 Session Counts:  1
+ERROR 15:31:58.795 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 4E42E85DA9C11F8DE956DF406B1676BE destroyed at Tue May 28 15:31:58 KST 2024 1
+##########Session ID 3591705F986A86670C7EE48DCED63B0E destroyed at Tue May 28 15:31:58 KST 2024 Session Counts:  0
+ERROR 15:31:58.795 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 3591705F986A86670C7EE48DCED63B0E destroyed at Tue May 28 15:31:58 KST 2024 0
+##########Session ID E6EE2BE2D09175FD01AB9D4AA879F038 destroyed at Tue May 28 15:31:58 KST 2024 Session Counts:  -1
+ERROR 15:31:58.795 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E6EE2BE2D09175FD01AB9D4AA879F038 destroyed at Tue May 28 15:31:58 KST 2024 -1
+ERROR 19:52:41.300 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-05-28 19:52:41,/error/404,start,null,ABDD861D0159679078D9A4D735146566
+ERROR 19:52:41.300 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] ABDD861D0159679078D9A4D735146566
+ERROR 19:52:41.300 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-05-28 19:52:41,/error/404,end,null,ABDD861D0159679078D9A4D735146566
+##########Session ID D533B425C0B53E9D8B1C5C600F2E28A4 destroyed at Tue May 28 20:35:10 KST 2024 Session Counts:  8
+ERROR 20:35:10.558 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID D533B425C0B53E9D8B1C5C600F2E28A4 destroyed at Tue May 28 20:35:10 KST 2024 8
+##########Session ID 0D09B9653A912F198BDD3AD81D9B1DC4 destroyed at Tue May 28 20:44:10 KST 2024 Session Counts:  7
+ERROR 20:44:10.914 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0D09B9653A912F198BDD3AD81D9B1DC4 destroyed at Tue May 28 20:44:10 KST 2024 7
+##########Session ID 0379BBC1F989E7100AE1C8D08D5729AD destroyed at Tue May 28 20:45:10 KST 2024 Session Counts:  6
+ERROR 20:45:10.964 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0379BBC1F989E7100AE1C8D08D5729AD destroyed at Tue May 28 20:45:10 KST 2024 6
+##########Session ID C16E85DDC932281B3C2DA646C501F4A5 destroyed at Tue May 28 20:47:11 KST 2024 Session Counts:  5
+ERROR 20:47:11.049 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C16E85DDC932281B3C2DA646C501F4A5 destroyed at Tue May 28 20:47:11 KST 2024 5
+##########Session ID 92BC3557C28C0A8E221A1DBF1876269F destroyed at Tue May 28 20:48:11 KST 2024 Session Counts:  4
+ERROR 20:48:11.099 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 92BC3557C28C0A8E221A1DBF1876269F destroyed at Tue May 28 20:48:11 KST 2024 4
+##########Session ID C08982914251F72F58200512EA079493 destroyed at Tue May 28 20:51:11 KST 2024 Session Counts:  3
+ERROR 20:51:11.155 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C08982914251F72F58200512EA079493 destroyed at Tue May 28 20:51:11 KST 2024 3
+##########Session ID 051D36A7F892FFB5FBB3E4083D329B35 destroyed at Tue May 28 20:54:11 KST 2024 Session Counts:  2
+ERROR 20:54:11.305 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 051D36A7F892FFB5FBB3E4083D329B35 destroyed at Tue May 28 20:54:11 KST 2024 2
+##########Session ID 97AFC1518996EF13B8028B3ECA5202DB destroyed at Tue May 28 20:59:11 KST 2024 Session Counts:  1
+ERROR 20:59:11.508 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 97AFC1518996EF13B8028B3ECA5202DB destroyed at Tue May 28 20:59:11 KST 2024 1
+##########Session ID 5D4308D1FDF634913683ADB0C491B693 destroyed at Tue May 28 21:44:13 KST 2024 Session Counts:  0
+ERROR 21:44:13.126 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 5D4308D1FDF634913683ADB0C491B693 destroyed at Tue May 28 21:44:13 KST 2024 0
+##########Session ID ABDD861D0159679078D9A4D735146566 destroyed at Tue May 28 23:51:17 KST 2024 Session Counts:  0
+ERROR 23:51:17.857 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID ABDD861D0159679078D9A4D735146566 destroyed at Tue May 28 23:51:17 KST 2024 0
+##########Session ID 0A497B54CCD9C2831C1D62473502DF3F destroyed at Wed May 29 00:47:20 KST 2024 Session Counts:  -1
+ERROR 00:47:20.530 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0A497B54CCD9C2831C1D62473502DF3F destroyed at Wed May 29 00:47:20 KST 2024 -1
+##########Session ID 78D37FC08D139434BD3B89B0434C71E8 destroyed at Wed May 29 05:50:32 KST 2024 Session Counts:  -1
+ERROR 05:50:32.386 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 78D37FC08D139434BD3B89B0434C71E8 destroyed at Wed May 29 05:50:32 KST 2024 -1
+##########Session ID C4547FA3EF3D22A1A9EA5E709393AAA7 created at Wed May 29 09:00:58 KST 2024 Session Counts: 2
+ERROR 09:00:58.372 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID C4547FA3EF3D22A1A9EA5E709393AAA7 created at Wed May 29 09:00:58 KST 2024 2
+ERROR 09:00:58.372 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-29 09:00:58,/error/404,start,null,C4547FA3EF3D22A1A9EA5E709393AAA7
+ERROR 09:00:58.372 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] C4547FA3EF3D22A1A9EA5E709393AAA7
+ERROR 09:00:58.372 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-29 09:00:58,/error/404,end,null,C4547FA3EF3D22A1A9EA5E709393AAA7
+##########Session ID 42C5549C13C77415952C7526BEF78DB2 created at Wed May 29 09:00:59 KST 2024 Session Counts: 3
+ERROR 09:00:59.935 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 42C5549C13C77415952C7526BEF78DB2 created at Wed May 29 09:00:59 KST 2024 3
+ERROR 09:00:59.935 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-05-29 09:00:59,/error/404,start,null,42C5549C13C77415952C7526BEF78DB2
+ERROR 09:00:59.935 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 42C5549C13C77415952C7526BEF78DB2
+ERROR 09:00:59.935 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-05-29 09:00:59,/error/404,end,null,42C5549C13C77415952C7526BEF78DB2
+##########Session ID 5410972C53D01314262E0A42C91D3995 created at Wed May 29 09:01:01 KST 2024 Session Counts: 4
+ERROR 09:01:01.529 [http-bio-8443-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 5410972C53D01314262E0A42C91D3995 created at Wed May 29 09:01:01 KST 2024 4
+ERROR 09:01:01.529 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-05-29 09:01:01,/error/404,start,null,5410972C53D01314262E0A42C91D3995
+ERROR 09:01:01.529 [http-bio-8443-exec-6] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 5410972C53D01314262E0A42C91D3995
+ERROR 09:01:01.529 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-05-29 09:01:01,/error/404,end,null,5410972C53D01314262E0A42C91D3995
+##########Session ID CDFE9047A2015A10C582E7A607C11755 created at Wed May 29 09:35:46 KST 2024 Session Counts: 6
+ERROR 09:35:46.606 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID CDFE9047A2015A10C582E7A607C11755 created at Wed May 29 09:35:46 KST 2024 6
+ERROR 09:35:46.606 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-29 09:35:46,/error/404,start,null,CDFE9047A2015A10C582E7A607C11755
+ERROR 09:35:46.606 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] CDFE9047A2015A10C582E7A607C11755
+ERROR 09:35:46.606 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-29 09:35:46,/error/404,end,null,CDFE9047A2015A10C582E7A607C11755
+##########Session ID EA8FD240A5379462AC6B3CCFD086576B created at Wed May 29 09:35:47 KST 2024 Session Counts: 7
+ERROR 09:35:47.825 [http-bio-8443-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID EA8FD240A5379462AC6B3CCFD086576B created at Wed May 29 09:35:47 KST 2024 7
+ERROR 09:35:47.825 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-05-29 09:35:47,/error/404,start,null,EA8FD240A5379462AC6B3CCFD086576B
+ERROR 09:35:47.825 [http-bio-8443-exec-6] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] EA8FD240A5379462AC6B3CCFD086576B
+ERROR 09:35:47.825 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-05-29 09:35:47,/error/404,end,null,EA8FD240A5379462AC6B3CCFD086576B
+##########Session ID 06947B0D0D51952763C06A943AB57BC7 created at Wed May 29 09:35:48 KST 2024 Session Counts: 8
+ERROR 09:35:48.809 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 06947B0D0D51952763C06A943AB57BC7 created at Wed May 29 09:35:48 KST 2024 8
+ERROR 09:35:48.809 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-05-29 09:35:48,/error/404,start,null,06947B0D0D51952763C06A943AB57BC7
+ERROR 09:35:48.809 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 06947B0D0D51952763C06A943AB57BC7
+ERROR 09:35:48.809 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-05-29 09:35:48,/error/404,end,null,06947B0D0D51952763C06A943AB57BC7
+##########Session ID C4547FA3EF3D22A1A9EA5E709393AAA7 destroyed at Wed May 29 12:01:46 KST 2024 Session Counts:  8
+ERROR 12:01:46.328 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C4547FA3EF3D22A1A9EA5E709393AAA7 destroyed at Wed May 29 12:01:46 KST 2024 8
+##########Session ID B02C40A7FE478FEB1B9DA05AAB2D1AB9 destroyed at Wed May 29 12:01:46 KST 2024 Session Counts:  7
+ERROR 12:01:46.328 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID B02C40A7FE478FEB1B9DA05AAB2D1AB9 destroyed at Wed May 29 12:01:46 KST 2024 7
+##########Session ID 42C5549C13C77415952C7526BEF78DB2 destroyed at Wed May 29 12:01:46 KST 2024 Session Counts:  6
+ERROR 12:01:46.328 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 42C5549C13C77415952C7526BEF78DB2 destroyed at Wed May 29 12:01:46 KST 2024 6
+##########Session ID 5410972C53D01314262E0A42C91D3995 destroyed at Wed May 29 12:01:46 KST 2024 Session Counts:  5
+ERROR 12:01:46.328 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 5410972C53D01314262E0A42C91D3995 destroyed at Wed May 29 12:01:46 KST 2024 5
+##########Session ID CDFE9047A2015A10C582E7A607C11755 destroyed at Wed May 29 12:35:47 KST 2024 Session Counts:  4
+ERROR 12:35:47.643 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID CDFE9047A2015A10C582E7A607C11755 destroyed at Wed May 29 12:35:47 KST 2024 4
+##########Session ID 3803151F19D5297E242787A56B0E7DD0 destroyed at Wed May 29 12:35:47 KST 2024 Session Counts:  3
+ERROR 12:35:47.643 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 3803151F19D5297E242787A56B0E7DD0 destroyed at Wed May 29 12:35:47 KST 2024 3
+##########Session ID EA8FD240A5379462AC6B3CCFD086576B destroyed at Wed May 29 12:36:47 KST 2024 Session Counts:  2
+ERROR 12:36:47.693 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID EA8FD240A5379462AC6B3CCFD086576B destroyed at Wed May 29 12:36:47 KST 2024 2
+##########Session ID 06947B0D0D51952763C06A943AB57BC7 destroyed at Wed May 29 12:36:47 KST 2024 Session Counts:  1
+ERROR 12:36:47.693 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 06947B0D0D51952763C06A943AB57BC7 destroyed at Wed May 29 12:36:47 KST 2024 1
+##########Session ID 7E3198E0576B88ECABAEF2BAA8F14040 destroyed at Wed May 29 12:38:47 KST 2024 Session Counts:  0
+ERROR 12:38:47.746 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 7E3198E0576B88ECABAEF2BAA8F14040 destroyed at Wed May 29 12:38:47 KST 2024 0
+##########Session ID CAD399A4ED470D1761995F89712F10B9 destroyed at Wed May 29 13:02:48 KST 2024 Session Counts:  0
+ERROR 13:02:48.563 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID CAD399A4ED470D1761995F89712F10B9 destroyed at Wed May 29 13:02:48 KST 2024 0
+##########Session ID ADE10CFE1EC89EC5F9B238ACFB96B2F9 destroyed at Wed May 29 15:52:54 KST 2024 Session Counts:  0
+ERROR 15:52:54.871 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID ADE10CFE1EC89EC5F9B238ACFB96B2F9 destroyed at Wed May 29 15:52:54 KST 2024 0
+##########Session ID A7D25667B92DE183ABF31A34B191DE1E destroyed at Wed May 29 18:21:00 KST 2024 Session Counts:  -1
+ERROR 18:21:00.255 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A7D25667B92DE183ABF31A34B191DE1E destroyed at Wed May 29 18:21:00 KST 2024 -1
+##########Session ID 0B2EC1FB7A498EFC6A2D5C7B4BADCB75 created at Wed May 29 18:24:42 KST 2024 Session Counts: 1
+ERROR 18:24:42.782 [http-bio-8443-exec-3] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 0B2EC1FB7A498EFC6A2D5C7B4BADCB75 created at Wed May 29 18:24:42 KST 2024 1
+ERROR 18:24:42.782 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-05-29 18:24:42,/error/404,start,null,0B2EC1FB7A498EFC6A2D5C7B4BADCB75
+ERROR 18:24:42.782 [http-bio-8443-exec-3] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 0B2EC1FB7A498EFC6A2D5C7B4BADCB75
+ERROR 18:24:42.782 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-05-29 18:24:42,/error/404,end,null,0B2EC1FB7A498EFC6A2D5C7B4BADCB75
+##########Session ID F34FCE14BD0CAEDFD4D89BE2D10AD799 created at Wed May 29 19:39:22 KST 2024 Session Counts: 3
+ERROR 19:39:22.354 [http-bio-8443-exec-3] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID F34FCE14BD0CAEDFD4D89BE2D10AD799 created at Wed May 29 19:39:22 KST 2024 3
+ERROR 19:39:22.354 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-05-29 19:39:22,/error/404,start,null,F34FCE14BD0CAEDFD4D89BE2D10AD799
+ERROR 19:39:22.354 [http-bio-8443-exec-3] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] F34FCE14BD0CAEDFD4D89BE2D10AD799
+ERROR 19:39:22.354 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-05-29 19:39:22,/error/404,end,null,F34FCE14BD0CAEDFD4D89BE2D10AD799
+##########Session ID 44BB29C38DA1BFBCDDFCAA8CC1184520 destroyed at Wed May 29 21:23:06 KST 2024 Session Counts:  2
+ERROR 21:23:06.944 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 44BB29C38DA1BFBCDDFCAA8CC1184520 destroyed at Wed May 29 21:23:06 KST 2024 2
+##########Session ID 0B2EC1FB7A498EFC6A2D5C7B4BADCB75 destroyed at Wed May 29 21:25:07 KST 2024 Session Counts:  1
+ERROR 21:25:07.012 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0B2EC1FB7A498EFC6A2D5C7B4BADCB75 destroyed at Wed May 29 21:25:07 KST 2024 1
+##########Session ID E7800DC71B27198DE11923C3C0353F76 destroyed at Wed May 29 22:40:09 KST 2024 Session Counts:  3
+ERROR 22:40:09.755 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E7800DC71B27198DE11923C3C0353F76 destroyed at Wed May 29 22:40:09 KST 2024 3
+##########Session ID F34FCE14BD0CAEDFD4D89BE2D10AD799 destroyed at Wed May 29 22:40:09 KST 2024 Session Counts:  2
+ERROR 22:40:09.755 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID F34FCE14BD0CAEDFD4D89BE2D10AD799 destroyed at Wed May 29 22:40:09 KST 2024 2
+##########Session ID F514CDA4CF2312B563BE6ACDDD8C080D destroyed at Thu May 30 00:45:14 KST 2024 Session Counts:  1
+ERROR 00:45:14.509 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID F514CDA4CF2312B563BE6ACDDD8C080D destroyed at Thu May 30 00:45:14 KST 2024 1
+##########Session ID 2BA67B7F7B643CF2287B66A070EDC9F4 destroyed at Thu May 30 01:21:15 KST 2024 Session Counts:  0
+ERROR 01:21:15.788 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 2BA67B7F7B643CF2287B66A070EDC9F4 destroyed at Thu May 30 01:21:15 KST 2024 0
+##########Session ID 886238607D42435E88B1FC784786EFB9 destroyed at Thu May 30 01:28:15 KST 2024 Session Counts:  -1
+ERROR 01:28:15.982 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 886238607D42435E88B1FC784786EFB9 destroyed at Thu May 30 01:28:15 KST 2024 -1
+##########Session ID 0A08FC739FD4740E00A06937439C407E created at Thu May 30 03:44:45 KST 2024 Session Counts: 0
+ERROR 03:44:45.355 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 0A08FC739FD4740E00A06937439C407E created at Thu May 30 03:44:45 KST 2024 0
+ERROR 03:44:45.355 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-05-30 03:44:45,/error/404,start,null,0A08FC739FD4740E00A06937439C407E
+ERROR 03:44:45.355 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 0A08FC739FD4740E00A06937439C407E
+ERROR 03:44:45.355 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-05-30 03:44:45,/error/404,end,null,0A08FC739FD4740E00A06937439C407E
+##########Session ID 47ECAE90B125A2195F1AA0D9C3085CC7 created at Thu May 30 03:44:46 KST 2024 Session Counts: 1
+ERROR 03:44:46.621 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 47ECAE90B125A2195F1AA0D9C3085CC7 created at Thu May 30 03:44:46 KST 2024 1
+ERROR 03:44:46.621 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-30 03:44:46,/error/404,start,null,47ECAE90B125A2195F1AA0D9C3085CC7
+ERROR 03:44:46.621 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 47ECAE90B125A2195F1AA0D9C3085CC7
+ERROR 03:44:46.621 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-30 03:44:46,/error/404,end,null,47ECAE90B125A2195F1AA0D9C3085CC7
+##########Session ID 47ECAE90B125A2195F1AA0D9C3085CC7 destroyed at Thu May 30 06:45:28 KST 2024 Session Counts:  1
+ERROR 06:45:28.201 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 47ECAE90B125A2195F1AA0D9C3085CC7 destroyed at Thu May 30 06:45:28 KST 2024 1
+##########Session ID F87C18E8459FE7F61221B10694755B26 destroyed at Thu May 30 06:45:28 KST 2024 Session Counts:  0
+ERROR 06:45:28.201 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID F87C18E8459FE7F61221B10694755B26 destroyed at Thu May 30 06:45:28 KST 2024 0
+##########Session ID 0A08FC739FD4740E00A06937439C407E destroyed at Thu May 30 06:45:28 KST 2024 Session Counts:  -1
+ERROR 06:45:28.201 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0A08FC739FD4740E00A06937439C407E destroyed at Thu May 30 06:45:28 KST 2024 -1
+##########Session ID F1AE6FA5CA301E45E1E523B967E64380 created at Thu May 30 10:57:52 KST 2024 Session Counts: 1
+ERROR 10:57:52.416 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID F1AE6FA5CA301E45E1E523B967E64380 created at Thu May 30 10:57:52 KST 2024 1
+ERROR 10:57:52.416 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-05-30 10:57:52,/error/404,start,null,F1AE6FA5CA301E45E1E523B967E64380
+ERROR 10:57:52.416 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] F1AE6FA5CA301E45E1E523B967E64380
+ERROR 10:57:52.416 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-05-30 10:57:52,/error/404,end,null,F1AE6FA5CA301E45E1E523B967E64380
+##########Session ID EEB5D744D19B9E25EAF6B4A5847E14BB created at Thu May 30 11:01:18 KST 2024 Session Counts: 3
+ERROR 11:01:18.958 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID EEB5D744D19B9E25EAF6B4A5847E14BB created at Thu May 30 11:01:18 KST 2024 3
+ERROR 11:01:18.958 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-05-30 11:01:18,/error/404,start,null,EEB5D744D19B9E25EAF6B4A5847E14BB
+ERROR 11:01:18.958 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] EEB5D744D19B9E25EAF6B4A5847E14BB
+ERROR 11:01:18.958 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-05-30 11:01:18,/error/404,end,null,EEB5D744D19B9E25EAF6B4A5847E14BB
+##########Session ID 15E20466F01C6BCCBF13A8C3322B8E93 destroyed at Thu May 30 13:57:45 KST 2024 Session Counts:  2
+ERROR 13:57:45.003 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 15E20466F01C6BCCBF13A8C3322B8E93 destroyed at Thu May 30 13:57:45 KST 2024 2
+##########Session ID F1AE6FA5CA301E45E1E523B967E64380 destroyed at Thu May 30 13:58:45 KST 2024 Session Counts:  1
+ERROR 13:58:45.038 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID F1AE6FA5CA301E45E1E523B967E64380 destroyed at Thu May 30 13:58:45 KST 2024 1
+##########Session ID C8B8D1CEC8846C17A12892517070639C destroyed at Thu May 30 14:01:45 KST 2024 Session Counts:  0
+ERROR 14:01:45.156 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C8B8D1CEC8846C17A12892517070639C destroyed at Thu May 30 14:01:45 KST 2024 0
+##########Session ID EEB5D744D19B9E25EAF6B4A5847E14BB destroyed at Thu May 30 14:01:45 KST 2024 Session Counts:  -1
+ERROR 14:01:45.156 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID EEB5D744D19B9E25EAF6B4A5847E14BB destroyed at Thu May 30 14:01:45 KST 2024 -1
+##########Session ID 432B0570C9B2B8CF2D7DB82842CE6CC6 created at Thu May 30 22:34:14 KST 2024 Session Counts: 1
+ERROR 22:34:14.282 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 432B0570C9B2B8CF2D7DB82842CE6CC6 created at Thu May 30 22:34:14 KST 2024 1
+ERROR 22:34:14.282 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-30 22:34:14,/error/404,start,null,432B0570C9B2B8CF2D7DB82842CE6CC6
+ERROR 22:34:14.282 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 432B0570C9B2B8CF2D7DB82842CE6CC6
+ERROR 22:34:14.282 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-30 22:34:14,/error/404,end,null,432B0570C9B2B8CF2D7DB82842CE6CC6
+##########Session ID BBF788276234C0E62ECAC8E8B55CAD24 created at Thu May 30 22:34:47 KST 2024 Session Counts: 3
+ERROR 22:34:47.596 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID BBF788276234C0E62ECAC8E8B55CAD24 created at Thu May 30 22:34:47 KST 2024 3
+ERROR 22:34:47.596 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-05-30 22:34:47,/error/404,start,null,BBF788276234C0E62ECAC8E8B55CAD24
+ERROR 22:34:47.596 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] BBF788276234C0E62ECAC8E8B55CAD24
+ERROR 22:34:47.596 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-05-30 22:34:47,/error/404,end,null,BBF788276234C0E62ECAC8E8B55CAD24
+##########Session ID A53DAF05E0C002DBEC99CAE24A1AB620 destroyed at Fri May 31 00:03:08 KST 2024 Session Counts:  2
+ERROR 00:03:08.635 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A53DAF05E0C002DBEC99CAE24A1AB620 destroyed at Fri May 31 00:03:08 KST 2024 2
+##########Session ID 87A4F8478FFA29DFC1E1622B4967048B created at Fri May 31 01:15:47 KST 2024 Session Counts: 5
+ERROR 01:15:47.816 [http-bio-8443-exec-9] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 87A4F8478FFA29DFC1E1622B4967048B created at Fri May 31 01:15:47 KST 2024 5
+ERROR 01:15:47.816 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:47,/error/404,start,null,87A4F8478FFA29DFC1E1622B4967048B
+ERROR 01:15:47.816 [http-bio-8443-exec-9] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 87A4F8478FFA29DFC1E1622B4967048B
+ERROR 01:15:47.816 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:47,/error/404,end,null,87A4F8478FFA29DFC1E1622B4967048B
+##########Session ID 030BC9374EC77288AB64DC74D1E010BC created at Fri May 31 01:15:47 KST 2024 Session Counts: 6
+ERROR 01:15:47.941 [http-bio-8443-exec-3] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 030BC9374EC77288AB64DC74D1E010BC created at Fri May 31 01:15:47 KST 2024 6
+ERROR 01:15:47.941 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:47,/error/404,start,null,030BC9374EC77288AB64DC74D1E010BC
+ERROR 01:15:47.941 [http-bio-8443-exec-3] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 030BC9374EC77288AB64DC74D1E010BC
+ERROR 01:15:47.941 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:47,/error/404,end,null,030BC9374EC77288AB64DC74D1E010BC
+##########Session ID 890855AFBF337A88957A8A2A7387D08E created at Fri May 31 01:15:49 KST 2024 Session Counts: 7
+ERROR 01:15:49.785 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 890855AFBF337A88957A8A2A7387D08E created at Fri May 31 01:15:49 KST 2024 7
+ERROR 01:15:49.785 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:49,/error/404,start,null,890855AFBF337A88957A8A2A7387D08E
+ERROR 01:15:49.785 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 890855AFBF337A88957A8A2A7387D08E
+ERROR 01:15:49.785 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:49,/error/404,end,null,890855AFBF337A88957A8A2A7387D08E
+##########Session ID 9F7E08402299D0693623942BFAD95E2C created at Fri May 31 01:15:50 KST 2024 Session Counts: 8
+ERROR 01:15:50.410 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 9F7E08402299D0693623942BFAD95E2C created at Fri May 31 01:15:50 KST 2024 8
+ERROR 01:15:50.410 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:50,/error/404,start,null,9F7E08402299D0693623942BFAD95E2C
+ERROR 01:15:50.410 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 9F7E08402299D0693623942BFAD95E2C
+ERROR 01:15:50.410 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:50,/error/404,end,null,9F7E08402299D0693623942BFAD95E2C
+##########Session ID A50BE9F7E4C3B1C4EA1FFAC5BE00938E created at Fri May 31 01:15:51 KST 2024 Session Counts: 9
+ERROR 01:15:51.176 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID A50BE9F7E4C3B1C4EA1FFAC5BE00938E created at Fri May 31 01:15:51 KST 2024 9
+ERROR 01:15:51.176 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:51,/error/404,start,null,A50BE9F7E4C3B1C4EA1FFAC5BE00938E
+ERROR 01:15:51.176 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] A50BE9F7E4C3B1C4EA1FFAC5BE00938E
+ERROR 01:15:51.176 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:51,/error/404,end,null,A50BE9F7E4C3B1C4EA1FFAC5BE00938E
+##########Session ID C0F25E3EBEDFF09E2A0E730098D67E96 created at Fri May 31 01:15:53 KST 2024 Session Counts: 11
+ERROR 01:15:53.785 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID C0F25E3EBEDFF09E2A0E730098D67E96 created at Fri May 31 01:15:53 KST 2024 11
+ERROR 01:15:53.785 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:53,/error/404,start,null,C0F25E3EBEDFF09E2A0E730098D67E96
+ERROR 01:15:53.785 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] C0F25E3EBEDFF09E2A0E730098D67E96
+ERROR 01:15:53.785 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:53,/error/404,end,null,C0F25E3EBEDFF09E2A0E730098D67E96
+##########Session ID 0CF88B044B0B096066440914A719ECA4 created at Fri May 31 01:15:56 KST 2024 Session Counts: 13
+ERROR 01:15:56.379 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 0CF88B044B0B096066440914A719ECA4 created at Fri May 31 01:15:56 KST 2024 13
+ERROR 01:15:56.379 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:56,/error/404,start,null,0CF88B044B0B096066440914A719ECA4
+ERROR 01:15:56.379 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 0CF88B044B0B096066440914A719ECA4
+ERROR 01:15:56.379 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-05-31 01:15:56,/error/404,end,null,0CF88B044B0B096066440914A719ECA4
+##########Session ID BBF788276234C0E62ECAC8E8B55CAD24 destroyed at Fri May 31 01:35:12 KST 2024 Session Counts:  12
+ERROR 01:35:12.218 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID BBF788276234C0E62ECAC8E8B55CAD24 destroyed at Fri May 31 01:35:12 KST 2024 12
+##########Session ID 6EBE3DFA181E1A0FCB812368735FC738 destroyed at Fri May 31 01:35:12 KST 2024 Session Counts:  11
+ERROR 01:35:12.218 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 6EBE3DFA181E1A0FCB812368735FC738 destroyed at Fri May 31 01:35:12 KST 2024 11
+##########Session ID 432B0570C9B2B8CF2D7DB82842CE6CC6 destroyed at Fri May 31 01:35:12 KST 2024 Session Counts:  10
+ERROR 01:35:12.218 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 432B0570C9B2B8CF2D7DB82842CE6CC6 destroyed at Fri May 31 01:35:12 KST 2024 10
+##########Session ID 2B780C999F134E1EF1AE2EC5903FF7B4 destroyed at Fri May 31 04:15:17 KST 2024 Session Counts:  9
+ERROR 04:15:17.694 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 2B780C999F134E1EF1AE2EC5903FF7B4 destroyed at Fri May 31 04:15:17 KST 2024 9
+##########Session ID CD6DA591DA78A7B38DE445558E7AA2F4 destroyed at Fri May 31 04:16:17 KST 2024 Session Counts:  8
+ERROR 04:16:17.728 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID CD6DA591DA78A7B38DE445558E7AA2F4 destroyed at Fri May 31 04:16:17 KST 2024 8
+##########Session ID A50BE9F7E4C3B1C4EA1FFAC5BE00938E destroyed at Fri May 31 04:16:17 KST 2024 Session Counts:  7
+ERROR 04:16:17.728 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A50BE9F7E4C3B1C4EA1FFAC5BE00938E destroyed at Fri May 31 04:16:17 KST 2024 7
+##########Session ID 890855AFBF337A88957A8A2A7387D08E destroyed at Fri May 31 04:16:17 KST 2024 Session Counts:  6
+ERROR 04:16:17.728 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 890855AFBF337A88957A8A2A7387D08E destroyed at Fri May 31 04:16:17 KST 2024 6
+##########Session ID EBDEC1954FCF27980284EBD4526BE223 destroyed at Fri May 31 04:16:17 KST 2024 Session Counts:  5
+ERROR 04:16:17.728 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID EBDEC1954FCF27980284EBD4526BE223 destroyed at Fri May 31 04:16:17 KST 2024 5
+##########Session ID 030BC9374EC77288AB64DC74D1E010BC destroyed at Fri May 31 04:16:17 KST 2024 Session Counts:  4
+ERROR 04:16:17.728 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 030BC9374EC77288AB64DC74D1E010BC destroyed at Fri May 31 04:16:17 KST 2024 4
+##########Session ID C0F25E3EBEDFF09E2A0E730098D67E96 destroyed at Fri May 31 04:16:17 KST 2024 Session Counts:  3
+ERROR 04:16:17.728 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C0F25E3EBEDFF09E2A0E730098D67E96 destroyed at Fri May 31 04:16:17 KST 2024 3
+##########Session ID 87A4F8478FFA29DFC1E1622B4967048B destroyed at Fri May 31 04:16:17 KST 2024 Session Counts:  2
+ERROR 04:16:17.728 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 87A4F8478FFA29DFC1E1622B4967048B destroyed at Fri May 31 04:16:17 KST 2024 2
+##########Session ID 769E16648615F1FEA00C51210AB6CA67 destroyed at Fri May 31 04:16:17 KST 2024 Session Counts:  1
+ERROR 04:16:17.728 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 769E16648615F1FEA00C51210AB6CA67 destroyed at Fri May 31 04:16:17 KST 2024 1
+##########Session ID 0CF88B044B0B096066440914A719ECA4 destroyed at Fri May 31 04:16:17 KST 2024 Session Counts:  0
+ERROR 04:16:17.728 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0CF88B044B0B096066440914A719ECA4 destroyed at Fri May 31 04:16:17 KST 2024 0
+##########Session ID 9F7E08402299D0693623942BFAD95E2C destroyed at Fri May 31 04:16:17 KST 2024 Session Counts:  -1
+ERROR 04:16:17.728 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 9F7E08402299D0693623942BFAD95E2C destroyed at Fri May 31 04:16:17 KST 2024 -1
+##########Session ID 148C98C846ACA174CB9E9C5147FAB050 destroyed at Fri May 31 14:13:40 KST 2024 Session Counts:  0
+ERROR 14:13:40.641 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 148C98C846ACA174CB9E9C5147FAB050 destroyed at Fri May 31 14:13:40 KST 2024 0
+##########Session ID 29232BB8724FA59DB4FC760FCD9F8295 created at Fri May 31 14:52:30 KST 2024 Session Counts: 2
+ERROR 14:52:30.442 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 29232BB8724FA59DB4FC760FCD9F8295 created at Fri May 31 14:52:30 KST 2024 2
+ERROR 14:52:30.442 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-05-31 14:52:30,/error/404,start,null,29232BB8724FA59DB4FC760FCD9F8295
+ERROR 14:52:30.442 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 29232BB8724FA59DB4FC760FCD9F8295
+ERROR 14:52:30.442 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-05-31 14:52:30,/error/404,end,null,29232BB8724FA59DB4FC760FCD9F8295
+##########Session ID F8474D8B88E5C23DFD420B29F9E9A092 destroyed at Fri May 31 15:03:42 KST 2024 Session Counts:  1
+ERROR 15:03:42.618 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID F8474D8B88E5C23DFD420B29F9E9A092 destroyed at Fri May 31 15:03:42 KST 2024 1
+##########Session ID A941F06F4B3AB489124FEA4AA7D90137 destroyed at Fri May 31 17:49:48 KST 2024 Session Counts:  0
+ERROR 17:49:48.966 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A941F06F4B3AB489124FEA4AA7D90137 destroyed at Fri May 31 17:49:48 KST 2024 0
+##########Session ID 29232BB8724FA59DB4FC760FCD9F8295 destroyed at Fri May 31 17:52:49 KST 2024 Session Counts:  -1
+ERROR 17:52:49.116 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 29232BB8724FA59DB4FC760FCD9F8295 destroyed at Fri May 31 17:52:49 KST 2024 -1
+##########Session ID E25CEB086369C33E307296026E68E7A1 created at Fri May 31 19:56:05 KST 2024 Session Counts: 2
+ERROR 19:56:05.698 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID E25CEB086369C33E307296026E68E7A1 created at Fri May 31 19:56:05 KST 2024 2
+ERROR 19:56:05.698 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-05-31 19:56:05,/error/404,start,null,E25CEB086369C33E307296026E68E7A1
+ERROR 19:56:05.698 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] E25CEB086369C33E307296026E68E7A1
+ERROR 19:56:05.698 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-05-31 19:56:05,/error/404,end,null,E25CEB086369C33E307296026E68E7A1
+##########Session ID 50377F86D79A2C2128374597854E3D22 created at Fri May 31 19:56:06 KST 2024 Session Counts: 4
+ERROR 19:56:06.729 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 50377F86D79A2C2128374597854E3D22 created at Fri May 31 19:56:06 KST 2024 4
+ERROR 19:56:06.729 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-05-31 19:56:06,/error/404,start,null,50377F86D79A2C2128374597854E3D22
+ERROR 19:56:06.729 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 50377F86D79A2C2128374597854E3D22
+ERROR 19:56:06.729 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-05-31 19:56:06,/error/404,end,null,50377F86D79A2C2128374597854E3D22
+##########Session ID 8B0678970A4B2C476610F7A8B3FD651F created at Fri May 31 19:56:07 KST 2024 Session Counts: 6
+ERROR 19:56:07.776 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 8B0678970A4B2C476610F7A8B3FD651F created at Fri May 31 19:56:07 KST 2024 6
+ERROR 19:56:07.776 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-05-31 19:56:07,/error/404,start,null,8B0678970A4B2C476610F7A8B3FD651F
+ERROR 19:56:07.776 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 8B0678970A4B2C476610F7A8B3FD651F
+ERROR 19:56:07.776 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-05-31 19:56:07,/error/404,end,null,8B0678970A4B2C476610F7A8B3FD651F
+##########Session ID 889D3228568CD36993FBF63FD6242C36 created at Fri May 31 21:03:46 KST 2024 Session Counts: 7
+ERROR 21:03:46.066 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 889D3228568CD36993FBF63FD6242C36 created at Fri May 31 21:03:46 KST 2024 7
+ERROR 21:03:46.066 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-31 21:03:46,/error/404,start,null,889D3228568CD36993FBF63FD6242C36
+ERROR 21:03:46.066 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 889D3228568CD36993FBF63FD6242C36
+ERROR 21:03:46.066 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-31 21:03:46,/error/404,end,null,889D3228568CD36993FBF63FD6242C36
+##########Session ID 9EAAF8171FA5F26D0529AFD0BF841F0F created at Fri May 31 21:04:12 KST 2024 Session Counts: 10
+ERROR 21:04:12.630 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 9EAAF8171FA5F26D0529AFD0BF841F0F created at Fri May 31 21:04:12 KST 2024 10
+ERROR 21:04:12.630 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-31 21:04:12,/error/404,start,null,9EAAF8171FA5F26D0529AFD0BF841F0F
+ERROR 21:04:12.630 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 9EAAF8171FA5F26D0529AFD0BF841F0F
+ERROR 21:04:12.630 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-05-31 21:04:12,/error/404,end,null,9EAAF8171FA5F26D0529AFD0BF841F0F
+##########Session ID 78F7675051270EBE8BFC7E082167CE3F destroyed at Fri May 31 21:28:57 KST 2024 Session Counts:  9
+ERROR 21:28:57.246 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 78F7675051270EBE8BFC7E082167CE3F destroyed at Fri May 31 21:28:57 KST 2024 9
+##########Session ID AFCB33A986DFFF2F3B87F1FAF4DAF5BF destroyed at Fri May 31 22:55:00 KST 2024 Session Counts:  8
+ERROR 22:55:00.679 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID AFCB33A986DFFF2F3B87F1FAF4DAF5BF destroyed at Fri May 31 22:55:00 KST 2024 8
+##########Session ID 50377F86D79A2C2128374597854E3D22 destroyed at Fri May 31 22:57:00 KST 2024 Session Counts:  7
+ERROR 22:57:00.779 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 50377F86D79A2C2128374597854E3D22 destroyed at Fri May 31 22:57:00 KST 2024 7
+##########Session ID D57BC9107F8CD1E6AF081D4CF101491D destroyed at Fri May 31 22:57:00 KST 2024 Session Counts:  6
+ERROR 22:57:00.779 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID D57BC9107F8CD1E6AF081D4CF101491D destroyed at Fri May 31 22:57:00 KST 2024 6
+##########Session ID 456F85B126EAF8DB94421A51BAD4D599 destroyed at Fri May 31 22:57:00 KST 2024 Session Counts:  5
+ERROR 22:57:00.779 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 456F85B126EAF8DB94421A51BAD4D599 destroyed at Fri May 31 22:57:00 KST 2024 5
+##########Session ID 8B0678970A4B2C476610F7A8B3FD651F destroyed at Fri May 31 22:57:00 KST 2024 Session Counts:  4
+ERROR 22:57:00.779 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8B0678970A4B2C476610F7A8B3FD651F destroyed at Fri May 31 22:57:00 KST 2024 4
+##########Session ID E25CEB086369C33E307296026E68E7A1 destroyed at Fri May 31 22:57:00 KST 2024 Session Counts:  3
+ERROR 22:57:00.779 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E25CEB086369C33E307296026E68E7A1 destroyed at Fri May 31 22:57:00 KST 2024 3
+##########Session ID 889D3228568CD36993FBF63FD6242C36 destroyed at Sat Jun 01 00:04:03 KST 2024 Session Counts:  2
+ERROR 00:04:03.177 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 889D3228568CD36993FBF63FD6242C36 destroyed at Sat Jun 01 00:04:03 KST 2024 2
+##########Session ID 45ABBB747F05D16BF6597C722F2B41D6 destroyed at Sat Jun 01 00:04:03 KST 2024 Session Counts:  1
+ERROR 00:04:03.177 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 45ABBB747F05D16BF6597C722F2B41D6 destroyed at Sat Jun 01 00:04:03 KST 2024 1
+##########Session ID 78B0CCE18D08214238156730DFE8E9F1 destroyed at Sat Jun 01 00:05:03 KST 2024 Session Counts:  0
+ERROR 00:05:03.212 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 78B0CCE18D08214238156730DFE8E9F1 destroyed at Sat Jun 01 00:05:03 KST 2024 0
+##########Session ID 9EAAF8171FA5F26D0529AFD0BF841F0F destroyed at Sat Jun 01 00:05:03 KST 2024 Session Counts:  -1
+ERROR 00:05:03.212 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 9EAAF8171FA5F26D0529AFD0BF841F0F destroyed at Sat Jun 01 00:05:03 KST 2024 -1
+##########Session ID 0E8058EDDCAA51111A7A93D045A8A6DB created at Sat Jun 01 04:35:26 KST 2024 Session Counts: 11
+ERROR 04:35:26.414 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 0E8058EDDCAA51111A7A93D045A8A6DB created at Sat Jun 01 04:35:26 KST 2024 11
+ERROR 04:35:26.414 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:26,/error/404,start,null,0E8058EDDCAA51111A7A93D045A8A6DB
+ERROR 04:35:26.414 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 0E8058EDDCAA51111A7A93D045A8A6DB
+ERROR 04:35:26.414 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:26,/error/404,end,null,0E8058EDDCAA51111A7A93D045A8A6DB
+##########Session ID 9DC3EC014B23D83DA5BCD2CDA045A8F6 created at Sat Jun 01 04:35:29 KST 2024 Session Counts: 12
+ERROR 04:35:29.602 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 9DC3EC014B23D83DA5BCD2CDA045A8F6 created at Sat Jun 01 04:35:29 KST 2024 12
+ERROR 04:35:29.602 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:29,/error/404,start,null,9DC3EC014B23D83DA5BCD2CDA045A8F6
+ERROR 04:35:29.602 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 9DC3EC014B23D83DA5BCD2CDA045A8F6
+ERROR 04:35:29.602 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:29,/error/404,end,null,9DC3EC014B23D83DA5BCD2CDA045A8F6
+##########Session ID 2B9C471973C8EFA06969214B2F72C692 created at Sat Jun 01 04:35:36 KST 2024 Session Counts: 15
+ERROR 04:35:36.306 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 2B9C471973C8EFA06969214B2F72C692 created at Sat Jun 01 04:35:36 KST 2024 15
+ERROR 04:35:36.306 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:36,/error/404,start,null,2B9C471973C8EFA06969214B2F72C692
+ERROR 04:35:36.306 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 2B9C471973C8EFA06969214B2F72C692
+ERROR 04:35:36.306 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:36,/error/404,end,null,2B9C471973C8EFA06969214B2F72C692
+##########Session ID 27358D17BD1D49D98B438E989A3C41AC created at Sat Jun 01 04:35:38 KST 2024 Session Counts: 16
+ERROR 04:35:38.040 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 27358D17BD1D49D98B438E989A3C41AC created at Sat Jun 01 04:35:38 KST 2024 16
+ERROR 04:35:38.040 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:38,/error/404,start,null,27358D17BD1D49D98B438E989A3C41AC
+ERROR 04:35:38.040 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 27358D17BD1D49D98B438E989A3C41AC
+ERROR 04:35:38.040 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:38,/error/404,end,null,27358D17BD1D49D98B438E989A3C41AC
+##########Session ID 797FF71A10D6D519B3FD0A446921E626 created at Sat Jun 01 04:35:39 KST 2024 Session Counts: 17
+ERROR 04:35:39.821 [http-bio-8443-exec-7] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 797FF71A10D6D519B3FD0A446921E626 created at Sat Jun 01 04:35:39 KST 2024 17
+ERROR 04:35:39.821 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:39,/error/404,start,null,797FF71A10D6D519B3FD0A446921E626
+ERROR 04:35:39.821 [http-bio-8443-exec-7] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 797FF71A10D6D519B3FD0A446921E626
+ERROR 04:35:39.821 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:39,/error/404,end,null,797FF71A10D6D519B3FD0A446921E626
+##########Session ID 064C89000778DBBC60815A163AE6615A created at Sat Jun 01 04:35:41 KST 2024 Session Counts: 18
+ERROR 04:35:41.540 [http-bio-8443-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 064C89000778DBBC60815A163AE6615A created at Sat Jun 01 04:35:41 KST 2024 18
+ERROR 04:35:41.540 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:41,/error/404,start,null,064C89000778DBBC60815A163AE6615A
+ERROR 04:35:41.540 [http-bio-8443-exec-6] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 064C89000778DBBC60815A163AE6615A
+ERROR 04:35:41.540 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:41,/error/404,end,null,064C89000778DBBC60815A163AE6615A
+##########Session ID 044E1F6CECBA40D985D0AF82F6145C01 created at Sat Jun 01 04:35:43 KST 2024 Session Counts: 19
+ERROR 04:35:43.275 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 044E1F6CECBA40D985D0AF82F6145C01 created at Sat Jun 01 04:35:43 KST 2024 19
+ERROR 04:35:43.275 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:43,/error/404,start,null,044E1F6CECBA40D985D0AF82F6145C01
+ERROR 04:35:43.275 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 044E1F6CECBA40D985D0AF82F6145C01
+ERROR 04:35:43.275 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:43,/error/404,end,null,044E1F6CECBA40D985D0AF82F6145C01
+##########Session ID 7373B6775140A3F676C92D34EC83615D created at Sat Jun 01 04:35:45 KST 2024 Session Counts: 20
+ERROR 04:35:45.009 [http-bio-8443-exec-9] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 7373B6775140A3F676C92D34EC83615D created at Sat Jun 01 04:35:45 KST 2024 20
+ERROR 04:35:45.009 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:45,/error/404,start,null,7373B6775140A3F676C92D34EC83615D
+ERROR 04:35:45.009 [http-bio-8443-exec-9] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 7373B6775140A3F676C92D34EC83615D
+ERROR 04:35:45.009 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:45,/error/404,end,null,7373B6775140A3F676C92D34EC83615D
+##########Session ID 432A5E411B290094BDD6E23F4F667F09 created at Sat Jun 01 04:35:46 KST 2024 Session Counts: 21
+ERROR 04:35:46.728 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 432A5E411B290094BDD6E23F4F667F09 created at Sat Jun 01 04:35:46 KST 2024 21
+ERROR 04:35:46.728 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:46,/error/404,start,null,432A5E411B290094BDD6E23F4F667F09
+ERROR 04:35:46.728 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 432A5E411B290094BDD6E23F4F667F09
+ERROR 04:35:46.728 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:46,/error/404,end,null,432A5E411B290094BDD6E23F4F667F09
+##########Session ID 4653C22E0263055D54A53704CF5EFA79 created at Sat Jun 01 04:35:48 KST 2024 Session Counts: 22
+ERROR 04:35:48.447 [http-bio-8443-exec-3] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 4653C22E0263055D54A53704CF5EFA79 created at Sat Jun 01 04:35:48 KST 2024 22
+ERROR 04:35:48.447 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:48,/error/404,start,null,4653C22E0263055D54A53704CF5EFA79
+ERROR 04:35:48.447 [http-bio-8443-exec-3] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 4653C22E0263055D54A53704CF5EFA79
+ERROR 04:35:48.447 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:48,/error/404,end,null,4653C22E0263055D54A53704CF5EFA79
+##########Session ID B6182359CBAD2FF746D742D540A1CBDE created at Sat Jun 01 04:35:50 KST 2024 Session Counts: 23
+ERROR 04:35:50.197 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID B6182359CBAD2FF746D742D540A1CBDE created at Sat Jun 01 04:35:50 KST 2024 23
+ERROR 04:35:50.197 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:50,/error/404,start,null,B6182359CBAD2FF746D742D540A1CBDE
+ERROR 04:35:50.197 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] B6182359CBAD2FF746D742D540A1CBDE
+ERROR 04:35:50.197 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:50,/error/404,end,null,B6182359CBAD2FF746D742D540A1CBDE
+##########Session ID 3DD589774163D9DB7F715CB5197DFF1C created at Sat Jun 01 04:35:51 KST 2024 Session Counts: 24
+ERROR 04:35:51.963 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 3DD589774163D9DB7F715CB5197DFF1C created at Sat Jun 01 04:35:51 KST 2024 24
+ERROR 04:35:51.963 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:51,/error/404,start,null,3DD589774163D9DB7F715CB5197DFF1C
+ERROR 04:35:51.963 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 3DD589774163D9DB7F715CB5197DFF1C
+ERROR 04:35:51.963 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:51,/error/404,end,null,3DD589774163D9DB7F715CB5197DFF1C
+##########Session ID A9E5ACE3FA427CCA6B4C81E60C888C32 created at Sat Jun 01 04:35:53 KST 2024 Session Counts: 25
+ERROR 04:35:53.666 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID A9E5ACE3FA427CCA6B4C81E60C888C32 created at Sat Jun 01 04:35:53 KST 2024 25
+ERROR 04:35:53.666 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:53,/error/404,start,null,A9E5ACE3FA427CCA6B4C81E60C888C32
+ERROR 04:35:53.666 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] A9E5ACE3FA427CCA6B4C81E60C888C32
+ERROR 04:35:53.666 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:53,/error/404,end,null,A9E5ACE3FA427CCA6B4C81E60C888C32
+##########Session ID 1CBE5807E10EB14999A0A00EB89025C2 created at Sat Jun 01 04:35:55 KST 2024 Session Counts: 26
+ERROR 04:35:55.432 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 1CBE5807E10EB14999A0A00EB89025C2 created at Sat Jun 01 04:35:55 KST 2024 26
+ERROR 04:35:55.432 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:55,/error/404,start,null,1CBE5807E10EB14999A0A00EB89025C2
+ERROR 04:35:55.432 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 1CBE5807E10EB14999A0A00EB89025C2
+ERROR 04:35:55.432 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:55,/error/404,end,null,1CBE5807E10EB14999A0A00EB89025C2
+##########Session ID 634242C6D03175A30EFB696F6E25D2E5 created at Sat Jun 01 04:35:57 KST 2024 Session Counts: 27
+ERROR 04:35:57.197 [http-bio-8443-exec-7] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 634242C6D03175A30EFB696F6E25D2E5 created at Sat Jun 01 04:35:57 KST 2024 27
+ERROR 04:35:57.197 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:57,/error/404,start,null,634242C6D03175A30EFB696F6E25D2E5
+ERROR 04:35:57.197 [http-bio-8443-exec-7] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 634242C6D03175A30EFB696F6E25D2E5
+ERROR 04:35:57.197 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:57,/error/404,end,null,634242C6D03175A30EFB696F6E25D2E5
+##########Session ID 22D1D0A961DE3B4204BA25A775D37E1B created at Sat Jun 01 04:35:58 KST 2024 Session Counts: 28
+ERROR 04:35:58.947 [http-bio-8443-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 22D1D0A961DE3B4204BA25A775D37E1B created at Sat Jun 01 04:35:58 KST 2024 28
+ERROR 04:35:58.947 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:58,/error/404,start,null,22D1D0A961DE3B4204BA25A775D37E1B
+ERROR 04:35:58.947 [http-bio-8443-exec-6] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 22D1D0A961DE3B4204BA25A775D37E1B
+ERROR 04:35:58.947 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:35:58,/error/404,end,null,22D1D0A961DE3B4204BA25A775D37E1B
+##########Session ID E4532DE597F98867F765564FE1E44474 created at Sat Jun 01 04:36:00 KST 2024 Session Counts: 29
+ERROR 04:36:00.697 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID E4532DE597F98867F765564FE1E44474 created at Sat Jun 01 04:36:00 KST 2024 29
+ERROR 04:36:00.697 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:00,/error/404,start,null,E4532DE597F98867F765564FE1E44474
+ERROR 04:36:00.697 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] E4532DE597F98867F765564FE1E44474
+ERROR 04:36:00.697 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:00,/error/404,end,null,E4532DE597F98867F765564FE1E44474
+##########Session ID 5527DF7062D2D612B384E4FA2778EF64 created at Sat Jun 01 04:36:04 KST 2024 Session Counts: 31
+ERROR 04:36:04.213 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 5527DF7062D2D612B384E4FA2778EF64 created at Sat Jun 01 04:36:04 KST 2024 31
+ERROR 04:36:04.213 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:04,/error/404,start,null,5527DF7062D2D612B384E4FA2778EF64
+ERROR 04:36:04.213 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 5527DF7062D2D612B384E4FA2778EF64
+ERROR 04:36:04.213 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:04,/error/404,end,null,5527DF7062D2D612B384E4FA2778EF64
+##########Session ID 636936DFD7B17CB62F99F399D244472C created at Sat Jun 01 04:36:05 KST 2024 Session Counts: 32
+ERROR 04:36:05.963 [http-bio-8443-exec-3] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 636936DFD7B17CB62F99F399D244472C created at Sat Jun 01 04:36:05 KST 2024 32
+ERROR 04:36:05.963 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:05,/error/404,start,null,636936DFD7B17CB62F99F399D244472C
+ERROR 04:36:05.963 [http-bio-8443-exec-3] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 636936DFD7B17CB62F99F399D244472C
+ERROR 04:36:05.963 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:05,/error/404,end,null,636936DFD7B17CB62F99F399D244472C
+##########Session ID DD1CEA42705BA8CF3B2966A885182C99 created at Sat Jun 01 04:36:07 KST 2024 Session Counts: 33
+ERROR 04:36:07.713 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID DD1CEA42705BA8CF3B2966A885182C99 created at Sat Jun 01 04:36:07 KST 2024 33
+ERROR 04:36:07.713 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:07,/error/404,start,null,DD1CEA42705BA8CF3B2966A885182C99
+ERROR 04:36:07.713 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] DD1CEA42705BA8CF3B2966A885182C99
+ERROR 04:36:07.713 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:07,/error/404,end,null,DD1CEA42705BA8CF3B2966A885182C99
+##########Session ID 9D7DAED0F8598343983761C6C0AC79F7 created at Sat Jun 01 04:36:09 KST 2024 Session Counts: 34
+ERROR 04:36:09.417 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 9D7DAED0F8598343983761C6C0AC79F7 created at Sat Jun 01 04:36:09 KST 2024 34
+ERROR 04:36:09.432 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:09,/error/404,start,null,9D7DAED0F8598343983761C6C0AC79F7
+ERROR 04:36:09.432 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 9D7DAED0F8598343983761C6C0AC79F7
+ERROR 04:36:09.432 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:09,/error/404,end,null,9D7DAED0F8598343983761C6C0AC79F7
+##########Session ID 55354FF0C3149964CDA4AAF0D3520B27 created at Sat Jun 01 04:36:11 KST 2024 Session Counts: 35
+ERROR 04:36:11.214 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 55354FF0C3149964CDA4AAF0D3520B27 created at Sat Jun 01 04:36:11 KST 2024 35
+ERROR 04:36:11.214 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:11,/error/404,start,null,55354FF0C3149964CDA4AAF0D3520B27
+ERROR 04:36:11.214 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 55354FF0C3149964CDA4AAF0D3520B27
+ERROR 04:36:11.214 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:11,/error/404,end,null,55354FF0C3149964CDA4AAF0D3520B27
+##########Session ID 4DCF5A92913B0B2CC992A95772CA8903 created at Sat Jun 01 04:36:12 KST 2024 Session Counts: 36
+ERROR 04:36:12.995 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 4DCF5A92913B0B2CC992A95772CA8903 created at Sat Jun 01 04:36:12 KST 2024 36
+ERROR 04:36:12.995 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:12,/error/404,start,null,4DCF5A92913B0B2CC992A95772CA8903
+ERROR 04:36:12.995 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 4DCF5A92913B0B2CC992A95772CA8903
+ERROR 04:36:12.995 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:12,/error/404,end,null,4DCF5A92913B0B2CC992A95772CA8903
+##########Session ID 4DB74448B02A58AEF47262E848951FD7 created at Sat Jun 01 04:36:14 KST 2024 Session Counts: 37
+ERROR 04:36:14.667 [http-bio-8443-exec-7] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 4DB74448B02A58AEF47262E848951FD7 created at Sat Jun 01 04:36:14 KST 2024 37
+ERROR 04:36:14.667 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:14,/error/404,start,null,4DB74448B02A58AEF47262E848951FD7
+ERROR 04:36:14.667 [http-bio-8443-exec-7] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 4DB74448B02A58AEF47262E848951FD7
+ERROR 04:36:14.667 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:14,/error/404,end,null,4DB74448B02A58AEF47262E848951FD7
+##########Session ID 4D9EEA411DC9D03C30E8FBBEC0BD28BA created at Sat Jun 01 04:36:16 KST 2024 Session Counts: 38
+ERROR 04:36:16.386 [http-bio-8443-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 4D9EEA411DC9D03C30E8FBBEC0BD28BA created at Sat Jun 01 04:36:16 KST 2024 38
+ERROR 04:36:16.386 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:16,/error/404,start,null,4D9EEA411DC9D03C30E8FBBEC0BD28BA
+ERROR 04:36:16.386 [http-bio-8443-exec-6] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 4D9EEA411DC9D03C30E8FBBEC0BD28BA
+ERROR 04:36:16.386 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:16,/error/404,end,null,4D9EEA411DC9D03C30E8FBBEC0BD28BA
+##########Session ID 1F3BC43420E3403645C5EEF008BF806B created at Sat Jun 01 04:36:18 KST 2024 Session Counts: 39
+ERROR 04:36:18.073 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 1F3BC43420E3403645C5EEF008BF806B created at Sat Jun 01 04:36:18 KST 2024 39
+ERROR 04:36:18.089 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:18,/error/404,start,null,1F3BC43420E3403645C5EEF008BF806B
+ERROR 04:36:18.089 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 1F3BC43420E3403645C5EEF008BF806B
+ERROR 04:36:18.089 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:18,/error/404,end,null,1F3BC43420E3403645C5EEF008BF806B
+##########Session ID 6736FF975BE6A3BBE5E521C7EE8688C5 created at Sat Jun 01 04:36:19 KST 2024 Session Counts: 40
+ERROR 04:36:19.823 [http-bio-8443-exec-9] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 6736FF975BE6A3BBE5E521C7EE8688C5 created at Sat Jun 01 04:36:19 KST 2024 40
+ERROR 04:36:19.823 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:19,/error/404,start,null,6736FF975BE6A3BBE5E521C7EE8688C5
+ERROR 04:36:19.823 [http-bio-8443-exec-9] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 6736FF975BE6A3BBE5E521C7EE8688C5
+ERROR 04:36:19.823 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:19,/error/404,end,null,6736FF975BE6A3BBE5E521C7EE8688C5
+##########Session ID 08079DCA72532267EFA34EB1AADE94EA created at Sat Jun 01 04:36:21 KST 2024 Session Counts: 41
+ERROR 04:36:21.542 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 08079DCA72532267EFA34EB1AADE94EA created at Sat Jun 01 04:36:21 KST 2024 41
+ERROR 04:36:21.542 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:21,/error/404,start,null,08079DCA72532267EFA34EB1AADE94EA
+ERROR 04:36:21.542 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 08079DCA72532267EFA34EB1AADE94EA
+ERROR 04:36:21.542 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:21,/error/404,end,null,08079DCA72532267EFA34EB1AADE94EA
+##########Session ID 0BBEA0D89FE690DA36B0424887087E80 created at Sat Jun 01 04:36:23 KST 2024 Session Counts: 42
+ERROR 04:36:23.292 [http-bio-8443-exec-3] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 0BBEA0D89FE690DA36B0424887087E80 created at Sat Jun 01 04:36:23 KST 2024 42
+ERROR 04:36:23.292 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:23,/error/404,start,null,0BBEA0D89FE690DA36B0424887087E80
+ERROR 04:36:23.292 [http-bio-8443-exec-3] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 0BBEA0D89FE690DA36B0424887087E80
+ERROR 04:36:23.292 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:23,/error/404,end,null,0BBEA0D89FE690DA36B0424887087E80
+##########Session ID E55B535CD1038006AFCE9DBF2DDBBFAF created at Sat Jun 01 04:36:24 KST 2024 Session Counts: 43
+ERROR 04:36:24.996 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID E55B535CD1038006AFCE9DBF2DDBBFAF created at Sat Jun 01 04:36:24 KST 2024 43
+ERROR 04:36:24.996 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:24,/error/404,start,null,E55B535CD1038006AFCE9DBF2DDBBFAF
+ERROR 04:36:24.996 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] E55B535CD1038006AFCE9DBF2DDBBFAF
+ERROR 04:36:24.996 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:24,/error/404,end,null,E55B535CD1038006AFCE9DBF2DDBBFAF
+##########Session ID BA5138AF1DC90039FADCF893D29C0471 created at Sat Jun 01 04:36:26 KST 2024 Session Counts: 44
+ERROR 04:36:26.668 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID BA5138AF1DC90039FADCF893D29C0471 created at Sat Jun 01 04:36:26 KST 2024 44
+ERROR 04:36:26.668 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:26,/error/404,start,null,BA5138AF1DC90039FADCF893D29C0471
+ERROR 04:36:26.668 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] BA5138AF1DC90039FADCF893D29C0471
+ERROR 04:36:26.668 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:26,/error/404,end,null,BA5138AF1DC90039FADCF893D29C0471
+##########Session ID EAE06845F3FF77D048738C228EE6ED0B created at Sat Jun 01 04:36:28 KST 2024 Session Counts: 45
+ERROR 04:36:28.433 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID EAE06845F3FF77D048738C228EE6ED0B created at Sat Jun 01 04:36:28 KST 2024 45
+ERROR 04:36:28.433 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:28,/error/404,start,null,EAE06845F3FF77D048738C228EE6ED0B
+ERROR 04:36:28.433 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] EAE06845F3FF77D048738C228EE6ED0B
+ERROR 04:36:28.433 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:28,/error/404,end,null,EAE06845F3FF77D048738C228EE6ED0B
+##########Session ID 77A8F4DCFBE860EC0FEC30CB1D40BA18 created at Sat Jun 01 04:36:30 KST 2024 Session Counts: 46
+ERROR 04:36:30.183 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 77A8F4DCFBE860EC0FEC30CB1D40BA18 created at Sat Jun 01 04:36:30 KST 2024 46
+ERROR 04:36:30.183 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:30,/error/404,start,null,77A8F4DCFBE860EC0FEC30CB1D40BA18
+ERROR 04:36:30.183 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 77A8F4DCFBE860EC0FEC30CB1D40BA18
+ERROR 04:36:30.183 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:30,/error/404,end,null,77A8F4DCFBE860EC0FEC30CB1D40BA18
+##########Session ID 94603D19AFEF2F4F48B7ACEE204EE16E created at Sat Jun 01 04:36:34 KST 2024 Session Counts: 48
+ERROR 04:36:34.887 [http-bio-8443-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 94603D19AFEF2F4F48B7ACEE204EE16E created at Sat Jun 01 04:36:34 KST 2024 48
+ERROR 04:36:34.887 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:34,/error/404,start,null,94603D19AFEF2F4F48B7ACEE204EE16E
+ERROR 04:36:34.887 [http-bio-8443-exec-6] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 94603D19AFEF2F4F48B7ACEE204EE16E
+ERROR 04:36:34.887 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:34,/error/404,end,null,94603D19AFEF2F4F48B7ACEE204EE16E
+##########Session ID 5EC7BFF7B7D87F9E85BEC4D2D0EACBF5 created at Sat Jun 01 04:36:40 KST 2024 Session Counts: 49
+ERROR 04:36:40.153 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 5EC7BFF7B7D87F9E85BEC4D2D0EACBF5 created at Sat Jun 01 04:36:40 KST 2024 49
+ERROR 04:36:40.153 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:40,/error/404,start,null,5EC7BFF7B7D87F9E85BEC4D2D0EACBF5
+ERROR 04:36:40.153 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 5EC7BFF7B7D87F9E85BEC4D2D0EACBF5
+ERROR 04:36:40.153 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:40,/error/404,end,null,5EC7BFF7B7D87F9E85BEC4D2D0EACBF5
+##########Session ID E792A5766150D8230874BC1B3A16632A created at Sat Jun 01 04:36:44 KST 2024 Session Counts: 50
+ERROR 04:36:44.872 [http-bio-8443-exec-9] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID E792A5766150D8230874BC1B3A16632A created at Sat Jun 01 04:36:44 KST 2024 50
+ERROR 04:36:44.872 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:44,/error/404,start,null,E792A5766150D8230874BC1B3A16632A
+ERROR 04:36:44.872 [http-bio-8443-exec-9] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] E792A5766150D8230874BC1B3A16632A
+ERROR 04:36:44.872 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:44,/error/404,end,null,E792A5766150D8230874BC1B3A16632A
+##########Session ID 77407B0BB8F7F91EED8716B231B69F61 created at Sat Jun 01 04:36:46 KST 2024 Session Counts: 51
+ERROR 04:36:46.590 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 77407B0BB8F7F91EED8716B231B69F61 created at Sat Jun 01 04:36:46 KST 2024 51
+ERROR 04:36:46.590 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:46,/error/404,start,null,77407B0BB8F7F91EED8716B231B69F61
+ERROR 04:36:46.590 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 77407B0BB8F7F91EED8716B231B69F61
+ERROR 04:36:46.590 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:46,/error/404,end,null,77407B0BB8F7F91EED8716B231B69F61
+##########Session ID A8CF7F1C4E47E7A6F9828E747745C3B8 created at Sat Jun 01 04:36:48 KST 2024 Session Counts: 52
+ERROR 04:36:48.278 [http-bio-8443-exec-3] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID A8CF7F1C4E47E7A6F9828E747745C3B8 created at Sat Jun 01 04:36:48 KST 2024 52
+ERROR 04:36:48.294 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:48,/error/404,start,null,A8CF7F1C4E47E7A6F9828E747745C3B8
+ERROR 04:36:48.294 [http-bio-8443-exec-3] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] A8CF7F1C4E47E7A6F9828E747745C3B8
+ERROR 04:36:48.294 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:48,/error/404,end,null,A8CF7F1C4E47E7A6F9828E747745C3B8
+##########Session ID 6EA1F578B011AE779B0E6B4A2B9AF49E created at Sat Jun 01 04:36:49 KST 2024 Session Counts: 53
+ERROR 04:36:49.981 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 6EA1F578B011AE779B0E6B4A2B9AF49E created at Sat Jun 01 04:36:49 KST 2024 53
+ERROR 04:36:49.981 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:49,/error/404,start,null,6EA1F578B011AE779B0E6B4A2B9AF49E
+ERROR 04:36:49.981 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 6EA1F578B011AE779B0E6B4A2B9AF49E
+ERROR 04:36:49.981 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:49,/error/404,end,null,6EA1F578B011AE779B0E6B4A2B9AF49E
+##########Session ID FCA681FAE731C75E28615B26AE1C8188 created at Sat Jun 01 04:36:51 KST 2024 Session Counts: 54
+ERROR 04:36:51.684 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID FCA681FAE731C75E28615B26AE1C8188 created at Sat Jun 01 04:36:51 KST 2024 54
+ERROR 04:36:51.684 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:51,/error/404,start,null,FCA681FAE731C75E28615B26AE1C8188
+ERROR 04:36:51.684 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] FCA681FAE731C75E28615B26AE1C8188
+ERROR 04:36:51.684 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:51,/error/404,end,null,FCA681FAE731C75E28615B26AE1C8188
+##########Session ID 6A95C4976F673A0825F0F30EC9A782DE created at Sat Jun 01 04:36:53 KST 2024 Session Counts: 55
+ERROR 04:36:53.372 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 6A95C4976F673A0825F0F30EC9A782DE created at Sat Jun 01 04:36:53 KST 2024 55
+ERROR 04:36:53.372 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:53,/error/404,start,null,6A95C4976F673A0825F0F30EC9A782DE
+ERROR 04:36:53.372 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 6A95C4976F673A0825F0F30EC9A782DE
+ERROR 04:36:53.372 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:53,/error/404,end,null,6A95C4976F673A0825F0F30EC9A782DE
+##########Session ID 824E19B96E0A830F5EC9C7219B0DB8C3 created at Sat Jun 01 04:36:58 KST 2024 Session Counts: 56
+ERROR 04:36:58.107 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 824E19B96E0A830F5EC9C7219B0DB8C3 created at Sat Jun 01 04:36:58 KST 2024 56
+ERROR 04:36:58.107 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:58,/error/404,start,null,824E19B96E0A830F5EC9C7219B0DB8C3
+ERROR 04:36:58.107 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 824E19B96E0A830F5EC9C7219B0DB8C3
+ERROR 04:36:58.107 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:58,/error/404,end,null,824E19B96E0A830F5EC9C7219B0DB8C3
+##########Session ID 692E4077B4892795062F1EFBF2B54981 created at Sat Jun 01 04:36:59 KST 2024 Session Counts: 57
+ERROR 04:36:59.825 [http-bio-8443-exec-7] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 692E4077B4892795062F1EFBF2B54981 created at Sat Jun 01 04:36:59 KST 2024 57
+ERROR 04:36:59.825 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:59,/error/404,start,null,692E4077B4892795062F1EFBF2B54981
+ERROR 04:36:59.825 [http-bio-8443-exec-7] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 692E4077B4892795062F1EFBF2B54981
+ERROR 04:36:59.825 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:36:59,/error/404,end,null,692E4077B4892795062F1EFBF2B54981
+##########Session ID B17685A7EB06D2FBFEF3811CE7D3F9C0 created at Sat Jun 01 04:37:01 KST 2024 Session Counts: 58
+ERROR 04:37:01.513 [http-bio-8443-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID B17685A7EB06D2FBFEF3811CE7D3F9C0 created at Sat Jun 01 04:37:01 KST 2024 58
+ERROR 04:37:01.513 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:37:01,/error/404,start,null,B17685A7EB06D2FBFEF3811CE7D3F9C0
+ERROR 04:37:01.513 [http-bio-8443-exec-6] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] B17685A7EB06D2FBFEF3811CE7D3F9C0
+ERROR 04:37:01.513 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:37:01,/error/404,end,null,B17685A7EB06D2FBFEF3811CE7D3F9C0
+##########Session ID 5598D8147DE30A65630E68571535FE4B created at Sat Jun 01 04:37:04 KST 2024 Session Counts: 60
+ERROR 04:37:04.888 [http-bio-8443-exec-9] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 5598D8147DE30A65630E68571535FE4B created at Sat Jun 01 04:37:04 KST 2024 60
+ERROR 04:37:04.888 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:37:04,/error/404,start,null,5598D8147DE30A65630E68571535FE4B
+ERROR 04:37:04.888 [http-bio-8443-exec-9] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 5598D8147DE30A65630E68571535FE4B
+ERROR 04:37:04.888 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-01 04:37:04,/error/404,end,null,5598D8147DE30A65630E68571535FE4B
+##########Session ID 0F11890339B5BAD76268F417760ED3D6 destroyed at Sat Jun 01 05:03:19 KST 2024 Session Counts:  59
+ERROR 05:03:19.415 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0F11890339B5BAD76268F417760ED3D6 destroyed at Sat Jun 01 05:03:19 KST 2024 59
+##########Session ID 0EF4A68DCE44A8F60E3234E295C79D73 destroyed at Sat Jun 01 07:35:25 KST 2024 Session Counts:  58
+ERROR 07:35:25.416 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0EF4A68DCE44A8F60E3234E295C79D73 destroyed at Sat Jun 01 07:35:25 KST 2024 58
+##########Session ID 9112AD834A4C488476BCBF52FD8EEF5E destroyed at Sat Jun 01 07:35:25 KST 2024 Session Counts:  57
+ERROR 07:35:25.416 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 9112AD834A4C488476BCBF52FD8EEF5E destroyed at Sat Jun 01 07:35:25 KST 2024 57
+##########Session ID 8399EDE7CAD8B8AEC6E98A9A8762E023 destroyed at Sat Jun 01 07:35:25 KST 2024 Session Counts:  56
+ERROR 07:35:25.416 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8399EDE7CAD8B8AEC6E98A9A8762E023 destroyed at Sat Jun 01 07:35:25 KST 2024 56
+##########Session ID 9C0177A380A0FCA86C3BD024DB710C4A destroyed at Sat Jun 01 07:35:25 KST 2024 Session Counts:  55
+ERROR 07:35:25.416 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 9C0177A380A0FCA86C3BD024DB710C4A destroyed at Sat Jun 01 07:35:25 KST 2024 55
+##########Session ID 035D0C8FA3C9AEE7F378C7CFDE451FF6 destroyed at Sat Jun 01 07:35:25 KST 2024 Session Counts:  54
+ERROR 07:35:25.416 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 035D0C8FA3C9AEE7F378C7CFDE451FF6 destroyed at Sat Jun 01 07:35:25 KST 2024 54
+##########Session ID 9978605B572CCB17DBEAFDB3524D32C1 destroyed at Sat Jun 01 07:35:25 KST 2024 Session Counts:  53
+ERROR 07:35:25.416 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 9978605B572CCB17DBEAFDB3524D32C1 destroyed at Sat Jun 01 07:35:25 KST 2024 53
+##########Session ID EC9B78D491E9508751FE1163AB85F1AE destroyed at Sat Jun 01 07:35:25 KST 2024 Session Counts:  52
+ERROR 07:35:25.416 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID EC9B78D491E9508751FE1163AB85F1AE destroyed at Sat Jun 01 07:35:25 KST 2024 52
+##########Session ID 8775A679B9ED4C8F7A463C7957AEC56F destroyed at Sat Jun 01 07:35:25 KST 2024 Session Counts:  51
+ERROR 07:35:25.416 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8775A679B9ED4C8F7A463C7957AEC56F destroyed at Sat Jun 01 07:35:25 KST 2024 51
+##########Session ID 57451421CAC61B28077C520C0C2F46F1 destroyed at Sat Jun 01 07:35:25 KST 2024 Session Counts:  50
+ERROR 07:35:25.416 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 57451421CAC61B28077C520C0C2F46F1 destroyed at Sat Jun 01 07:35:25 KST 2024 50
+##########Session ID 5577CE0E7DF06795B02DF97257EFBC7D destroyed at Sat Jun 01 07:35:25 KST 2024 Session Counts:  49
+ERROR 07:35:25.416 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 5577CE0E7DF06795B02DF97257EFBC7D destroyed at Sat Jun 01 07:35:25 KST 2024 49
+##########Session ID 08079DCA72532267EFA34EB1AADE94EA destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  48
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 08079DCA72532267EFA34EB1AADE94EA destroyed at Sat Jun 01 07:36:25 KST 2024 48
+##########Session ID 57E022C0ABC300DAD975B8948CBEC48B destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  47
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 57E022C0ABC300DAD975B8948CBEC48B destroyed at Sat Jun 01 07:36:25 KST 2024 47
+##########Session ID 4DB74448B02A58AEF47262E848951FD7 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  46
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 4DB74448B02A58AEF47262E848951FD7 destroyed at Sat Jun 01 07:36:25 KST 2024 46
+##########Session ID E4532DE597F98867F765564FE1E44474 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  45
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E4532DE597F98867F765564FE1E44474 destroyed at Sat Jun 01 07:36:25 KST 2024 45
+##########Session ID 1CBE5807E10EB14999A0A00EB89025C2 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  44
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 1CBE5807E10EB14999A0A00EB89025C2 destroyed at Sat Jun 01 07:36:25 KST 2024 44
+##########Session ID 0E8058EDDCAA51111A7A93D045A8A6DB destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  43
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0E8058EDDCAA51111A7A93D045A8A6DB destroyed at Sat Jun 01 07:36:25 KST 2024 43
+##########Session ID 27358D17BD1D49D98B438E989A3C41AC destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  42
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 27358D17BD1D49D98B438E989A3C41AC destroyed at Sat Jun 01 07:36:25 KST 2024 42
+##########Session ID 4653C22E0263055D54A53704CF5EFA79 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  41
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 4653C22E0263055D54A53704CF5EFA79 destroyed at Sat Jun 01 07:36:25 KST 2024 41
+##########Session ID 48F089F87661B14085E45AB35FB35D3F destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  40
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 48F089F87661B14085E45AB35FB35D3F destroyed at Sat Jun 01 07:36:25 KST 2024 40
+##########Session ID A9E5ACE3FA427CCA6B4C81E60C888C32 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  39
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A9E5ACE3FA427CCA6B4C81E60C888C32 destroyed at Sat Jun 01 07:36:25 KST 2024 39
+##########Session ID 9DC3EC014B23D83DA5BCD2CDA045A8F6 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  38
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 9DC3EC014B23D83DA5BCD2CDA045A8F6 destroyed at Sat Jun 01 07:36:25 KST 2024 38
+##########Session ID 22D1D0A961DE3B4204BA25A775D37E1B destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  37
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 22D1D0A961DE3B4204BA25A775D37E1B destroyed at Sat Jun 01 07:36:25 KST 2024 37
+##########Session ID 636936DFD7B17CB62F99F399D244472C destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  36
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 636936DFD7B17CB62F99F399D244472C destroyed at Sat Jun 01 07:36:25 KST 2024 36
+##########Session ID 2B9C471973C8EFA06969214B2F72C692 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  35
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 2B9C471973C8EFA06969214B2F72C692 destroyed at Sat Jun 01 07:36:25 KST 2024 35
+##########Session ID 0BBEA0D89FE690DA36B0424887087E80 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  34
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0BBEA0D89FE690DA36B0424887087E80 destroyed at Sat Jun 01 07:36:25 KST 2024 34
+##########Session ID 797FF71A10D6D519B3FD0A446921E626 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  33
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 797FF71A10D6D519B3FD0A446921E626 destroyed at Sat Jun 01 07:36:25 KST 2024 33
+##########Session ID 634242C6D03175A30EFB696F6E25D2E5 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  32
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 634242C6D03175A30EFB696F6E25D2E5 destroyed at Sat Jun 01 07:36:25 KST 2024 32
+##########Session ID 064C89000778DBBC60815A163AE6615A destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  31
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 064C89000778DBBC60815A163AE6615A destroyed at Sat Jun 01 07:36:25 KST 2024 31
+##########Session ID DD1CEA42705BA8CF3B2966A885182C99 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  30
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID DD1CEA42705BA8CF3B2966A885182C99 destroyed at Sat Jun 01 07:36:25 KST 2024 30
+##########Session ID 6736FF975BE6A3BBE5E521C7EE8688C5 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  29
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 6736FF975BE6A3BBE5E521C7EE8688C5 destroyed at Sat Jun 01 07:36:25 KST 2024 29
+##########Session ID 1F3BC43420E3403645C5EEF008BF806B destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  28
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 1F3BC43420E3403645C5EEF008BF806B destroyed at Sat Jun 01 07:36:25 KST 2024 28
+##########Session ID E55B535CD1038006AFCE9DBF2DDBBFAF destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  27
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E55B535CD1038006AFCE9DBF2DDBBFAF destroyed at Sat Jun 01 07:36:25 KST 2024 27
+##########Session ID 9D7DAED0F8598343983761C6C0AC79F7 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  26
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 9D7DAED0F8598343983761C6C0AC79F7 destroyed at Sat Jun 01 07:36:25 KST 2024 26
+##########Session ID 4DCF5A92913B0B2CC992A95772CA8903 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  25
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 4DCF5A92913B0B2CC992A95772CA8903 destroyed at Sat Jun 01 07:36:25 KST 2024 25
+##########Session ID 5527DF7062D2D612B384E4FA2778EF64 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  24
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 5527DF7062D2D612B384E4FA2778EF64 destroyed at Sat Jun 01 07:36:25 KST 2024 24
+##########Session ID BAC67B258BF4233A0616FBEC7A53C789 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  23
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID BAC67B258BF4233A0616FBEC7A53C789 destroyed at Sat Jun 01 07:36:25 KST 2024 23
+##########Session ID 044E1F6CECBA40D985D0AF82F6145C01 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  22
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 044E1F6CECBA40D985D0AF82F6145C01 destroyed at Sat Jun 01 07:36:25 KST 2024 22
+##########Session ID B6182359CBAD2FF746D742D540A1CBDE destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  21
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID B6182359CBAD2FF746D742D540A1CBDE destroyed at Sat Jun 01 07:36:25 KST 2024 21
+##########Session ID 7373B6775140A3F676C92D34EC83615D destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  20
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 7373B6775140A3F676C92D34EC83615D destroyed at Sat Jun 01 07:36:25 KST 2024 20
+##########Session ID 3DD589774163D9DB7F715CB5197DFF1C destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  19
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 3DD589774163D9DB7F715CB5197DFF1C destroyed at Sat Jun 01 07:36:25 KST 2024 19
+##########Session ID 55354FF0C3149964CDA4AAF0D3520B27 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  18
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 55354FF0C3149964CDA4AAF0D3520B27 destroyed at Sat Jun 01 07:36:25 KST 2024 18
+##########Session ID 432A5E411B290094BDD6E23F4F667F09 destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  17
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 432A5E411B290094BDD6E23F4F667F09 destroyed at Sat Jun 01 07:36:25 KST 2024 17
+##########Session ID 4D9EEA411DC9D03C30E8FBBEC0BD28BA destroyed at Sat Jun 01 07:36:25 KST 2024 Session Counts:  16
+ERROR 07:36:25.450 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 4D9EEA411DC9D03C30E8FBBEC0BD28BA destroyed at Sat Jun 01 07:36:25 KST 2024 16
+##########Session ID 20272F5CFCDD5DF49D9C04EAE8320A68 destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  15
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 20272F5CFCDD5DF49D9C04EAE8320A68 destroyed at Sat Jun 01 07:37:25 KST 2024 15
+##########Session ID 77A8F4DCFBE860EC0FEC30CB1D40BA18 destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  14
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 77A8F4DCFBE860EC0FEC30CB1D40BA18 destroyed at Sat Jun 01 07:37:25 KST 2024 14
+##########Session ID B17685A7EB06D2FBFEF3811CE7D3F9C0 destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  13
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID B17685A7EB06D2FBFEF3811CE7D3F9C0 destroyed at Sat Jun 01 07:37:25 KST 2024 13
+##########Session ID BA5138AF1DC90039FADCF893D29C0471 destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  12
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID BA5138AF1DC90039FADCF893D29C0471 destroyed at Sat Jun 01 07:37:25 KST 2024 12
+##########Session ID FCA681FAE731C75E28615B26AE1C8188 destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  11
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID FCA681FAE731C75E28615B26AE1C8188 destroyed at Sat Jun 01 07:37:25 KST 2024 11
+##########Session ID 6A95C4976F673A0825F0F30EC9A782DE destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  10
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 6A95C4976F673A0825F0F30EC9A782DE destroyed at Sat Jun 01 07:37:25 KST 2024 10
+##########Session ID 692E4077B4892795062F1EFBF2B54981 destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  9
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 692E4077B4892795062F1EFBF2B54981 destroyed at Sat Jun 01 07:37:25 KST 2024 9
+##########Session ID 77407B0BB8F7F91EED8716B231B69F61 destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  8
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 77407B0BB8F7F91EED8716B231B69F61 destroyed at Sat Jun 01 07:37:25 KST 2024 8
+##########Session ID EAE06845F3FF77D048738C228EE6ED0B destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  7
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID EAE06845F3FF77D048738C228EE6ED0B destroyed at Sat Jun 01 07:37:25 KST 2024 7
+##########Session ID 5EC7BFF7B7D87F9E85BEC4D2D0EACBF5 destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  6
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 5EC7BFF7B7D87F9E85BEC4D2D0EACBF5 destroyed at Sat Jun 01 07:37:25 KST 2024 6
+##########Session ID 6EA1F578B011AE779B0E6B4A2B9AF49E destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  5
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 6EA1F578B011AE779B0E6B4A2B9AF49E destroyed at Sat Jun 01 07:37:25 KST 2024 5
+##########Session ID E792A5766150D8230874BC1B3A16632A destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  4
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E792A5766150D8230874BC1B3A16632A destroyed at Sat Jun 01 07:37:25 KST 2024 4
+##########Session ID 0BF002ACD8A461FF0E8BCC990816A936 destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  3
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 0BF002ACD8A461FF0E8BCC990816A936 destroyed at Sat Jun 01 07:37:25 KST 2024 3
+##########Session ID 5598D8147DE30A65630E68571535FE4B destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  2
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 5598D8147DE30A65630E68571535FE4B destroyed at Sat Jun 01 07:37:25 KST 2024 2
+##########Session ID 824E19B96E0A830F5EC9C7219B0DB8C3 destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  1
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 824E19B96E0A830F5EC9C7219B0DB8C3 destroyed at Sat Jun 01 07:37:25 KST 2024 1
+##########Session ID A8CF7F1C4E47E7A6F9828E747745C3B8 destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  0
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A8CF7F1C4E47E7A6F9828E747745C3B8 destroyed at Sat Jun 01 07:37:25 KST 2024 0
+##########Session ID 94603D19AFEF2F4F48B7ACEE204EE16E destroyed at Sat Jun 01 07:37:25 KST 2024 Session Counts:  -1
+ERROR 07:37:25.484 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 94603D19AFEF2F4F48B7ACEE204EE16E destroyed at Sat Jun 01 07:37:25 KST 2024 -1
+##########Session ID CAFC673DADB5F91D3A56F55EB2B2D1DE destroyed at Sat Jun 01 12:19:36 KST 2024 Session Counts:  -1
+ERROR 12:19:36.550 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID CAFC673DADB5F91D3A56F55EB2B2D1DE destroyed at Sat Jun 01 12:19:36 KST 2024 -1
+##########Session ID BA615ABAA193B89E25DA1BC7F1EA0F6E created at Sat Jun 01 14:22:18 KST 2024 Session Counts: 2
+ERROR 14:22:18.403 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID BA615ABAA193B89E25DA1BC7F1EA0F6E created at Sat Jun 01 14:22:18 KST 2024 2
+ERROR 14:22:18.403 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-01 14:22:18,/error/404,start,null,BA615ABAA193B89E25DA1BC7F1EA0F6E
+ERROR 14:22:18.403 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] BA615ABAA193B89E25DA1BC7F1EA0F6E
+ERROR 14:22:18.403 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-01 14:22:18,/error/404,end,null,BA615ABAA193B89E25DA1BC7F1EA0F6E
+##########Session ID 1B5606357FE13EE29CFB7A6B47219EEE created at Sat Jun 01 14:22:19 KST 2024 Session Counts: 3
+ERROR 14:22:19.122 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 1B5606357FE13EE29CFB7A6B47219EEE created at Sat Jun 01 14:22:19 KST 2024 3
+ERROR 14:22:19.122 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-01 14:22:19,/error/404,start,null,1B5606357FE13EE29CFB7A6B47219EEE
+ERROR 14:22:19.122 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 1B5606357FE13EE29CFB7A6B47219EEE
+ERROR 14:22:19.122 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-01 14:22:19,/error/404,end,null,1B5606357FE13EE29CFB7A6B47219EEE
+##########Session ID 40E1C922F4245F34AFAC383EB41B6F28 created at Sat Jun 01 16:28:30 KST 2024 Session Counts: 4
+ERROR 16:28:30.861 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 40E1C922F4245F34AFAC383EB41B6F28 created at Sat Jun 01 16:28:30 KST 2024 4
+ERROR 16:28:30.861 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 16:28:30,/error/404,start,null,40E1C922F4245F34AFAC383EB41B6F28
+ERROR 16:28:30.861 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 40E1C922F4245F34AFAC383EB41B6F28
+ERROR 16:28:30.861 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 16:28:30,/error/404,end,null,40E1C922F4245F34AFAC383EB41B6F28
+##########Session ID 75EEC5C000EC457DFE2F184A594525B3 created at Sat Jun 01 16:28:57 KST 2024 Session Counts: 7
+ERROR 16:28:57.769 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 75EEC5C000EC457DFE2F184A594525B3 created at Sat Jun 01 16:28:57 KST 2024 7
+ERROR 16:28:57.769 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 16:28:57,/error/404,start,null,75EEC5C000EC457DFE2F184A594525B3
+ERROR 16:28:57.769 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 75EEC5C000EC457DFE2F184A594525B3
+ERROR 16:28:57.769 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-01 16:28:57,/error/404,end,null,75EEC5C000EC457DFE2F184A594525B3
+##########Session ID F2D04DC00DC8FABDD037537A31243C7A destroyed at Sat Jun 01 17:11:47 KST 2024 Session Counts:  6
+ERROR 17:11:47.817 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID F2D04DC00DC8FABDD037537A31243C7A destroyed at Sat Jun 01 17:11:47 KST 2024 6
+##########Session ID 315167714999130BD0289CD9998A2B9D destroyed at Sat Jun 01 17:11:47 KST 2024 Session Counts:  5
+ERROR 17:11:47.817 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 315167714999130BD0289CD9998A2B9D destroyed at Sat Jun 01 17:11:47 KST 2024 5
+##########Session ID BA615ABAA193B89E25DA1BC7F1EA0F6E destroyed at Sat Jun 01 17:22:48 KST 2024 Session Counts:  4
+ERROR 17:22:48.250 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID BA615ABAA193B89E25DA1BC7F1EA0F6E destroyed at Sat Jun 01 17:22:48 KST 2024 4
+##########Session ID 1B5606357FE13EE29CFB7A6B47219EEE destroyed at Sat Jun 01 17:22:48 KST 2024 Session Counts:  3
+ERROR 17:22:48.250 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 1B5606357FE13EE29CFB7A6B47219EEE destroyed at Sat Jun 01 17:22:48 KST 2024 3
+##########Session ID 79B2010DADE3D8F441F1BF49D398F132 created at Sat Jun 01 17:25:24 KST 2024 Session Counts: 4
+ERROR 17:25:24.555 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 79B2010DADE3D8F441F1BF49D398F132 created at Sat Jun 01 17:25:24 KST 2024 4
+ERROR 17:25:24.555 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 17:25:24,/error/404,start,null,79B2010DADE3D8F441F1BF49D398F132
+ERROR 17:25:24.555 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 79B2010DADE3D8F441F1BF49D398F132
+ERROR 17:25:24.555 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 17:25:24,/error/404,end,null,79B2010DADE3D8F441F1BF49D398F132
+##########Session ID BF6C94528BBF79E93F1BF2C1DB7A23FF created at Sat Jun 01 17:26:43 KST 2024 Session Counts: 7
+ERROR 17:26:43.903 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID BF6C94528BBF79E93F1BF2C1DB7A23FF created at Sat Jun 01 17:26:43 KST 2024 7
+ERROR 17:26:43.903 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 17:26:43,/error/404,start,null,BF6C94528BBF79E93F1BF2C1DB7A23FF
+ERROR 17:26:43.903 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] BF6C94528BBF79E93F1BF2C1DB7A23FF
+ERROR 17:26:43.903 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 17:26:43,/error/404,end,null,BF6C94528BBF79E93F1BF2C1DB7A23FF
+##########Session ID A1D409ABCB380B87FD77830552038891 destroyed at Sat Jun 01 19:28:53 KST 2024 Session Counts:  7
+ERROR 19:28:53.294 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A1D409ABCB380B87FD77830552038891 destroyed at Sat Jun 01 19:28:53 KST 2024 7
+##########Session ID 7388078A933072815E84B8BB0E41F56F destroyed at Sat Jun 01 19:28:53 KST 2024 Session Counts:  6
+ERROR 19:28:53.294 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 7388078A933072815E84B8BB0E41F56F destroyed at Sat Jun 01 19:28:53 KST 2024 6
+##########Session ID 40E1C922F4245F34AFAC383EB41B6F28 destroyed at Sat Jun 01 19:28:53 KST 2024 Session Counts:  5
+ERROR 19:28:53.294 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 40E1C922F4245F34AFAC383EB41B6F28 destroyed at Sat Jun 01 19:28:53 KST 2024 5
+##########Session ID 75EEC5C000EC457DFE2F184A594525B3 destroyed at Sat Jun 01 19:29:53 KST 2024 Session Counts:  4
+ERROR 19:29:53.328 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 75EEC5C000EC457DFE2F184A594525B3 destroyed at Sat Jun 01 19:29:53 KST 2024 4
+##########Session ID 79B2010DADE3D8F441F1BF49D398F132 destroyed at Sat Jun 01 20:25:55 KST 2024 Session Counts:  3
+ERROR 20:25:55.675 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 79B2010DADE3D8F441F1BF49D398F132 destroyed at Sat Jun 01 20:25:55 KST 2024 3
+##########Session ID B900493DD86163E46ABD624BA2835724 destroyed at Sat Jun 01 20:26:55 KST 2024 Session Counts:  2
+ERROR 20:26:55.725 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID B900493DD86163E46ABD624BA2835724 destroyed at Sat Jun 01 20:26:55 KST 2024 2
+##########Session ID 125FD0F024CD4D5DD63BBD4742428AFA destroyed at Sat Jun 01 20:26:55 KST 2024 Session Counts:  1
+ERROR 20:26:55.725 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 125FD0F024CD4D5DD63BBD4742428AFA destroyed at Sat Jun 01 20:26:55 KST 2024 1
+##########Session ID BF6C94528BBF79E93F1BF2C1DB7A23FF destroyed at Sat Jun 01 20:26:55 KST 2024 Session Counts:  0
+ERROR 20:26:55.725 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID BF6C94528BBF79E93F1BF2C1DB7A23FF destroyed at Sat Jun 01 20:26:55 KST 2024 0
+##########Session ID 35FF36FAF1095DC7FAC9B448B5958C02 created at Sat Jun 01 21:06:44 KST 2024 Session Counts: 1
+ERROR 21:06:44.381 [http-bio-8443-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 35FF36FAF1095DC7FAC9B448B5958C02 created at Sat Jun 01 21:06:44 KST 2024 1
+ERROR 21:06:44.381 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-01 21:06:44,/error/404,start,null,35FF36FAF1095DC7FAC9B448B5958C02
+ERROR 21:06:44.381 [http-bio-8443-exec-6] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 35FF36FAF1095DC7FAC9B448B5958C02
+ERROR 21:06:44.381 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-01 21:06:44,/error/404,end,null,35FF36FAF1095DC7FAC9B448B5958C02
+##########Session ID B3B968BA5AD32ABC5D24D7257CA3C743 destroyed at Sat Jun 01 22:20:00 KST 2024 Session Counts:  0
+ERROR 22:20:00.391 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID B3B968BA5AD32ABC5D24D7257CA3C743 destroyed at Sat Jun 01 22:20:00 KST 2024 0
+##########Session ID C00798A6F3AEA76E2D20A4BD1037D6F6 created at Sat Jun 01 22:28:49 KST 2024 Session Counts: 1
+ERROR 22:28:49.809 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID C00798A6F3AEA76E2D20A4BD1037D6F6 created at Sat Jun 01 22:28:49 KST 2024 1
+ERROR 22:28:49.809 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 22:28:49,/error/404,start,null,C00798A6F3AEA76E2D20A4BD1037D6F6
+ERROR 22:28:49.809 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] C00798A6F3AEA76E2D20A4BD1037D6F6
+ERROR 22:28:49.809 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-01 22:28:49,/error/404,end,null,C00798A6F3AEA76E2D20A4BD1037D6F6
+##########Session ID 35FF36FAF1095DC7FAC9B448B5958C02 destroyed at Sun Jun 02 00:07:04 KST 2024 Session Counts:  2
+ERROR 00:07:04.399 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 35FF36FAF1095DC7FAC9B448B5958C02 destroyed at Sun Jun 02 00:07:04 KST 2024 2
+##########Session ID C00798A6F3AEA76E2D20A4BD1037D6F6 destroyed at Sun Jun 02 01:29:07 KST 2024 Session Counts:  1
+ERROR 01:29:07.464 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C00798A6F3AEA76E2D20A4BD1037D6F6 destroyed at Sun Jun 02 01:29:07 KST 2024 1
+##########Session ID 86E76336229AE6C04D0DD57A6E30E944 destroyed at Sun Jun 02 01:48:08 KST 2024 Session Counts:  0
+ERROR 01:48:08.281 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 86E76336229AE6C04D0DD57A6E30E944 destroyed at Sun Jun 02 01:48:08 KST 2024 0
+##########Session ID 361983B8A83739BAA07AE70FE5500EBD destroyed at Sun Jun 02 02:27:15 KST 2024 Session Counts:  -1
+ERROR 02:27:15.502 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 361983B8A83739BAA07AE70FE5500EBD destroyed at Sun Jun 02 02:27:15 KST 2024 -1
+##########Session ID AF59B4C091BE78BD6D80E2DC72196CBD destroyed at Sun Jun 02 10:43:34 KST 2024 Session Counts:  -1
+ERROR 10:43:34.545 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID AF59B4C091BE78BD6D80E2DC72196CBD destroyed at Sun Jun 02 10:43:34 KST 2024 -1
+##########Session ID CFAB273C699040C2236EA17D26C6E712 destroyed at Sun Jun 02 14:09:43 KST 2024 Session Counts:  -1
+ERROR 14:09:43.058 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID CFAB273C699040C2236EA17D26C6E712 destroyed at Sun Jun 02 14:09:43 KST 2024 -1
+##########Session ID CE3962EF8812E62E923C5E5BD4F29D24 created at Sun Jun 02 14:37:58 KST 2024 Session Counts: 1
+ERROR 14:37:58.059 [http-bio-8443-exec-9] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID CE3962EF8812E62E923C5E5BD4F29D24 created at Sun Jun 02 14:37:58 KST 2024 1
+ERROR 14:37:58.059 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-02 14:37:58,/error/404,start,null,CE3962EF8812E62E923C5E5BD4F29D24
+ERROR 14:37:58.059 [http-bio-8443-exec-9] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] CE3962EF8812E62E923C5E5BD4F29D24
+ERROR 14:37:58.059 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-02 14:37:58,/error/404,end,null,CE3962EF8812E62E923C5E5BD4F29D24
+##########Session ID ED1D250B4DDCA99B51EB395EB8159D08 created at Sun Jun 02 16:01:09 KST 2024 Session Counts: 2
+ERROR 16:01:09.876 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID ED1D250B4DDCA99B51EB395EB8159D08 created at Sun Jun 02 16:01:09 KST 2024 2
+ERROR 16:01:09.876 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-02 16:01:09,/error/404,start,null,ED1D250B4DDCA99B51EB395EB8159D08
+ERROR 16:01:09.876 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] ED1D250B4DDCA99B51EB395EB8159D08
+ERROR 16:01:09.876 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-02 16:01:09,/error/404,end,null,ED1D250B4DDCA99B51EB395EB8159D08
+##########Session ID 95553AC96E50ABCBB48A2D9F80A60CFC created at Sun Jun 02 16:01:11 KST 2024 Session Counts: 3
+ERROR 16:01:11.767 [http-bio-8443-exec-7] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 95553AC96E50ABCBB48A2D9F80A60CFC created at Sun Jun 02 16:01:11 KST 2024 3
+ERROR 16:01:11.767 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-02 16:01:11,/error/404,start,null,95553AC96E50ABCBB48A2D9F80A60CFC
+ERROR 16:01:11.767 [http-bio-8443-exec-7] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 95553AC96E50ABCBB48A2D9F80A60CFC
+ERROR 16:01:11.767 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-02 16:01:11,/error/404,end,null,95553AC96E50ABCBB48A2D9F80A60CFC
+##########Session ID 72B2671CF7B079334637C846D8CCBAC6 destroyed at Sun Jun 02 17:36:50 KST 2024 Session Counts:  4
+ERROR 17:36:50.978 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 72B2671CF7B079334637C846D8CCBAC6 destroyed at Sun Jun 02 17:36:50 KST 2024 4
+##########Session ID CE3962EF8812E62E923C5E5BD4F29D24 destroyed at Sun Jun 02 17:38:51 KST 2024 Session Counts:  3
+ERROR 17:38:51.063 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID CE3962EF8812E62E923C5E5BD4F29D24 destroyed at Sun Jun 02 17:38:51 KST 2024 3
+##########Session ID ED1D250B4DDCA99B51EB395EB8159D08 destroyed at Sun Jun 02 19:01:54 KST 2024 Session Counts:  2
+ERROR 19:01:54.347 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID ED1D250B4DDCA99B51EB395EB8159D08 destroyed at Sun Jun 02 19:01:54 KST 2024 2
+##########Session ID A2324334E07563EEAA7D484189E80386 destroyed at Sun Jun 02 19:01:54 KST 2024 Session Counts:  1
+ERROR 19:01:54.347 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A2324334E07563EEAA7D484189E80386 destroyed at Sun Jun 02 19:01:54 KST 2024 1
+##########Session ID 95553AC96E50ABCBB48A2D9F80A60CFC destroyed at Sun Jun 02 19:01:54 KST 2024 Session Counts:  0
+ERROR 19:01:54.347 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 95553AC96E50ABCBB48A2D9F80A60CFC destroyed at Sun Jun 02 19:01:54 KST 2024 0
+##########Session ID AB29CC1DF112B0A90B8DF45DCB3F4793 destroyed at Sun Jun 02 19:03:54 KST 2024 Session Counts:  -1
+ERROR 19:03:54.447 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID AB29CC1DF112B0A90B8DF45DCB3F4793 destroyed at Sun Jun 02 19:03:54 KST 2024 -1
+##########Session ID 18C722A5CB15BEDB5D8A2C6E65CF2B3F created at Sun Jun 02 21:05:06 KST 2024 Session Counts: 9
+ERROR 21:05:06.125 [http-bio-8443-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 18C722A5CB15BEDB5D8A2C6E65CF2B3F created at Sun Jun 02 21:05:06 KST 2024 9
+ERROR 21:05:06.140 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:06,/error/404,start,null,18C722A5CB15BEDB5D8A2C6E65CF2B3F
+ERROR 21:05:06.140 [http-bio-8443-exec-6] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 18C722A5CB15BEDB5D8A2C6E65CF2B3F
+ERROR 21:05:06.140 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:06,/error/404,end,null,18C722A5CB15BEDB5D8A2C6E65CF2B3F
+##########Session ID EE71EF91829E6A79D8602B666F2521C5 created at Sun Jun 02 21:05:10 KST 2024 Session Counts: 10
+ERROR 21:05:10.437 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID EE71EF91829E6A79D8602B666F2521C5 created at Sun Jun 02 21:05:10 KST 2024 10
+ERROR 21:05:10.437 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:10,/error/404,start,null,EE71EF91829E6A79D8602B666F2521C5
+ERROR 21:05:10.437 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] EE71EF91829E6A79D8602B666F2521C5
+ERROR 21:05:10.437 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:10,/error/404,end,null,EE71EF91829E6A79D8602B666F2521C5
+##########Session ID 5992C7F0691BEC756C8D9CF13C72755B created at Sun Jun 02 21:05:33 KST 2024 Session Counts: 13
+ERROR 21:05:33.782 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 5992C7F0691BEC756C8D9CF13C72755B created at Sun Jun 02 21:05:33 KST 2024 13
+ERROR 21:05:33.782 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:33,/error/404,start,null,5992C7F0691BEC756C8D9CF13C72755B
+ERROR 21:05:33.782 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 5992C7F0691BEC756C8D9CF13C72755B
+ERROR 21:05:33.782 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:33,/error/404,end,null,5992C7F0691BEC756C8D9CF13C72755B
+##########Session ID 71CC3283F13A7822838117878A8565EB created at Sun Jun 02 21:05:36 KST 2024 Session Counts: 14
+ERROR 21:05:36.423 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 71CC3283F13A7822838117878A8565EB created at Sun Jun 02 21:05:36 KST 2024 14
+ERROR 21:05:36.423 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:36,/error/404,start,null,71CC3283F13A7822838117878A8565EB
+ERROR 21:05:36.423 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 71CC3283F13A7822838117878A8565EB
+ERROR 21:05:36.423 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:36,/error/404,end,null,71CC3283F13A7822838117878A8565EB
+##########Session ID 48C68321B349B1E16F8C783683A51767 created at Sun Jun 02 21:05:48 KST 2024 Session Counts: 15
+ERROR 21:05:48.549 [http-bio-8443-exec-3] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 48C68321B349B1E16F8C783683A51767 created at Sun Jun 02 21:05:48 KST 2024 15
+ERROR 21:05:48.549 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:48,/error/404,start,null,48C68321B349B1E16F8C783683A51767
+ERROR 21:05:48.549 [http-bio-8443-exec-3] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 48C68321B349B1E16F8C783683A51767
+ERROR 21:05:48.549 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:48,/error/404,end,null,48C68321B349B1E16F8C783683A51767
+##########Session ID F9C534F4AF09B7EDCA97C55AE2457203 created at Sun Jun 02 21:05:50 KST 2024 Session Counts: 16
+ERROR 21:05:50.783 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID F9C534F4AF09B7EDCA97C55AE2457203 created at Sun Jun 02 21:05:50 KST 2024 16
+ERROR 21:05:50.783 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:50,/error/404,start,null,F9C534F4AF09B7EDCA97C55AE2457203
+ERROR 21:05:50.783 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] F9C534F4AF09B7EDCA97C55AE2457203
+ERROR 21:05:50.783 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:50,/error/404,end,null,F9C534F4AF09B7EDCA97C55AE2457203
+##########Session ID 9588FBF2A4502AA1789A23C1898527D5 created at Sun Jun 02 21:05:53 KST 2024 Session Counts: 17
+ERROR 21:05:53.346 [http-bio-8443-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 9588FBF2A4502AA1789A23C1898527D5 created at Sun Jun 02 21:05:53 KST 2024 17
+ERROR 21:05:53.346 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:53,/error/404,start,null,9588FBF2A4502AA1789A23C1898527D5
+ERROR 21:05:53.346 [http-bio-8443-exec-6] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 9588FBF2A4502AA1789A23C1898527D5
+ERROR 21:05:53.346 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:53,/error/404,end,null,9588FBF2A4502AA1789A23C1898527D5
+##########Session ID EA8CEDD4F4FF66D62071BD81C6342E28 created at Sun Jun 02 21:05:58 KST 2024 Session Counts: 18
+ERROR 21:05:58.596 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID EA8CEDD4F4FF66D62071BD81C6342E28 created at Sun Jun 02 21:05:58 KST 2024 18
+ERROR 21:05:58.596 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:58,/error/404,start,null,EA8CEDD4F4FF66D62071BD81C6342E28
+ERROR 21:05:58.596 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] EA8CEDD4F4FF66D62071BD81C6342E28
+ERROR 21:05:58.596 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:05:58,/error/404,end,null,EA8CEDD4F4FF66D62071BD81C6342E28
+##########Session ID 122E84DB023EA1D4E982C04E90700C80 created at Sun Jun 02 21:06:01 KST 2024 Session Counts: 19
+ERROR 21:06:01.362 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 122E84DB023EA1D4E982C04E90700C80 created at Sun Jun 02 21:06:01 KST 2024 19
+ERROR 21:06:01.362 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:01,/error/404,start,null,122E84DB023EA1D4E982C04E90700C80
+ERROR 21:06:01.362 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 122E84DB023EA1D4E982C04E90700C80
+ERROR 21:06:01.362 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:01,/error/404,end,null,122E84DB023EA1D4E982C04E90700C80
+##########Session ID A2D17AAB90F58D89FAE644B31411B584 created at Sun Jun 02 21:06:04 KST 2024 Session Counts: 20
+ERROR 21:06:04.221 [http-bio-8443-exec-7] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID A2D17AAB90F58D89FAE644B31411B584 created at Sun Jun 02 21:06:04 KST 2024 20
+ERROR 21:06:04.221 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:04,/error/404,start,null,A2D17AAB90F58D89FAE644B31411B584
+ERROR 21:06:04.221 [http-bio-8443-exec-7] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] A2D17AAB90F58D89FAE644B31411B584
+ERROR 21:06:04.221 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:04,/error/404,end,null,A2D17AAB90F58D89FAE644B31411B584
+##########Session ID 2B757AD01D541271922532576EA124AC created at Sun Jun 02 21:06:13 KST 2024 Session Counts: 21
+ERROR 21:06:13.394 [http-bio-8443-exec-9] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 2B757AD01D541271922532576EA124AC created at Sun Jun 02 21:06:13 KST 2024 21
+ERROR 21:06:13.394 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:13,/error/404,start,null,2B757AD01D541271922532576EA124AC
+ERROR 21:06:13.394 [http-bio-8443-exec-9] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 2B757AD01D541271922532576EA124AC
+ERROR 21:06:13.394 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:13,/error/404,end,null,2B757AD01D541271922532576EA124AC
+##########Session ID 00BC734EA5FD078C3D4A6F08A04AB4AA created at Sun Jun 02 21:06:17 KST 2024 Session Counts: 22
+ERROR 21:06:17.003 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 00BC734EA5FD078C3D4A6F08A04AB4AA created at Sun Jun 02 21:06:17 KST 2024 22
+ERROR 21:06:17.003 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:17,/error/404,start,null,00BC734EA5FD078C3D4A6F08A04AB4AA
+ERROR 21:06:17.003 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 00BC734EA5FD078C3D4A6F08A04AB4AA
+ERROR 21:06:17.003 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:17,/error/404,end,null,00BC734EA5FD078C3D4A6F08A04AB4AA
+##########Session ID 5C7579A2F2BF57FA0E7222346A98B0C3 created at Sun Jun 02 21:06:20 KST 2024 Session Counts: 23
+ERROR 21:06:20.207 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 5C7579A2F2BF57FA0E7222346A98B0C3 created at Sun Jun 02 21:06:20 KST 2024 23
+ERROR 21:06:20.207 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:20,/error/404,start,null,5C7579A2F2BF57FA0E7222346A98B0C3
+ERROR 21:06:20.207 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 5C7579A2F2BF57FA0E7222346A98B0C3
+ERROR 21:06:20.207 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:20,/error/404,end,null,5C7579A2F2BF57FA0E7222346A98B0C3
+##########Session ID E3624DEE9E77ED1D40B7ABB685DAEF5C created at Sun Jun 02 21:06:23 KST 2024 Session Counts: 24
+ERROR 21:06:23.910 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID E3624DEE9E77ED1D40B7ABB685DAEF5C created at Sun Jun 02 21:06:23 KST 2024 24
+ERROR 21:06:23.910 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:23,/error/404,start,null,E3624DEE9E77ED1D40B7ABB685DAEF5C
+ERROR 21:06:23.910 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] E3624DEE9E77ED1D40B7ABB685DAEF5C
+ERROR 21:06:23.910 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:23,/error/404,end,null,E3624DEE9E77ED1D40B7ABB685DAEF5C
+##########Session ID C91F3FA61AF36FFD9997F67BDE2CDB53 created at Sun Jun 02 21:06:26 KST 2024 Session Counts: 25
+ERROR 21:06:26.723 [http-bio-8443-exec-3] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID C91F3FA61AF36FFD9997F67BDE2CDB53 created at Sun Jun 02 21:06:26 KST 2024 25
+ERROR 21:06:26.723 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:26,/error/404,start,null,C91F3FA61AF36FFD9997F67BDE2CDB53
+ERROR 21:06:26.723 [http-bio-8443-exec-3] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] C91F3FA61AF36FFD9997F67BDE2CDB53
+ERROR 21:06:26.723 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:26,/error/404,end,null,C91F3FA61AF36FFD9997F67BDE2CDB53
+##########Session ID FD82C9160322556C18E230B9CD2608CE created at Sun Jun 02 21:06:32 KST 2024 Session Counts: 26
+ERROR 21:06:32.863 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID FD82C9160322556C18E230B9CD2608CE created at Sun Jun 02 21:06:32 KST 2024 26
+ERROR 21:06:32.863 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:32,/error/404,start,null,FD82C9160322556C18E230B9CD2608CE
+ERROR 21:06:32.863 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] FD82C9160322556C18E230B9CD2608CE
+ERROR 21:06:32.863 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:32,/error/404,end,null,FD82C9160322556C18E230B9CD2608CE
+##########Session ID 833C1E62C53A42E9BF285E82469DF7EA created at Sun Jun 02 21:06:35 KST 2024 Session Counts: 27
+ERROR 21:06:35.192 [http-bio-8443-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 833C1E62C53A42E9BF285E82469DF7EA created at Sun Jun 02 21:06:35 KST 2024 27
+ERROR 21:06:35.192 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:35,/error/404,start,null,833C1E62C53A42E9BF285E82469DF7EA
+ERROR 21:06:35.192 [http-bio-8443-exec-6] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 833C1E62C53A42E9BF285E82469DF7EA
+ERROR 21:06:35.192 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:35,/error/404,end,null,833C1E62C53A42E9BF285E82469DF7EA
+##########Session ID DCD6D8F708E5BFF2C93EEDECA309F6F6 created at Sun Jun 02 21:06:40 KST 2024 Session Counts: 29
+ERROR 21:06:40.239 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID DCD6D8F708E5BFF2C93EEDECA309F6F6 created at Sun Jun 02 21:06:40 KST 2024 29
+ERROR 21:06:40.239 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:40,/error/404,start,null,DCD6D8F708E5BFF2C93EEDECA309F6F6
+ERROR 21:06:40.239 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] DCD6D8F708E5BFF2C93EEDECA309F6F6
+ERROR 21:06:40.239 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:40,/error/404,end,null,DCD6D8F708E5BFF2C93EEDECA309F6F6
+##########Session ID 5589EA7375F93F0B0620D23BFC9E6982 created at Sun Jun 02 21:06:43 KST 2024 Session Counts: 30
+ERROR 21:06:43.067 [http-bio-8443-exec-7] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 5589EA7375F93F0B0620D23BFC9E6982 created at Sun Jun 02 21:06:43 KST 2024 30
+ERROR 21:06:43.067 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:43,/error/404,start,null,5589EA7375F93F0B0620D23BFC9E6982
+ERROR 21:06:43.067 [http-bio-8443-exec-7] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 5589EA7375F93F0B0620D23BFC9E6982
+ERROR 21:06:43.067 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:43,/error/404,end,null,5589EA7375F93F0B0620D23BFC9E6982
+##########Session ID 32D199BA6E62A5BE2347C225382B4A49 created at Sun Jun 02 21:06:45 KST 2024 Session Counts: 31
+ERROR 21:06:45.098 [http-bio-8443-exec-9] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 32D199BA6E62A5BE2347C225382B4A49 created at Sun Jun 02 21:06:45 KST 2024 31
+ERROR 21:06:45.098 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:45,/error/404,start,null,32D199BA6E62A5BE2347C225382B4A49
+ERROR 21:06:45.098 [http-bio-8443-exec-9] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 32D199BA6E62A5BE2347C225382B4A49
+ERROR 21:06:45.098 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:45,/error/404,end,null,32D199BA6E62A5BE2347C225382B4A49
+##########Session ID 83C31E474F0041EE9AE28FE5E3AFE5C2 created at Sun Jun 02 21:06:47 KST 2024 Session Counts: 32
+ERROR 21:06:47.739 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 83C31E474F0041EE9AE28FE5E3AFE5C2 created at Sun Jun 02 21:06:47 KST 2024 32
+ERROR 21:06:47.739 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:47,/error/404,start,null,83C31E474F0041EE9AE28FE5E3AFE5C2
+ERROR 21:06:47.739 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 83C31E474F0041EE9AE28FE5E3AFE5C2
+ERROR 21:06:47.739 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:47,/error/404,end,null,83C31E474F0041EE9AE28FE5E3AFE5C2
+##########Session ID 3F64A8CDBF217270881D555EF4E472F3 created at Sun Jun 02 21:06:50 KST 2024 Session Counts: 33
+ERROR 21:06:50.255 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 3F64A8CDBF217270881D555EF4E472F3 created at Sun Jun 02 21:06:50 KST 2024 33
+ERROR 21:06:50.255 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:50,/error/404,start,null,3F64A8CDBF217270881D555EF4E472F3
+ERROR 21:06:50.255 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 3F64A8CDBF217270881D555EF4E472F3
+ERROR 21:06:50.255 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:50,/error/404,end,null,3F64A8CDBF217270881D555EF4E472F3
+##########Session ID 12E790876E6F7E891C5C6A95D555B1A1 created at Sun Jun 02 21:06:53 KST 2024 Session Counts: 34
+ERROR 21:06:53.208 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 12E790876E6F7E891C5C6A95D555B1A1 created at Sun Jun 02 21:06:53 KST 2024 34
+ERROR 21:06:53.208 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:53,/error/404,start,null,12E790876E6F7E891C5C6A95D555B1A1
+ERROR 21:06:53.208 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 12E790876E6F7E891C5C6A95D555B1A1
+ERROR 21:06:53.208 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:53,/error/404,end,null,12E790876E6F7E891C5C6A95D555B1A1
+##########Session ID 2032B48A4274B521038443FC46074BF0 created at Sun Jun 02 21:06:55 KST 2024 Session Counts: 35
+ERROR 21:06:55.271 [http-bio-8443-exec-3] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 2032B48A4274B521038443FC46074BF0 created at Sun Jun 02 21:06:55 KST 2024 35
+ERROR 21:06:55.271 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:55,/error/404,start,null,2032B48A4274B521038443FC46074BF0
+ERROR 21:06:55.271 [http-bio-8443-exec-3] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 2032B48A4274B521038443FC46074BF0
+ERROR 21:06:55.271 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:55,/error/404,end,null,2032B48A4274B521038443FC46074BF0
+##########Session ID 27D090D76408029ADD8FF9369782F641 created at Sun Jun 02 21:06:57 KST 2024 Session Counts: 36
+ERROR 21:06:57.271 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 27D090D76408029ADD8FF9369782F641 created at Sun Jun 02 21:06:57 KST 2024 36
+ERROR 21:06:57.287 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:57,/error/404,start,null,27D090D76408029ADD8FF9369782F641
+ERROR 21:06:57.287 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 27D090D76408029ADD8FF9369782F641
+ERROR 21:06:57.287 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:06:57,/error/404,end,null,27D090D76408029ADD8FF9369782F641
+##########Session ID 4E8B28F46C76518EE6EF12BFDBFD5F27 created at Sun Jun 02 21:07:00 KST 2024 Session Counts: 37
+ERROR 21:07:00.646 [http-bio-8443-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 4E8B28F46C76518EE6EF12BFDBFD5F27 created at Sun Jun 02 21:07:00 KST 2024 37
+ERROR 21:07:00.646 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:00,/error/404,start,null,4E8B28F46C76518EE6EF12BFDBFD5F27
+ERROR 21:07:00.646 [http-bio-8443-exec-6] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 4E8B28F46C76518EE6EF12BFDBFD5F27
+ERROR 21:07:00.646 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:00,/error/404,end,null,4E8B28F46C76518EE6EF12BFDBFD5F27
+##########Session ID 6E96AA17207085A6003BC39CC1FBE6FA created at Sun Jun 02 21:07:03 KST 2024 Session Counts: 38
+ERROR 21:07:03.318 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 6E96AA17207085A6003BC39CC1FBE6FA created at Sun Jun 02 21:07:03 KST 2024 38
+ERROR 21:07:03.318 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:03,/error/404,start,null,6E96AA17207085A6003BC39CC1FBE6FA
+ERROR 21:07:03.318 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 6E96AA17207085A6003BC39CC1FBE6FA
+ERROR 21:07:03.318 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:03,/error/404,end,null,6E96AA17207085A6003BC39CC1FBE6FA
+##########Session ID 549A69F226D673EAE8A436EE0623403C created at Sun Jun 02 21:07:05 KST 2024 Session Counts: 39
+ERROR 21:07:05.615 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 549A69F226D673EAE8A436EE0623403C created at Sun Jun 02 21:07:05 KST 2024 39
+ERROR 21:07:05.615 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:05,/error/404,start,null,549A69F226D673EAE8A436EE0623403C
+ERROR 21:07:05.615 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 549A69F226D673EAE8A436EE0623403C
+ERROR 21:07:05.615 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:05,/error/404,end,null,549A69F226D673EAE8A436EE0623403C
+##########Session ID 6272A1EA5005D14D2DB308AC1B9F144E created at Sun Jun 02 21:07:07 KST 2024 Session Counts: 40
+ERROR 21:07:07.646 [http-bio-8443-exec-7] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 6272A1EA5005D14D2DB308AC1B9F144E created at Sun Jun 02 21:07:07 KST 2024 40
+ERROR 21:07:07.646 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:07,/error/404,start,null,6272A1EA5005D14D2DB308AC1B9F144E
+ERROR 21:07:07.646 [http-bio-8443-exec-7] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 6272A1EA5005D14D2DB308AC1B9F144E
+ERROR 21:07:07.646 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:07,/error/404,end,null,6272A1EA5005D14D2DB308AC1B9F144E
+##########Session ID 59695A5DB313D4E27803F5837370B8E6 created at Sun Jun 02 21:07:10 KST 2024 Session Counts: 41
+ERROR 21:07:10.490 [http-bio-8443-exec-9] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 59695A5DB313D4E27803F5837370B8E6 created at Sun Jun 02 21:07:10 KST 2024 41
+ERROR 21:07:10.490 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:10,/error/404,start,null,59695A5DB313D4E27803F5837370B8E6
+ERROR 21:07:10.490 [http-bio-8443-exec-9] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 59695A5DB313D4E27803F5837370B8E6
+ERROR 21:07:10.490 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:10,/error/404,end,null,59695A5DB313D4E27803F5837370B8E6
+##########Session ID 2FF1C51EDBBD3755320523E7923F9842 created at Sun Jun 02 21:07:12 KST 2024 Session Counts: 42
+ERROR 21:07:12.459 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 2FF1C51EDBBD3755320523E7923F9842 created at Sun Jun 02 21:07:12 KST 2024 42
+ERROR 21:07:12.459 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:12,/error/404,start,null,2FF1C51EDBBD3755320523E7923F9842
+ERROR 21:07:12.459 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 2FF1C51EDBBD3755320523E7923F9842
+ERROR 21:07:12.459 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:12,/error/404,end,null,2FF1C51EDBBD3755320523E7923F9842
+##########Session ID 708AD416D345E12E6A569F85AB2EBE69 created at Sun Jun 02 21:07:14 KST 2024 Session Counts: 43
+ERROR 21:07:14.491 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 708AD416D345E12E6A569F85AB2EBE69 created at Sun Jun 02 21:07:14 KST 2024 43
+ERROR 21:07:14.491 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:14,/error/404,start,null,708AD416D345E12E6A569F85AB2EBE69
+ERROR 21:07:14.491 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 708AD416D345E12E6A569F85AB2EBE69
+ERROR 21:07:14.491 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:14,/error/404,end,null,708AD416D345E12E6A569F85AB2EBE69
+##########Session ID A004F25C3496A6E0EFD7FADE47C100C1 created at Sun Jun 02 21:07:17 KST 2024 Session Counts: 44
+ERROR 21:07:17.678 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID A004F25C3496A6E0EFD7FADE47C100C1 created at Sun Jun 02 21:07:17 KST 2024 44
+ERROR 21:07:17.678 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:17,/error/404,start,null,A004F25C3496A6E0EFD7FADE47C100C1
+ERROR 21:07:17.678 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] A004F25C3496A6E0EFD7FADE47C100C1
+ERROR 21:07:17.678 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:17,/error/404,end,null,A004F25C3496A6E0EFD7FADE47C100C1
+##########Session ID 92D69BC222079125530C3F7D6D4BC5FD created at Sun Jun 02 21:07:26 KST 2024 Session Counts: 46
+ERROR 21:07:26.366 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 92D69BC222079125530C3F7D6D4BC5FD created at Sun Jun 02 21:07:26 KST 2024 46
+ERROR 21:07:26.366 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:26,/error/404,start,null,92D69BC222079125530C3F7D6D4BC5FD
+ERROR 21:07:26.366 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 92D69BC222079125530C3F7D6D4BC5FD
+ERROR 21:07:26.366 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:26,/error/404,end,null,92D69BC222079125530C3F7D6D4BC5FD
+##########Session ID C5024672A3439844EA5BEFDE2B25A2B2 created at Sun Jun 02 21:07:32 KST 2024 Session Counts: 47
+ERROR 21:07:32.851 [http-bio-8443-exec-6] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID C5024672A3439844EA5BEFDE2B25A2B2 created at Sun Jun 02 21:07:32 KST 2024 47
+ERROR 21:07:32.851 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:32,/error/404,start,null,C5024672A3439844EA5BEFDE2B25A2B2
+ERROR 21:07:32.851 [http-bio-8443-exec-6] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] C5024672A3439844EA5BEFDE2B25A2B2
+ERROR 21:07:32.851 [http-bio-8443-exec-6] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:32,/error/404,end,null,C5024672A3439844EA5BEFDE2B25A2B2
+##########Session ID E14DC12DFC28D862F80E67840884EB25 created at Sun Jun 02 21:07:35 KST 2024 Session Counts: 48
+ERROR 21:07:35.070 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID E14DC12DFC28D862F80E67840884EB25 created at Sun Jun 02 21:07:35 KST 2024 48
+ERROR 21:07:35.070 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:35,/error/404,start,null,E14DC12DFC28D862F80E67840884EB25
+ERROR 21:07:35.070 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] E14DC12DFC28D862F80E67840884EB25
+ERROR 21:07:35.070 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:35,/error/404,end,null,E14DC12DFC28D862F80E67840884EB25
+##########Session ID 1BA47C614D856336907C6344CF71586D created at Sun Jun 02 21:07:37 KST 2024 Session Counts: 49
+ERROR 21:07:37.695 [http-bio-8443-exec-2] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 1BA47C614D856336907C6344CF71586D created at Sun Jun 02 21:07:37 KST 2024 49
+ERROR 21:07:37.711 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:37,/error/404,start,null,1BA47C614D856336907C6344CF71586D
+ERROR 21:07:37.711 [http-bio-8443-exec-2] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 1BA47C614D856336907C6344CF71586D
+ERROR 21:07:37.711 [http-bio-8443-exec-2] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:37,/error/404,end,null,1BA47C614D856336907C6344CF71586D
+##########Session ID A40AB9239DDD99FD473D8D27999DF67B created at Sun Jun 02 21:07:40 KST 2024 Session Counts: 50
+ERROR 21:07:40.086 [http-bio-8443-exec-7] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID A40AB9239DDD99FD473D8D27999DF67B created at Sun Jun 02 21:07:40 KST 2024 50
+ERROR 21:07:40.086 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:40,/error/404,start,null,A40AB9239DDD99FD473D8D27999DF67B
+ERROR 21:07:40.086 [http-bio-8443-exec-7] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] A40AB9239DDD99FD473D8D27999DF67B
+ERROR 21:07:40.086 [http-bio-8443-exec-7] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:40,/error/404,end,null,A40AB9239DDD99FD473D8D27999DF67B
+##########Session ID A6FFDD1CCAF875A89FAF124CC6DE2144 created at Sun Jun 02 21:07:42 KST 2024 Session Counts: 51
+ERROR 21:07:42.461 [http-bio-8443-exec-9] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID A6FFDD1CCAF875A89FAF124CC6DE2144 created at Sun Jun 02 21:07:42 KST 2024 51
+ERROR 21:07:42.461 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:42,/error/404,start,null,A6FFDD1CCAF875A89FAF124CC6DE2144
+ERROR 21:07:42.461 [http-bio-8443-exec-9] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] A6FFDD1CCAF875A89FAF124CC6DE2144
+ERROR 21:07:42.461 [http-bio-8443-exec-9] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:42,/error/404,end,null,A6FFDD1CCAF875A89FAF124CC6DE2144
+##########Session ID 6739CF3B9FE32874C5E0DF4796C192B5 created at Sun Jun 02 21:07:53 KST 2024 Session Counts: 52
+ERROR 21:07:53.836 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 6739CF3B9FE32874C5E0DF4796C192B5 created at Sun Jun 02 21:07:53 KST 2024 52
+ERROR 21:07:53.836 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:53,/error/404,start,null,6739CF3B9FE32874C5E0DF4796C192B5
+ERROR 21:07:53.836 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 6739CF3B9FE32874C5E0DF4796C192B5
+ERROR 21:07:53.836 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:53,/error/404,end,null,6739CF3B9FE32874C5E0DF4796C192B5
+##########Session ID FA88B944EFFDA59D9DDB2D677D01BCC2 created at Sun Jun 02 21:07:56 KST 2024 Session Counts: 53
+ERROR 21:07:56.508 [http-bio-8443-exec-10] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID FA88B944EFFDA59D9DDB2D677D01BCC2 created at Sun Jun 02 21:07:56 KST 2024 53
+ERROR 21:07:56.508 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:56,/error/404,start,null,FA88B944EFFDA59D9DDB2D677D01BCC2
+ERROR 21:07:56.508 [http-bio-8443-exec-10] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] FA88B944EFFDA59D9DDB2D677D01BCC2
+ERROR 21:07:56.508 [http-bio-8443-exec-10] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:56,/error/404,end,null,FA88B944EFFDA59D9DDB2D677D01BCC2
+##########Session ID 15317DE6EA2BD8907151F0005CC93ADD created at Sun Jun 02 21:07:58 KST 2024 Session Counts: 54
+ERROR 21:07:58.587 [http-bio-8443-exec-5] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 15317DE6EA2BD8907151F0005CC93ADD created at Sun Jun 02 21:07:58 KST 2024 54
+ERROR 21:07:58.587 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:58,/error/404,start,null,15317DE6EA2BD8907151F0005CC93ADD
+ERROR 21:07:58.587 [http-bio-8443-exec-5] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 15317DE6EA2BD8907151F0005CC93ADD
+ERROR 21:07:58.587 [http-bio-8443-exec-5] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:07:58,/error/404,end,null,15317DE6EA2BD8907151F0005CC93ADD
+##########Session ID C73344AF592914DABB2E90AB270C2804 created at Sun Jun 02 21:08:01 KST 2024 Session Counts: 55
+ERROR 21:08:01.649 [http-bio-8443-exec-3] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID C73344AF592914DABB2E90AB270C2804 created at Sun Jun 02 21:08:01 KST 2024 55
+ERROR 21:08:01.649 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:08:01,/error/404,start,null,C73344AF592914DABB2E90AB270C2804
+ERROR 21:08:01.649 [http-bio-8443-exec-3] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] C73344AF592914DABB2E90AB270C2804
+ERROR 21:08:01.649 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:08:01,/error/404,end,null,C73344AF592914DABB2E90AB270C2804
+##########Session ID 196567D0A2035E1ED943FFFDEB692657 created at Sun Jun 02 21:08:03 KST 2024 Session Counts: 56
+ERROR 21:08:03.821 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 196567D0A2035E1ED943FFFDEB692657 created at Sun Jun 02 21:08:03 KST 2024 56
+ERROR 21:08:03.821 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:08:03,/error/404,start,null,196567D0A2035E1ED943FFFDEB692657
+ERROR 21:08:03.821 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 196567D0A2035E1ED943FFFDEB692657
+ERROR 21:08:03.821 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-02 21:08:03,/error/404,end,null,196567D0A2035E1ED943FFFDEB692657
+##########Session ID F2599CFCB4C6E3E9D5C5107F643A60E6 destroyed at Mon Jun 03 00:05:06 KST 2024 Session Counts:  57
+ERROR 00:05:06.003 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID F2599CFCB4C6E3E9D5C5107F643A60E6 destroyed at Mon Jun 03 00:05:06 KST 2024 57
+##########Session ID 29446DDEAE333EFB21937FEAC9CDE481 destroyed at Mon Jun 03 00:05:06 KST 2024 Session Counts:  56
+ERROR 00:05:06.018 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 29446DDEAE333EFB21937FEAC9CDE481 destroyed at Mon Jun 03 00:05:06 KST 2024 56
+##########Session ID 9D173404E0E363C587C33F8767404997 destroyed at Mon Jun 03 00:05:06 KST 2024 Session Counts:  55
+ERROR 00:05:06.018 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 9D173404E0E363C587C33F8767404997 destroyed at Mon Jun 03 00:05:06 KST 2024 55
+##########Session ID 3DB8128E35456F08F8AB7F3F1AAE067A destroyed at Mon Jun 03 00:05:06 KST 2024 Session Counts:  54
+ERROR 00:05:06.018 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 3DB8128E35456F08F8AB7F3F1AAE067A destroyed at Mon Jun 03 00:05:06 KST 2024 54
+##########Session ID 07D391DF8719281C7C1C3C2059DF86D7 destroyed at Mon Jun 03 00:05:06 KST 2024 Session Counts:  53
+ERROR 00:05:06.018 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 07D391DF8719281C7C1C3C2059DF86D7 destroyed at Mon Jun 03 00:05:06 KST 2024 53
+##########Session ID 88B994512E3FFC91916DA225E33E82FC destroyed at Mon Jun 03 00:05:06 KST 2024 Session Counts:  52
+ERROR 00:05:06.018 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 88B994512E3FFC91916DA225E33E82FC destroyed at Mon Jun 03 00:05:06 KST 2024 52
+##########Session ID 133B20ED6E8DA2A79690ED2813CE1D35 destroyed at Mon Jun 03 00:05:06 KST 2024 Session Counts:  51
+ERROR 00:05:06.018 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 133B20ED6E8DA2A79690ED2813CE1D35 destroyed at Mon Jun 03 00:05:06 KST 2024 51
+##########Session ID 42F290B2C4F2B04752748C194926E722 destroyed at Mon Jun 03 00:05:06 KST 2024 Session Counts:  50
+ERROR 00:05:06.018 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 42F290B2C4F2B04752748C194926E722 destroyed at Mon Jun 03 00:05:06 KST 2024 50
+##########Session ID 12891C869765699BBBE6DAB2333AA0D2 destroyed at Mon Jun 03 00:05:06 KST 2024 Session Counts:  49
+ERROR 00:05:06.018 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 12891C869765699BBBE6DAB2333AA0D2 destroyed at Mon Jun 03 00:05:06 KST 2024 49
+##########Session ID AF2EF98B71DF7FB82FD19F0055D7FDC7 destroyed at Mon Jun 03 00:06:06 KST 2024 Session Counts:  48
+ERROR 00:06:06.053 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID AF2EF98B71DF7FB82FD19F0055D7FDC7 destroyed at Mon Jun 03 00:06:06 KST 2024 48
+##########Session ID 5992C7F0691BEC756C8D9CF13C72755B destroyed at Mon Jun 03 00:06:06 KST 2024 Session Counts:  47
+ERROR 00:06:06.053 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 5992C7F0691BEC756C8D9CF13C72755B destroyed at Mon Jun 03 00:06:06 KST 2024 47
+##########Session ID 48C68321B349B1E16F8C783683A51767 destroyed at Mon Jun 03 00:06:06 KST 2024 Session Counts:  46
+ERROR 00:06:06.053 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 48C68321B349B1E16F8C783683A51767 destroyed at Mon Jun 03 00:06:06 KST 2024 46
+##########Session ID A2D17AAB90F58D89FAE644B31411B584 destroyed at Mon Jun 03 00:06:06 KST 2024 Session Counts:  45
+ERROR 00:06:06.053 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A2D17AAB90F58D89FAE644B31411B584 destroyed at Mon Jun 03 00:06:06 KST 2024 45
+##########Session ID 122E84DB023EA1D4E982C04E90700C80 destroyed at Mon Jun 03 00:06:06 KST 2024 Session Counts:  44
+ERROR 00:06:06.053 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 122E84DB023EA1D4E982C04E90700C80 destroyed at Mon Jun 03 00:06:06 KST 2024 44
+##########Session ID F9C534F4AF09B7EDCA97C55AE2457203 destroyed at Mon Jun 03 00:06:06 KST 2024 Session Counts:  43
+ERROR 00:06:06.053 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID F9C534F4AF09B7EDCA97C55AE2457203 destroyed at Mon Jun 03 00:06:06 KST 2024 43
+##########Session ID 9588FBF2A4502AA1789A23C1898527D5 destroyed at Mon Jun 03 00:06:06 KST 2024 Session Counts:  42
+ERROR 00:06:06.053 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 9588FBF2A4502AA1789A23C1898527D5 destroyed at Mon Jun 03 00:06:06 KST 2024 42
+##########Session ID 18C722A5CB15BEDB5D8A2C6E65CF2B3F destroyed at Mon Jun 03 00:06:06 KST 2024 Session Counts:  41
+ERROR 00:06:06.053 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 18C722A5CB15BEDB5D8A2C6E65CF2B3F destroyed at Mon Jun 03 00:06:06 KST 2024 41
+##########Session ID 71CC3283F13A7822838117878A8565EB destroyed at Mon Jun 03 00:06:06 KST 2024 Session Counts:  40
+ERROR 00:06:06.053 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 71CC3283F13A7822838117878A8565EB destroyed at Mon Jun 03 00:06:06 KST 2024 40
+##########Session ID FB61318EAE2A7C29E171B8A63E4ABAD1 destroyed at Mon Jun 03 00:06:06 KST 2024 Session Counts:  39
+ERROR 00:06:06.053 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID FB61318EAE2A7C29E171B8A63E4ABAD1 destroyed at Mon Jun 03 00:06:06 KST 2024 39
+##########Session ID EA8CEDD4F4FF66D62071BD81C6342E28 destroyed at Mon Jun 03 00:06:06 KST 2024 Session Counts:  38
+ERROR 00:06:06.053 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID EA8CEDD4F4FF66D62071BD81C6342E28 destroyed at Mon Jun 03 00:06:06 KST 2024 38
+##########Session ID EE71EF91829E6A79D8602B666F2521C5 destroyed at Mon Jun 03 00:06:06 KST 2024 Session Counts:  37
+ERROR 00:06:06.053 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID EE71EF91829E6A79D8602B666F2521C5 destroyed at Mon Jun 03 00:06:06 KST 2024 37
+##########Session ID 2B757AD01D541271922532576EA124AC destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  36
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 2B757AD01D541271922532576EA124AC destroyed at Mon Jun 03 00:07:06 KST 2024 36
+##########Session ID C91F3FA61AF36FFD9997F67BDE2CDB53 destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  35
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C91F3FA61AF36FFD9997F67BDE2CDB53 destroyed at Mon Jun 03 00:07:06 KST 2024 35
+##########Session ID 27D090D76408029ADD8FF9369782F641 destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  34
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 27D090D76408029ADD8FF9369782F641 destroyed at Mon Jun 03 00:07:06 KST 2024 34
+##########Session ID 83C31E474F0041EE9AE28FE5E3AFE5C2 destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  33
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 83C31E474F0041EE9AE28FE5E3AFE5C2 destroyed at Mon Jun 03 00:07:06 KST 2024 33
+##########Session ID 549A69F226D673EAE8A436EE0623403C destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  32
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 549A69F226D673EAE8A436EE0623403C destroyed at Mon Jun 03 00:07:06 KST 2024 32
+##########Session ID 4E8B28F46C76518EE6EF12BFDBFD5F27 destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  31
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 4E8B28F46C76518EE6EF12BFDBFD5F27 destroyed at Mon Jun 03 00:07:06 KST 2024 31
+##########Session ID 12E790876E6F7E891C5C6A95D555B1A1 destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  30
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 12E790876E6F7E891C5C6A95D555B1A1 destroyed at Mon Jun 03 00:07:06 KST 2024 30
+##########Session ID 00BC734EA5FD078C3D4A6F08A04AB4AA destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  29
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 00BC734EA5FD078C3D4A6F08A04AB4AA destroyed at Mon Jun 03 00:07:06 KST 2024 29
+##########Session ID 32D199BA6E62A5BE2347C225382B4A49 destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  28
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 32D199BA6E62A5BE2347C225382B4A49 destroyed at Mon Jun 03 00:07:06 KST 2024 28
+##########Session ID 3F64A8CDBF217270881D555EF4E472F3 destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  27
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 3F64A8CDBF217270881D555EF4E472F3 destroyed at Mon Jun 03 00:07:06 KST 2024 27
+##########Session ID 6E96AA17207085A6003BC39CC1FBE6FA destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  26
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 6E96AA17207085A6003BC39CC1FBE6FA destroyed at Mon Jun 03 00:07:06 KST 2024 26
+##########Session ID E3624DEE9E77ED1D40B7ABB685DAEF5C destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  25
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E3624DEE9E77ED1D40B7ABB685DAEF5C destroyed at Mon Jun 03 00:07:06 KST 2024 25
+##########Session ID DCD6D8F708E5BFF2C93EEDECA309F6F6 destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  24
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID DCD6D8F708E5BFF2C93EEDECA309F6F6 destroyed at Mon Jun 03 00:07:06 KST 2024 24
+##########Session ID 2032B48A4274B521038443FC46074BF0 destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  23
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 2032B48A4274B521038443FC46074BF0 destroyed at Mon Jun 03 00:07:06 KST 2024 23
+##########Session ID 4DC4FE2700D3A0A714D6D39A4FC07C54 destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  22
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 4DC4FE2700D3A0A714D6D39A4FC07C54 destroyed at Mon Jun 03 00:07:06 KST 2024 22
+##########Session ID 5589EA7375F93F0B0620D23BFC9E6982 destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  21
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 5589EA7375F93F0B0620D23BFC9E6982 destroyed at Mon Jun 03 00:07:06 KST 2024 21
+##########Session ID 833C1E62C53A42E9BF285E82469DF7EA destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  20
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 833C1E62C53A42E9BF285E82469DF7EA destroyed at Mon Jun 03 00:07:06 KST 2024 20
+##########Session ID FD82C9160322556C18E230B9CD2608CE destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  19
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID FD82C9160322556C18E230B9CD2608CE destroyed at Mon Jun 03 00:07:06 KST 2024 19
+##########Session ID 5C7579A2F2BF57FA0E7222346A98B0C3 destroyed at Mon Jun 03 00:07:06 KST 2024 Session Counts:  18
+ERROR 00:07:06.103 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 5C7579A2F2BF57FA0E7222346A98B0C3 destroyed at Mon Jun 03 00:07:06 KST 2024 18
+##########Session ID 6272A1EA5005D14D2DB308AC1B9F144E destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  17
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 6272A1EA5005D14D2DB308AC1B9F144E destroyed at Mon Jun 03 00:08:06 KST 2024 17
+##########Session ID 15317DE6EA2BD8907151F0005CC93ADD destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  16
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 15317DE6EA2BD8907151F0005CC93ADD destroyed at Mon Jun 03 00:08:06 KST 2024 16
+##########Session ID 2FF1C51EDBBD3755320523E7923F9842 destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  15
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 2FF1C51EDBBD3755320523E7923F9842 destroyed at Mon Jun 03 00:08:06 KST 2024 15
+##########Session ID E14DC12DFC28D862F80E67840884EB25 destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  14
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID E14DC12DFC28D862F80E67840884EB25 destroyed at Mon Jun 03 00:08:06 KST 2024 14
+##########Session ID A40AB9239DDD99FD473D8D27999DF67B destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  13
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A40AB9239DDD99FD473D8D27999DF67B destroyed at Mon Jun 03 00:08:06 KST 2024 13
+##########Session ID 31ABF669D00AB90D92924F79FC078475 destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  12
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 31ABF669D00AB90D92924F79FC078475 destroyed at Mon Jun 03 00:08:06 KST 2024 12
+##########Session ID FA88B944EFFDA59D9DDB2D677D01BCC2 destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  11
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID FA88B944EFFDA59D9DDB2D677D01BCC2 destroyed at Mon Jun 03 00:08:06 KST 2024 11
+##########Session ID 708AD416D345E12E6A569F85AB2EBE69 destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  10
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 708AD416D345E12E6A569F85AB2EBE69 destroyed at Mon Jun 03 00:08:06 KST 2024 10
+##########Session ID 92D69BC222079125530C3F7D6D4BC5FD destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  9
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 92D69BC222079125530C3F7D6D4BC5FD destroyed at Mon Jun 03 00:08:06 KST 2024 9
+##########Session ID 1BA47C614D856336907C6344CF71586D destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  8
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 1BA47C614D856336907C6344CF71586D destroyed at Mon Jun 03 00:08:06 KST 2024 8
+##########Session ID C73344AF592914DABB2E90AB270C2804 destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  7
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C73344AF592914DABB2E90AB270C2804 destroyed at Mon Jun 03 00:08:06 KST 2024 7
+##########Session ID B20A8F61CC30C005DC101CFA2768498C destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  6
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID B20A8F61CC30C005DC101CFA2768498C destroyed at Mon Jun 03 00:08:06 KST 2024 6
+##########Session ID A6FFDD1CCAF875A89FAF124CC6DE2144 destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  5
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A6FFDD1CCAF875A89FAF124CC6DE2144 destroyed at Mon Jun 03 00:08:06 KST 2024 5
+##########Session ID 196567D0A2035E1ED943FFFDEB692657 destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  4
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 196567D0A2035E1ED943FFFDEB692657 destroyed at Mon Jun 03 00:08:06 KST 2024 4
+##########Session ID A004F25C3496A6E0EFD7FADE47C100C1 destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  3
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID A004F25C3496A6E0EFD7FADE47C100C1 destroyed at Mon Jun 03 00:08:06 KST 2024 3
+##########Session ID 59695A5DB313D4E27803F5837370B8E6 destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  2
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 59695A5DB313D4E27803F5837370B8E6 destroyed at Mon Jun 03 00:08:06 KST 2024 2
+##########Session ID 6739CF3B9FE32874C5E0DF4796C192B5 destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  1
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 6739CF3B9FE32874C5E0DF4796C192B5 destroyed at Mon Jun 03 00:08:06 KST 2024 1
+##########Session ID C5024672A3439844EA5BEFDE2B25A2B2 destroyed at Mon Jun 03 00:08:06 KST 2024 Session Counts:  0
+ERROR 00:08:06.153 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID C5024672A3439844EA5BEFDE2B25A2B2 destroyed at Mon Jun 03 00:08:06 KST 2024 0
+##########Session ID 974FA7A73B7D225C1595CC4A9DBF05E3 destroyed at Mon Jun 03 00:15:06 KST 2024 Session Counts:  -1
+ERROR 00:15:06.393 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 974FA7A73B7D225C1595CC4A9DBF05E3 destroyed at Mon Jun 03 00:15:06 KST 2024 -1
+##########Session ID FEF49990F39528E556CA335BA6683C59 created at Mon Jun 03 01:40:51 KST 2024 Session Counts: 0
+ERROR 01:40:51.214 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID FEF49990F39528E556CA335BA6683C59 created at Mon Jun 03 01:40:51 KST 2024 0
+ERROR 01:40:51.214 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-03 01:40:51,/error/404,start,null,FEF49990F39528E556CA335BA6683C59
+ERROR 01:40:51.214 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] FEF49990F39528E556CA335BA6683C59
+ERROR 01:40:51.214 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-03 01:40:51,/error/404,end,null,FEF49990F39528E556CA335BA6683C59
+##########Session ID 6FB217202D2EC3E450CCA017EC3BDF91 created at Mon Jun 03 01:41:36 KST 2024 Session Counts: 3
+ERROR 01:41:36.513 [http-bio-8443-exec-4] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 6FB217202D2EC3E450CCA017EC3BDF91 created at Mon Jun 03 01:41:36 KST 2024 3
+ERROR 01:41:36.513 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-03 01:41:36,/error/404,start,null,6FB217202D2EC3E450CCA017EC3BDF91
+ERROR 01:41:36.513 [http-bio-8443-exec-4] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 6FB217202D2EC3E450CCA017EC3BDF91
+ERROR 01:41:36.513 [http-bio-8443-exec-4] sems.util.LogUtil[getContLog:31] - ,2024-06-03 01:41:36,/error/404,end,null,6FB217202D2EC3E450CCA017EC3BDF91
+##########Session ID 84409DE8150E73269170D37FE79868C2 created at Mon Jun 03 01:44:07 KST 2024 Session Counts: 4
+ERROR 01:44:07.037 [http-bio-8443-exec-1] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 84409DE8150E73269170D37FE79868C2 created at Mon Jun 03 01:44:07 KST 2024 4
+ERROR 01:44:07.037 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-03 01:44:07,/error/404,start,null,84409DE8150E73269170D37FE79868C2
+ERROR 01:44:07.037 [http-bio-8443-exec-1] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 84409DE8150E73269170D37FE79868C2
+ERROR 01:44:07.037 [http-bio-8443-exec-1] sems.util.LogUtil[getContLog:31] - ,2024-06-03 01:44:07,/error/404,end,null,84409DE8150E73269170D37FE79868C2
+##########Session ID FEF49990F39528E556CA335BA6683C59 destroyed at Mon Jun 03 04:41:19 KST 2024 Session Counts:  3
+ERROR 04:41:19.309 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID FEF49990F39528E556CA335BA6683C59 destroyed at Mon Jun 03 04:41:19 KST 2024 3
+##########Session ID CFB872E9CD094CAACD861FAB90A67A03 destroyed at Mon Jun 03 04:41:19 KST 2024 Session Counts:  2
+ERROR 04:41:19.309 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID CFB872E9CD094CAACD861FAB90A67A03 destroyed at Mon Jun 03 04:41:19 KST 2024 2
+##########Session ID 7AE8598DA4536F083609E5125BE836F5 destroyed at Mon Jun 03 04:42:19 KST 2024 Session Counts:  1
+ERROR 04:42:19.327 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 7AE8598DA4536F083609E5125BE836F5 destroyed at Mon Jun 03 04:42:19 KST 2024 1
+##########Session ID 6FB217202D2EC3E450CCA017EC3BDF91 destroyed at Mon Jun 03 04:42:19 KST 2024 Session Counts:  0
+ERROR 04:42:19.327 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 6FB217202D2EC3E450CCA017EC3BDF91 destroyed at Mon Jun 03 04:42:19 KST 2024 0
+##########Session ID 84409DE8150E73269170D37FE79868C2 destroyed at Mon Jun 03 04:44:19 KST 2024 Session Counts:  -1
+ERROR 04:44:19.443 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 84409DE8150E73269170D37FE79868C2 destroyed at Mon Jun 03 04:44:19 KST 2024 -1
+##########Session ID 8D000C20D402F8A7AF04198BB1BC7B4F created at Mon Jun 03 05:18:32 KST 2024 Session Counts: 3
+ERROR 05:18:32.646 [http-bio-8443-exec-8] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 8D000C20D402F8A7AF04198BB1BC7B4F created at Mon Jun 03 05:18:32 KST 2024 3
+ERROR 05:18:32.646 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-03 05:18:32,/error/404,start,null,8D000C20D402F8A7AF04198BB1BC7B4F
+ERROR 05:18:32.646 [http-bio-8443-exec-8] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 8D000C20D402F8A7AF04198BB1BC7B4F
+ERROR 05:18:32.646 [http-bio-8443-exec-8] sems.util.LogUtil[getContLog:31] - ,2024-06-03 05:18:32,/error/404,end,null,8D000C20D402F8A7AF04198BB1BC7B4F
+##########Session ID 940AB28A37BE1039673FBBBB6EC4DA25 destroyed at Mon Jun 03 07:49:27 KST 2024 Session Counts:  2
+ERROR 07:49:27.032 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 940AB28A37BE1039673FBBBB6EC4DA25 destroyed at Mon Jun 03 07:49:27 KST 2024 2
+##########Session ID D294AC0FB1C3D17539A289649D7D434F destroyed at Mon Jun 03 08:16:28 KST 2024 Session Counts:  2
+ERROR 08:16:28.164 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID D294AC0FB1C3D17539A289649D7D434F destroyed at Mon Jun 03 08:16:28 KST 2024 2
+##########Session ID 9AD88D59A89899CE852EF74F46CCE516 destroyed at Mon Jun 03 08:18:28 KST 2024 Session Counts:  1
+ERROR 08:18:28.270 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 9AD88D59A89899CE852EF74F46CCE516 destroyed at Mon Jun 03 08:18:28 KST 2024 1
+##########Session ID 8D000C20D402F8A7AF04198BB1BC7B4F destroyed at Mon Jun 03 08:19:28 KST 2024 Session Counts:  0
+ERROR 08:19:28.305 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 8D000C20D402F8A7AF04198BB1BC7B4F destroyed at Mon Jun 03 08:19:28 KST 2024 0
+##########Session ID 6CF277848540410B87EFF0FD88E16AE2 created at Mon Jun 03 10:51:15 KST 2024 Session Counts: 1
+ERROR 10:51:15.838 [http-bio-8443-exec-3] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID 6CF277848540410B87EFF0FD88E16AE2 created at Mon Jun 03 10:51:15 KST 2024 1
+ERROR 10:51:15.838 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-03 10:51:15,/error/404,start,null,6CF277848540410B87EFF0FD88E16AE2
+ERROR 10:51:15.838 [http-bio-8443-exec-3] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] 6CF277848540410B87EFF0FD88E16AE2
+ERROR 10:51:15.838 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-03 10:51:15,/error/404,end,null,6CF277848540410B87EFF0FD88E16AE2
+##########Session ID ED3FBDA88625CAEA57F555E2F10DAB2A created at Mon Jun 03 10:51:43 KST 2024 Session Counts: 4
+ERROR 10:51:43.605 [http-bio-8443-exec-3] sems.cm.ctrl.HttpSessionCheckingListener[sessionCreated:24] - ##########Session ID ED3FBDA88625CAEA57F555E2F10DAB2A created at Mon Jun 03 10:51:43 KST 2024 4
+ERROR 10:51:43.605 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-03 10:51:43,/error/404,start,null,ED3FBDA88625CAEA57F555E2F10DAB2A
+ERROR 10:51:43.605 [http-bio-8443-exec-3] sems.cm.ctrl.ErrorCtrl[ErrorHandler:31] - Error handler[404] ED3FBDA88625CAEA57F555E2F10DAB2A
+ERROR 10:51:43.605 [http-bio-8443-exec-3] sems.util.LogUtil[getContLog:31] - ,2024-06-03 10:51:43,/error/404,end,null,ED3FBDA88625CAEA57F555E2F10DAB2A
+##########Session ID 821E7188D07252D55112240ACD9A3DAF destroyed at Mon Jun 03 10:57:34 KST 2024 Session Counts:  3
+ERROR 10:57:34.561 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] sems.cm.ctrl.HttpSessionCheckingListener[sessionDestroyed:31] - ##########Session ID 821E7188D07252D55112240ACD9A3DAF destroyed at Mon Jun 03 10:57:34 KST 2024 3
+12:15:26,008 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+12:15:26,008 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+12:15:26,008 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [file:/C:/WAS/SEMS_MOBILE/webapps/ROOT/WEB-INF/classes/logback.xml]
+12:15:26,055 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+12:15:26,070 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Setting ReconfigureOnChangeFilter scanning period to 30 seconds
+12:15:26,070 |-INFO in ReconfigureOnChangeFilter{invocationCounter=0} - Will scan for changes in [[C:\WAS\SEMS_MOBILE\webapps\ROOT\WEB-INF\classes\logback.xml]] every 30 seconds. 
+12:15:26,070 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Adding ReconfigureOnChangeFilter as a turbo filter
+12:15:26,086 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Adding LoggerContextListener of type [ch.qos.logback.classic.jul.LevelChangePropagator] to the object stack
+12:15:26,117 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6755b312 - Setting level of jul logger [org.apache.catalina.core.ContainerBase.[Catalina].[localhost]] to null
+12:15:26,133 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6755b312 - Propagating DEBUG level on Logger[ROOT] onto the JUL framework
+12:15:26,133 |-INFO in ch.qos.logback.classic.joran.action.LoggerContextListenerAction - Starting LoggerContextListener
+12:15:26,133 |-INFO in ch.qos.logback.classic.joran.action.JMXConfiguratorAction - begin
+12:15:26,133 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+12:15:26,164 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [console]
+12:15:26,211 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+12:15:26,242 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+12:15:26,242 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [file]
+12:15:26,242 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+12:15:26,258 |-ERROR in ch.qos.logback.core.joran.spi.Interpreter@29:18 - no applicable action for [totalSizeCap], current ElementPath  is [[configuration][appender][rollingPolicy][totalSizeCap]]
+12:15:26,258 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - No compression will be used
+12:15:26,258 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy - Will use the pattern D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log for the active file
+12:15:26,273 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - The date pattern is 'yyyy-MM-dd' from file name pattern 'D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.%d{yyyy-MM-dd}.log'.
+12:15:26,273 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Roll-over at midnight.
+12:15:26,273 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Setting initial period to Mon Jun 03 12:15:26 KST 2024
+12:15:26,273 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - Active log file name: D:/SEMS3/WEBMOBILE_LOGS/SEMS_MOBILE.2024-06-03.log
+12:15:26,273 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[file] - File property is set to [null]
+12:15:26,305 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6755b312 - Propagating DEBUG level on Logger[sems] onto the JUL framework
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - sems level set to DEBUG
+12:15:26,305 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6755b312 - Propagating ERROR level on Logger[org.springframework.core] onto the JUL framework
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.core level set to ERROR
+12:15:26,305 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6755b312 - Propagating ERROR level on Logger[org.springframework.beans] onto the JUL framework
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.beans level set to ERROR
+12:15:26,305 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6755b312 - Propagating ERROR level on Logger[org.springframework.context] onto the JUL framework
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.context level set to ERROR
+12:15:26,305 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6755b312 - Propagating ERROR level on Logger[org.springframework.web] onto the JUL framework
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - org.springframework.web level set to ERROR
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultsettable] to false
+12:15:26,305 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6755b312 - Propagating ERROR level on Logger[jdbc.resultsettable] onto the JUL framework
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultsettable level set to ERROR
+12:15:26,305 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultsettable]
+12:15:26,305 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultsettable]
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.audit] to false
+12:15:26,305 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6755b312 - Propagating OFF level on Logger[jdbc.audit] onto the JUL framework
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.audit level set to OFF
+12:15:26,305 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.audit]
+12:15:26,305 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.audit]
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.resultset] to false
+12:15:26,305 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6755b312 - Propagating OFF level on Logger[jdbc.resultset] onto the JUL framework
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.resultset level set to OFF
+12:15:26,305 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.resultset]
+12:15:26,305 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.resultset]
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqltiming] to false
+12:15:26,305 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6755b312 - Propagating INFO level on Logger[jdbc.sqltiming] onto the JUL framework
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqltiming level set to INFO
+12:15:26,305 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqltiming]
+12:15:26,305 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqltiming]
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [jdbc.sqlonly] to false
+12:15:26,305 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6755b312 - Propagating ERROR level on Logger[jdbc.sqlonly] onto the JUL framework
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - jdbc.sqlonly level set to ERROR
+12:15:26,305 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[jdbc.sqlonly]
+12:15:26,305 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[jdbc.sqlonly]
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to ERROR
+12:15:26,305 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6755b312 - Propagating ERROR level on Logger[ROOT] onto the JUL framework
+12:15:26,305 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[ROOT]
+12:15:26,305 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [file] to Logger[ROOT]
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+12:15:26,305 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@3b356088 - Registering current configuration as safe fallback point
+

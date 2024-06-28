@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi" />
+<meta name="format-detection" content="telephone=no, address=no, email=no" />
+<!-- <meta name="theme-color" content="#353942" /> 주소창 컬러 -->
+<title>에너지 관제시스템 모바일웹 - 코딩맵</title>
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/app_icon.png" />
+<link rel="apple-touch-icon-precomposed" href="/images/app_icon.png" />
+<link rel="stylesheet" type="text/css" href="/pub/guide/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/pub/guide/css/common.css" />
+<script src="/resources/js/jquery-1.8.2.min.js"></script>
+<script src="/resources/js/common.js"></script>
+<style>
+.division {padding:0 5px;border:1px solid #ff7f50;border-radius:10px;}
+.division.blue {border-color:#6495ed;}
+.division.green {border-color:#228b22;}
+
+.gsr {padding:0 2px;color:#fff;background-color:#34b5ff;border-radius:2px;}
+.bgf {padding:0 2px;color:#fff;background-color:#9dc92a;border-radius:2px;}
+.poc {padding:0 2px;color:#fff;background-color:#e5a51c;border-radius:2px;}
+.syspoc {padding:0 2px;color:#fff;background-color:#000;border-radius:2px;}
+.theme {padding:0 2px;color:#fff;background-color:#000;border-radius:2px;}
+.theme.t1 {background-color:#228b22;}
+.theme.t2 {background-color:#34b5ff;}
+.theme.t3 {background-color:#ed8a21;}
+.theme.t4 {background-color:#a39e09;}
+.theme.t5 {background-color:#9299ed;}
+</style>
+<script>
+$(function() {
+	// 1.set
+	$("table tbody tr").each(function(index) {
+		// No
+	//	$(this).find("td:eq(0)").html(index+1);
+	});
+	
+	// 2.event
+	$("table tbody tr td").off("click");
+	$("table tbody tr td").on("click", function() {
+		var _tr = $(this).closest("tr");
+		_tr.addClass("selected");
+		$("table tbody tr").not(_tr).removeClass("selected");
+	});
+});
+</script>
+</head>
+<body class="mainBody">
+<div class="r_wrapper">
+	<div class="r_compWrapper">
+		<h1 class="r_pageTitle">HTML SEMS MOBILE(에너지 관제시스템 모바일웹) CodingMap</h1>
+		<ul class="supportList">
+			<li><a href="wsg.html" target="_blank">Web Style Guide</a></li>
+		</ul>
+		
+		
+		<table class="htmlMap">
+			<colgroup>
+			</colgroup>
+			<thead>
+			<tr>
+				<th>No</th>
+				<th>1 Depth</th>
+				<th>2 Depth</th>
+				<th>3 Depth</th>
+				<th>View</th>
+				<th>ID</th>
+				<th>url</th>
+				<th>update</th>
+				<th>Memo</th>
+			</tr>
+			</thead>
+			<tbody>
+			<!-- Common -->
+			<tr>
+				<td></td>
+				<td><em class="num">0.</em>공통<span class="eng">Common</span></td>
+				<td></td>
+				<td></td>
+				<td class="tit">로딩</td>
+				<td>-</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/loading.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/loading.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/loading.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/loading.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/loading.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/loading.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/loading.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/loading.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>SYSPOC(전자랜드)</dt>
+						<dd>
+							<ul>
+								<li class="syspoc"><a href="syspoc/loading.jsp" target="_blank">default</a>ing</li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="2"></td>
+				<td rowspan="2">공통</td>
+				<td rowspan="2"></td>
+				<td rowspan="2"></td>
+				<td rowspan="2" class="tit">로그인</td>
+				<td rowspan="2">CM0101</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/cm/CM0101.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/cm/CM0101.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/cm/CM0101.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/cm/CM0101.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/cm/CM0101.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/cm/CM0101.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/cm/CM0101.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/cm/CM0101.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>
+					<dl>
+						<dt>SYSPOC(전자랜드)</dt>
+						<dd>
+							<ul>
+								<li class="syspoc"><a href="syspoc/default/cm/CM0101.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+					
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>공통</td>
+				<td></td>
+				<td></td>
+				<td class="tit">사용자 약관</td>
+				<td>CM0102</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/cm/CM0102.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/cm/CM0102.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/cm/CM0102.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/cm/CM0102.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/cm/CM0102.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/cm/CM0102.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/cm/CM0102.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/cm/CM0102.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>공통</td>
+				<td></td>
+				<td></td>
+				<td class="tit">서버점검</td>
+				<td>-</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/cm/CM0103.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/cm/CM0103.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/cm/CM0103.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/cm/CM0103.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/cm/CM0103.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/cm/CM0103.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/cm/CM0103.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/cm/CM0103.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>공통</td>
+				<td></td>
+				<td></td>
+				<td class="tit">세션만료</td>
+				<td>-</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/cm/error404.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/cm/error404.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/cm/error404.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/cm/error404.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/cm/error404.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/cm/error404.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/cm/error404.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/cm/error404.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>공통</td>
+				<td></td>
+				<td></td>
+				<td class="tit">잘못된 요청</td>
+				<td>-</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/cm/error.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/cm/error.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/cm/error.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/cm/error.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/cm/error.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/cm/error.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/cm/error.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/cm/error.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>공통</td>
+				<td></td>
+				<td></td>
+				<td class="tit">어플리케이션 업데이트 안내 팝업</td>
+				<td>-</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/cm/CM0601.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/cm/CM0601.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/cm/CM0601.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/cm/CM0601.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/cm/CM0601.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/cm/CM0601.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+					
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>공통</td>
+				<td></td>
+				<td></td>
+				<td class="tit">점포정보 팝업</td>
+				<td>CM0201</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/cm/CM0201.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/cm/CM0201.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/cm/CM0201.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/cm/CM0201.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/cm/CM0201.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/cm/CM0201.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/cm/CM0201.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/cm/CM0201.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+					
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>공통</td>
+				<td></td>
+				<td></td>
+				<td class="tit">전체메뉴1</td>
+				<td>CM0301</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/cm/CM0301.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/cm/CM0301.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/cm/CM0301.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/cm/CM0301.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/cm/CM0301.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/cm/CM0301.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/cm/CM0301.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/cm/CM0301.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>SYSPOC(전자랜드)</dt>
+						<dd>
+							<ul>
+								<li class="syspoc"><a href="syspoc/default/cm/CM0301.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td>2020-02-18</td>
+				<td>- 접근권한 : <span class="division green">시스템 관리자용</span><br />
+					- 2019-06-11 : 유지보수 메뉴 추가<br />
+					- 2020-02-18 : 관리자 메뉴 추가
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>공통</td>
+				<td></td>
+				<td></td>
+				<td class="tit">전체메뉴2</td>
+				<td>CM0301</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/cm/CM0301_2.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/cm/CM0301_2.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/cm/CM0301_2.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/cm/CM0301_2.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/cm/CM0301_2.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/cm/CM0301_2.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td>- 접근권한 : <span class="division blue">본부관리자, 본부사용자, 냉장비업체</span></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>공통</td>
+				<td></td>
+				<td></td>
+				<td class="tit">전체메뉴3</td>
+				<td>CM0301</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/cm/CM0301_3.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/cm/CM0301_3.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/cm/CM0301_3.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/cm/CM0301_3.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/cm/CM0301_3.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/cm/CM0301_3.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td>- 접근권한 : <span class="division">점주용</span></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>공통</td>
+				<td></td>
+				<td></td>
+				<td class="tit">점포조회</td>
+				<td>CM0401</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/cm/CM0401.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/cm/CM0401.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/cm/CM0401.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/cm/CM0401.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/cm/CM0401.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/cm/CM0401.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/cm/CM0401.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/cm/CM0401.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>공통</td>
+				<td></td>
+				<td></td>
+				<td class="tit">냉장비온도</td>
+				<td>CM0501</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/cm/CM0501.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/cm/CM0501.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/cm/CM0501.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/cm/CM0501.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/cm/CM0501.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/cm/CM0501.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/cm/CM0501.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/cm/CM0501.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td>highChart</td>
+			</tr>
+			<!-- //Common -->
+			<!-- 대시보드 -->
+			<tr>
+				<td></td>
+				<td><em class="num">1.</em>대시보드</td>
+				<td></td>
+				<td></td>
+				<td class="tit">대시보드</td>
+				<td>VM0101</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0101.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0101.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0101.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0101.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0101.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0101.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0101.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0101.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>SYSPOC(전자랜드)</dt>
+						<dd>
+							<ul>
+								<li class="syspoc"><a href="syspoc/default/vm/VM0101.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td>2020-06-16</td>
+				<td>- 2020-06-09 : 헤더 메뉴 아이콘 수정(텍스트 추가), 점포명 길때 ... 처리<br />
+					- 2020-06-16 : 냉난방 마지막 제어정보 표시 추가
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>대시보드</td>
+				<td></td>
+				<td></td>
+				<td class="tit">대시보드(시설정보 : 냉난방, 간판만 보일 경우)</td>
+				<td>VM0101</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0101_2.jsp" target="_blank">봄</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>대시보드</td>
+				<td></td>
+				<td></td>
+				<td class="tit">대시보드(status bar - 44)<br />iphoneX</td>
+				<td>VM0101</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0101_sh44.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0101_sh44.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0101_sh44.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0101_sh44.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0101_sh44.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0101_sh44.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>대시보드</td>
+				<td></td>
+				<td></td>
+				<td class="tit">대시보드(날씨 전체)</td>
+				<td>VM0101</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0101_weather.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0101_weather.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0101_weather.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0101_weather.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0101_weather.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0101_weather.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>대시보드</td>
+				<td></td>
+				<td></td>
+				<td class="tit">냉난방기 제어 팝업</td>
+				<td>-</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0102.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0102.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0102.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0102.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0102.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0102.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+						<dt>SYSPOC</dt>
+						<dd>
+							<ul>
+								<li class="syspoc"><a href="syspoc/default/vm/VM0102.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>대시보드</td>
+				<td></td>
+				<td></td>
+				<td class="tit">간판 제어 팝업</td>
+				<td>-</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0103.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0103.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0103.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0103.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0103.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0103.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+						<dt>SYSPOC</dt>
+						<dd>
+							<ul>
+								<li class="syspoc"><a href="syspoc/default/vm/VM0103.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="disabled">
+				<td></td>
+				<td>대시보드</td>
+				<td></td>
+				<td></td>
+				<td class="tit">SEMS 소개 팝업</td>
+				<td>-</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0104.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0104.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0104.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0104.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0104.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td>2020-08-03: 메인 화면으로 변경됨(안씀)</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>대시보드</td>
+				<td></td>
+				<td></td>
+				<td class="tit">SEMS FAQ</td>
+				<td>-</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0105.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0105.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0105.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0105.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0105.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td>2020-08-03: 추가<br />
+					2020-12-08: 겨울버전에 이미지 확대 축소 테스트 버전 추가
+				</td>
+			</tr>
+			<!-- //대시보드 -->
+			<!-- 사용량 -->
+			<tr>
+				<td></td>
+				<td><em class="num">2.</em>사용량</td>
+				<td></td>
+				<td></td>
+				<td class="tit">사용량</td>
+				<td>VM0201</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0201.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0201.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0201.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0201.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0201.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0201.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0201.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0201.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<!-- //사용량 -->
+			<!-- 냉난방 -->
+			<tr>
+				<td></td>
+				<td><em class="num">3.</em>냉난방</td>
+				<td></td>
+				<td></td>
+				<td class="tit">냉난방</td>
+				<td>VM0301</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0301.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0301.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0301.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0301.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0301.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0301.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0301.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0301.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<!-- //냉난방 -->
+			<!-- 간판 -->
+			<tr>
+				<td></td>
+				<td><em class="num">4.</em>간판</td>
+				<td></td>
+				<td></td>
+				<td class="tit">간판</td>
+				<td>VM0601</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0601.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0601.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0601.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0601.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0601.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0601.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0601.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0601.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td>- 간판설정 변경 : 24시간 ON 일 경우</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>간판</td>
+				<td></td>
+				<td></td>
+				<td class="tit">간판</td>
+				<td>VM0601</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0601_2.jsp" target="_blank">봄</a></li>
+<!-- 								<li><a href="gsr/theme/season2/vm/VM0601_2.jsp" target="_blank">gsr/theme/season2/vm/VM0601_2.jsp(여름)</a></li> -->
+<!-- 								<li><a href="gsr/theme/season3/vm/VM0601_2.jsp" target="_blank">gsr/theme/season3/vm/VM0601_2.jsp(혹서기)</a></li> -->
+<!-- 								<li><a href="gsr/theme/season4/vm/VM0601_2.jsp" target="_blank">gsr/theme/season4/vm/VM0601_2.jsp(가을)</a></li> -->
+<!-- 								<li><a href="gsr/theme/season5/vm/VM0601_2.jsp" target="_blank">gsr/theme/season5/vm/VM0601_2.jsp(겨울)</a></li> -->
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td>- 간판설정 변경 : 일출몰 기준 일 경우</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>간판</td>
+				<td></td>
+				<td></td>
+				<td class="tit">간판</td>
+				<td>VM0601</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0601_3.jsp" target="_blank">봄</a></li>
+<!-- 								<li><a href="gsr/theme/season2/vm/VM0601_3.jsp" target="_blank">gsr/theme/season2/vm/VM0601_3.jsp(여름)</a></li> -->
+<!-- 								<li><a href="gsr/theme/season3/vm/VM0601_3.jsp" target="_blank">gsr/theme/season3/vm/VM0601_3.jsp(혹서기)</a></li> -->
+<!-- 								<li><a href="gsr/theme/season4/vm/VM0601_3.jsp" target="_blank">gsr/theme/season4/vm/VM0601_3.jsp(가을)</a></li> -->
+<!-- 								<li><a href="gsr/theme/season5/vm/VM0601_3.jsp" target="_blank">gsr/theme/season5/vm/VM0601_3.jsp(겨울)</a></li> -->
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td>- 간판설정 변경 : 사용자 정의 일 경우</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>간판</td>
+				<td></td>
+				<td></td>
+				<td class="tit">간판</td>
+				<td>VM0601</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0601_s.jsp" target="_blank">봄</a></li>
+<!-- 								<li><a href="gsr/theme/season2/vm/VM0601_s.jsp" target="_blank">gsr/theme/season2/vm/VM0601_s.jsp(여름)</a></li> -->
+<!-- 								<li><a href="gsr/theme/season3/vm/VM0601_s.jsp" target="_blank">gsr/theme/season3/vm/VM0601_s.jsp(혹서기)</a></li> -->
+<!-- 								<li><a href="gsr/theme/season4/vm/VM0601_s.jsp" target="_blank">gsr/theme/season4/vm/VM0601_s.jsp(가을)</a></li> -->
+<!-- 								<li><a href="gsr/theme/season5/vm/VM0601_s.jsp" target="_blank">gsr/theme/season5/vm/VM0601_s.jsp(겨울)</a></li> -->
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td>- 접근권한 : <span class="division">점주용</span></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>간판</td>
+				<td></td>
+				<td></td>
+				<td class="tit">간판(24시간점포)</td>
+				<td>VM0601</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0602.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0602.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0602.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0602.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0602.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0602.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<!-- //간판 -->
+			<!-- 알람 -->
+			<tr>
+				<td></td>
+				<td><em class="num">5.</em>알람</td>
+				<td><em class="num">1.</em>미조치</td>
+				<td></td>
+				<td class="tit">미조치1</td>
+				<td>VM0701</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0701.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0701.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0701.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0701.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0701.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0701.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0701.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0701.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>SYSPOC</dt>
+						<dd>
+							<ul>
+								<li class="syspoc"><a href="syspoc/default/vm/VM0701.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td>테마 - 탭 메뉴가 많을 경우 테스트용 제작</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>알람</td>
+				<td>미조치</td>
+				<td></td>
+				<td class="tit">미조치2</td>
+				<td>VM0701</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0701_3.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0701_3.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0701_3.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0701_3.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0701_3.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0701_3.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0701_3.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0701_3.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td>미조치만 있는 경우</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>알람</td>
+				<td>미조치</td>
+				<td></td>
+				<td class="tit">미조치3</td>
+				<td>VM0701</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0701_4.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0701_4.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0701_4.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0701_4.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0701_4.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0701_4.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0701_4.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0701_4.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td>- 접근권한 : <span class="division">점주용</span><br />
+					- 미조치만 있는 경우
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>알람</td>
+				<td>미조치</td>
+				<td><em class="num">1.</em>알람 조치</td>
+				<td class="tit">알람 조치</td>
+				<td>VM0702</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0702.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0702.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0702.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0702.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0702.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0702.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0702.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0702.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>알람</td>
+				<td><em class="num">2.</em>복구</td>
+				<td></td>
+				<td class="tit">복구</td>
+				<td>-</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>-</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+						<dt>SYSPOC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>알람</td>
+				<td><em class="num">3.</em>조치완료</td>
+				<td></td>
+				<td class="tit">조치완료</td>
+				<td>VM0701</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0701_2.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0701_2.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0701_2.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0701_2.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0701_2.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0701_2.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0701_2.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0701_2.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<!-- //알람 -->
+			<!-- 공지 -->
+			<tr>
+				<td></td>
+				<td><em class="num">6.</em>공지</td>
+				<td></td>
+				<td></td>
+				<td class="tit">공지</td>
+				<td>VM0801</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0801.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0801.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0801.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0801.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0801.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0801.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0801.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0801.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>SYSPOC</dt>
+						<dd>
+							<ul>
+								<li class="syspoc"><a href="syspoc/default/vm/VM0801.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td>팝업 적용 - 리스트 선택시 팝업 오픈</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>공지</td>
+				<td><em class="num">1.</em>공지 상세</td>
+				<td></td>
+				<td class="tit">공지 상세</td>
+				<td>-</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0801_2.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0801_2.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0801_2.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0801_2.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0801_2.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0801_2.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+						<dt>SYSPOC</dt>
+						<dd>
+							<ul>
+								<li class="syspoc"><a href="syspoc/default/vm/VM0801_2.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<!-- //공지 -->
+			<!-- 냉장비 -->
+			<tr>
+				<td></td>
+				<td><em class="num">7.</em>냉장비</td>
+				<td></td>
+				<td></td>
+				<td class="tit">냉장비</td>
+				<td>VM0501</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0501.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0501.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0501.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0501.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0501.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0501.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0501.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0501.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td>2019-06-21</td>
+				<td>2019-06-21 : 센서타입 디자인 변경(무선, 유선, 인버터)<br />
+					2021-02-19 : gsr 알람일시 정지 기능 추가
+				</td>
+			</tr>
+			<!-- //냉장비 -->
+			<!-- 제어이력 -->
+			<tr>
+				<td></td>
+				<td><em class="num">8.</em>제어이력</td>
+				<td><em class="num">1.</em>온도제어</td>
+				<td></td>
+				<td class="tit">온도제어</td>
+				<td>VM0401</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0401.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0401.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0401.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0401.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0401.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0401.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0401.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0401.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>제어이력</td>
+				<td><em class="num">2.</em>피크제어</td>
+				<td></td>
+				<td class="tit">피크제어</td>
+				<td>VM0402</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0402.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0402.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0402.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0402.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0402.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0402.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0402.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0402.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<!-- //제어이력 -->
+			<!-- 유지보수 -->
+			<tr>
+				<td></td>
+				<td><em class="num">9.</em>유지보수</td>
+				<td></td>
+				<td></td>
+				<td class="tit">유지보수</td>
+				<td>VM1001</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM1001.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM1001.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM1001.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM1001.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM1001.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM1001.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM1001.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM1001.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td>2019-06-05</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>유지보수</td>
+				<td><em class="num">1.</em>유지보수 상세</td>
+				<td></td>
+				<td class="tit">유지보수 상세</td>
+				<td>VM1002</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM1002.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM1002.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM1002.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM1002.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM1002.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM1002.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM1002.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM1002.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td>2019-06-11</td>
+				<td>2019-06-11 : 디바이스 OS 체크 추가(점포사진 추가시 UI 다름)</td>
+			</tr>
+			<!-- //유지보수 -->
+			<!-- 점포등록 -->
+			<tr>
+				<td></td>
+				<td><em class="num">10.</em>점포등록</td>
+				<td></td>
+				<td></td>
+				<td class="tit">점포등록</td>
+				<td>VM9901</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM9901.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM9901.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM9901.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM9901.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM9901.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM9901.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM9901.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM9901.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>점포등록</td>
+				<td><em class="num">1.</em>기상지역</td>
+				<td></td>
+				<td class="tit">기상지역</td>
+				<td>VM9902</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM9902.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM9902.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM9902.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM9902.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM9902.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM9902.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM9902.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM9902.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<!-- //점포등록 -->
+			<!-- 설정 -->
+			<tr>
+				<td></td>
+				<td><em class="num">11.</em>설정</td>
+				<td></td>
+				<td></td>
+				<td class="tit">설정</td>
+				<td>VM0901</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM0901.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM0901.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM0901.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM0901.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM0901.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM0901.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>
+							<ul>
+								<li class="bgf"><a href="bgf/vm/VM0901.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>POC</dt>
+						<dd>
+							<ul>
+								<li class="poc"><a href="poc/vm/VM0901.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+						<dt>SYSPOC</dt>
+						<dd>
+							<ul>
+								<li class="syspoc"><a href="syspoc/default/vm/VM0901.jsp" target="_blank">default</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<!-- //설정 -->
+			<!-- 관리자 -->
+			<tr>
+				<td></td>
+				<td><em class="num">12.</em>관리자</td>
+				<td><em class="num">1.</em>관리자</td>
+				<td></td>
+				<td class="tit">관리자</td>
+				<td>VM1102</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM1101.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM1101.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM1101.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM1101.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM1101.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM1101.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td>2020-02-18</td>
+				<td></td>
+			</tr>
+			<!-- //관리자 -->
+			<!--  -->
+			<tr class="disabled">
+				<td></td>
+				<td><em class="num">-.</em>미정</td>
+				<td></td>
+				<td></td>
+				<td class="tit">튀김기 오류 상세</td>
+				<td>VM1102</td>
+				<td>
+					<dl>
+						<dt>GSR</dt>
+						<dd>
+							<ul>
+								<li class="gsr"><a href="gsr/default/vm/VM9999.jsp" target="_blank">default</a></li>
+								<li class="theme t1"><a href="gsr/theme/season1/vm/VM9999.jsp" target="_blank">봄</a></li>
+								<li class="theme t2"><a href="gsr/theme/season2/vm/VM9999.jsp" target="_blank">여름</a></li>
+								<li class="theme t3"><a href="gsr/theme/season3/vm/VM9999.jsp" target="_blank">혹서기</a></li>
+								<li class="theme t4"><a href="gsr/theme/season4/vm/VM9999.jsp" target="_blank">가을</a></li>
+								<li class="theme t5"><a href="gsr/theme/season5/vm/VM9999.jsp" target="_blank">겨울</a></li>
+							</ul>
+						</dd>
+						<dt>BGF</dt>
+						<dd>-</dd>
+						<dt>POC</dt>
+						<dd>-</dd>
+					</dl>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<!-- // -->
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>

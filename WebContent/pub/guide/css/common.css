@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+/* CodingMap
+---------------------------------------------------------*/
+html,
+body {padding:10px;background-color:#f3f4f6;}
+table.htmlMap {margin-top:30px;border-collapse:collapse;width:100%;min-width:800px;font-size:12px;}
+table.htmlMap caption {height:0 !important;width:0 !important;overflow:hidden !important;position:absolute !important;}
+table.htmlMap thead tr th {padding:5px 3px;background-color:#ddd;border-top:1px solid #000;border-bottom:1px solid #000;}
+table.htmlMap tbody tr td {position:relative;padding:5px 3px;border-right:1px solid #ddd;border-bottom:1px solid #ddd;}
+table.htmlMap tbody tr td:nth-child(2),
+table.htmlMap tbody tr td:nth-child(3),
+table.htmlMap tbody tr td:nth-child(4) {padding-left:20px;}
+table.htmlMap tbody tr td:nth-child(2) .eng {display:block;color:#a52a2a;}
+table.htmlMap tbody tr td:nth-child(7),
+table.htmlMap tbody tr td:nth-child(8),
+table.htmlMap tbody tr td:nth-child(9),
+table.htmlMap tbody tr td:nth-child(10) {vertical-align:top;}
+table.htmlMap tbody tr td:nth-child(11) {text-align:center;}
+table.htmlMap tbody tr td:last-child {border-right:0 none;font-size:11px;}
+table.htmlMap tbody tr td.tit {color:#a50034;}
+table.htmlMap tbody tr td.ing {color:darkturquoise;}
+table.htmlMap tbody tr td.finish {color:#000;}
+table.htmlMap tbody tr td a {display:inline-block;margin:0 5px;padding:0 5px;/*border-bottom:1px solid;*/line-height:2em;font-size:11px;}
+table.htmlMap tbody tr td a:hover {text-decoration:none;font-weight:bold;}
+table.htmlMap tbody tr td em.num {margin-left:-16px;padding-right:5px;font-weight:bold;font-style:normal;}
+table.htmlMap tbody tr td .new {color:#6495ed;}
+/* table.htmlMap tbody tr:nth-child(even) td {background:#efeff1;} */
+/* table.htmlMap tbody tr:hover td {background-color:#f7e8e88f;} */
+/* table.htmlMap tbody tr:hover td:nth-child(2):before, */
+/* table.htmlMap tbody tr:hover td:nth-child(3):before, */
+/* table.htmlMap tbody tr:hover td:nth-child(4):before, */
+/* table.htmlMap tbody tr:hover td:nth-child(5):before {position:absolute;left:-20px;top:calc(50% + 5px);content:"▶ ";} */
+/* table.htmlMap tbody tr:hover td:nth-child(7), */
+/* table.htmlMap tbody tr:hover td:nth-child(8), */
+/* table.htmlMap tbody tr:hover td:nth-child(9), */
+/* table.htmlMap tbody tr:hover td:nth-child(10) {color:#a50034;} */
+/* table.htmlMap tbody tr.selected td {background-color:#fff;} */
+/* table.htmlMap tbody tr.selected td.tit, */
+/* table.htmlMap tbody tr.selected td a {} */
+table.htmlMap tbody .disabled,
+table.htmlMap tbody .disabled * {color:#d4d4d4 !important;}
+table.htmlMap tbody .disabled td {background-color:#b7b7b7 !important;}
+table.htmlMap tbody dt {font-weight:bold;}
+table.htmlMap tbody dd {margin:0 0 3px;}
+table.htmlMap tbody dd li {display:inline-block;}
+
+ul.supportList {padding:10px 0;}
+ul.supportList>li {}
+ul.supportList>li:before {content:"- ";}
+/* ul.supportList ul {padding:0 0 0 39px;} */

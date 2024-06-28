@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM9901Mapper">
+	
+	<!-- 공통코드 select -->
+	<select id="searchCommCd" parameterType="Map" resultType="Map">
+		SELECT	COMM_CD			AS code
+				, COMM_CD_NM	AS commCdNm
+		FROM	TH_COMM_CD
+		WHERE	COMM_GRP_CD	= #{commGrpCd}
+			AND	USE_YN		= 'Y'
+			<if test='commGrpCd == "MAST20"'>
+				AND ORDER_SEQ != 99
+			</if>
+		ORDER BY ORDER_SEQ
+	</select>
+	
+	<!-- 전기업체 select -->
+	<select id="searchElecList" parameterType="Map" resultType="Map">
+		SELECT	ELECTRICENT_CD		AS value
+				, ELECTRICENT_NM	AS name
+		FROM	TH_ELECTRICENT_MST
+		WHERE	USE_YN		= 'Y' 
+			AND	COMPANY_CD	= #{companyCd}
+	</select>
+	
+	<!-- 기상 지역 검색 -->
+	<select id="VM9902Search" parameterType="Map" resultType="Map">
+		SELECT	A.LOCAL_AREA_CD			AS areaCd
+				, TRIM(CONCAT(A.AREA_NM, ' ', A.CITY_NM, ' ', A.DONG_NM)) AS fullAreaNm
+				, A.AREA_NM				AS areaNm
+				, A.CITY_NM				AS cityNm
+				, A.DONG_NM				AS dongNm
+		FROM	TH_WEATHER_AREA_MST A
+				, TH_COMPANY_MST B
+		WHERE	A.COUNTRY_CD = B.COUNTRY_CD
+			AND	B.COMPANY_CD = #{companyCd} 
+			AND	(
+					INSTR(A.AREA_NM, #{localAreaNm}) > 0
+					OR
+					INSTR(A.CITY_NM, #{localAreaNm}) > 0
+					OR
+					INSTR(A.DONG_NM, #{localAreaNm}) > 0
+				)
+	</select>
+	
+	<!-- 시스템 점포코드 최대값 가져오기 -->
+	<select id="getMaxStrCd" parameterType="Map"  resultType="String">
+		SELECT	IFNULL(
+					CONCAT(
+							(
+								SELECT	COMPANY_STR_CD
+								FROM	TH_COMPANY_MST
+								WHERE	COMPANY_CD = #{companyCd}
+							)
+							, LPAD(MAX(CAST(SUBSTR(STR_CD,4,6) AS UNSIGNED)+1),6,'0')
+					)
+					, CONCAT(
+								(
+									SELECT	COMPANY_STR_CD
+									FROM	TH_COMPANY_MST
+									WHERE	COMPANY_CD = #{companyCd}
+								)
+								, LPAD(0+1,6,'0')
+					)
+				) AS strCd
+		FROM	TH_STR_INFO_MST
+		WHERE	COMPANY_CD = #{companyCd}
+	</select>
+	
+	<!-- GW_ID STR_CD숫자만 가져오기 -->
+	<select id="getGwId" parameterType="Map" resultType="int">
+		SELECT	MAX(CAST(SUBSTR(STR_CD,4,6) AS UNSIGNED)+1)
+		FROM	TH_STR_INFO_MST
+		WHERE	COMPANY_CD = #{companyCd}
+	</select>
+	
+	<!-- 점포명 중복 검사 -->
+	<select id="chkStrNmExist" parameterType="Map" resultType="int">
+	<![CDATA[
+		SELECT	COUNT(*)
+		FROM	TH_STR_INFO_MST
+		WHERE	STR_NM = #{strNm}
+	]]>	
+	</select>
+	
+	
+	
+	<!-- 
+		점포 등록
+	 -->
+	<!--  1. TH_STR_INFO_MST				- 점포 정보 -->
+	<update id="saveStrInfoMst" parameterType="Map">
+		INSERT	TH_STR_INFO_MST
+		SET		STR_CD				= #{strCd}
+				, STR_NM			= #{strNm}
+				, VIEW_STR_CD		= '00000'
+				, LOCAL_AREA_CD		= #{localAreaCd}
+				, SIDO_CD			= #{sidoCd}
+				, ADDR				= #{addr}
+				, COMPANY_CD		= #{companyCd}
+				, CONT_DEMAND_POWER	= '50000'
+				, STR_AREA_SPEC		= '50'
+				, STR_DIREC_CD		= 'Y'
+				, TEL_NO			= '--'
+				, REMS_READY_DT		= DATE_FORMAT(#{remsReadyDt}, '%Y%m%d')
+				, REMS_START_DT		= DATE_FORMAT(#{remsStartDt}, '%Y%m%d')
+				, REMS_END_DT		= NULL
+				, USE_YN			= 'Y'
+				, OPER_STAT			= 'E'
+				, BOX_VER			= '3.0'
+				, PDM_AGREE_YN		= NULL
+				, TIME_DIFF			= '0'
+				, NEW_STORE_YN		= #{newYn}
+				, STR_TYPE			= #{strType}
+				, REGI_ID			= #{userId}
+				, REGI_DTTM			= #{now}
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= #{now}
+		ON DUPLICATE KEY
+		UPDATE	STR_NM				= #{strNm}
+				, LOCAL_AREA_CD		= #{localAreaCd}
+				, SIDO_CD			= #{sidoCd}
+				, ADDR				= #{addr}
+				, COMPANY_CD		= #{companyCd}
+				, REMS_READY_DT		= DATE_FORMAT(#{remsReadyDt}, '%Y%m%d')
+				, REMS_START_DT		= DATE_FORMAT(#{remsStartDt}, '%Y%m%d')
+				, NEW_STORE_YN		= #{newYn}
+				, REGI_ID			= #{userId}
+				, REGI_DTTM			= #{now}
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= #{now}
+	</update>
+	
+	<!-- 2. TH_STR_GW_MST					- 게이트웨이 정보 -->
+	<update id="saveGwMst" parameterType="Map">
+		INSERT	TH_STR_GW_MST
+		SET		STR_CD					= #{strCd}
+				, GW_ID					= #{gwId}
+				, GW_ADDR				= '000000000000'
+				, GW_HW_MODEL			= #{gwHwModel}
+				, AUTH_YN				= 'N'
+				, DIAGNOSIS_MODULE_TYPE	= '0'
+				, USE_YN				= 'Y'
+				, REGI_ID				= #{userId}
+				, REGI_DTTM				= NOW()
+				, FINAL_MOD_ID			= #{userId}
+				, FINAL_MOD_DTTM		= NOW()
+		ON DUPLICATE KEY
+		UPDATE	GW_ID				= #{gwId}
+				, GW_ADDR			= UPPER(#{gwAddr})
+				, AUTH_YN			= #{authYn}
+				, USE_YN			= #{useYn}
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= NOW()
+	</update>
+	
+	<!-- 3. TH_STR_REMS_DEVICE_CNT_MNT	- 장비 개수 -->
+	<update id="saveDeviceCntMnt" parameterType="Map">
+		INSERT
+		INTO	TH_STR_REMS_DEVICE_CNT_MNT
+		SET		STR_CD				= #{strCd}
+				, METER_CH1_RST		= '1'
+				, METER_CH2_RST		= '1'
+				, METER_CH3_RST		= '1'
+				, METER_CH4_RST		= '0'
+				, METER_CH5_RST		= '0'
+				, METER_CH6_RST		= '0'
+				, METER_CH7_R		= '0'
+				, METER_CH7_S		= '0'
+				, METER_CH7_T		= '0'
+				, METER_CH8_R		= '0'
+				, METER_CH8_S		= '0'
+				, METER_CH8_T		= '0'
+				, HACON				= '1'
+				, T_SENSOR			= '1'
+				, TEMON				= '0'
+				, ZIGBEE			= '0'
+				, ALMON				= '0'
+				, BLMON				= '1'
+				, COFFEE			= '0'
+				, FRYING			= '0'
+				, INV				= '0'
+				, SIGN				= '1'
+				, METER_COLLECTOR	= '1'
+				, REGI_ID			= #{userId}
+				, REGI_DTTM			= NOW()
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= NOW()
+	</update>
+	
+	<!-- 4. TH_STR_REMS_DEVICE_MST		- 장비 정보 -->
+	<update id="saveDeviceMst" parameterType="Map" >
+		INSERT
+		INTO	TH_STR_REMS_DEVICE_MST
+				(
+					STR_CD
+					, TEMON_ID
+					, TEMON_TYPE
+					, PORT_NO
+					, DEVICE_TYPE
+					, DEVICE_LOC
+					, SENSOR_TYPE
+					, CONTENTS
+					, MAX_TEMP
+					, MIN_TEMP
+					, DELAY_TIME
+					, TEMP_CONF
+					, PUSH_TERM
+					, USE_YN
+					, REGI_ID
+					, REGI_DTTM
+					, FINAL_MOD_ID
+					, FINAL_MOD_DTTM
+				)
+		VALUES
+				<foreach collection="device_mst_list" index="index" item="item" separator=",">
+				(
+					#{item.strCd}
+					, '1'
+					, #{item.temonType}
+					, #{item.portNo}
+					, #{item.deviceType}
+					, #{item.deviceLoc}
+					, #{item.sensorType}
+					, #{item.contents}
+					, '50'
+					, '-50'
+					, #{item.delay}
+					, '0'
+					, '180'
+					, #{item.useYn}
+					, #{item.userId}
+					, NOW()
+					, #{item.userId}
+					, NOW()
+				)
+				</foreach>
+	</update>
+	
+	<!-- 5. TH_ELECTRICENT_STR_MAP		- 전기업체 매핑 -->
+	<update id="saveElecStrMap" parameterType="Map">
+		INSERT
+		INTO	TH_ELECTRICENT_STR_MAP
+		SET		ELECTRICENT_CD		= #{electricEnt}
+				, STR_CD			= #{strCd}
+				, CALCULATE_YN		= 'N'
+				, DEMAND_POWER		= '50'
+				, STORE_AREA		= '50'
+				, REGI_ID			= #{userId}
+				, REGI_DTTM			= NOW()
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= NOW()
+	</update>
+	
+	<!-- 6. TH_STR_ENV_CONF_MST			- 점포 환경 -->
+	<update id="saveEnvConfMst" parameterType="Map">
+		INSERT
+		INTO	TH_STR_ENV_CONF_MST 
+				(
+					STR_CD
+					, CONF_SP
+					, CONF_VAL
+					, STR_CONF_VAL
+					, STR_CONF_VAL_OLD
+					, APPDT_DT
+					, REGI_ID
+					, REGI_DTTM
+					, FINAL_MOD_ID
+					, FINAL_MOD_DTTM
+				)
+		VALUES
+				<foreach collection="env_list" index="index" item="item" separator=",">
+				(
+					#{item.strCd}
+					, #{item.confSp}
+					, #{item.confVal}
+					, #{item.strConfVal}
+					, #{item.strConfValOld}
+					, DATE_FORMAT(NOW(), '%Y%m%d')
+					, #{item.userId}
+					, NOW()
+					, #{item.userId}
+					, NOW()
+				)
+				</foreach>
+	</update>
+	
+	<!-- 7. TH_STR_BLE_CHECK_MST			- 설치점검보고서 -->
+	<update id="saveBleCheck" parameterType="Map">
+		INSERT	TH_STR_BLE_CHECK_MST
+		SET		STR_CD				= #{strCd}
+				, STR_NM			= #{strNm}
+				, ELEC_CHECK		= '0'
+				, SENSOR_CHECK		= '0'
+				, NETWORK_CHECK		= '0'
+				, SIGN_CHECK		= '0'
+				, CHECK_SUCCESS		= 'N'
+	</update>
+	
+	
+	<!-- 1. TH_STR_INFO_MST				- 점포 정보 -->
+	<delete id="delStrInfoMst" parameterType="Map">
+		DELETE
+		FROM	TH_STR_INFO_MST
+		WHERE	STR_CD = #{strCd}
+	</delete>
+	
+	<!-- 2. TH_STR_GW_MST					- 게이트웨이 정보 -->
+	<delete id="delGwMst" parameterType="Map">
+		DELETE
+		FROM	TH_STR_GW_MST
+		WHERE	STR_CD = #{strCd}
+	</delete>
+	
+	<!-- 3. TH_STR_REMS_DEVICE_CNT_MNT	- 장비 개수 -->
+	<delete id="delDeviceCntMnt" parameterType="Map">
+		DELETE
+		FROM	TH_STR_REMS_DEVICE_CNT_MNT
+		WHERE	STR_CD = #{strCd}
+	</delete>
+	
+	<!-- 4. TH_STR_REMS_DEVICE_MST		- 장비 정보 -->
+	<delete id="delDeviceMst" parameterType="Map">
+		DELETE
+		FROM	TH_STR_REMS_DEVICE_MST
+		WHERE	STR_CD = #{strCd}
+	</delete>
+	
+	<!-- 5. TH_ELECTRICENT_STR_MAP		- 전기업체 매핑 -->
+	<delete id="delElecStrMap" parameterType="Map">
+		DELETE
+		FROM	TH_ELECTRICENT_STR_MAP
+		WHERE	STR_CD = #{strCd}
+	</delete>
+	
+	<!-- 6. TH_STR_ENV_CONF_MST			- 점포 환경 -->
+	<delete id="delEnvConfMst" parameterType="Map">
+		DELETE
+		FROM	TH_STR_ENV_CONF_MST
+		WHERE	STR_CD = #{strCd}
+	</delete>
+	
+	<!-- 7. TH_STR_BLE_CHECK_MST			- 설치점검보고서 -->
+	<delete id="delBleCheck" parameterType="Map">
+		DELETE
+		FROM	TH_STR_BLE_CHECK_MST
+		WHERE	STR_CD = #{strCd}
+	</delete>
+
+</mapper>

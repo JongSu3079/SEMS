@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM0201Mapper">
+
+	<select id="getTopInfo" parameterType="map" resultType="EnergyAnal">
+	<![CDATA[
+		SELECT	IFNULL(T.storeAvg, 0)	AS storeAvg
+				, IFNULL(T.storeMin, 0)	AS storeMin
+				, IFNULL(T.myStore, 0)	AS myStore
+				, IFNULL(T.storeMax, 0)	AS storeMax
+		FROM	(
+					SELECT	(
+								SELECT	FORMAT(AVG(IFNULL(EP_1CH_EFT_WATAGE,0)/IFNULL(B.STR_AREA_SPEC,1))/1000/ DAYOFMONTH(now()),1)
+								FROM	TH_STR_CHN_ELEC_USE_MM_AGGR A
+										, TH_STR_INFO_MST B
+								WHERE	A.STR_CD		= B.STR_CD
+									AND	B.STR_AREA_SPEC	>= (
+															SELECT	IFNULL(STR_AREA_SPEC*0.8,50)
+															FROM	TH_STR_INFO_MST
+															WHERE	STR_CD = #{strCd}
+														)
+									AND B.STR_AREA_SPEC	<= (
+															SELECT	IFNULL(STR_AREA_SPEC*1.2,50)
+															FROM	TH_STR_INFO_MST
+															WHERE	STR_CD = #{strCd}
+														)
+									AND	B.REMS_START_DT	<= DATE_FORMAT(now(), '%Y%m%d')
+									AND	EP_1CH_EFT_WATAGE	>= 100*288*DAYOFMONTH(now())
+									AND	A.YYYYMM		= DATE_FORMAT(now(), '%Y%m')
+									AND	B.COMPANY_CD	= #{companyCd}
+									AND	B.STR_CD		<> #{strCd}
+							) AS storeAvg
+							, (
+								SELECT	FORMAT(MIN(IFNULL(EP_1CH_EFT_WATAGE,0)/IFNULL(B.STR_AREA_SPEC,1))/1000/ DAYOFMONTH(now()),1)
+								FROM	TH_STR_CHN_ELEC_USE_MM_AGGR A
+										, TH_STR_INFO_MST B
+								WHERE	A.STR_CD		= B.STR_CD
+									AND	B.STR_AREA_SPEC	>= (
+															SELECT	IFNULL(STR_AREA_SPEC*0.8,50)
+															FROM	TH_STR_INFO_MST
+															WHERE	STR_CD = #{strCd}
+														)
+									AND	B.STR_AREA_SPEC	<= (
+															SELECT	IFNULL(STR_AREA_SPEC*1.2,50)
+															FROM	TH_STR_INFO_MST
+															WHERE	STR_CD = #{strCd}
+														)
+									AND	B.REMS_START_DT	<= DATE_FORMAT(now(), '%Y%m%d')
+									AND	EP_1CH_EFT_WATAGE	>= 100*288*DAYOFMONTH(now())
+									AND	A.YYYYMM		= DATE_FORMAT(now(), '%Y%m')
+									AND	B.COMPANY_CD	= #{companyCd}
+									AND	B.STR_CD		<> #{strCd}
+							) AS storeMin
+							, ifnull((
+										SELECT	FORMAT(IFNULL(EP_1CH_EFT_WATAGE,0)/IFNULL(B.STR_AREA_SPEC,1)/1000/ DAYOFMONTH(now()),1)
+										FROM	TH_STR_CHN_ELEC_USE_MM_AGGR A
+												, TH_STR_INFO_MST B
+										WHERE	A.STR_CD	= B.STR_CD
+											AND	A.YYYYMM	= DATE_FORMAT(now(), '%Y%m')
+											AND	A.STR_CD	= #{strCd}
+							),'-') AS myStore
+							, (
+								SELECT	FORMAT(MAX(IFNULL(EP_1CH_EFT_WATAGE,0)/IFNULL(B.STR_AREA_SPEC,1))/1000/ DAYOFMONTH(now()),1)
+								FROM	TH_STR_CHN_ELEC_USE_MM_AGGR A
+										, TH_STR_INFO_MST B
+								WHERE	A.STR_CD		= B.STR_CD
+									AND	B.STR_AREA_SPEC	>= (
+															SELECT	IFNULL(STR_AREA_SPEC*0.8,50)
+															FROM	TH_STR_INFO_MST
+															WHERE	STR_CD = #{strCd}
+														)
+									AND	B.STR_AREA_SPEC	<= (
+															SELECT	IFNULL(STR_AREA_SPEC*1.2,50)
+															FROM	TH_STR_INFO_MST
+															WHERE	STR_CD = #{strCd}
+														)
+									AND	B.REMS_START_DT	<= DATE_FORMAT( now(), '%Y%m%d')
+									AND	EP_1CH_EFT_WATAGE	>= 100*288*DAYOFMONTH(now())
+									AND	A.YYYYMM		= DATE_FORMAT(now(), '%Y%m')
+									AND	B.COMPANY_CD	= #{companyCd}
+									AND	B.STR_CD		<> #{strCd}
+							) AS storeMax
+				) T
+	]]>
+	</select>
+	
+	<select id="getBottomInfo" parameterType="map" resultType="EnergyAnal">
+        <![CDATA[
+        SELECT
+               x.strCd
+             , IFNULL(avgTemp,'-') AS avgTemp
+             , IFNULL(operEnergy,'-') AS operEnergy
+             , IFNULL(operTime,'-') AS operTime
+		     , IFNULL(operDayEnergy,'-') AS operDayEnergy
+             , IFNULL(operDayTime,'-') AS operDayTime
+          FROM (SELECT 'AVG' AS  strCd
+                 UNION
+                SELECT #{strCd} AS strCd
+               ) X LEFT OUTER JOIN 
+		       (SELECT A.STR_CD as strCd
+				     , senseTemp as avgTemp
+				     , IFNULL(tempWatage,0) as operEnergy
+				     , IFNULL(hours,0) as operTime
+				     , IFNULL(tempWatage2,0) as operDayEnergy
+				     , IFNULL(hours2,0) as operDayTime
+				 FROM (SELECT #{strCd} as STR_CD -- 자기점포
+				            , T_SENSOR_TEMP_AVG AS senseTemp
+				         FROM TH_STR_SENSOR_MM_AGGR
+				        WHERE STR_CD = #{strCd}
+				          AND YYYYMM = DATE_FORMAT(now(), '%Y%m')
+				        UNION
+				       SELECT 'AVG' as STR_CD -- 유사점포들
+				            , ROUND(AVG( A.T_SENSOR_TEMP_AVG ),1) AS senseTemp
+				         FROM TH_STR_SENSOR_MM_AGGR A
+				            , TH_STR_INFO_MST B
+				        WHERE B.STR_AREA_SPEC >= ( SELECT IFNULL(STR_AREA_SPEC*0.8,50) FROM TH_STR_INFO_MST WHERE STR_CD = #{strCd} )
+				          AND B.STR_AREA_SPEC <= ( SELECT IFNULL(STR_AREA_SPEC*1.2,50) FROM TH_STR_INFO_MST WHERE STR_CD = #{strCd} )
+				          AND A.STR_CD = B.STR_CD
+				          AND B.COMPANY_CD = #{companyCd}
+				          AND YYYYMM = DATE_FORMAT( now(), '%Y%m')
+				          AND	B.STR_CD		<> #{strCd}
+				      ) A,
+				      (SELECT
+				              #{strCd} AS STR_CD -- 자기점포
+				            , CONCAT( truncate( OPER_HAC_TIME/60,0),'시간 ',
+				                      truncate( OPER_HAC_TIME%60,0),'분') AS hours
+				            , FORMAT(OPER_HAC_WATAGE/1000,0) AS tempWatage
+				         FROM TH_STR_SENSOR_DD_AGGR
+				        WHERE STR_CD =  #{strCd}
+				          AND YYYYMMDD = DATE_FORMAT( now(), '%Y%m%d')
+				        UNION
+				       SELECT 'AVG' AS STR_CD
+				            , CONCAT( truncate( (SUM(A.OPER_HAC_TIME)/count(A.STR_CD))/60,0),'시간 ',
+				                      truncate( (SUM(A.OPER_HAC_TIME)/count(A.STR_CD))%60,0),'분' ) AS hours
+				            , FORMAT( SUM(A.OPER_HAC_WATAGE)/1000/count(A.STR_CD),2) AS tempWatage
+				         FROM TH_STR_SENSOR_DD_AGGR A
+				            , TH_STR_INFO_MST B
+				        WHERE A.STR_CD = B.STR_CD
+				          AND B.STR_AREA_SPEC >= ( SELECT IFNULL(STR_AREA_SPEC*0.8,50) FROM TH_STR_INFO_MST WHERE STR_CD = #{strCd} )
+				          AND B.STR_AREA_SPEC <= ( SELECT IFNULL(STR_AREA_SPEC*1.2,50) FROM TH_STR_INFO_MST WHERE STR_CD = #{strCd} )
+				          AND A.YYYYMMDD = DATE_FORMAT( now(), '%Y%m%d')
+				          AND B.COMPANY_CD = #{companyCd}
+				          AND	B.STR_CD		<> #{strCd}
+				      ) B,
+				      (SELECT #{strCd} as STR_CD
+				            , CONCAT( truncate( ROUND( OPER_HAC_TIME/DATE_FORMAT(now(),'%d') )/60,0),'시간 '
+				            , truncate( ROUND( OPER_HAC_TIME/DATE_FORMAT(now(),'%d') )%60,0),'분' ) AS hours2
+				            , FORMAT(OPER_HAC_WATAGE/1000/DATE_FORMAT(now(),'%d'),0) AS tempWatage2
+				         FROM TH_STR_SENSOR_MM_AGGR
+				        WHERE STR_CD =  #{strCd}
+				          AND YYYYMM = DATE_FORMAT( now(), '%Y%m')
+				        UNION
+				       SELECT 'AVG' AS STR_CD
+				            , CONCAT( truncate( ROUND( SUM(OPER_HAC_TIME)/count(A.STR_CD)/DATE_FORMAT(now(),'%d') )/60,0),'시간 '
+				            ,         truncate( ROUND( SUM(OPER_HAC_TIME)/count(A.STR_CD)/DATE_FORMAT(now(),'%d') )%60,0),'분' ) AS hours2
+				            , FORMAT( SUM(A.OPER_HAC_WATAGE)/1000/count(A.STR_CD)/DATE_FORMAT(now(),'%d'),2) AS tempWatage2
+				         FROM TH_STR_SENSOR_MM_AGGR A
+				            , TH_STR_INFO_MST B
+				        WHERE A.STR_CD = B.STR_CD
+				          AND B.STR_AREA_SPEC >= ( SELECT IFNULL(STR_AREA_SPEC*0.8,50) FROM TH_STR_INFO_MST WHERE STR_CD = #{strCd} )
+				          AND B.STR_AREA_SPEC <= ( SELECT IFNULL(STR_AREA_SPEC*1.2,50) FROM TH_STR_INFO_MST WHERE STR_CD = #{strCd} )
+				          AND A.YYYYMM = DATE_FORMAT( now(), '%Y%m')
+				          AND B.COMPANY_CD = #{companyCd}
+				          AND	B.STR_CD		<> #{strCd}
+				      ) C
+				WHERE A.STR_CD = B.STR_CD
+				  AND A.STR_CD = C.STR_CD
+			    ) Z
+			 ON X.strCd = Z.strCd
+		  ]]>
+	</select>
+
+	<select id="getActualElecKind" parameterType="HashMap" resultType="Map">
+		SELECT
+		    STR_CD as strCd,
+		    ACTUAL_CONT_DEMAND_POWER as actualContDemandPower,
+		    ELEC_KIND as elecKind
+		FROM TH_STR_INFO_MST
+		WHERE STR_CD = #{strCd}
+			AND USE_YN = 'Y'
+	</select>
+	
+	<select id="retrieveDemandEnergyMonthStatus" parameterType="HashMap" resultType="Map" >
+	/* VM0201Mapper.retrieveDemandEnergyMonthStatus */
+		<![CDATA[
+		SELECT *
+		FROM (
+			SELECT	CONCAT(SUBSTRING(A.YYYYMMDD, 1, 4),'-',SUBSTRING(A.YYYYMMDD,5,2))			AS yyyymm
+					,ROUND(B.ACTUAL_CONT_DEMAND_POWER / 1000, 1)								AS actualContPower
+					,ROUND(B.CONT_DEMAND_POWER / 1000, 1)										AS contPower
+					]]>
+				<choose>
+					<when test='totalUsage != null and totalUsage != ""'>
+						,ROUND(C.EP_1CH_EFT_WATAGE / 1000) 											AS totalUsage
+					</when>
+					<otherwise>
+						,ROUND(A.TOTAL_USE_WATAGE_MAX, 1)											AS maxDemand
+					</otherwise>
+				</choose>
+				<![CDATA[
+					,ROUND(IF(B.ACTUAL_CONT_DEMAND_POWER <> 0 , B.ACTUAL_CONT_DEMAND_POWER, B.CONT_DEMAND_POWER) / 1000, 1) - ROUND(A.TOTAL_USE_WATAGE_MAX, 1)	AS freePower
+					,ROUND(A.TEMP_USE_WATAGE_MAX, 1)												AS temp
+					,CASE B.ELEC_KIND 	WHEN 'L' THEN '일반용(갑)저압'
+										WHEN 'H' THEN '일반용(갑)I고압A'
+										WHEN 'E' THEN '모자미분리'
+										ELSE '미확인'
+						END elecKind
+					,B.OP_TIME																		AS opTime
+			FROM	TH_SUMMARY_STR_ELEC_USE_QTR A
+					INNER JOIN TH_STR_INFO_MST B
+							ON A.STR_CD = B.STR_CD
+					INNER JOIN TH_STR_CHN_ELEC_USE_MM_AGGR C
+						   ON A.STR_CD = C.STR_CD
+						   AND SUBSTRING(A.YYYYMMDD, 1, 6) = C.YYYYMM
+			WHERE	A.STR_CD = #{strCd}
+				AND A.YYYYMMDD >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 11 MONTH), '%Y%m01')
+				AND A.YYYYMMDD < DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 1 MONTH), '%Y%m01')
+			ORDER BY YYYYMMDD DESC
+			LIMIT 1000000
+		) T
+		GROUP BY T.yyyymm
+		ORDER BY T.yyyymm
+		]]>
+	</select>
+
+
+	<!-- 일별 전력량 -->
+	<select id="getDayElecUsage" parameterType="HashMap" resultType="Map">
+	<![CDATA[
+		SELECT EDA.YYYYMMDD AS yyyymmdd
+			 , ROUND(EDA.EP_1CH_EFT_WATAGE / 1000, 1) AS total
+			 , ROUND((EDA.EP_2CH_EFT_WATAGE + EDA.EP_3CH_EFT_WATAGE) / 1000, 1)   AS temp
+			 , (
+			SELECT ROUND(T_SENSOR_TEMP_AVG, 1)
+			FROM TH_STR_SENSOR_DD_AGGR
+			WHERE STR_CD= EDA.STR_CD AND YYYYMMDD = EDA.YYYYMMDD
+		) AS tSensorTemp
+			 , (
+			SELECT FORECAST_TEMP
+			FROM TH_WEATHER_FORECAST_LATEST
+			WHERE COUNTRY_CD = CM.COUNTRY_CD AND LOCAL_AREA_CD = IM.STR_CD AND YYYYMMDD = EDA.YYYYMMDD
+		) AS forecastTemp
+		FROM TH_STR_INFO_MST IM
+		   , TH_COMPANY_MST CM
+		   , TH_STR_CHN_ELEC_USE_DD_AGGR EDA
+		WHERE IM.STR_CD = EDA.STR_CD
+		  AND IM.COMPANY_CD = CM.COMPANY_CD
+		  AND IM.STR_CD = #{strCd}
+		  AND YYYYMMDD >= CONCAT(REPLACE(#{yyyyMm}, '-', ''), '01')
+		  AND YYYYMMDD <= LAST_DAY(CONCAT(REPLACE(#{yyyyMm}, '-', ''), '01'))
+		ORDER BY EDA.YYYYMMDD DESC
+		]]>
+	</select>
+
+	<!-- 시간대별 상세 전력량 -->
+	<select id="getHourElecUsage" parameterType="HashMap" resultType="Map">
+	<![CDATA[
+		SELECT A.HH													AS hh
+			 , ROUND(IFNULL( A.EP_1CH_EFT_WATAGE, 0) / 1000, 1)		AS main
+			 , ROUND(IFNULL( A.EP_2CH_EFT_WATAGE + A.EP_3CH_EFT_WATAGE , 0) / 1000, 1)		AS temp
+		FROM	TH_STR_CHN_ELEC_USE_HH_AGGR A
+		WHERE	A.STR_CD	= #{strCd}
+		  AND	A.YYYYMMDD	= #{yyyymmdd}
+		ORDER BY A.HH
+		]]>
+	</select>
+</mapper>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html manifest="appcache.manifest">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+
+	<title>접속 대기</title>
+	<style>
+        .flexBox {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 15px;
+        }
+        .flexBox .custom-paper {
+        	width: 80%;
+            background-color: #fff;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            text-align: center;
+        }
+        .flexBox h1, h2 {
+            text-align: center;
+            margin: 0;
+        }
+        .flexBox h1 {
+            font-size: 25px;
+            font-weight: 300;
+        }
+        .flexBox h2 {
+            font-size: 18px;
+            font-weight: 300;
+        }
+        .flexBox h3 {
+            font-weight: 300;
+        }
+        .flexBox p {
+            font-size: 28px;
+        }
+        .colorGreen {
+        	color: green;
+            font-weight: 500;
+        }
+        .spacer {
+        	height: 30px;
+        }
+        .home-button {
+            margin-top: 20px;
+            background-color: #0074d9;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* 마우스 오버 시 스타일 변화를 부드럽게 만듭니다. */
+        }
+        .home-button:hover {
+            background-color: #0056b3; /* 마우스 오버 시 배경색을 변경합니다. */
+        }
+		.icon {
+		    background: #FEE600;
+            width: 50px;
+            height: 50px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+		    color: black;
+        }
+    </style>
+
+    <script>
+    	function fnMoveLoginPage() {
+    		location.replace("/");
+    	}
+    </script>
+</head>
+<body>
+	<div class="flexBox">
+	    <div class="icon">!</div>
+		<div class="spacer"></div>
+		<h1>접속자가 많아 </h1>
+		<h1>잠시 <span class="colorGreen">대기중</span>입니다.</h1>
+		<div class="spacer"></div>
+		<h2>잠시 후 다시 시도해주세요.</h2>
+		<div class="spacer"></div>
+		<div class="custom-paper">
+			<h3>예상 대기시간</h3>
+			<p><span class="colorGreen">5분 미만</span></p>
+		</div>
+		<div class="spacer"></div>
+		<button onclick="javascript:fnMoveLoginPage();" class="home-button">로그인 페이지로 이동</button>
+	</div>
+</body>
+</html>

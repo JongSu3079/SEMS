@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.cm.persistence.CM0401Mapper">
+	
+	<select id="getStoreList" parameterType="Map" resultType="StoreSearch">
+		SELECT	A.*
+		FROM	(
+						SELECT	BB.COMPANY_CD
+								, IFNULL(BB.ORG_CD, '')		AS ORG_CD
+								, BB.STR_CD					AS strCd
+								, BB.STR_NM					AS strNm
+								, DATE_FORMAT(BB.REMS_START_DT, '%Y.%m.%d')					AS remsStartDt
+								, BB.VIEW_STR_CD			AS viewStrCd
+								, IF(BB.ADDR IS NULL OR BB.ADDR='', '내용없음', BB.ADDR)	AS addr
+								, IF(BB.TEL_NO IS NULL OR BB.TEL_NO='' OR REPLACE(BB.TEL_NO,'-','')='', '내용없음', BB.TEL_NO) AS telNo
+								, REPLACE(BB.TEL_NO,"-","")	AS telNo2
+								, CONCAT(BB.BOX_VER, ' | ',
+								CASE
+									WHEN BB.OWNER_TYPE = 'M' THEN '유'
+									WHEN BB.OWNER_TYPE = 'U' THEN '무'
+									WHEN BB.OWNER_TYPE = 'H' THEN '하'
+									ELSE '유'
+								END
+								) AS strAddInfo
+						FROM
+					<if test='authSp.equals("S")'>	<!-- 경영주 -->
+								TH_USER_STR_MAP AA,
+					</if>
+					<if test='authSp.equals("M") and !authId.equals("6")'>	<!-- 냉장비업체 -->
+								TH_VENDOR_USER_STR_MAP AA,
+					</if>
+					<if test='authSp.equals("G") and !authId.equals("6")'>	<!-- 간판업체 -->
+								TH_SIGN_VENDOR_USER_STR_MAP AA,
+					</if>
+								TH_STR_INFO_MST BB
+								, TH_STR_GW_MST CC
+						WHERE	BB.STR_CD	= CC.STR_CD
+					<if test='authSp.equals("S") or authSp.equals("G") or (authSp.equals("M") and !authId.equals("6"))'>	<!-- 경영주 혹은 냉장비업체인 혹은 간판 업체경우 추가 조건 -->
+							AND	AA.STR_CD	= BB.STR_CD 
+					</if>
+					<if test='!menuId.equals("VM1101")'>
+						AND	BB.USE_YN	= 'Y'
+						AND	CC.USE_YN	= 'Y'
+						AND	CC.GW_ADDR	!= '000000000000'
+						AND	CC.GW_IP	IS NOT NULL
+					</if>
+					<if test='authSp.equals("S") or authSp.equals("G") or (authSp.equals("M") and !authId.equals("6"))'>	<!-- 경영주 혹은 냉장비업체인 혹은 간판 업체 경우 추가 조건 -->
+							AND	AA.USER_ID	= #{userId}
+					</if>
+				) A
+				LEFT JOIN TH_STR_BLE_CHECK_MST C
+						ON	A.strCd	= C.STR_CD
+		WHERE	1 = 1
+		<if test="qStrNm != null || qStrNm != ''">
+				AND	(
+						INSTR( A.strNm, #{qStrNm} )		> 0
+						OR
+						INSTR( A.viewStrCd, #{qStrNm} )	> 0
+					)
+		</if>
+		<if test='!menuId.equals("VM1101")'>
+			AND	C.NETWORK_NOTI_DTTM IS NOT NULL
+		</if>
+		<choose>
+			<when test='ordSp.equals("S")'>
+				ORDER BY remsStartDt DESC, strNm ASC
+			</when>
+			<otherwise>
+				ORDER BY strNm ASC
+			</otherwise>
+		</choose>
+		<if test="qStrNm != null || qStrNm != ''">
+			LIMIT #{startRow}, #{pagingRowCnt}
+		</if>
+		<!-- 엔지니어인 경우LIMIT #{pagingRowCnt} -->
+	</select>
+	
+	<select id="getStoreTotalCount" parameterType="Map" resultType="int">
+		SELECT	COUNT(*)
+		FROM	(
+				<choose>
+					<!-- 경영주인 경우 -->
+					<when test='authSp.equals("S")'>
+						SELECT	A.STR_CD
+								, B.STR_NM
+								, B.VIEW_STR_CD
+						FROM	TH_USER_STR_MAP A
+								, TH_STR_INFO_MST B
+						WHERE	A.STR_CD	= B.STR_CD
+							AND	B.USE_YN	= 'Y'
+							AND	A.USER_ID	= #{userId}
+					</when>
+					<!-- 엔지니어인 경우 -->
+					<when test='authSp.equals("E") || authSp.equals("M")'>
+						SELECT	A.STR_CD
+								, B.STR_NM
+								, B.VIEW_STR_CD
+						FROM	TH_VENDOR_USER_STR_MAP A
+								, TH_STR_INFO_MST B
+						WHERE	A.STR_CD	= B.STR_CD
+						<if test='!menuId.equals("VM1101")'>
+							AND	B.USE_YN	= 'Y'
+						</if>
+							AND	A.USER_ID	= #{userId}
+					</when>
+					<!-- 본사담당자, 간판업체인 경우 -->
+					<when test='authSp.equals("H") || authSp.equals("I")'>
+						SELECT	STR_CD
+								, STR_NM
+								, VIEW_STR_CD
+						FROM	TH_STR_INFO_MST
+						<if test='!menuId.equals("VM1101")'>
+						WHERE	USE_YN = 'Y'
+						</if>
+					</when>
+					<!-- 간판업체관리자 경우 -->
+					<when test='authSp.equals("G")'>
+						SELECT	A.STR_CD
+								, B.STR_NM
+								, B.VIEW_STR_CD
+						FROM	TH_SIGN_VENDOR_USER_STR_MAP A
+								, TH_STR_INFO_MST B
+						WHERE	A.STR_CD	= B.STR_CD
+						<if test='!menuId.equals("VM1101")'>
+							AND	B.USE_YN	= 'Y'
+						</if>
+							AND	A.USER_ID	= #{userId}
+					</when>
+				</choose>
+				) A
+				, TH_STR_GW_MST B
+				, TH_STR_BLE_CHECK_MST C
+		WHERE	1 = 1
+			AND A.STR_CD = B.STR_CD
+			AND A.STR_CD = C.STR_CD
+			<if test="qStrNm != null || qStrNm != ''">
+				AND	(
+						INSTR( A.STR_NM, #{qStrNm} )		> 0
+						OR
+						INSTR( A.VIEW_STR_CD, #{qStrNm} )	> 0
+					)
+			</if>
+			<if test='!menuId.equals("VM1101")'>
+				AND	B.GW_ADDR	!= '000000000000'
+				AND	B.GW_IP		IS NOT NULL
+				AND C.NETWORK_NOTI_DTTM IS NOT NULL
+			</if>
+	</select>
+	
+</mapper>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+			 xmlns:beans="http://www.springframework.org/schema/beans"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<!-- spring security에서 사용할 로그인 프로세스 -->
+	<beans:bean id="LoginProcess" class="sems.cm.service.LoginProcess"/>
+
+	<http pattern="/favicon.ico" security="none"/>
+	<http pattern="/font/**" security="none"/>
+	<http pattern="/resources/**" security="none"/>
+	<http pattern="/images/**" security="none"/>
+	<http pattern="/images_theme/**" security="none"/>
+	<http pattern="/gsr/**" security="none"/>
+	<http pattern="/ldc/**" security="none"/>
+	<http pattern="/syspoc/**" security="none"/>
+	<http pattern="/pub/**" security="none"/>
+	<http pattern="/lbcheck/**" security="none"/>
+	<http pattern="/apkDownLoad.jsp" security="none"/>
+
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/" access="permitAll()"/>
+		<intercept-url pattern="/login" access="permitAll()"/>
+		<intercept-url pattern="/error/*" access="permitAll()"/>
+		<intercept-url pattern="/CM0101Error" access="permitAll()"/>
+		<intercept-url pattern="/faq/**" access="permitAll()"/>
+		<intercept-url pattern="/survey/**" access="permitAll()"/>
+		<intercept-url pattern="/**" access="isAuthenticated()"/>
+
+		<form-login login-page="/"
+					default-target-url="/CM0101Login"
+					authentication-success-handler-ref="authenticationSuccessHandler"
+					authentication-failure-handler-ref="authenticationFailureHandler"
+					username-parameter="userId"
+					password-parameter="userPw"
+		/>
+
+		<session-management session-authentication-error-url="/error/403"
+							session-fixation-protection="newSession">
+			<concurrency-control max-sessions="50"/>
+			<!--
+			error-if-maximum-exceeded="true" />
+			 -->
+		</session-management>
+
+		<logout delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE"
+				invalidate-session="true"/>
+		<!--
+				<remember-me token-validity-seconds="1209600"
+							 remember-me-parameter="auth_chk"
+							 data-source-ref="dataSource" />
+		 -->
+		<!--		<remember-me key="REMS_ADMIN"
+							 token-validity-seconds="1209600"
+							 remember-me-parameter="auth_chk"
+							 user-service-ref="loginService" />
+		-->
+		<remember-me token-validity-seconds="1209600"
+					 remember-me-parameter="auth_chk"
+					 user-service-ref="LoginProcess"
+		/>
+
+		<csrf disabled="true"/>
+
+		<headers>
+			<cache-control/>
+			<content-type-options/>
+			<hsts/>
+			<frame-options/>
+			<xss-protection/>
+		</headers>
+	</http>
+
+	<beans:bean id="authenticationSuccessHandler" class="sems.util.LoginSuccessHandler"/>
+	<beans:bean id="authenticationFailureHandler" class="sems.util.LoginFailureHandler"/>
+
+	<authentication-manager erase-credentials="false">
+		<authentication-provider user-service-ref="LoginProcess"/>
+	</authentication-manager>
+</beans:beans>

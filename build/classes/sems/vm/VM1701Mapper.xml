@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM1701Mapper">
+	<sql id="retrieveAsListSql">
+		SELECT SA.AS_NO 			as asNo, 			SA.STR_NM			as strNm, SA.VIEW_STR_CD 	as viewStrCd
+			, SA.ADDR				as addr,			SA.TEL_NO			as telNo
+			, DATE_FORMAT(SA.AS_DTTM, '%Y-%m-%d')							as asDttm
+			, SA.VENDOR_NM			as vendorNm,		IFNULL(SA.VENDOR_USER_NM, '-')					as vendorUserNm
+			, SA.VENDOR_CD			as vendorCd,		SA.VENDOR_USER_ID	as vendorUserId
+			, SA.ERROR_TYPE_CD 		as errorType, 		SA.AS_TITLE			as asTitle, SA.AS_NOTE 		as asNote
+			, SA.EMERGENCY_LEVEL	as emergencyLevel, 	SA.ERROR_TYPE		as errorTypeTxt
+			, DATE_FORMAT(SA.RESOLVE_DTTM, '%Y-%m-%d')						as resolveDttm
+		FROM TH_STR_AS SA
+			LEFT OUTER JOIN TH_ABS_ERROR_MST EM
+				ON SA.ERROR_TYPE_CD = EM.ERROR_CD
+		WHERE SA.PROG_STAT = #{progStat}
+		<if test='strNm != "" and strNm != null'>
+			AND SA.STR_NM LIKE CONCAT('%',#{strNm},'%')
+		</if>
+		<if test='authId == "3"'>
+			AND SA.VENDOR_CD = (
+				SELECT UM.VENDOR_CD
+				FROM TH_USER_MST UM
+				WHERE UM.USER_ID = #{userId}
+			)
+		</if>
+		<if test='authId == "3" and progStat != "U" and asAuthCd != "m"'>
+			AND SA.VENDOR_USER_ID = #{userId}
+		</if>
+		<if test='order == "name" '>
+		ORDER BY SA.STR_NM
+		</if>
+		<if test='order == "date" '>
+			<if test='progStat != "Y" '>
+				ORDER BY SA.AS_DTTM DESC
+			</if>
+			<if test='progStat == "Y" '>
+				ORDER BY SA.RESOLVE_DTTM DESC
+			</if>
+		</if>
+	</sql>
+	
+	<sql id="retrieveAsList3Sql">
+		SELECT SA.AS_NO 			as asNo, 			SA.STR_NM			as strNm, SA.VIEW_STR_CD 	as viewStrCd
+			, SA.ADDR				as addr,			SA.TEL_NO			as telNo
+			, DATE_FORMAT(SA.AS_DTTM, '%Y-%m-%d')							as asDttm
+			, SA.VENDOR_NM			as vendorNm,		IFNULL(SA.VENDOR_USER_NM, '-')					as vendorUserNm
+			, SA.VENDOR_CD			as vendorCd,		SA.VENDOR_USER_ID	as vendorUserId
+			, SA.ERROR_TYPE_CD 		as errorType, 		SA.AS_TITLE			as asTitle, SA.AS_NOTE 		as asNote
+			, SA.EMERGENCY_LEVEL	as emergencyLevel, 	SA.ERROR_TYPE		as errorTypeTxt
+			, DATE_FORMAT(SA.RESOLVE_DTTM, '%Y-%m-%d')						as resolveDttm
+		FROM TH_STR_AS SA
+			LEFT OUTER JOIN TH_ABS_ERROR_MST EM
+				ON SA.ERROR_TYPE_CD = EM.ERROR_CD
+		WHERE SA.PROG_STAT = #{progStat}
+		<if test='strNm != "" and strNm != null'>
+			AND SA.STR_NM LIKE CONCAT('%',#{strNm},'%')
+		</if>
+			AND SA.VENDOR_CD = (
+				SELECT VENDOR_CD
+				FROM TH_USER_MST
+				WHERE USER_ID = #{userId}
+			)
+		ORDER BY 
+		<if test='progStat == "S" and asAuthCd != "m" '>
+			FIELD(SA.VENDOR_USER_ID, #{userId}) DESC, 
+		</if>
+		<if test='order == "name" '>
+			strNm
+		</if>
+		<if test='order == "date" '>
+			<if test='progStat != "Y" '>
+				asDttm desc
+			</if>
+			<if test='progStat == "Y" '>
+				resolveDttm desc
+			</if>
+		</if>
+	</sql>
+	
+	<select id="retrieveAsListByProgStat" parameterType="Map" resultType="Map">
+		<include refid="retrieveAsListSql"/>
+		LIMIT ${startRow}, ${pagingRowCnt}
+	</select>
+	
+	<select id="retrieveAsListByProgStatTotalCnt" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM (
+			<include refid="retrieveAsListSql"/>
+			) T
+	</select>
+	
+	<select id="retrieveAsList3" parameterType="Map" resultType="Map">
+		<include refid="retrieveAsList3Sql"/>
+		LIMIT ${startRow}, ${pagingRowCnt}
+	</select>
+	
+	<select id="retrieveAsListByProgStatTotalCnt3" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM (
+			<include refid="retrieveAsList3Sql"/>
+			) T
+	</select>
+	<select id="retrieveErrorType" parameterType="Map" resultType="Map">
+		SELECT ERROR_CD as code, ERROR_NM as contents, ERROR_CD as seq
+			, EMERGENCY_LEVEL as emergencyLevel
+		FROM TH_ABS_ERROR_MST
+		WHERE USE_YN = 'Y'
+			AND (TYPE = 'ALL' OR TYPE = 'A')
+		ORDER BY ERROR_CD
+	</select>
+	
+	<update id="checkAsByAsNo" parameterType="Map">
+		UPDATE TH_STR_AS
+		SET ERROR_TYPE 			= #{errorType}
+			,ERROR_TYPE_CD		= #{errorTypeCd}
+			,EMERGENCY_LEVEL 	= #{emergencyLevel}
+			,PROG_STAT 			= 'S'
+			,VENDOR_USER_ID		= #{vendorUserId}
+			,VENDOR_USER_NM 	= #{vendorUserNm}
+			,CHECK_DTTM			= #{now}
+			,AS_NOTE 			= #{asNote}
+			,FINAL_MOD_ID 		= #{regiId}
+			,FINAL_MOD_DTTM 	= #{now}
+		WHERE AS_NO = #{asNo}
+	</update>
+	
+	<update id="modifyAsByAsNo" parameterType="Map">
+		UPDATE TH_STR_AS
+		SET ERROR_TYPE 			= #{errorType}
+			,ERROR_TYPE_CD		= #{errorTypeCd}
+			,EMERGENCY_LEVEL 	= #{emergencyLevel}
+			,AS_NOTE 			= #{asNote}
+			,FINAL_MOD_ID 		= #{regiId}
+			,FINAL_MOD_DTTM 	= #{now}
+		WHERE AS_NO = #{asNo}
+	</update>
+	
+	<update id="changeAsByAsNo" parameterType="Map">
+		UPDATE TH_STR_AS
+		SET VENDOR_USER_NM		= #{regiNm}
+			,VENDOR_USER_ID		= #{regiId}
+			,PROG_STAT 			= #{progStat}
+			,FINAL_MOD_ID 		= #{regiId}
+			,FINAL_MOD_DTTM 	= #{now}
+		WHERE AS_NO = #{asNo}
+	</update>
+	
+	<insert id="resolveAsByAsNo" parameterType="Map">
+		INSERT
+		INTO TH_STR_AS_RESOLVE
+		SET AS_NO 				= #{asNo}
+			, RESOLVE_CD 		= #{resolveCd}
+			, RESOLVE_CD_TEXT	= #{resolveCdText}
+			, RESOLVE_NOTE 		= #{resolveNote}
+			, SUB_NOTE	 		= #{subNote}
+			, OWNER_NM 			= #{ownerNm}
+			, OWNER_TEL_NO 		= #{ownerTelNo}
+			, OWNER_NOTE 		= #{ownerNote}
+			, OWNER_SIGN_YN 	= #{ownerSignYn}
+			, AGREE_YN			= #{agreeYn}
+			<if test='file0 != null and file0 != ""'>
+			, SIGN_IMG 			= #{file0}
+			</if>
+			<if test='file1 != null and file1 != ""'>
+			, FILE1_IMG 		= #{file1}
+			</if>
+			<if test='file2 != null and file2 != ""'>
+			, FILE2_IMG 		= #{file2}
+			</if>
+			, TARGET	 		= #{target}
+			<if test='target == "maker"'>
+				, MAKER_CD		= #{maker}
+			</if>
+			<if test= 'target != "maker"'>
+				, MAKER_CD		= null
+			</if>
+			, MODEL_NM			= #{modelNm}
+			, SERIAL_NO			= #{serialNo}
+			, REGI_ID 			= #{regiId}
+			, REGI_DTTM 		= #{now}
+			, FINAL_MOD_ID 		= #{regiId}
+			, FINAL_MOD_DTTM 	= #{now}
+		ON DUPLICATE KEY UPDATE
+			RESOLVE_CD 			= #{resolveCd}
+			, RESOLVE_CD_TEXT	= #{resolveCdText}
+			, RESOLVE_NOTE 		= #{resolveNote}
+			, SUB_NOTE	 		= #{subNote}
+			, OWNER_NM 			= #{ownerNm}
+			, OWNER_TEL_NO 		= #{ownerTelNo}
+			, OWNER_NOTE 		= #{ownerNote}
+			, OWNER_SIGN_YN 	= #{ownerSignYn}
+			<if test='file0 != null and file0 != ""'>
+			, SIGN_IMG 			= #{file0}
+			</if>
+			<if test='file1 != null and file1 != ""'>
+			, FILE1_IMG 		= #{file1}
+			</if>
+			<if test='file2 != null and file2 != ""'>
+			, FILE2_IMG 		= #{file2}
+			</if>
+			, TARGET	 		= #{target}
+			<if test='target == "maker"'>
+				, MAKER_CD		= #{maker}
+			</if>
+			<if test= 'target != "maker"'>
+				, MAKER_CD		= null
+			</if>
+			, MODEL_NM			= #{modelNm}
+			, SERIAL_NO			= #{serialNo}
+			, FINAL_MOD_ID 		= #{regiId}
+			, FINAL_MOD_DTTM 	= #{now}
+	</insert>
+	<insert id="saveAsLog" parameterType="Map">
+		INSERT
+		INTO TH_LOG_AS_SEND
+		SET AS_NO 		 	=#{asNo},
+			AS_DTTM 		=#{now}, 
+			WEB_REQ_DTTM 	=#{now}, 
+			WEB_REQ_PARAM 	=#{paramString}
+		ON DUPLICATE KEY UPDATE
+			AS_DTTM 		=#{now}, 
+			WEB_REQ_DTTM 	=#{now}, 
+			WEB_REQ_PARAM 	=#{paramString}
+	</insert>
+	<update id="uptSemResLog" parameterType="Map">
+		UPDATE TH_LOG_AS_SEND
+		SET SEM_RES_DTTM=#{now}
+		WHERE AS_NO = #{asNo}
+	</update>
+	<update id="uptSemReqLog" parameterType="Map">
+		UPDATE TH_LOG_AS_SEND
+		SET SEM_REQ_DTTM =#{now}, 
+			SEM_REQ_PARAM=#{paramString}
+		WHERE AS_NO = #{asNo}
+	</update>
+	<update id="uptAlgResLog" parameterType="Map">
+		UPDATE TH_LOG_AS_SEND
+		SET ALG_ID			= IFNULL(#{info.mid}, IF(#{code} = 0, '테스트모드', NULL)),
+			ALG_RES_DTTM 	= #{now},
+			ALG_RES_RSLT 	= #{code}
+		WHERE AS_NO = #{asNo}
+	</update>
+	
+	<insert id="repairAsByAsNo" parameterType="Map">
+		INSERT
+		INTO TH_STR_AS_REPAIR
+			(AS_NO, INDEX_SEQ, PART_GRP_CD, PART_TYPE, PART_TARGET, PART_CD, PART_NO, MAKER_NM, MIDDLE_NM, SMALL_NM, PART_NM, REGI_ID, REGI_DTTM, FINAL_MOD_ID, FINAL_MOD_DTTM)
+		SELECT * FROM (
+			<foreach collection="partList" item="item" separator=" union ">
+				SELECT #{asNo} as asNo, #{item.index} as indexSeq, #{item.partGrpCd} as partGrpCd, #{item.partType} as partType, #{item.partTarget} as partTarget
+					, #{item.partCd} as partCd, #{item.partNo} as partNo, #{item.makerNm} as makerNm, #{item.middleNm} as middleNm, #{item.smallNm} as smallNm, #{item.partNm} as partNm
+					, #{regiId} as regiId, #{now} as regiDttm, #{regiId} as finalModId, #{now} as finalModDttm
+			</foreach>
+		)T
+	</insert>
+	
+	<insert id="repairPriceAsByAsNo" parameterType="Map">
+		INSERT
+		INTO TH_STR_AS_REPAIR_PRICE
+			(AS_NO, INDEX_SEQ, PRICE_TARGET, PRICE, REGI_ID, REGI_DTTM, FINAL_MOD_ID, FINAL_MOD_DTTM)
+		SELECT * FROM (
+			<foreach collection="partList" item="item" separator="union">
+				<foreach collection="item.priceList" item="price" separator="union">
+					SELECT #{asNo} as asNo, #{item.index} as indexSeq
+					, #{price.target} as priceTarget, #{price.price} as price
+					, #{regiId} as regiId, #{now} as regiDttm, #{regiId} as finalModId, #{now} as finalModDttm
+				</foreach>
+			</foreach>
+		) T
+	</insert>
+	
+	<update id="updateResolveDttmByAsNo" parameterType="Map">
+		UPDATE TH_STR_AS
+		SET PROG_STAT = 'Y'
+		<if test='ownerSignYn == "P" '>
+			,APPROVAL_STAT = 'V'	/*전화설명 체크 시 업체승인으로 저장*/
+		</if>
+			,RESOLVE_DTTM 	= #{now}
+			,SEND_YN		= 'N'
+			,UPDATE_DTTM 	= #{now}
+			,FINAL_MOD_ID 	= #{regiId}
+			,FINAL_MOD_DTTM = #{now}
+		WHERE AS_NO = #{asNo}
+	</update>
+	
+	<select id="retrieveResolveAsByAsNo" parameterType="Map" resultType="Map">
+		SELECT SAS.TARGET as target, SAS.MAKER_CD as makerCd, SAS.MODEL_NM as modelNm, SAS.SERIAL_NO as serialNo
+			, SAS.RESOLVE_CD as resolveCd, SAS.RESOLVE_CD_TEXT as resolveCdText, SAS.RESOLVE_NOTE as resolveNote
+			, SAS.OWNER_NM as ownerNm, SAS.OWNER_TEL_NO as ownerTelNo, SAS.OWNER_NOTE as ownerNote, SAS.OWNER_SIGN_YN as ownerSignYn
+			, SAS.SIGN_IMG as signImg, SAS.FILE1_IMG as file1Img, SAS.FILE2_IMG as file2Img
+			, IF(SA.RESOLVE_DTTM > '2023-03-14 19:00:00', 'Y', 'N') as applyFlag, SAS.SUB_NOTE as subNote
+		FROM TH_STR_AS SA
+			LEFT OUTER JOIN TH_STR_AS_RESOLVE SAS
+				ON SA.AS_NO = SAS.AS_NO
+		WHERE SAS.AS_NO = #{asNo}
+	</select>
+	
+	<select id="retrieveRepairAsByAsNo" parameterType="Map" resultType="Map">
+		SELECT SAR.AS_NO as asNo, SAR.INDEX_SEQ as indexSeq, SAR.PART_GRP_CD as partGrpCd, SAR.PART_TYPE as partType, SAR.PART_TARGET as partTarget, SAR.PART_CD as partCd
+			, GROUP_CONCAT(IF(SAP.PRICE_TARGET = 'part', SAP.PRICE, NULL)) AS partPrice
+			, GROUP_CONCAT(IF(SAP.PRICE_TARGET = 'repair', SAP.PRICE, NULL)) as repairPrice
+			, GROUP_CONCAT(IF(SAP.PRICE_TARGET = 'business', SAP.PRICE, NULL)) as businessPrice
+			, MAKER_NM as makerNm, MIDDLE_NM as middleNm, SMALL_NM as smallNm, PART_NM as partNm
+		FROM TH_STR_AS_REPAIR SAR
+			LEFT OUTER JOIN TH_STR_AS_REPAIR_PRICE SAP
+				ON SAR.AS_NO = SAP.AS_NO
+					AND SAR.INDEX_SEQ = SAP.INDEX_SEQ
+		WHERE SAR.AS_NO = #{asNo}
+		GROUP BY SAR.AS_NO, SAR.INDEX_SEQ
+		ORDER BY SAR.AS_NO, SAR.INDEX_SEQ
+	</select>
+	
+	<sql id="retrieveCancelAsListSql">
+		SELECT AC.AS_NO 		AS asNo, 			AC.CANCEL_ID 	as cencelId, UM.USER_NM as userNm
+			, DATE_FORMAT(AC.CANCEL_DTTM, '%Y-%m-%d %H:%i:%s')		AS cancelDttm
+			, CC.COMM_CD_NM 	as cancelReason, 	AC.STR_NM 		as strNm
+		FROM TH_STR_AS_CANCEL AC
+			LEFT OUTER JOIN TH_USER_MST UM
+				ON AC.CANCEL_ID = UM.USER_ID
+			LEFT OUTER JOIN TH_COMM_CD CC
+				ON CC.COMM_GRP_CD = 'VIEW19'
+					AND AC.CANCEL_REASON = CC.COMM_CD
+		WHERE 1=1
+		<if test='authId == "3" '>
+			AND AC.VENDOR_CD = (
+								SELECT VENDOR_CD
+								FROM TH_USER_MST
+								WHERE USER_ID = #{userId}
+								)
+		</if>
+		<if test='order == "name" '>
+		ORDER BY AC.STR_NM
+		</if>
+		<if test='order == "date" '>
+		ORDER BY AC.CANCEL_DTTM DESC
+		</if>
+	</sql>
+	
+	<select id="retrieveCancelAsList" parameterType="Map" resultType="Map">
+		<include refid="retrieveCancelAsListSql"/>
+		LIMIT ${startRow}, ${pagingRowCnt}
+	</select>
+	
+	<select id="retrieveCancelAsListTotalCnt" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM (
+			<include refid="retrieveCancelAsListSql"/>
+			) T
+	</select>
+	
+	<select id="retrieveVendorList" parameterType="Map" resultType="Map">
+	<![CDATA[
+		SELECT 
+			VENDOR_CD	AS value, 
+			VENDOR_NM	AS name
+		FROM TH_VENDOR_MST 
+		WHERE USE_YN = 'Y'
+	]]>
+		<if test="vendorCd != 'SERVEONE' and authId != 6 and authId != 9 ">
+			AND VENDOR_CD = (
+								SELECT VENDOR_CD
+								FROM TH_USER_MST
+								WHERE USER_ID = #{userId}
+									AND USE_YN = 'Y'
+							)
+		</if>
+	<![CDATA[ 
+			AND COMPANY_CD = #{companyCd} 
+		ORDER BY name
+	]]>
+	</select>
+	
+	<select id="retrieveVendorUserList" parameterType="Map" resultType="Map">
+		SELECT USER_ID as userId, USER_NM as userNm
+		FROM TH_USER_MST
+		WHERE VENDOR_CD = #{vendorCd}
+			AND USE_YN = 'Y'
+			AND USER_ID NOT LIKE '%_master%'
+			AND USER_NM LIKE '%s'
+	</select>
+	
+	<select id="retrieveAsByAsNo" parameterType="Map" resultType="Map">
+		SELECT AS_NO
+		FROM TH_STR_AS
+		WHERE AS_NO = #{asNo}
+	</select>
+	
+	<sql id="retrieveAbsStrListSql">
+		SELECT STR_NM as strNm, VIEW_STR_CD as viewStrCd, ADDR as addr, TEL_NO as telNo
+		FROM TH_ABS_STR_INFO_MST
+		WHERE 1=1
+		<if test='authId == "3" '>
+			AND VENDOR_CD = (
+								SELECT VENDOR_CD
+								FROM TH_USER_MST
+								WHERE USER_ID = #{userId}
+							)
+		</if>
+		<if test='strNm != null and strNm != "" '>
+			AND (
+				STR_NM LIKE CONCAT('%',#{strNm},'%')
+				OR
+				VIEW_STR_CD LIKE CONCAT('%',#{strNm},'%')
+			)
+		</if>
+		ORDER BY STR_NM
+	</sql>
+	
+	<select id="retrieveAbsStrList" parameterType="Map" resultType="Map">
+		<include refid="retrieveAbsStrListSql"/>
+		LIMIT ${startRow}, ${pagingRowCnt}
+	</select>
+	
+	<select id="retrieveAbsStrListTotalCnt" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM (
+			<include refid="retrieveAbsStrListSql"/>
+			) T
+	</select>
+	
+	<insert id="saveAs" parameterType="Map">
+		INSERT
+		INTO TH_STR_AS
+			SET AS_NO 			= #{asNo}
+			<if test='toMe == "Y" '>
+			/* 나에게 접수 체크 시 예정으로 등록*/
+			,PROG_STAT 			= 'S'
+			</if>
+			<if test='toMe == "N" '>
+			,PROG_STAT 			= 'U'
+			</if>
+			,AS_DTTM 			= NOW()
+			,STR_NM 			= #{strNm}
+			,VIEW_STR_CD 		= #{viewStrCd}
+			,TEL_NO 			= #{telNo}
+			,ADDR 				= #{addr}
+			,VENDOR_CD 			= #{vendorCd}
+			,VENDOR_NM 			= #{vendorNm}
+			,VENDOR_USER_ID		= #{vendorUserId}
+			,VENDOR_USER_NM 	= #{vendorUserNm}
+			,ERROR_TYPE_CD 		= #{errorTypeCd}
+			,ERROR_TYPE 		= #{errorType}
+			,EMERGENCY_LEVEL 	= #{emergencyLevel}
+			,AS_NOTE 			= #{asNote}
+			,REGI_ID 			= #{regiId}
+			,REGI_DTTM 			= NOW()
+			,FINAL_MOD_ID 		= #{regiId}
+			,FINAL_MOD_DTTM 	= NOW()
+	</insert>
+	
+	<select id="retrieveMakerList" parameterType="Map" resultType="Map">
+		SELECT MAKER_CD as makerCd, MAKER_NM as makerNm
+		FROM TH_ABS_MAKER_MST
+		WHERE USE_YN = 'Y'
+		<if test='authId == "10"'>
+			AND MAKER_CD = #{userId}
+		</if>
+	</select>
+	
+	<insert id="cancelAsByAsNo" parameterType="Map">
+		INSERT
+		INTO TH_STR_AS_CANCEL
+			(AS_NO, CANCEL_ID, CANCEL_DTTM, CANCEL_REASON, PROG_STAT, AS_DTTM, STR_NM, VIEW_STR_CD, TEL_NO, ADDR
+			, VENDOR_CD, VENDOR_NM, VENDOR_USER_ID, VENDOR_USER_NM, ERROR_TYPE, ERROR_TYPE_CD, EMERGENCY_LEVEL, AS_NOTE
+			, REGI_ID, REGI_DTTM, FINAL_MOD_ID, FINAL_MOD_DTTM)
+		SELECT AS_NO, #{regiId}, #{now}, #{cancelReason}, PROG_STAT, AS_DTTM, STR_NM, VIEW_STR_CD, TEL_NO, ADDR
+			, VENDOR_CD, VENDOR_NM, VENDOR_USER_ID, VENDOR_USER_NM, ERROR_TYPE, ERROR_TYPE_CD, EMERGENCY_LEVEL, AS_NOTE
+			, #{regiId}, #{now}, #{regiId}, #{now}
+		FROM TH_STR_AS
+		WHERE AS_NO = #{asNo}
+	</insert>
+	
+	<delete id="deleteByAsNo" parameterType="Map">
+		DELETE
+		FROM TH_STR_AS
+		WHERE AS_NO = #{asNo}
+	</delete>
+	
+	<select id="getStrInfoByAsNo" parameterType="Map" resultType="Map">
+		SELECT STR_NM as strNm, DATE_FORMAT(RESOLVE_DTTM, '%Y-%m-%d') as resolveDttm
+			, SATISFACTION as satisfaction
+			, IF(RESOLVE_DTTM >= DATE_SUB(NOW(), INTERVAL 1 DAY), 'Y', 'N') as dayYn
+		FROM TH_STR_AS
+		WHERE AS_NO = #{asNo}
+	</select>
+	
+	<update id="saveAsSatisfaction" parameterType="Map">
+		UPDATE TH_STR_AS
+		SET SATISFACTION 			= #{satis}
+			, SATISFACTION_1		= #{satis_1}
+			, SATISFACTION_2		= #{satis_2}
+			, SATISFACTION_3		= #{satis_3}
+		WHERE AS_NO = #{asNo}
+	</update>
+	
+	<insert id="insertAsLog" parameterType="Map">
+		INSERT
+		INTO TH_LOG_STR_AS
+		SET AS_NO 			= #{asNo}
+			,REPORT_DTTM 	= #{now}
+			,USER_ID 		= #{regiId}
+			,PROG_STAT		= #{progStat}
+			,TARGET 		= #{target}
+			<if test='maker != null and maker != ""'>
+				,MAKER_CD 	= #{maker}
+			</if>
+			,PART_JSON 	= #{partJson}
+			<if test='modelNm != null and modelNm != "" '>
+				,MODEL_NM 	= #{modelNm}
+			</if>
+			<if test='serialNo != null and serialNo != "" '>
+				,SERIAL_NO 	= #{serialNo}
+			</if>
+			,RESOLVE_CD 	= #{resolveCd}
+			,RESOLVE_CD_TEXT= #{resolveCdText}
+			,RESOLVE_NOTE	= #{resolveNote}
+			,FILE1_IMG 		= #{file1}
+			,FILE2_IMG 		= #{file2}
+			,REGI_ID 		= #{regiId}
+			,REGI_DTTM 		= #{now}
+	</insert>
+	
+	<select id="retrieveResolveCd" parameterType="Map" resultType="Map">
+		SELECT RESOLVE_TYPE as resolveType, RESOLVE_CD as resolveCd, RESOLVE_NM as resolveNm
+		FROM TH_ABS_RESOLVE_MST
+		WHERE DEPTH = #{depth}
+			AND USE_YN = 'Y'
+			<if test='depth != 1'>
+				AND RESOLVE_TYPE = #{parentType}
+			</if>
+			<if test='parentCd != null and parentCd != "" '>
+				AND RESOLVE_CD LIKE CONCAT(#{parentCd}, '%')
+			</if>
+	</select>
+	
+	<select id="retrieveProgStatByAsNo" parameterType="Map" resultType="String">
+		SELECT PROG_STAT
+		FROM TH_STR_AS
+		WHERE AS_NO = #{asNo}
+	</select>
+	
+	<select id="findStrUser" parameterType="Map" resultType="String">
+		SELECT COUNT(*) 
+		FROM TH_USER_MST
+		WHERE USER_ID = #{vStrCd}
+	</select>
+	
+	<select id="getCnt" parameterType="Map" resultType="String">
+		SELECT COUNT(*)
+		FROM TH_STR_INFO_MST
+		WHERE 
+			VIEW_STR_CD = (
+				SELECT VIEW_STR_CD 
+				FROM TH_STR_AS
+				WHERE AS_NO = #{asNo}
+			)
+	</select>
+	
+	<select id="getVStrCd" parameterType="Map" resultType="Map">
+		SELECT VIEW_STR_CD, STR_NM 
+		FROM TH_STR_AS 
+		WHERE AS_NO = #{asNo}
+	</select>
+	
+	<insert id="insertUser" parameterType="Map">
+		INSERT INTO TH_USER_MST 
+		SET USER_ID = #{vStrCd} 
+		, USER_NM = #{strNm} 
+		, USER_PW= AES_ENCRYPT('1',#{encKey})
+		, COMPANY_CD = 'GSR'
+		, EULA_YN = 'N'
+		, USE_YN = 'Y'
+		, REGI_ID = 'SEMS'
+		, REGI_DTTM = NOW()
+		, FINAL_MOD_ID = 'SEMS'
+		, FINAL_MOD_DTTM = NOW()
+	</insert>
+	
+	<insert id="insertUserStrMap" parameterType="Map">
+		INSERT INTO TH_USER_STR_MAP
+		SET USER_ID = #{vStrCd}
+			, STR_CD = #{vStrCd}
+			, MAP_YN = 'Y'
+			, REGI_ID = 'SEMS'
+			, REGI_DTTM = NOW()
+			, FINAL_MOD_ID = 'SEMS'
+			, FINAL_MOD_DTTM = NOW()
+	</insert>
+	
+	<insert id="insertUserAuth" parameterType="Map">
+		INSERT INTO TH_USER_AUTH
+		SET COMPANY_CD = 'GSR'
+			, USER_ID = #{vStrCd}
+			, AUTH_ID = '11'
+	</insert>
+	
+	<update id="saveAsTemp" parameterType="Map">
+		INSERT 
+		INTO TH_STR_AS_SUBNOTE
+		SET AS_NO 			= #{asNo}
+			,SUB_NOTE		= #{subNote}
+			,REGI_ID		= #{regiId}
+			,REGI_DTTM		= #{now}
+			,FINAL_MOD_ID	= #{regiId}
+			,FINAL_MOD_DTTM	= #{now}
+		ON DUPLICATE KEY UPDATE
+			SUB_NOTE		= #{subNote}
+			,FINAL_MOD_ID	= #{regiId}
+			,FINAL_MOD_DTTM	= #{now}
+	</update>
+	
+	<select id="getAsTemp" parameterType="Map" resultType="String">
+		SELECT SUB_NOTE AS subNote 
+		FROM TH_STR_AS_SUBNOTE
+		WHERE AS_NO = #{asNo}
+	</select>
+	
+	<update id="updateProgStat" parameterType="Map">
+		UPDATE TH_STR_AS
+		SET PROG_STAT 		= IF(PROG_STAT = 'Y', 'Y', #{progStat})
+			,FINAL_MOD_ID 	= #{regiId}
+			,FINAL_MOD_DTTM = #{now}
+		WHERE AS_NO = #{asNo}
+	</update>
+</mapper>

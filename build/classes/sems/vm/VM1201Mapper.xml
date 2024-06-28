@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM1201Mapper">
+
+	<select id="retreiveCheckList" parameterType="Map" resultType="Map">
+		SELECT ECM.REQ_NO as no, IM.STR_CD as strCd, IM.STR_NM as strNm, C.COMM_CD_NM AS reqTypeStr, ECM.REQ_USER_ID AS reqId, U.USER_NM AS userNm, VM.VENDOR_NM AS vendorNm
+			, DATE_FORMAT(ECM.REQ_DTTM,'%Y-%m-%d') as reqDttm, ECM.REQ_TYPE as reqType, ECM.REQ_CONTENTS as reqContents
+			, DATE_FORMAT(ECM.SOLVE_DTTM,'%Y-%m-%d') solveDttm, ECM.SOLVE_CONTENTS as solveContents
+		FROM TH_STR_CHECK_DEVICE_REQ_MST ECM
+			,TH_STR_INFO_MST IM
+			,TH_COMM_CD C
+			,TH_USER_MST U
+			,TH_VENDOR_MST VM
+		WHERE  ECM.STR_CD = IM.STR_CD
+			AND ECM.REQ_TYPE = C.COMM_CD
+			AND C.COMM_GRP_CD = 'MAST20'
+			AND U.USER_ID = ECM.REQ_USER_ID
+			AND U.VENDOR_CD = VM.VENDOR_CD
+			AND C.USE_YN = 'Y' AND U.USE_YN = 'Y' AND VM.USE_YN = 'Y'
+			<if test='tabCd=="0" '>
+			AND SOLVE_DTTM IS NULL
+			</if>
+			<if test='tabCd=="1" '>
+			AND SOLVE_DTTM IS NOT NULL
+			AND SOLVE_DTTM >= DATE_SUB(NOW(), INTERVAL 3 MONTH)
+			</if>
+			<if test="qStrNm != null || qStrNm != ''">
+				AND	INSTR( IM.STR_NM, #{qStrNm} )		> 0
+			</if>
+			<choose>
+				<!-- 엔지니어인 경우 -->
+				<when test='authSp.equals("E") || authSp.equals("M")'>
+					AND IM.STR_CD IN	(
+											SELECT	STR_CD
+											FROM	TH_VENDOR_USER_STR_MAP
+											WHERE	USER_ID = #{userId}
+										)
+				</when>
+				<!-- 본사담당자인 경우 -->
+				<when test='authSp.equals("H") || authSp.equals("D")'>
+					AND IM.STR_CD IN	(
+											SELECT	A.STR_CD
+											FROM	TH_STR_INFO_MST A
+													, TH_COMPANY_MST B
+													, TH_USER_MST C
+											WHERE	1 = 1
+												AND	A.COMPANY_CD	= B.COMPANY_CD
+												AND	B.COMPANY_CD	= C.COMPANY_CD
+												AND	C.USER_ID		= #{userId}
+										)
+				</when>
+			</choose>
+		<if test='tabCd=="0" '>
+		ORDER BY ECM.REQ_DTTM DESC
+		</if>
+		<if test='tabCd=="1" '>
+		ORDER BY ECM.SOLVE_DTTM DESC
+		</if>
+	</select>
+	
+	<select id="findValidateReqErrCheck" parameterType="Map" resultType="Map">
+		SELECT REQ_NO as no, STR_CD as strCd, REQ_DTTM as reqDttm, REQ_TYPE as reqType, REQ_CONTENTS as reqContents
+			, SOLVE_DTTM as solveDttm, SOLVE_CONTENTS as solveContents
+		FROM TH_STR_CHECK_DEVICE_REQ_MST
+		WHERE 	STR_CD = #{scrStrCd}
+			AND REQ_TYPE = #{reqType}
+			AND SOLVE_DTTM IS NULL
+			AND REQ_DTTM > DATE_SUB(NOW(), INTERVAL 1 MONTH)
+	</select>
+	
+	<insert id="saveReqErrCheck" parameterType="Map">
+		INSERT
+		INTO TH_STR_CHECK_DEVICE_REQ_MST
+			(
+				REQ_NO
+				, STR_CD
+				, REQ_DTTM
+				, REQ_TYPE
+				, REQ_USER_ID
+				, REQ_CONTENTS
+				<if test='reqType == "Y"'>
+					,SOLVE_DTTM
+					,SOLVE_CONTENTS
+				</if>
+				, REGI_TYPE
+				, REGI_ID
+				, REGI_DTTM
+				, FINAL_MOD_ID
+				, FINAL_MOD_DTTM
+				, SOLVE_DUE_DT
+			)
+		SELECT 	IFNULL(MAX(REQ_NO),0) + 1 AS no
+				, #{scrStrCd}
+				, NOW()
+				, #{reqType}
+				, #{userId}
+				, #{reqMsg}
+				<if test='reqType == "Y"'>
+					,now()
+					,#{solveMsg}
+				</if>
+				, 'M'
+				, #{userId}
+				, NOW()
+				, #{userId}
+				, NOW()
+				, #{due}
+		FROM TH_STR_CHECK_DEVICE_REQ_MST
+	</insert>
+	
+	<update id="updateReqErrCheck" parameterType="Map">
+		UPDATE TH_STR_CHECK_DEVICE_REQ_MST
+		SET REQ_TYPE = #{reqType}
+			,REQ_CONTENTS 	= #{reqMsg}
+			<if test='reqType == "Y"'>
+				,SOLVE_DTTM 	= now()
+				,SOLVE_CONTENTS = #{solveMsg}
+			</if>
+			,FINAL_MOD_ID 	= #{userId}
+			,FINAL_MOD_DTTM = NOW()
+		WHERE REQ_NO = #{no}
+			AND STR_CD = #{scrStrCd}
+	</update>
+	
+	<update id="saveErrCheckSolve" parameterType="Map">
+		UPDATE TH_STR_CHECK_DEVICE_REQ_MST
+		SET SOLVE_CONTENTS = #{solveMsg}
+			,SOLVE_DTTM = NOW()
+			,FINAL_MOD_ID = #{userId}
+			,FINAL_MOD_DTTM = NOW()
+		WHERE REQ_NO = #{no}
+			AND STR_CD = #{strCd}
+	</update>
+	
+	<update id="saveErrCheck" parameterType="Map">
+		UPDATE TH_STR_CHECK_DEVICE_REQ_MST
+		SET SOLVE_DUE_DT = #{due}
+			,FINAL_MOD_ID = #{userId}
+			,FINAL_MOD_DTTM = NOW()
+		WHERE REQ_NO = #{no}
+			AND STR_CD = #{strCd}
+	</update>
+	
+	<select id="findDeviceList" parameterType="Map" resultType="Map">
+		SELECT DM.strCd, DM.temonId, DM.temonType, DM.portNo, DM.deviceType, DM.deviceLoc
+			,IF(DH.REQ_NO IS NOT NULL, 'Y', 'N') AS checkYn
+		FROM (
+			SELECT STR_CD as strCd, TEMON_ID as temonId, TEMON_TYPE as temonType, PORT_NO as portNo, DEVICE_TYPE as deviceType, DEVICE_LOC as deviceLoc
+			FROM TH_STR_REMS_DEVICE_MST
+			WHERE STR_CD = #{strCd}
+				AND USE_YN = 'Y'
+			UNION ALL
+			SELECT *
+			FROM (
+				SELECT STR_CD as strCd, TEMON_ID as temonId, TEMON_TYPE as temonType, '99' as portNo, 'E' as deviceType, '기타' as deviceLoc
+				FROM TH_STR_REMS_DEVICE_MST
+				WHERE STR_CD = #{strCd}
+					AND USE_YN = 'Y'
+				LIMIT 1
+			) T
+			ORDER BY temonId, portNo + '@'
+		) DM
+			LEFT OUTER JOIN TH_LOG_STR_CHECK_DEVICE DH
+				ON DM.strCd = DH.STR_CD
+					AND DM.temonId = DH.TEMON_ID
+					AND DM.temonType = DH.TEMON_TYPE
+					AND DM.portNo = DH.PORT_NO
+					AND DH.REQ_NO = #{no}
+	</select>
+	
+	<update id="saveDeviceCheckHistory" parameterType="Map">
+		INSERT
+		INTO TH_LOG_STR_CHECK_DEVICE
+			(REQ_NO, STR_CD, CHECK_DTTM, TEMON_ID, TEMON_TYPE, PORT_NO, DEVICE_TYPE, DEVICE_LOC, REGI_ID, REGI_DTTM, FINAL_MOD_ID, FINAL_MOD_DTTM)
+		<foreach collection="checkDeviceList" index="index" item="item" separator="UNION ALL">
+		SELECT REQ_NO, STR_CD, REQ_DTTM, #{item.temonId}, #{item.temonType}, #{item.portNo}, #{item.deviceType}, #{item.deviceLoc}, #{item.userId}, now(), #{item.userId}, now()
+		FROM TH_STR_CHECK_DEVICE_REQ_MST
+		WHERE REQ_NO = #{item.no}
+			AND STR_CD = #{item.scrStrCd}
+		</foreach>
+	</update>
+	
+	<delete id="deleteDeviceCheckHistory" parameterType="Map">
+		DELETE
+		FROM TH_LOG_STR_CHECK_DEVICE
+		WHERE REQ_NO = #{no}
+			AND STR_CD = #{scrStrCd}
+	</delete>
+	
+	<select id="findReqErrCheck" parameterType="Map" resultType="Map">
+		SELECT REQ_NO as no, STR_CD as strCd, REQ_DTTM as reqDttm, REQ_TYPE as reqType, REQ_CONTENTS as reqContents
+			, SOLVE_DTTM as solveDttm, SOLVE_CONTENTS as solveContents
+		FROM TH_STR_CHECK_DEVICE_REQ_MST
+		WHERE STR_CD = #{scrStrCd}
+			AND REQ_TYPE = #{reqType}
+		ORDER BY REQ_DTTM DESC
+		LIMIT 1
+	</select>
+	<select id="findDue" parameterType="Map" resultType="String">
+		SELECT SOLVE_DUE_DT
+		FROM TH_STR_CHECK_DEVICE_REQ_MST
+		WHERE REQ_NO=#{no}
+			AND STR_CD = #{strCd}
+	</select>
+	<select id="findSolve" parameterType="Map" resultType="String">
+		SELECT SOLVE_DTTM
+		FROM TH_STR_CHECK_DEVICE_REQ_MST
+		WHERE REQ_NO=#{no}
+			AND STR_CD = #{strCd}
+	</select>
+</mapper>

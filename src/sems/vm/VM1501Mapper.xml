@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM1501Mapper">
+
+	<select id="retreiveProcessList" parameterType="map" resultType="AlarmList">
+	<![CDATA[
+		SELECT	DAR.NO															AS no
+				, DAR.STR_CD													AS strCd
+				, IFNULL(IM.STR_NM, '-')											AS strNm
+				, DAR.ALARM_CODE												AS alarmCode
+				, DAR.ERROR_TYPE												AS errorType
+				, DATE_FORMAT(DAR.ALARM_DATE_S, '%Y.%m.%d %H:%i')				AS startDate
+				, DATE_FORMAT(DAR.ALARM_DATE_E, '%Y.%m.%d %H:%i')				AS endDate
+				, DAR.ALARM_COUNT												AS alarmCnt
+				, DAR.ALARM_MESSAGE												AS message
+				, DAR.TEMON_ID													AS temonId
+				, DAR.TEMON_TYPE												AS temonType
+				, DAR.PORT_NO													AS portNo
+				, CASE	WHEN DAR.ALARM_CODE = 1 THEN '서버'
+						WHEN DAR.ALARM_CODE = 2 THEN 'G/W'
+						WHEN DAR.ALARM_CODE = 3 THEN '하콘몬'
+						WHEN DAR.ALARM_CODE = 4 THEN '중계기'
+				END																AS moduleNm
+				, DAR.AS_RESULT													AS asResult
+		FROM	TH_GCM_DEVICE_AS_RESULT DAR 
+				LEFT OUTER JOIN TH_STR_INFO_MST IM
+						ON	IM.STR_CD = DAR.STR_CD
+		WHERE	DAR.AS_RESULT	= 'N'
+		ORDER BY endDate DESC
+	]]>
+	</select>
+	
+	<select id="retreiveRecoveryList" parameterType="map" resultType="AlarmList">
+	<![CDATA[
+		SELECT	DAR.NO AS no
+				, DAR.STR_CD													AS strCd
+				, IFNULL(IM.STR_NM, '-')										AS strNm
+				, DAR.ALARM_CODE												AS alarmCode
+				, DAR.ERROR_TYPE												AS errorType
+				, DATE_FORMAT(DAR.ALARM_DATE_S, '%Y.%m.%d %H:%i')				AS startDate
+				, DATE_FORMAT(DAR.ALARM_DATE_E, '%Y.%m.%d %H:%i')				AS endDate
+				, DAR.ALARM_COUNT												AS alarmCnt
+				, DAR.ALARM_MESSAGE												AS message
+				, DAR.TEMON_ID													AS temonId
+				, DAR.TEMON_TYPE												AS temonType
+				, DAR.PORT_NO													AS portNo
+				, CASE	WHEN DAR.ALARM_CODE = 1 THEN '서버'
+						WHEN DAR.ALARM_CODE = 2 THEN 'G/W'
+						WHEN DAR.ALARM_CODE = 3 THEN '하콘몬'
+						WHEN DAR.ALARM_CODE = 4 THEN '중계기'
+				END																AS moduleNm
+				, DAR.AS_RESULT													AS asResult
+				, DAR.AS_ENGINEER_NM											AS asEngineer
+				, DATE_FORMAT(DAR.AS_DATE, '%Y-%m-%d %H:%i')					AS asDate
+				, DAR.AS_NOTE													AS asNote
+		FROM	TH_GCM_DEVICE_AS_RESULT DAR
+				LEFT OUTER JOIN TH_STR_INFO_MST IM
+						ON	IM.STR_CD = DAR.STR_CD
+		WHERE	DAR.AS_RESULT	= 'R'
+			AND	DAR.AS_DATE		>= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+		ORDER BY asDate DESC
+	]]>
+	</select>
+	
+	<select id="retreiveResultList" parameterType="map" resultType="AlarmList">
+	<![CDATA[
+		SELECT	DAR.NO AS no
+				, DAR.STR_CD													AS strCd
+				, IFNULL(IM.STR_NM, '-')										AS strNm
+				, DAR.ALARM_CODE												AS alarmCode
+				, DAR.ERROR_TYPE												AS errorType
+				, DATE_FORMAT(DAR.ALARM_DATE_S, '%Y.%m.%d %H:%i')				AS startDate
+				, DATE_FORMAT(DAR.ALARM_DATE_E, '%Y.%m.%d %H:%i')				AS endDate
+				, DAR.ALARM_COUNT												AS alarmCnt
+				, DAR.ALARM_MESSAGE												AS message
+				, DAR.TEMON_ID													AS temonId
+				, DAR.TEMON_TYPE												AS temonType
+				, DAR.PORT_NO													AS portNo
+				, CASE	WHEN DAR.ALARM_CODE = 1 THEN '서버'
+						WHEN DAR.ALARM_CODE = 2 THEN 'G/W'
+						WHEN DAR.ALARM_CODE = 3 THEN '하콘몬'
+						WHEN DAR.ALARM_CODE = 4 THEN '중계기'
+				END																AS moduleNm
+				, DAR.AS_RESULT													AS asResult
+				, DAR.AS_ENGINEER_NM											AS asEngineer
+				, DATE_FORMAT(DAR.AS_DATE, '%Y-%m-%d %H:%i')					AS asDate
+				, DAR.AS_NOTE													AS asNote
+		FROM	TH_GCM_DEVICE_AS_RESULT DAR
+				LEFT OUTER JOIN TH_STR_INFO_MST IM
+						ON	IM.STR_CD = DAR.STR_CD
+		WHERE	DAR.AS_RESULT	= 'Y'
+			AND	DAR.AS_DATE		>= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+		ORDER BY asDate DESC
+	]]>
+	</select>
+	
+	<select id="getAsResult" parameterType="map" resultType="String">
+		SELECT	AS_RESULT	AS asResult
+		FROM	TH_GCM_DEVICE_AS_RESULT
+		WHERE	NO = #{no}
+	</select>
+	
+	<select id="saveAlarmResult" parameterType="map">
+	<![CDATA[
+		UPDATE	TH_GCM_DEVICE_AS_RESULT
+		SET		AS_RESULT = 'Y'
+				, AS_ENGINEER_NM	= #{asEngineer}
+				, AS_NOTE			= #{asNote}
+				, AS_DATE			= NOW()
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= NOW()
+		WHERE	NO = #{no}
+	]]>
+	</select>
+	
+</mapper>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM1101Mapper">
+	
+	<select id="searchElecVendor" parameterType="String" resultType="String">
+		SELECT	ELECTRICENT_CD AS elecVendor
+		FROM	TH_ELECTRICENT_STR_MAP
+		WHERE	STR_CD = #{strCd}
+	</select>
+	
+	<update id="saveElecVendor" parameterType="Map">
+		UPDATE	TH_ELECTRICENT_STR_MAP
+		SET		ELECTRICENT_CD = #{venderCd}
+				, FINAL_MOD_ID = #{userId}
+				, FINAL_MOD_DTTM = #{now}
+		WHERE	STR_CD = #{strCd}
+	</update>
+	
+	<update id="saveViewStrCd" parameterType="Map">
+		UPDATE	TH_STR_INFO_MST
+		SET		VIEW_STR_CD = #{viewStrCd}
+				, FINAL_MOD_ID = #{userId}
+				, FINAL_MOD_DTTM = #{now}
+		WHERE	STR_CD = #{strCd}
+	</update>
+	
+	<select id="VM1101getGwId" parameterType="String" resultType="int">
+		SELECT	GW_ID AS gwId
+		FROM	TH_STR_GW_MST
+		WHERE	STR_CD = #{strCd}
+	</select>
+	
+	<select id="searchStrByGwAddr" parameterType="Map" resultType="Map">
+		SELECT IM.STR_CD	AS strCd 
+			, IM.STR_NM		AS strNm
+			, GM.GW_ADDR	AS gwAddr
+			, IF(IM.USE_YN = 'Y' ,'사용','미사용')		AS useYn
+			, CASE
+				WHEN IM.OPER_STAT = 'O' THEN '운영'
+				WHEN IM.OPER_STAT = 'C' THEN '폐점'
+				WHEN IM.OPER_STAT = 'E' THEN '기타'
+			END 	AS operStat
+		FROM TH_STR_INFO_MST IM
+			, TH_STR_GW_MST GM
+		WHERE IM.STR_CD = GM.STR_CD
+			AND GM.GW_ADDR = #{gwAddr} 
+	</select>
+	
+	<update id="resetGwAddr" parameterType="Map">
+		UPDATE 	TH_STR_GW_MST
+		SET 	GW_ADDR 		= '000000000000',
+				FINAL_MOD_ID 	= #{userId},
+				FINAL_MOD_DTTM 	= #{now}
+		WHERE 	STR_CD = #{gwStrCd}
+	</update>
+	
+	<select id="searchGwAddr" parameterType="String" resultType="String">
+		SELECT GW_ADDR AS gwAddr
+		FROM TH_STR_GW_MST
+		WHERE STR_CD = #{strCd}
+	</select>
+	
+	<select id="searchViewStrCd" parameterType="String" resultType="String">
+		SELECT VIEW_STR_CD AS viewStrCd
+		FROM TH_STR_INFO_MST
+		WHERE STR_CD = #{strCd}
+	</select>
+	
+	<select id="getPauseAlarm" parameterType="Map" resultType="Map">
+		SELECT STR_CD as strCd, TEMON_ID as temonId, TEMON_TYPE as temonType, PORT_NO as portNo
+		FROM TH_STR_REMS_DEVICE_MST
+		WHERE STR_CD = #{strCd} 
+	</select>
+
+<update id="updatePauseAlarm"  parameterType="Map">
+		INSERT
+		INTO TH_STR_REMS_DEVICE_ALARM_PAUSE
+		SET STR_CD = #{strCd}
+			,TEMON_ID = #{temonId}
+			,TEMON_TYPE = #{temonType}
+			,PORT_NO = #{portNo}
+			,PAUSE_TYPE = #{pauseType}
+		<if test='pauseDays != null and pauseDays != ""'>
+			,PAUSE_DAYS = #{pauseDays}
+		</if>
+		<if test='pauseDttm != null and pauseDttm != ""'>
+			,PAUSE_VALUE = #{pauseDttm}
+		</if>
+			,PAUSE_YN = #{pauseYn}
+			,REGI_ID = #{userId}
+			,REGI_DTTM = NOW()
+			,FINAL_MOD_ID = #{userId}
+			,FINAL_MOD_DTTM = NOW()
+		ON DUPLICATE KEY UPDATE
+		<if test='pauseDays != null and pauseDays != ""'>
+			PAUSE_DAYS = #{pauseDays}
+			,
+		</if>
+		<if test='pauseDttm != null and pauseDttm != ""'>
+			PAUSE_VALUE = #{pauseDttm}
+			,
+		</if>
+			PAUSE_YN = #{pauseYn}
+			,FINAL_MOD_ID = #{userId}
+			,FINAL_MOD_DTTM = NOW()
+	</update>
+</mapper>

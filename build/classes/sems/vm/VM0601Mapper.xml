@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM0601Mapper">
+
+	<select id="getTimeInfo" parameterType="map" resultType="map">
+	<![CDATA[
+		SELECT	CASE	WHEN SIGN_TYPE='S1' THEN
+							CASE	WHEN SIGN_OPER='L0' THEN '24_ON'
+									WHEN SIGN_OPER='L1' AND SOPER_ON=SOPER_OFF THEN 'SUN_RISET'
+									ELSE 'MANUAL'
+							END
+						ELSE 'NO_POLICY'
+				END AS policy
+				, CASE	WHEN SIGN_TYPE='S1' THEN
+							CASE	WHEN SIGN_OPER='L0' THEN '24:00'
+									WHEN SIGN_OPER='L1' AND SOPER_ON=SOPER_OFF THEN DATE_FORMAT(DATE_ADD(CONCAT('2000-01-01 ',SUNRISE_TIME,':00'),INTERVAL OFF_TIME MINUTE),'%H:%i')
+									ELSE SOPER_OFF
+							END
+						ELSE '24:00'
+				END AS offTime
+				, CASE	WHEN SIGN_TYPE='S1' THEN
+							CASE	WHEN SIGN_OPER='L0' THEN '00:00'
+									WHEN SIGN_OPER='L1' AND SOPER_ON=SOPER_OFF THEN DATE_FORMAT(DATE_ADD(CONCAT('2000-01-01 ',SUNSET_TIME,':00'),INTERVAL ON_TIME MINUTE),'%H:%i')
+									ELSE SOPER_ON
+							END
+						ELSE '00:00'
+				END AS onTime
+				, SUNRISE_TIME	AS sunriseTime		, SUNSET_TIME	AS sunsetTime	, WEATHER_CD	AS weatherCd
+				, SIGN_OPER	AS signOper				, SOPER_ON 		AS soperOn		, SOPER_OFF		AS soperOff		, SIGN_DELY		AS signDely		, BOX_VER	AS boxVer
+				, CASE
+					  WHEN SIGN_OPER = 'L0' THEN '(24시간 운영)'
+					  WHEN SIGN_OPER = 'L1' AND SOPER_ON = SOPER_OFF THEN '(일출몰 기준)'
+					  ELSE '(사용자 정의)'
+				END AS signTypeInfo
+		FROM	(
+					SELECT	SUBSTRING_INDEX(STR_CONF_VAL,',',1) AS SOPER_ON		, SUBSTRING_INDEX(STR_CONF_VAL,',',-1) AS SOPER_OFF
+							, SIGN_TYPE		, SIGN_OPER		, SUNRISE_TIME		, SUNSET_TIME	, OFF_TIME		, ON_TIME		, SIGN_DELY		, BOX_VER	,WEATHER_CD
+					FROM	(
+								SELECT	IFNULL(FL.SUNRISE_TIME,'08:00')	AS SUNRISE_TIME		, IFNULL(FL.SUNSET_TIME,'17:00')	AS SUNSET_TIME
+										, ECM_T.CONF_VAL	AS SIGN_TYPE		, ECM_O.CONF_VAL	AS SIGN_OPER		, ECM_O.STR_CONF_VAL	AS STR_CONF_VAL
+										, ECM_D.STR_CONF_VAL AS SIGN_DELY	, IM.BOX_VER
+										, CASE	WHEN DATE_FORMAT(NOW(),'%Y%m%d') >= ECM_D.APPDT_DT THEN SUBSTRING_INDEX(ECM_D.STR_CONF_VAL,',',1)
+												ELSE SUBSTRING_INDEX(ECM_D.STR_CONF_VAL_OLD,',',1)
+										END		AS OFF_TIME
+										, CASE	WHEN DATE_FORMAT(NOW(),'%Y%m%d') >= ECM_D.APPDT_DT THEN SUBSTRING_INDEX(ECM_D.STR_CONF_VAL,',',-1)
+												ELSE SUBSTRING_INDEX(ECM_D.STR_CONF_VAL_OLD,',',-1)
+										END		AS ON_TIME
+										, WEATHER_CD
+								FROM	TH_STR_INFO_MST IM
+										LEFT OUTER JOIN (
+											SELECT * FROM (
+												SELECT	LOCAL_AREA_CD, COUNTRY_CD
+													, DATE_FORMAT(REPORT_DTTM, '%Y%m%d') YYYYMMDD, DATE_FORMAT(REPORT_DTTM, '%H') HH
+													, SUNRISE_TIME, SUNSET_TIME, WEATHER_CD
+												FROM	TH_WEATHER_FORECAST_LATEST
+												WHERE REPORT_DTTM BETWEEN DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 DAY), '%Y-%m-%d %H:00:00') AND DATE_FORMAT(NOW(), '%Y-%m-%d %H:59:59')
+												ORDER BY REPORT_DTTM DESC
+											) FL
+											GROUP BY LOCAL_AREA_CD
+										) FL
+												ON	FL.LOCAL_AREA_CD = IM.LOCAL_AREA_CD
+										LEFT JOIN TH_COMPANY_MST CM
+												ON	CM.COMPANY_CD	= IM.COMPANY_CD
+												AND	CM.COUNTRY_CD	= FL.COUNTRY_CD
+										, (SELECT STR_CD, CONF_VAL, APPDT_DT, STR_CONF_VAL, STR_CONF_VAL_OLD FROM TH_STR_ENV_CONF_MST WHERE CONF_SP='SIGN_DELY') ECM_D
+										, (SELECT STR_CD, CONF_VAL FROM TH_STR_ENV_CONF_MST WHERE CONF_SP='SIGN_TYPE') ECM_T
+										, (SELECT STR_CD, CONF_VAL, STR_CONF_VAL FROM TH_STR_ENV_CONF_MST WHERE CONF_SP='SIGN_OPER') ECM_O
+								WHERE	IM.STR_CD = ECM_D.STR_CD		AND	IM.STR_CD = ECM_T.STR_CD		AND	IM.STR_CD = ECM_O.STR_CD
+									AND	IM.STR_CD = #{strCd}
+							) T
+				) T
+	]]>
+	</select>
+	
+	<update id="VM0601DbSave" parameterType="Map">
+	<![CDATA[
+		INSERT
+		INTO	TH_STR_ENV_CONF_MST
+		SET		STR_CD				= #{strCd}
+				, CONF_SP			= #{confSp}
+				, CONF_VAL			= #{confVal}
+				, STR_CONF_VAL		= #{strConfVal}
+				, STR_CONF_VAL_OLD	= #{strConfVal}
+				, APPDT_DT			= DATE_FORMAT( NOW(), '%Y%m%d' )
+				, REGI_ID			= #{userId}
+				, REGI_DTTM			= #{now}
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= #{now}
+		ON DUPLICATE KEY
+		UPDATE	CONF_VAL			= #{confVal}
+				, STR_CONF_VAL		= #{strConfVal}
+				, STR_CONF_VAL_OLD	= #{strConfVal}
+				, APPDT_DT			= DATE_FORMAT( NOW(), '%Y%m%d' )
+				, FINAL_MOD_ID		= #{userId}
+				, FINAL_MOD_DTTM	= #{now}
+	]]>
+	</update>
+	
+	<delete id="VM0601DbDelete" parameterType="Map">
+	<![CDATA[
+		DELETE
+		FROM	TH_STR_ENV_CONF_MST
+		WHERE	STR_CD		= #{strCd}
+			AND	CONF_SP		= #{confSp}
+			AND	CONF_VAL	<> #{confVal}
+	]]>
+	</delete>
+
+	<select id="getForecastInfo" parameterType="Map" resultType="Map">
+	<![CDATA[
+		SELECT STR_CD           as strCd
+			 , STR_NM           as strNm
+			 , IFNULL(ACTIVE_YN, 'X')       as activeYn
+			 , IFNULL(CLOUD_SMALL_YN , 'X') as cloudSmallYn
+			 , IFNULL(CLOUD_BIG_YN, 'X' )   as cloudBigYn
+			 , IFNULL(CLOUDY_YN, 'X' )      as cloudyYn
+			 , IFNULL(RAINY_YN , 'X')       as rainyYn
+			 , IFNULL(SNOWY_YN, 'X')       as snowyYn
+			 , IFNULL(RAINY_SUN_YN, 'X')    as rainySunYn
+			 , IFNULL(RAINY_SHOWER_YN, 'X') as rainyShowerYn
+			 , IFNULL(RAINY_SNOW_YN, 'X' )  as rainySnowYn
+			 , IFNULL(SNOWY_RAIN_YN, 'X' )  as snowyRainYn
+			 , IFNULL(THUNDER_YN, 'X')      as thunderYn
+			 , IFNULL(SMOG_YN, 'X' )        as smogYn
+			 , IFNULL(SUNNY_YN, 'X'  )      as sunnyYn
+		FROM TH_STR_SIGN_FORECAST_CONTROL
+		WHERE STR_CD = #{strCd}
+		ORDER BY REGI_DTTM DESC
+		LIMIT 1
+		]]>
+	</select>
+
+
+	<update id="saveForecastInfo" parameterType="HashMap">
+	<![CDATA[
+		INSERT
+		INTO	TH_STR_SIGN_FORECAST_CONTROL
+			(
+				STR_CD
+				, STR_NM
+				, ACTIVE_YN
+				, CLOUD_SMALL_YN
+				, CLOUD_BIG_YN
+				, CLOUDY_YN
+				, RAINY_YN
+				, SNOWY_YN
+				, RAINY_SUN_YN
+				, RAINY_SHOWER_YN
+				, RAINY_SNOW_YN
+				, SNOWY_RAIN_YN
+				, THUNDER_YN
+				, SMOG_YN
+				, SUNNY_YN
+				, ACTIVE_DATE
+				, REGI_ID
+				, REGI_DTTM
+				, FINAL_MOD_ID
+				, FINAL_MOD_DTTM
+			)
+		VALUES
+		    (
+			#{strCd},
+		     #{strNm},
+		     #{activeYn},
+		     #{cloudSmallYn},
+		     #{cloudBigYn},
+		     #{cloudyYn},
+		     #{rainyYn},
+		     #{snowyYn},
+		     #{rainySunYn},
+		     #{rainyShowerYn},
+		     #{rainySnowYn},
+		     #{snowyRainYn},
+		     #{thunderYn},
+		     #{smogYn},
+		     #{sunnyYn},
+		     DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 1 DAY), '%Y-%m-%d 00:00:00'),
+		     #{userId},
+		     NOW(),
+		     #{userId},
+		     NOW()
+			)
+		]]>
+	</update>
+
+	<update id="updateSignVal" parameterType="Map">
+		<![CDATA[
+		UPDATE TH_STR_ENV_CONF_MST
+		SET STR_CONF_VAL 		= #{strConfVal}
+		  , STR_CONF_VAL_OLD 	= #{strConfVal}
+		  , APPDT_DT 			= DATE_FORMAT(NOW(), '%Y%m%d')
+		  , FINAL_MOD_ID 		= #{userId}
+		  , FINAL_MOD_DTTM 	= NOW()
+		WHERE CONF_SP = 'SIGN_MOFF'
+		  AND CONF_VAL = 'SM'
+		  AND STR_CD = #{strCd}
+		]]>
+	</update>
+</mapper>

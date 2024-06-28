@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="useGeneratedKeys" value="false" />
+	</settings>
+	<typeAliases>
+		<typeAlias alias="Inquiry" type="sems.cm.model.Inquiry"/>
+		<typeAlias alias="UserVo" type="sems.cm.model.UserVo" />
+		<typeAlias alias="SystemMobileConfig" type="sems.cm.model.SystemMobileConfig" />
+		<typeAlias alias="SystemMobileStoreVo" type="sems.cm.model.SystemMobileStoreVo" />
+		<typeAlias alias="StoreSearch" type="sems.cm.model.StoreSearch"/>
+		
+		<typeAlias alias="EnergyAnal" type="sems.vm.model.EnergyAnal"/>
+		<typeAlias alias="AlarmList" type="sems.vm.model.AlarmList"/>
+		<typeAlias alias="Notice" type="sems.vm.model.Notice"/>
+		<typeAlias alias="ComCodeVo" type="sems.cm.model.ComCodeVo" />
+		
+		<!-- 점포 설정 변경 로깅 -->
+		<typeAlias alias="LoggingVo" type="sems.cm.model.LoggingVo" />
+
+	</typeAliases>
+</configuration>

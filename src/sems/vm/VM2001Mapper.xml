@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM2001Mapper">
+	<select id="retrieveMntncDate" parameterType="Map" resultType="Map">
+		SELECT YYYYMMDD as yyyymmdd
+		FROM TH_STR_SIGN_REGULAR_MAINTENANCE RM
+		WHERE YYYYMMDD BETWEEN DATE_FORMAT(#{start}, '%Y%m%d')
+						AND DATE_FORMAT(#{end},'%Y%m%d')
+		<if test='authId == "13" and masterYn != "Y" '>
+			AND (RM.VENDOR_USER_ID = #{userId}
+						OR (RM.VENDOR_CD = ( SELECT VENDOR_CD FROM TH_USER_MST WHERE USER_ID = #{userId}) 
+							AND (RM.VENDOR_USER_ID = '' OR RM.VENDOR_USER_ID IS NULL)))
+		</if>
+		<if test='authId == "13" and masterYn == "Y" '>
+				AND RM.VENDOR_CD = ( SELECT VENDOR_CD FROM TH_USER_MST WHERE USER_ID = #{userId})
+			</if>
+		GROUP BY YYYYMMDD
+	</select>
+	
+	<sql id="retrieveMntncListSql">
+
+			SELECT RM.INIT_STR_CD AS initStrCd, RM.YYYYMM AS yyyymm , RM.VENDOR_NM AS vendorNm, RM.ADDR AS addr
+				, IFNULL(DATE_FORMAT(RM.YYYYMMDD, '%Y-%m-%d'), '-') as yyyymmdd , RM.SECTOR_FULL AS sector, IFNULL(RM.VENDOR_USER_NM, '미지정') as vendorUserNm 
+				, RM.STR_NM as strNm, RM.VIEW_STR_CD as viewStrCd , DATE_FORMAT(RM.PROG_START_DTTM, '%Y-%m-%d %H:%i:%s') as startTime 
+				, DATE_FORMAT(RM.PROG_END_DTTM, '%Y-%m-%d %H:%i:%s') as endTime , RM.PROG_STAT
+				, RM.VENDOR_USER_ID, CC.COMM_CD_NM as progStat 
+			FROM TH_STR_SIGN_REGULAR_MAINTENANCE RM 
+			LEFT OUTER JOIN TH_COMM_CD CC 
+			ON RM.PROG_STAT = CC.COMM_CD AND CC.COMM_GRP_CD = 'VIEW14' AND CC.USE_YN = 'Y'
+			WHERE 1=1 
+				<if test='authId == "13" and masterYn != "Y" and progStatCd !="Y"'>
+					AND (RM.VENDOR_CD = ( SELECT VENDOR_CD FROM TH_USER_MST WHERE USER_ID = #{userId}) 
+						AND( RM.VENDOR_USER_ID = #{userId} 
+							OR (RM.VENDOR_USER_ID = '' OR RM.VENDOR_USER_ID IS NULL)
+						)
+					)
+				</if>
+				<if test='authId == "13" and masterYn != "Y" and progStatCd =="Y"'>
+					AND RM.VENDOR_USER_ID = #{userId}
+				</if>
+				<if test='authId == "13" and masterYn == "Y" '> 
+					AND RM.VENDOR_CD = ( SELECT VENDOR_CD FROM TH_USER_MST WHERE USER_ID = #{userId})
+				</if>
+				<if test='strNm != null and strNm != "" '> 
+					AND (
+						INSTR(RM.STR_NM, #{strNm}) > 0
+						OR
+						INSTR(RM.VIEW_STR_CD, #{strNm}) > 0
+					)
+	 			</if>
+	 			<if test='date != null and date != "" '>
+					AND RM.YYYYMMDD = DATE_FORMAT(#{date}, '%Y%m%d')
+				</if>
+				<choose>
+					<when test='progStatCd == "Y"'>
+				        AND RM.PROG_STAT = 'Y'
+				    </when>
+					<when test='progStatCd == "S"'>
+				        AND RM.PROG_STAT = 'S'
+				    </when>
+				    <otherwise>
+					    AND RM.PROG_STAT = #{progStatCd}
+					</otherwise>
+				    
+			    </choose>
+		
+		
+		<if test='authId == "13"'>
+			ORDER BY IF(RM.VENDOR_USER_ID = #{userId}, 0, 1), VENDOR_USER_ID, yyyymm DESC, yyyymmdd DESC,  strNm
+		</if>
+		<if test='authId != "13"'>
+			ORDER BY yyyymm DESC,  yyyymm, yyyymmdd DESC,  strNm
+		</if>
+	</sql>
+	
+	<select id="retrieveMntncList" parameterType="Map" resultType="Map">
+		<include refid="retrieveMntncListSql"/>
+		LIMIT #{startRow}, #{pagingRowCnt}
+	</select>
+	
+	<select id="retrieveMntncListTotalCnt" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM (
+			<include refid="retrieveMntncListSql"/>
+			) T
+	</select>
+	
+	<select id="retrieveCheckList" parameterType="Map" resultType="Map">
+		SELECT CODE as checkId, CONTENTS as checkContents, CHECK_TYPE as checkType, CHECK_OPTIONS as checkOptions
+		, REQUIRED_YN AS requiredYn, DEFAULT_NOTE as defaultNote, SEMS_YN as semsYn, SEQ as seq
+		FROM TH_MAINTENANCE_CHECK_LIST
+		WHERE USE_YN = 'Y'
+			AND TYPE = 'S'
+			AND CHAR_LENGTH(SEQ) > 4
+		ORDER BY SEQ
+	</select>
+	
+	
+	<update id="saveMaintenance" parameterType="Map">
+		UPDATE TH_STR_SIGN_REGULAR_MAINTENANCE
+		SET PROG_STAT			= 'Y'
+			,PROG_END_DTTM		= NOW()
+			,FINAL_MOD_ID		= #{regiId}
+			,FINAL_MOD_DTTM		= #{now}
+			,VENDOR_USER_ID		= #{regiId}
+			,VENDOR_USER_NM		= #{userNm}
+		WHERE INIT_STR_CD	= #{initStrCd}
+			AND YYYYMM		= #{yyyymm}
+	</update>
+	
+	<update id="saveMaintenanceResolve" parameterType="Map">
+		INSERT
+		INTO TH_STR_SIGN_REGULAR_MAINTENANCE_RESOLVE
+		SET INIT_STR_CD 		= #{initStrCd}
+			,YYYYMM 			= #{yyyymm}
+			,CHECK_JSON 		= #{checkList}
+			,OPER_STAT			= #{operStat}
+		<if test='operNote != null and operNote != "" '>
+			,OPER_NOTE			= #{operNote}
+		</if>
+			,OWNER_NM			= #{ownerNm}
+			,OWNER_TEL_NO		= #{telNo}
+			,OWNER_SIGN_YN		= #{ownerSignYn}
+			,NOTE				= #{note}
+			,SUB_NOTE			= #{subNote}
+			,AGREE_YN			= #{agreeYn}
+		<if test='file0 != null and file0 != "" '>
+			, SIGN_IMG 			= #{file0}
+		</if>
+		<if test='file1 != null and file1 != "" '>
+			, FILE1_IMG 		= #{file1}
+		</if>
+		<if test='file2 != null and file2 != "" '>
+			, FILE2_IMG 		= #{file2}
+		</if>
+		<if test='file3 != null and file3 != "" '>
+			, FILE3_IMG 		= #{file3}
+		</if>
+		<if test='file4 != null and file4 != "" '>
+			, FILE4_IMG 		= #{file4}
+		</if>
+		<if test='file5 != null and file5 != "" '>
+			, FILE5_IMG 		= #{file5}
+		</if>
+			,REGI_ID			= #{regiId}
+			,REGI_DTTM			= #{now}
+			,FINAL_MOD_ID		= #{regiId}
+			,FINAL_MOD_DTTM		= #{now}
+		ON DUPLICATE KEY UPDATE
+			CHECK_JSON 		= #{checkList}
+			,OPER_STAT			= #{operStat}
+		<if test='operNote != null and operNote != "" '>
+			,OPER_NOTE			= #{operNote}
+		</if>
+			,OWNER_NM			= #{ownerNm}
+			,OWNER_TEL_NO		= #{telNo}
+			,OWNER_SIGN_YN		= #{ownerSignYn}
+			,NOTE				= #{note}
+		<if test='file0 != null and file0 != "" '>
+			, SIGN_IMG 			= #{file0}
+		</if>
+		<if test='file1 != null and file1 != "" '>
+			, FILE1_IMG 		= #{file1}
+		</if>
+		<if test='file2 != null and file2 != "" '>
+			, FILE2_IMG 		= #{file2}
+		</if>
+		<if test='file3 != null and file3 != "" '>
+			, FILE3_IMG 		= #{file3}
+		</if>
+		<if test='file4 != null and file4 != "" '>
+			, FILE4_IMG 		= #{file4}
+		</if>
+		<if test='file5 != null and file5 != "" '>
+			, FILE5_IMG 		= #{file5}
+		</if>
+			,FINAL_MOD_ID		= #{regiId}
+			,FINAL_MOD_DTTM		= #{now}
+	</update>
+	<insert id="saveMnLog" parameterType="Map">
+		INSERT
+		INTO TH_LOG_SIGN_RGL_MAINTENANCE
+		SET INIT_STR_CD		= #{initStrCd},
+			YYYYMM			= #{yyyymm},
+			WEB_REQ_DTTM 	= #{now}, 
+			WEB_REQ_PARAM 	= #{paramString}
+		ON DUPLICATE KEY UPDATE
+			WEB_REQ_DTTM 	= #{now}, 
+			WEB_REQ_PARAM 	= #{paramString}
+	</insert>
+	<update id="uptSemResLog" parameterType="Map">
+		UPDATE TH_LOG_SIGN_RGL_MAINTENANCE
+		SET SEM_RES_DTTM=#{now}
+		WHERE INIT_STR_CD 	= #{initStrCd}
+			AND YYYYMM 		= #{yyyymm}
+	</update>
+	<update id="uptSemReqLog" parameterType="Map">
+		UPDATE TH_LOG_SIGN_RGL_MAINTENANCE
+		SET SEM_REQ_DTTM =#{now}, 
+			SEM_REQ_PARAM=#{paramString}
+		WHERE INIT_STR_CD 	= #{initStrCd}
+			AND YYYYMM 		= #{yyyymm}
+	</update>
+	<update id="uptAlgResLog" parameterType="Map">
+	<![CDATA[
+ 		UPDATE TH_LOG_SIGN_RGL_MAINTENANCE 
+ 		SET ALG_ID			= IFNULL(#{info.mid}, IF(#{code} = 0, '테스트모드', NULL)), 
+ 			ALG_RES_DTTM 	= #{now},  
+ 			ALG_RES_RSLT 	= #{code} 
+		WHERE INIT_STR_CD 	= #{initStrCd} 
+			AND YYYYMM 		= #{yyyymm} 
+ 	]]> 
+	</update>
+	
+	<select id="getSatisList" resultType="Map">
+		SELECT COMM_CD as code, COMM_CD_NM as name
+		FROM TH_COMM_CD
+		WHERE COMM_GRP_CD = 'VIEW15'
+			AND USE_YN = 'Y'
+		ORDER BY ORDER_SEQ + '@'
+	</select>
+	
+	<select id="getStrInfo" parameterType="Map" resultType="Map">
+		SELECT INIT_STR_CD as initStrCd, YYYYMM as yyyymm, STR_NM as strNm
+			, DATE_FORMAT(PROG_END_DTTM, '%Y-%m-%d %H:%i:%s') as progDttm
+			, SATISFACTION as satisfaction, SATISFACTION_REASON as satisfactionReason
+			, IF(PROG_END_DTTM >= DATE_SUB(NOW(), INTERVAL 1 DAY), 'Y', 'N') as dayYn
+		FROM TH_STR_SIGN_REGULAR_MAINTENANCE
+		WHERE INIT_STR_CD 	= #{initStrCd}
+			AND YYYYMM 		= #{yyyymm}
+	</select>
+	
+	<update id="saveMaintenanceSatisfaction" parameterType="Map">
+		UPDATE TH_STR_SIGN_REGULAR_MAINTENANCE
+		SET SATISFACTION			= #{satis}
+			,SATISFACTION_REASON 	= #{satisReason}
+		WHERE INIT_STR_CD 	= #{initStrCd}
+			AND YYYYMM 		= #{yyyymm}
+	</update>
+	
+	<insert id="insertMaintenanceLog" parameterType="Map">
+		INSERT
+		INTO TH_LOG_STR_SIGN_REGULAR_MAINTENANCE
+		SET INIT_STR_CD 	= #{initStrCd}
+			,YYYYMM 		= #{yyyymm}
+			,REPORT_DTTM 	= #{now}
+			,USER_ID 		= #{regiId}
+			,PROG_STAT 		= #{progStat}
+			,FILE1_IMG 		= #{file1}
+			,FILE2_IMG 		= #{file2}
+			,FILE3_IMG 		= #{file3}
+			,FILE4_IMG 		= #{file4}
+			,FILE5_IMG 		= #{file5}
+			,REGI_ID 		= #{regiId}
+			,REGI_DTTM 		= #{now}
+	</insert>
+	
+	<insert id="saveMntncStartTime" parameterType="Map">
+		UPDATE TH_STR_SIGN_REGULAR_MAINTENANCE
+		SET PROG_START_DTTM 	= #{now}
+			,YYYYMMDD			= DATE_FORMAT(#{now}, '%Y%m%d')
+			,FINAL_MOD_ID 		= #{regiId}
+			,FINAL_MOD_DTTM 	= #{now}
+		WHERE INIT_STR_CD 	= #{initStrCd}
+			AND YYYYMM 		= #{yyyymm}
+	</insert>
+	
+	<select id="retrieveStrCd" parameterType="Map" resultType="String">
+		SELECT INIT_STR_CD
+		FROM TH_ABS_STR_INFO_MST IM
+			, TH_STR_SIGN_REGULAR_MAINTENANCE RM
+		WHERE IM.VIEW_STR_CD = RM.VIEW_STR_CD
+			AND RM.INIT_STR_CD 	= #{initStrCd}
+			AND RM.YYYYMM 		= #{yyyymm}
+	</select>
+	
+	<select id="findStrUser" parameterType="Map" resultType="String">
+		SELECT COUNT(*) 
+		FROM TH_USER_MST
+		WHERE USER_ID = #{vStrCd}
+	</select>
+	
+	<select id="getCnt" parameterType="Map" resultType="String">
+		SELECT COUNT(*)
+		FROM TH_STR_INFO_MST
+		WHERE 
+			VIEW_STR_CD = (
+				SELECT VIEW_STR_CD
+				FROM TH_ABS_STR_INFO_MST
+				WHERE INIT_STR_CD =  #{initStrCd}
+			)
+			AND USE_YN = 'Y' AND OPER_STAT = 'O'
+	</select>
+	
+	<select id="getVStrCd" parameterType="Map" resultType="Map">
+		SELECT VIEW_STR_CD, STR_NM 
+		FROM TH_STR_SIGN_REGULAR_MAINTENANCE
+		WHERE INIT_STR_CD = #{initStrCd}
+		ORDER BY REGI_DTTM DESC
+		LIMIT 0,1
+	</select>
+	
+	<insert id="insertUser" parameterType="Map">
+		INSERT INTO TH_USER_MST 
+		SET USER_ID = #{vStrCd} 
+		, USER_NM = #{strNm} 
+		, USER_PW= AES_ENCRYPT('1',#{encKey})
+		, COMPANY_CD = 'GSR'
+		, STR_CD = #{vStrCd}
+		, EULA_YN = 'N'
+		, USE_YN = 'Y'
+		, REGI_ID = 'SEMS'
+		, REGI_DTTM = NOW()
+		, FINAL_MOD_ID = 'SEMS'
+		, FINAL_MOD_DTTM = NOW()
+	</insert>
+	
+	<insert id="insertUserStrMap" parameterType="Map">
+		INSERT INTO TH_USER_STR_MAP
+		SET USER_ID = #{vStrCd}
+			, STR_CD = #{vStrCd}
+			, MAP_YN = 'Y'
+			, REGI_ID = 'SEMS'
+			, REGI_DTTM = NOW()
+			, FINAL_MOD_ID = 'SEMS'
+			, FINAL_MOD_DTTM = NOW()
+	</insert>
+	
+	<insert id="insertUserAuth" parameterType="Map">
+		INSERT INTO TH_USER_AUTH
+		SET COMPANY_CD = 'GSR'
+			, USER_ID = #{vStrCd}
+			, AUTH_ID = '11'
+	</insert>
+	
+	<select id="getUserVendorNm" parameterType="Map" resultType="Map">
+		SELECT VENDOR_NM 
+		FROM TH_SIGN_VENDOR_MST
+		WHERE VENDOR_CD = (
+			SELECT VENDOR_CD FROM TH_USER_MST WHERE USER_ID = #{userId})
+	</select>
+</mapper>

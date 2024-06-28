@@ -1,0 +1,12 @@
+[2024-04-24 10:55:18] [info]  [ 2740] Commons Daemon procrun (1.0.15.0 64-bit) started
+[2024-04-24 10:55:18] [info]  [ 2740] Service SEMS_MOBILE name Apache Tomcat 7.0 SEMS_MOBILE
+[2024-04-24 10:55:18] [info]  [ 2740] Service 'SEMS_MOBILE' installed
+[2024-04-24 10:55:18] [info]  [ 2740] Commons Daemon procrun finished
+[2024-04-24 10:55:57] [info]  [ 1096] Commons Daemon procrun (1.0.15.0 64-bit) started
+[2024-04-24 10:55:57] [info]  [ 1096] Running 'SEMS_MOBILE' Service...
+[2024-04-24 10:55:57] [info]  [ 1760] Starting service...
+[2024-04-24 10:55:58] [info]  [ 1760] Service started in 1156 ms.
+[2024-05-18 17:19:43] [info]  [ 3880] Stopping service...
+[2024-05-18 17:19:44] [info]  [ 3880] Service stop thread completed.
+[2024-05-18 17:19:44] [info]  [ 1096] Run service finished.
+[2024-05-18 17:19:44] [info]  [ 1096] Commons Daemon procrun finished

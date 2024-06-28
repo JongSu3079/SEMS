@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sems.cm.persistence.CM0201Mapper">
+
+	<select id="getStrInfoPopup" parameterType="Map" resultType="Map">
+		SELECT	IM.STR_CD						AS strCd
+				, IM.STR_NM						AS strNm
+				, IF(IM.ADDR IS NULL OR IM.ADDR='', '내용없음', IM.ADDR)	AS addr
+				, IF(IM.TEL_NO IS NULL OR IM.TEL_NO='' OR REPLACE(IM.TEL_NO, '-', '')='', '내용없음', IM.TEL_NO) AS telNo
+				, REPLACE(IM.TEL_NO,"-","")	AS telNo2
+				, DATE_FORMAT(IM.REMS_START_DT,'%Y-%m-%d') AS remsStartDt
+				, DATE_FORMAT(BCM.NETWORK_NOTI_DTTM,'%Y-%m-%d') as networkNotiDate 
+				, CASE IM.OWNER_TYPE 	WHEN 'M' THEN '유인 점포 | 24시간 영업'
+										WHEN 'U' THEN '무인 점포 | 24시간 미영엽'
+										WHEN 'H' THEN '하이브리드 점포 | 24시간 미영업' 
+				END AS ownerType
+				, IM.BOX_VER AS boxVer, IM.ELEC_KIND AS elecKind, IM.CLAIM_TYPE AS claimType
+		FROM	TH_STR_INFO_MST IM
+				,TH_STR_BLE_CHECK_MST BCM
+		WHERE	IM.STR_CD = BCM.STR_CD
+			AND IM.STR_CD = #{strCd}
+	</select>
+
+	<select id="getGwId" parameterType="Map" resultType="int">
+		SELECT	GW_ID
+		FROM	TH_STR_GW_MST
+		WHERE	STR_CD = #{strCd}
+	</select>
+	<select id="getGwVendor" parameterType="Map" resultType="string">
+		SELECT	GW_VENDOR
+		FROM	TH_STR_GW_MST
+		WHERE	GW_ID = #{gwId}
+	</select>
+	<insert id="setRemsUseLog" parameterType="Map">
+		INSERT
+		INTO	TH_LOG_MOBILE_USE
+		SET		REPORT_DTTM	= NOW()
+				, USER_ID	= #{userId}
+				, JOB_SP	= #{jobSp}
+				, MENU_ID	= #{menuId}
+				, STATUS	= #{status}
+				, HH		= DATE_FORMAT(NOW(), '%H')
+				, EXE_TIME	= #{exeTime}
+				, STR_CD	= #{strCd}
+				, ETC_INFO	= #{etcInfo}
+		
+	</insert>
+	
+	<select id="getAlarmCnt" parameterType="Map" resultType="int">
+		/* CM0201Mapper.getAlarmCnt */
+		<choose>
+			<!-- 본사 직원의 경우 -->
+			<when test='authSp.equals("H")'>
+			<![CDATA[
+				SELECT	COUNT(*)
+				FROM	TH_PUSH_AS_RESULT A
+				USE INDEX (IDX_PUSH_AS_RESULT_AS_DTTM_AS_RESULT)
+				WHERE	A.AS_RESULT IN ('N','O')
+					AND	STR_CD IN	(
+										SELECT	A.STR_CD
+										FROM	TH_STR_INFO_MST A
+												, TH_COMPANY_MST B
+												, TH_USER_MST C
+										WHERE	1 = 1
+											AND	A.COMPANY_CD	= B.COMPANY_CD
+											AND	B.COMPANY_CD	= C.COMPANY_CD
+											AND	C.USER_ID		= #{userId}
+									)
+			]]>
+			</when>
+			<!-- 엔지니어인 경우 -->
+			<when test='authSp.equals("E") || authSp.equals("M")'>
+			<![CDATA[
+				SELECT	COUNT(*)
+				FROM	TH_PUSH_AS_RESULT A
+						, TH_VENDOR_USER_STR_MAP B
+				WHERE	1 = 1
+					AND	A.STR_CD = B.STR_CD
+					AND	A.AS_RESULT IN ('N','O')
+					AND	B.USER_ID = #{userId}
+			]]>
+			</when>
+			<!-- 경영주, 간판업체의 경우 -->
+			<when test='authSp.equals("S") || authSp.equals("I") || authSp.equals("G")'>
+				SELECT	0
+				FROM	DUAL
+			</when>
+		</choose>
+	</select>
+	
+	<select id="getNewNoticeCnt" parameterType="Map" resultType="int">
+	<![CDATA[
+		SELECT	COUNT(*)
+		FROM	(
+					SELECT	X.*
+							, Y.*
+					FROM (
+							SELECT	NOTICE_ID
+							FROM	TH_NOTICE_MST A
+							WHERE	(
+										#{authId} = 1
+										OR
+										#{authId}	IN	(
+															SELECT	AA.AUTH_ID
+															FROM	TH_AUTH_MST AA
+																	INNER JOIN TH_NOTICE_TARGET BB
+																			ON	AA.COMPANY_CD	= BB.COMPANY_CD
+																			AND	AA.AUTH_ID		= BB.AUTH_ID
+															WHERE	1 = 1
+																AND	AA.COMPANY_CD	= A.COMPANY_CD
+																AND	AA.AUTH_SP		<> 'S'
+																AND	BB.NOTICE_ID	= A.NOTICE_ID
+														)
+										OR #{authId}	IN	(
+																SELECT	AA.AUTH_ID
+																FROM	TH_AUTH_MST AA
+																		INNER JOIN TH_NOTICE_TARGET BB
+																				ON	AA.COMPANY_CD	= BB.COMPANY_CD
+																				AND	AA.AUTH_ID		= BB.AUTH_ID
+																		INNER JOIN TH_NOTICE_TARGET_ORG CC
+																				ON	AA.COMPANY_CD	= CC.COMPANY_CD
+																				AND	BB.NOTICE_ID	= CC.NOTICE_ID
+																				AND	BB.AUTH_ID		= CC.AUTH_ID
+																		INNER JOIN TH_STR_INFO_MST DD
+																				ON	CC.COMPANY_CD	= DD.COMPANY_CD
+																				AND	CC.ORG_CD		= DD.ORG_CD
+																		LEFT OUTER JOIN TH_USER_MST FF
+																				ON	FF.USER_ID		= #{userId}
+																				AND	DD.COMPANY_CD	= FF.COMPANY_CD
+																				AND	DD.STR_CD		= FF.STR_CD
+																		LEFT OUTER JOIN TH_USER_STR_MAP GG
+																				ON	GG.USER_ID		= #{userId}
+																				AND	GG.STR_CD		= FF.STR_CD
+																WHERE 1 = 1
+																	AND	AA.COMPANY_CD	= A.COMPANY_CD
+																	AND	AA.AUTH_SP		= 'S'
+																	AND	BB.NOTICE_ID	= A.NOTICE_ID
+																	AND	(
+																			DD.STR_CD	IS NOT NULL
+																			OR
+																			FF.STR_CD	IS NOT NULL
+																		)
+															)
+									)
+								AND	PUB_END_DT >= DATE_FORMAT(now(), '%Y%m%d')
+								AND	PUB_YN = 'Y'
+						) X
+						LEFT OUTER JOIN	(
+											SELECT	NOTICE_ID AS READ_ID
+											FROM	TH_NOTICE_VIEW
+											WHERE	USER_ID = #{userId}
+										) Y
+								ON X.NOTICE_ID = Y.READ_ID
+				) Z
+		WHERE	Z.READ_ID IS NULL
+	]]>
+	</select>
+
+
+	<select id="getSignAlarmCnt" parameterType="Map" resultType="int">
+		/* CM0201Mapper.getSignAlarmCnt */
+		<choose>
+			<!-- 본사 직원의 경우 -->
+			<when test='authSp.equals("H")'>
+				<![CDATA[
+				SELECT	COUNT(*)
+				FROM	TH_PUSH_SIGN_AS_RESULT A
+				USE INDEX (IDX_PUSH_SIGN_AS_RESULT_AS_DTTM_AS_RESULT)
+				WHERE	A.AS_RESULT = 'N'
+					AND	STR_CD IN	(
+										SELECT	A.STR_CD
+										FROM	TH_STR_INFO_MST A
+												, TH_COMPANY_MST B
+												, TH_USER_MST C
+										WHERE	1 = 1
+											AND	A.COMPANY_CD	= B.COMPANY_CD
+											AND	B.COMPANY_CD	= C.COMPANY_CD
+											AND	C.USER_ID		= #{userId}
+									)
+			]]>
+			</when>
+			<!-- 엔지니어인 경우 -->
+			<when test='authSp.equals("G") || authSp.equals("M")'>
+				<![CDATA[
+				SELECT	COUNT(*)
+				FROM	TH_PUSH_SIGN_AS_RESULT A
+						, TH_SIGN_VENDOR_USER_STR_MAP B
+				WHERE	1 = 1
+					AND	A.STR_CD = B.STR_CD
+					AND	A.AS_RESULT = 'N'
+					AND	B.USER_ID = #{userId}
+			]]>
+			</when>
+			<!-- 경영주, 간판업체의 경우 -->
+			<when test='authSp.equals("S") || authSp.equals("I") || authSp.equals("G")'>
+				SELECT	0
+				FROM	DUAL
+			</when>
+		</choose>
+	</select>
+	
+</mapper>

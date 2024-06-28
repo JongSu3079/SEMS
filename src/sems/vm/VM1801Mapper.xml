@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM1801Mapper">
+	<sql id="retrieveMntncListSql">
+		SELECT INIT_STR_CD AS initStrCd, YYYYMM as yyyymm, TYPE as mntncType 
+			, VIEW_STR_CD as viewStrCd, STR_NM as strNm
+			, VENDOR_NM as vendorNm, VENDOR_USER_NM as vendorUserNm
+			, DATE_FORMAT(PROG_START_DTTM, '%Y-%m') as progDttm
+		FROM TH_STR_REGULAR_MAINTENANCE
+		WHERE YYYYMM > DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 YEAR), '%Y%m%d')
+			AND PROG_STAT = 'Y'
+		<if test='authId == 3'>
+			AND VENDOR_CD IN (
+								SELECT VENDOR_CD
+								FROM TH_USER_MST
+								WHERE USER_ID = #{userId}
+							)
+		</if>
+		<if test='authId == 4'>
+			AND INIT_STR_CD IN (
+								SELECT AIM.INIT_STR_CD
+								FROM TH_USER_STR_MAP USM
+									, TH_STR_INFO_MST IM
+									, TH_ABS_STR_INFO_MST AIM
+								WHERE USM.STR_CD = IM.STR_CD
+									AND IM.VIEW_STR_CD = AIM.VIEW_STR_CD
+									AND USM.MAP_YN = 'Y'
+									AND USM.USER_ID = #{userId}
+							)
+		</if>
+		<if test='authId == 11'>
+			AND INIT_STR_CD IN (
+								SELECT AIM.INIT_STR_CD
+								FROM TH_USER_STR_MAP USM
+									, TH_ABS_STR_INFO_MST AIM
+								WHERE USM.STR_CD = AIM.VIEW_STR_CD
+									AND USM.MAP_YN = 'Y'
+									AND USM.USER_ID = #{userId}
+							)
+		</if>
+		<if test='strNm != "" and strNm != null '>
+			AND STR_NM LIKE CONCAT('%',#{strNm}, '%')
+		</if>
+		
+		<if test='authId == 3'>
+		ORDER BY FIELD(VENDOR_USER_ID, #{userId}) desc,PROG_END_DTTM DESC
+		</if>
+		<if test='authId != 3'>
+		ORDER BY PROG_END_DTTM DESC
+		</if>
+	</sql>
+	
+	<select id="retrieveMntncList" parameterType="Map" resultType="Map">
+		<include refid="retrieveMntncListSql"/>
+		LIMIT ${startRow}, ${pagingRowCnt}
+	</select>
+	
+	<select id="retrieveMntncListCnt" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM (
+			<include refid="retrieveMntncListSql"/>
+		) T
+	</select>
+	
+	<sql id="retrieveAsList">
+		SELECT AS_NO as asNo
+			, DATE_FORMAT(AS_DTTM, '%Y-%m-%d %H:%i:%s') as asDttm
+			, DATE_FORMAT(RESOLVE_DTTM, '%Y-%m-%d %H:%i:%s') as resolveDttm
+			, VIEW_STR_CD as viewStrCd, STR_NM as strNm
+			, VENDOR_NM as vendorNm, IFNULL(VENDOR_USER_NM, '-') as vendorUserNm
+			, ERROR_TYPE as errorType
+		FROM TH_STR_AS
+		WHERE RESOLVE_DTTM >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 YEAR), '%Y-%m-%d %H:%i:%s')
+			AND PROG_STAT = 'Y'
+		<if test='authId == 3'>
+			AND VENDOR_CD IN (
+								SELECT VENDOR_CD
+								FROM TH_USER_MST
+								WHERE USER_ID = #{userId}
+							)
+		</if>
+		<if test='authId == 4'>
+			AND VIEW_STR_CD IN (
+								SELECT IM.VIEW_STR_CD
+								FROM TH_USER_STR_MAP USM
+									, TH_STR_INFO_MST IM
+								WHERE USM.STR_CD = IM.STR_CD
+									AND USM.MAP_YN = 'Y'
+									AND USM.USER_ID = #{userId}
+							)
+		</if>
+		<if test='authId == 11'>
+			AND VIEW_STR_CD IN (
+								SELECT IM.VIEW_STR_CD
+								FROM TH_USER_STR_MAP USM
+									, TH_ABS_STR_INFO_MST IM
+								WHERE USM.STR_CD = IM.VIEW_STR_CD
+									AND USM.MAP_YN = 'Y'
+									AND USM.USER_ID = #{userId}
+							)
+		</if>
+		<if test='strNm != "" and strNm != null '>
+			AND STR_NM LIKE CONCAT('%',#{strNm}, '%')
+		</if>
+		
+		<if test='authId == 3'>
+		ORDER BY FIELD(VENDOR_USER_ID, #{userId}) desc,RESOLVE_DTTM DESC
+		</if>
+		<if test='authId != 3'>
+		ORDER BY RESOLVE_DTTM DESC
+		</if>
+	</sql>
+	
+	<select id="retrieveAsList" parameterType="Map" resultType="Map">
+		<include refid="retrieveAsList"/>
+		LIMIT ${startRow}, ${pagingRowCnt}
+	</select>
+	
+	<select id="retrieveAsListCnt" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM (
+			<include refid="retrieveAsList"/>
+		)T
+	</select>
+	
+	<select id="retrieveMntnc" parameterType="Map" resultType="Map">
+		SELECT RM.STR_NM as strNm, DATE_FORMAT(RM.PROG_START_DTTM, '%Y-%m-%d %H:%i:%s') as startDttm, DATE_FORMAT(RM.PROG_END_DTTM, '%Y-%m-%d %H:%i:%s') as endDttm
+			, RM.VENDOR_USER_NM as vendorUserNm, RM.VENDOR_NM as vendorNm, RM.SECTOR_FULL as sectorFull, RM.REPAIR_YN as repairYn
+			, RMR.CHECK_JSON as checkJson, RMR.OPER_STAT as operStat, RMR.OPER_NOTE as operNote, RMR.OWNER_NM as ownerNm, RMR.OWNER_TEL_NO as ownerTelNo
+			, RMR.NOTE as resolveNote, RMR.SUB_NOTE as resolveSubNote, RMR.OWNER_SIGN_YN as ownerSignYn, RMR.SIGN_IMG as signImg
+			, RMR.REPAIR_NOTE as repairNote
+		FROM TH_STR_REGULAR_MAINTENANCE RM
+			, TH_STR_REGULAR_MAINTENANCE_RESOLVE RMR
+		WHERE RM.INIT_STR_CD = RMR.INIT_STR_CD
+			AND RM.YYYYMM = RMR.YYYYMM
+			AND RM.TYPE = RMR.TYPE
+			AND RM.INIT_STR_CD = #{initStrCd}
+			AND RM.YYYYMM = #{yyyymm}
+			AND RM.TYPE = #{mntncType}
+	</select>
+	
+	<select id="retrieveMntncRepairPart" parameterType="Map" resultType="Map">
+		SELECT MAKER_NM as makerNm, MIDDLE_NM as middleNm, SMALL_NM as smallNm, PART_NM as partNm, RMR.PART_TARGET as partTarget
+			, GROUP_CONCAT(IF(SUBSTRING_INDEX(RP.PRICE_TARGET, '_', -1) = 'part', RP.PRICE, NULL)) AS partPrice
+			, GROUP_CONCAT(IF(SUBSTRING_INDEX(RP.PRICE_TARGET, '_', -1) = 'repair', RP.PRICE, NULL)) as repairPrice
+			, GROUP_CONCAT(IF(SUBSTRING_INDEX(RP.PRICE_TARGET, '_', -1) = 'business', RP.PRICE, NULL)) as businessPrice
+		FROM TH_STR_REGULAR_MAINTENANCE_REPAIR RMR
+			, TH_STR_REGULAR_MAINTENANCE_REPAIR_PRICE RP
+		WHERE RMR.INIT_STR_CD = RP.INIT_STR_CD
+			AND RMR.YYYYMM = RP.YYYYMM
+			AND RMR.TYPE = RP.TYPE
+			AND RMR.INDEX_SEQ = RP.INDEX_SEQ
+			AND RMR.INIT_STR_CD = #{initStrCd}
+			AND RMR.YYYYMM = #{yyyymm}
+			AND RMR.TYPE = #{mntncType}
+		GROUP BY RMR.INIT_STR_CD, RMR.YYYYMM, RMR.TYPE, RMR.INDEX_SEQ 
+		ORDER BY RMR.INDEX_SEQ + '@'
+	</select>
+	
+	<select id="retrieveAs" parameterType="Map" resultType="Map">
+		SELECT SA.AS_NO as asNo, SA.VIEW_STR_CD as viewStrCd, SA.STR_NM as strNm
+			, DATE_FORMAT(SA.AS_DTTM, '%Y-%m-%d %H:%i:%s') as asDttm
+			, DATE_FORMAT(SA.RESOLVE_DTTM, '%Y-%m-%d %H:%i:%s') as resolveDttm
+			, SA.ERROR_TYPE as errorType, SA.EMERGENCY_LEVEL as emergencyLevel, IFNULL(SA.VENDOR_USER_NM, '-') as vendorUserNm, SA.VENDOR_NM as vendorNm
+			, SA.AS_TITLE as asTitle, SA.AS_NOTE as asNote
+			, SAR.RESOLVE_NOTE as resolveNote, SAR.SUB_NOTE as subNote, SAR.OWNER_NM as ownerNm, SAR.OWNER_TEL_NO as ownerTelNo, SAR.OWNER_NOTE as ownerNote
+			, SAR.OWNER_SIGN_YN as ownerSignYn, SAR.SIGN_IMG as signImg
+			, SAR.RESOLVE_CD_TEXT as resolveCdText
+		FROM TH_STR_AS SA
+			, TH_STR_AS_RESOLVE SAR
+		WHERE SA.AS_NO = SAR.AS_NO
+			AND SA.AS_NO = #{asNo}
+	</select>
+	
+	<select id="retrieveAsRepairPart" parameterType="Map" resultType="Map">
+		SELECT SAR.PART_TARGET as partTarget, SAR.MAKER_NM as makerNm, SAR.MIDDLE_NM as middleNm, SAR.SMALL_NM as smallNm, SAR.PART_NM as partNm
+			, GROUP_CONCAT(IF(SUBSTRING_INDEX(RP.PRICE_TARGET, '_', -1) = 'part', RP.PRICE, NULL)) AS partPrice
+			, GROUP_CONCAT(IF(SUBSTRING_INDEX(RP.PRICE_TARGET, '_', -1) = 'repair', RP.PRICE, NULL)) as repairPrice
+			, GROUP_CONCAT(IF(SUBSTRING_INDEX(RP.PRICE_TARGET, '_', -1) = 'business', RP.PRICE, NULL)) as businessPrice
+		FROM TH_STR_AS_REPAIR SAR
+			, TH_STR_AS_REPAIR_PRICE RP
+		WHERE SAR.AS_NO = RP.AS_NO
+			AND SAR.INDEX_SEQ = RP.INDEX_SEQ
+			AND SAR.AS_NO = #{asNo}
+		GROUP BY SAR.AS_NO, SAR.INDEX_SEQ
+		ORDER BY SAR.INDEX_SEQ
+	</select>
+	<!-- 	sign -->
+	<sql id="retrieveSignMntncListSql">
+		SELECT INIT_STR_CD AS initStrCd, YYYYMM as yyyymm
+			, VIEW_STR_CD as viewStrCd, STR_NM as strNm
+			, VENDOR_NM as vendorNm, VENDOR_USER_NM as vendorUserNm
+			, DATE_FORMAT(PROG_START_DTTM, '%Y-%m') as progDttm
+		FROM TH_STR_SIGN_REGULAR_MAINTENANCE
+		WHERE YYYYMM > DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 YEAR), '%Y%m%d')
+			AND PROG_STAT = 'Y'
+		<if test='authId == 13'>
+			AND VENDOR_CD IN (
+								SELECT VENDOR_CD
+								FROM TH_USER_MST
+								WHERE USER_ID = #{userId}
+							)
+		</if>
+		<if test='authId == 4'>
+			AND INIT_STR_CD IN (
+								SELECT AIM.INIT_STR_CD
+								FROM TH_USER_STR_MAP USM
+									, TH_STR_INFO_MST IM
+									, TH_ABS_STR_INFO_MST AIM
+								WHERE USM.STR_CD = IM.STR_CD
+									AND IM.VIEW_STR_CD = AIM.VIEW_STR_CD
+									AND USM.MAP_YN = 'Y'
+									AND USM.USER_ID = #{userId}
+							)
+		</if>
+		<if test='authId == 11'>
+			AND INIT_STR_CD IN (
+								SELECT AIM.INIT_STR_CD
+								FROM TH_USER_STR_MAP USM
+									, TH_ABS_STR_INFO_MST AIM
+								WHERE USM.STR_CD = AIM.VIEW_STR_CD
+									AND USM.MAP_YN = 'Y'
+									AND USM.USER_ID = #{userId}
+							)
+		</if>
+		<if test='strNm != "" and strNm != null '>
+			AND STR_NM LIKE CONCAT('%',#{strNm}, '%')
+		</if>
+		
+		<if test='authId == 13'>
+		ORDER BY FIELD(VENDOR_USER_ID, #{userId}) desc,PROG_END_DTTM DESC
+		</if>
+		<if test='authId != 13'>
+		ORDER BY PROG_END_DTTM DESC
+		</if>
+	</sql>
+	
+	<select id="retrieveSignMntncList" parameterType="Map" resultType="Map">
+		<include refid="retrieveSignMntncListSql"/>
+		LIMIT ${startRow}, ${pagingRowCnt}
+	</select>
+	
+	<select id="retrieveSignMntncListCnt" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM (
+			<include refid="retrieveSignMntncListSql"/>
+		) T
+	</select>
+	
+	<sql id="retrieveSignAsList">
+		SELECT AS_NO as asNo
+			, DATE_FORMAT(AS_DTTM, '%Y-%m-%d %H:%i:%s') as asDttm
+			, DATE_FORMAT(RESOLVE_DTTM, '%Y-%m-%d %H:%i:%s') as resolveDttm
+			, VIEW_STR_CD as viewStrCd, STR_NM as strNm
+			, VENDOR_NM as vendorNm, IFNULL(VENDOR_USER_NM, '-') as vendorUserNm
+			, ERROR_TYPE as errorType
+		FROM TH_STR_SIGN_AS
+		WHERE RESOLVE_DTTM >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 YEAR), '%Y-%m-%d %H:%i:%s')
+			AND PROG_STAT = 'Y'
+		<if test='authId == 13'>
+			AND VENDOR_CD IN (
+								SELECT VENDOR_CD
+								FROM TH_USER_MST
+								WHERE USER_ID = #{userId}
+							)
+		</if>
+		<if test='authId == 4'>
+			AND VIEW_STR_CD IN (
+								SELECT IM.VIEW_STR_CD
+								FROM TH_USER_STR_MAP USM
+									, TH_STR_INFO_MST IM
+								WHERE USM.STR_CD = IM.STR_CD
+									AND USM.MAP_YN = 'Y'
+									AND USM.USER_ID = #{userId}
+							)
+		</if>
+		<if test='authId == 11'>
+			AND VIEW_STR_CD IN (
+								SELECT IM.VIEW_STR_CD
+								FROM TH_USER_STR_MAP USM
+									, TH_ABS_STR_INFO_MST IM
+								WHERE USM.STR_CD = IM.VIEW_STR_CD
+									AND USM.MAP_YN = 'Y'
+									AND USM.USER_ID = #{userId}
+							)
+		</if>
+		<if test='strNm != "" and strNm != null '>
+			AND STR_NM LIKE CONCAT('%',#{strNm}, '%')
+		</if>
+		
+		<if test='authId == 13'>
+		ORDER BY FIELD(VENDOR_USER_ID, #{userId}) desc,RESOLVE_DTTM DESC
+		</if>
+		<if test='authId != 13'>
+		ORDER BY RESOLVE_DTTM DESC
+		</if>
+	</sql>
+	
+	<select id="retrieveSignAsList" parameterType="Map" resultType="Map">
+		<include refid="retrieveSignAsList"/>
+		LIMIT ${startRow}, ${pagingRowCnt}
+	</select>
+	
+	<select id="retrieveSignAsListCnt" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM (
+			<include refid="retrieveSignAsList"/>
+		)T
+	</select>
+	
+	<select id="retrieveSignMntnc" parameterType="Map" resultType="Map">
+		SELECT RM.STR_NM as strNm, DATE_FORMAT(RM.PROG_START_DTTM, '%Y-%m-%d %H:%i:%s') as startDttm, DATE_FORMAT(RM.PROG_END_DTTM, '%Y-%m-%d %H:%i:%s') as endDttm
+			, RM.VENDOR_USER_NM as vendorUserNm, RM.VENDOR_NM as vendorNm, RM.SECTOR_FULL as sectorFull
+			, RMR.CHECK_JSON as checkJson, RMR.OPER_STAT as operStat, RMR.OPER_NOTE as operNote, RMR.OWNER_NM as ownerNm, RMR.OWNER_TEL_NO as ownerTelNo
+			, RMR.NOTE as resolveNote, RMR.SUB_NOTE as resolveSubNote, RMR.OWNER_SIGN_YN as ownerSignYn, RMR.SIGN_IMG as signImg
+			
+		FROM TH_STR_SIGN_REGULAR_MAINTENANCE RM
+			, TH_STR_SIGN_REGULAR_MAINTENANCE_RESOLVE RMR
+		WHERE RM.INIT_STR_CD = RMR.INIT_STR_CD
+			AND RM.YYYYMM = RMR.YYYYMM
+			AND RM.INIT_STR_CD = #{initStrCd}
+			AND RM.YYYYMM = #{yyyymm}
+	</select>
+	
+	<select id="retrieveSignAs" parameterType="Map" resultType="Map">
+		SELECT SA.AS_NO as asNo, SA.VIEW_STR_CD as viewStrCd, SA.STR_NM as strNm
+			, DATE_FORMAT(SA.AS_DTTM, '%Y-%m-%d %H:%i:%s') as asDttm
+			, DATE_FORMAT(SA.RESOLVE_DTTM, '%Y-%m-%d %H:%i:%s') as resolveDttm
+			, SA.ERROR_TYPE as errorType, SA.EMERGENCY_LEVEL as emergencyLevel, IFNULL(SA.VENDOR_USER_NM, '-') as vendorUserNm, SA.VENDOR_NM as vendorNm
+			, SA.AS_TITLE as asTitle, SA.AS_NOTE as asNote
+			, SAR.RESOLVE_NOTE as resolveNote, SAR.SUB_NOTE as subNote, SAR.OWNER_NM as ownerNm, SAR.OWNER_TEL_NO as ownerTelNo, SAR.OWNER_NOTE as ownerNote
+			, SAR.OWNER_SIGN_YN as ownerSignYn, SAR.SIGN_IMG as signImg
+		FROM TH_STR_SIGN_AS SA
+			, TH_STR_SIGN_AS_RESOLVE SAR
+		WHERE SA.AS_NO = SAR.AS_NO
+			AND SA.AS_NO = #{asNo}
+	</select>
+</mapper>

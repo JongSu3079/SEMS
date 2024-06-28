@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM1901Mapper">
+
+	<!-- 유지보수 마감 목록 가져오기 공통 쿼리 -->
+	<sql id="getMntFinishListSql">
+		<![CDATA[
+		SELECT
+			MF.MAINTENANCE_NO AS maintenanceNo,
+			IM.STR_NM AS strNm,
+			MF.STR_CD AS strCd,
+			DATE_FORMAT(MF.ACTION_DATE, '%Y-%m-%d') AS actionDate,
+			MCD.COMM_CD_NM AS mntType,
+			MCD2.COMM_CD_NM AS mntItem,
+			MF.MNT_DESCRIPTION AS mntDescription,
+			CASE
+				WHEN MNT_DESCRIPTION = 'AD' THEN 'ADAPTOR_5V'
+				WHEN MNT_DESCRIPTION = 'BT' THEN 'BT센서 교체'
+				WHEN MNT_DESCRIPTION = 'ETC' THEN '기타 항목 교체'
+				WHEN MNT_DESCRIPTION = 'HA' THEN 'BT-HACON 교체'
+				WHEN MNT_DESCRIPTION = 'HAAD' THEN 'BT-HACON, ADAPTOR_5V 교체'
+				WHEN MNT_DESCRIPTION = 'HABT' THEN 'BT-HACON, BT센서 교체 및 추가'
+				WHEN MNT_DESCRIPTION = 'HARB' THEN 'BT-HACON, SEMS RELAY 교체'
+				WHEN MNT_DESCRIPTION = 'HAT' THEN 'BT-HACON, T센서 교체'
+				WHEN MNT_DESCRIPTION = 'HTBT' THEN 'HACONMON, T센서, BT센서 교체 및 추가'
+				WHEN MNT_DESCRIPTION = 'R' THEN 'SEMS RELAY 교체'
+				WHEN MNT_DESCRIPTION = 'RAD' THEN 'SEMS RELAY, ADAPTOR_5V 교체'
+				WHEN MNT_DESCRIPTION = 'RBT' THEN 'SEMS RELAY, BT센서, 교체 및 추가'
+				WHEN MNT_DESCRIPTION = 'RT' THEN 'SEMS RELAY, T센서 교체'
+				WHEN MNT_DESCRIPTION = 'SE' THEN 'SEMS 교체'
+				WHEN MNT_DESCRIPTION = 'T' THEN 'T센서 교체'
+				ELSE 'UTP 케이블 재포설'
+			END AS mntDescription2,
+			MF.RELAY AS relayCnt,
+			MF.ADAPTOR AS adaptorCnt,
+			MF.HACON AS haconCnt,
+			MF.T_SENSOR AS tSensorCnt,
+			MF.BT AS btCnt,
+			MF.BT_I AS btICnt,
+			MF.UTP_CABLE AS utpCable,
+			MF.DESCRIPTION_TEXT AS descriptionText,
+			MF.DESCRIPTION_1 AS description1,
+			MF.DESCRIPTION_2 AS description2,
+			MF.DESCRIPTION_3 AS description3,
+			MF.DESCRIPTION_CNT AS descriptionCnt,
+			MF.INSPECTOR AS inspector,
+			MF.COMMENTS AS comments
+		FROM TH_STR_MAINTENANCE_FINISH MF
+			 LEFT OUTER JOIN TH_STR_INFO_MST IM
+				 ON MF.STR_CD = IM.STR_CD
+				AND IM.USE_YN = 'Y'
+			 INNER JOIN th_str_maintenance_finish_cd MCD
+				ON MCD.COMM_GRP_CD = 'MNTTYPE'
+					AND MF.MNT_TYPE = MCD.COMM_CD
+			 INNER JOIN th_str_maintenance_finish_cd MCD2
+				ON MCD2.COMM_GRP_CD = 'MNTITEM'
+					AND MF.MNT_ITEM = MCD2.COMM_CD
+		WHERE 1=1
+			AND MF.STR_CD = #{strCd}
+		ORDER BY MF.ACTION_DATE DESC
+		]]>
+	</sql>
+
+
+	<!--유지보수 목록-->
+	<select id="getMntFinishList" parameterType="Map" resultType="Map">
+		<include refid="getMntFinishListSql"/>
+		LIMIT ${startRow}, ${pagingRowCnt}
+	</select>
+
+	<!--유지보수 개수-->
+	<select id="getMntFinishListCnt" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM (
+			<include refid="getMntFinishListSql"/>
+		) T
+	</select>
+
+	<!--유지보수 마감 상세-->
+	<select id="getMntFinishDetail" parameterType="Map" resultType="Map">
+		SELECT
+			MF.MAINTENANCE_NO AS maintenanceNo,
+			IM.STR_NM AS strNm,
+			MF.STR_CD AS strCd,
+			DATE_FORMAT(MF.ACTION_DATE, '%Y-%m-%d') AS actionDate,
+			MCD.COMM_CD AS mntType,
+			MCD2.COMM_CD AS mntItem,
+			MF.MNT_DESCRIPTION AS mntDescription,
+			MF.RELAY AS relayCnt,
+			MF.ADAPTOR AS adaptorCnt,
+			MF.HACON AS haconCnt,
+			MF.T_SENSOR AS tSensorCnt,
+			MF.BT AS btCnt,
+			MF.BT_I AS btICnt,
+			MF.UTP_CABLE AS utpCable,
+			MF.DESCRIPTION_TEXT AS descriptionText,
+			MF.DESCRIPTION_1 AS description1,
+			MF.DESCRIPTION_2 AS description2,
+			MF.DESCRIPTION_3 AS description3,
+			MF.DESCRIPTION_CNT AS descriptionCnt,
+			MF.INSPECTOR AS inspector,
+			MF.COMMENTS AS comments
+		FROM TH_STR_MAINTENANCE_FINISH MF
+			 LEFT OUTER JOIN TH_STR_INFO_MST IM
+				 ON MF.STR_CD = IM.STR_CD
+				AND IM.USE_YN = 'Y'
+			 INNER JOIN th_str_maintenance_finish_cd MCD
+				ON MCD.COMM_GRP_CD = 'MNTTYPE'
+					AND MF.MNT_TYPE = MCD.COMM_CD
+			 INNER JOIN th_str_maintenance_finish_cd MCD2
+				ON MCD2.COMM_GRP_CD = 'MNTITEM'
+					AND MF.MNT_ITEM = MCD2.COMM_CD
+			INNER JOIN TH_SUMMARY_STR_NETWORK_STATUS NS
+			    ON IM.STR_CD = NS.STR_CD
+		WHERE 1=1
+			AND MF.MAINTENANCE_NO = #{maintenanceNo}
+	</select>
+
+
+	<!-- 유지보수유형 목록 -->
+	<!-- 보수품목 목록 -->
+	<!-- 보수교체내용 목록 -->
+	<select id="getMntComCodeList" parameterType="ComCodeVo" resultType="ComCodeVo">
+		SELECT COMM_CD      AS code
+			, COMM_CD_NM   AS commCdNm
+		FROM th_str_maintenance_finish_cd
+		WHERE 	USE_YN		= 'Y'
+		<if test='commGrpCd != null and commGrpCd != ""'>
+			AND	COMM_GRP_CD	= #{commGrpCd}
+		</if>
+		<if test='commCd != null and commCd != ""'>
+			AND	COMM_CD		= #{commCd}
+		</if>
+		ORDER BY ORDER_SEQ
+	</select>
+
+	<update id="updateMntFinish" parameterType="Map">
+		UPDATE TH_STR_MAINTENANCE_FINISH
+		SET MNT_TYPE = #{mntType},
+			MNT_ITEM = #{mntItem},
+			MNT_DESCRIPTION = #{mntDescription},
+			DESCRIPTION_TEXT = #{descriptionText},
+			DESCRIPTION_1 = #{description1},
+			DESCRIPTION_2 = #{description2},
+			DESCRIPTION_3 = #{description3},
+			DESCRIPTION_CNT = #{descriptionCnt},
+			RELAY = #{relayCnt},
+			ADAPTOR = #{adaptorCnt},
+			HACON = #{haconCnt},
+			T_SENSOR = #{tSensorCnt},
+			BT = #{btCnt},
+			BT_I = #{btICnt},
+			UTP_CABLE = #{utpCable},
+			COMMENTS = #{comments},
+			FINAL_MOD_ID = #{finalModId},
+			FINAL_MOD_DTTM = NOW()
+		WHERE MAINTENANCE_NO = #{maintenanceNo}
+	</update>
+
+	<update id="updateMntFinishBackUp" parameterType="Map">
+		UPDATE TH_STR_MAINTENANCE_FINISH_BACKUP
+		SET MNT_TYPE = #{mntType},
+			MNT_ITEM = #{mntItem},
+			MNT_DESCRIPTION = #{mntDescription},
+			DESCRIPTION_TEXT = #{descriptionText},
+			DESCRIPTION_1 = #{description1},
+			DESCRIPTION_2 = #{description2},
+			DESCRIPTION_3 = #{description3},
+			DESCRIPTION_CNT = #{descriptionCnt},
+			RELAY = #{relayCnt},
+			ADAPTOR = #{adaptorCnt},
+			HACON = #{haconCnt},
+			T_SENSOR = #{tSensorCnt},
+			BT = #{btCnt},
+			BT_I = #{btICnt},
+			UTP_CABLE = #{utpCable},
+			COMMENTS = #{comments},
+			FINAL_MOD_ID = #{finalModId},
+			FINAL_MOD_DTTM = NOW()
+		WHERE MAINTENANCE_NO = #{maintenanceNo}
+	</update>
+
+	<insert id="saveMntFinish" parameterType="Map">
+		INSERT INTO TH_STR_MAINTENANCE_FINISH
+		    (STR_CD,
+		     ACTION_DATE,
+		     MNT_TYPE,
+		     MNT_ITEM,
+		     MNT_DESCRIPTION,
+		     RELAY,
+		     ADAPTOR,
+		     HACON,
+		     T_SENSOR,
+		     BT,
+		     BT_I,
+		     UTP_CABLE,
+		     DESCRIPTION_TEXT,
+		     DESCRIPTION_1,
+		     DESCRIPTION_2,
+		     DESCRIPTION_3,
+		     DESCRIPTION_CNT,
+		     INSPECTOR,
+		     COMMENTS,
+		     REGI_ID,
+		     REGI_DTTM,
+		     FINAL_MOD_ID,
+		     FINAL_MOD_DTTM
+		     )
+		VALUES (
+				#{strCd},
+				DATE_FORMAT(#{actionDate}, '%Y-%m-%d %H:%i:%s'),
+				#{mntType},
+				#{mntItem},
+				#{mntDescription},
+				#{relayCnt},
+				#{adaptorCnt},
+				#{haconCnt},
+				#{tSensorCnt},
+				#{btCnt},
+				#{btICnt},
+				#{utpCable},
+				#{descriptionText},
+				#{description1},
+				#{description2},
+				#{description3},
+				#{descriptionCnt},
+				#{inspector},
+				#{comments},
+				#{userId},
+				NOW(),
+				#{userId},
+				NOW()
+			)
+		<selectKey keyProperty="mntNo" resultType="Int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<insert id="saveMntFinishBackUp" parameterType="Map">
+		INSERT INTO TH_STR_MAINTENANCE_FINISH_BACKUP
+		(STR_CD,
+		ACTION_DATE,
+		MNT_TYPE,
+		MNT_ITEM,
+		MNT_DESCRIPTION,
+		RELAY,
+		ADAPTOR,
+		HACON,
+		T_SENSOR,
+		BT,
+		BT_I,
+		UTP_CABLE,
+		DESCRIPTION_TEXT,
+		DESCRIPTION_1,
+		DESCRIPTION_2,
+		DESCRIPTION_3,
+		DESCRIPTION_CNT,
+		INSPECTOR,
+		COMMENTS,
+		REGI_ID,
+		REGI_DTTM,
+		FINAL_MOD_ID,
+		FINAL_MOD_DTTM
+		)
+		VALUES (
+		#{strCd},
+		DATE_FORMAT(#{actionDate}, '%Y-%m-%d %H:%i:%s'),
+		#{mntType},
+		#{mntItem},
+		#{mntDescription},
+		#{relayCnt},
+		#{adaptorCnt},
+		#{haconCnt},
+		#{tSensorCnt},
+		#{btCnt},
+		#{btICnt},
+		#{utpCable},
+		#{descriptionText},
+		#{description1},
+		#{description2},
+		#{description3},
+		#{descriptionCnt},
+		#{inspector},
+		#{comments},
+		#{userId},
+		NOW(),
+		#{userId},
+		NOW()
+		)
+	</insert>
+
+	<insert id="saveMntFinishImg" parameterType="Map">
+		INSERT INTO TH_STR_MAINTENANCE_FINISH_IMG
+		(
+			MAINTENANCE_NO,
+			ORDER_SEQ,
+			FILE_NAME,
+			TYPE,
+			REGI_ID,
+			REGI_DTTM,
+			FINAL_MOD_ID,
+			FINAL_MOD_DTTM
+		)
+		VALUES
+			(
+				#{maintenanceNo},
+				#{orderSeq},
+				#{fileName},
+				#{type},
+				#{userId},
+				NOW(),
+				#{userId},
+				NOW()
+			)
+	</insert>
+
+	<insert id="saveMntFinishImgBackUp" parameterType="Map">
+		INSERT INTO TH_STR_MAINTENANCE_FINISH_IMG_BACKUP
+		(
+			MAINTENANCE_NO,
+			ORDER_SEQ,
+			FILE_NAME,
+			TYPE,
+			REGI_ID,
+			REGI_DTTM,
+			FINAL_MOD_ID,
+			FINAL_MOD_DTTM
+		)
+		VALUES
+			(
+				#{maintenanceNo},
+				#{orderSeq},
+				#{fileName},
+				#{type},
+				#{userId},
+				NOW(),
+				#{userId},
+				NOW()
+			)
+	</insert>
+
+	<select id="getMntFinishImgList" parameterType="Map" resultType="Map">
+		SELECT
+			MAINTENANCE_NO AS maintenanceNo,
+			ORDER_SEQ AS orderSeq,
+			FILE_NAME AS fileName,
+			CONCAT('sems/FINISH/MAINTENANCE/', MAINTENANCE_NO, '/', FILE_NAME) AS fileUrl,
+			TYPE AS type
+		FROM TH_STR_MAINTENANCE_FINISH_IMG
+		WHERE MAINTENANCE_NO = #{maintenanceNo}
+		ORDER BY ORDER_SEQ
+	</select>
+
+	<delete id="deleteMntFinishImg" parameterType="Map">
+		DELETE FROM TH_STR_MAINTENANCE_FINISH_IMG
+		WHERE MAINTENANCE_NO = #{maintenanceNo}
+		<if test="orderSeq != null and orderSeq != ''">
+			AND ORDER_SEQ = #{orderSeq}
+		</if>
+	</delete>
+
+	<select id="getImgMaxOrderSeq" parameterType="Map" resultType="Integer">
+		SELECT IFNULL(MAX(ORDER_SEQ), 0)
+		FROM TH_STR_MAINTENANCE_FINISH_IMG
+		WHERE MAINTENANCE_NO = #{maintenanceNo}
+	</select>
+
+
+
+	<insert id="insertMntFinishImg" parameterType="Map">
+		INSERT INTO TH_STR_MAINTENANCE_FINISH_IMG
+		(
+			MAINTENANCE_NO,
+			ORDER_SEQ,
+			FILE_NAME,
+			TYPE,
+			REGI_ID,
+			REGI_DTTM,
+			FINAL_MOD_ID,
+			FINAL_MOD_DTTM
+		)
+		VALUES
+			(
+				#{maintenanceNo},
+				#{orderSeq},
+				#{fileName},
+				#{type},
+				#{userId},
+				NOW(),
+				#{userId},
+				NOW()
+			)
+	</insert>
+
+	<insert id="insertMntFinishImgBackUp" parameterType="Map">
+		INSERT INTO TH_STR_MAINTENANCE_FINISH_IMG_BACKUP
+		(
+			MAINTENANCE_NO,
+			ORDER_SEQ,
+			FILE_NAME,
+			TYPE,
+			REGI_ID,
+			REGI_DTTM,
+			FINAL_MOD_ID,
+			FINAL_MOD_DTTM
+		)
+		VALUES
+			(
+				#{maintenanceNo},
+				#{orderSeq},
+				#{fileName},
+				#{type},
+				#{userId},
+				NOW(),
+				#{userId},
+				NOW()
+			)
+	</insert>
+
+
+
+<!--	&lt;!&ndash; 주요내용 목록 &ndash;&gt;-->
+<!--	<select id="getDescriptionList">-->
+<!--		SELECT COMM_CD      AS code-->
+<!--			 , COMM_CD_NM   AS commCdNm-->
+<!--		FROM th_str_maintenance_finish_cd-->
+<!--		WHERE COMM_GRP_CD	= #{commGrpCd}-->
+<!--		  AND	USE_YN		= 'Y'-->
+<!--		ORDER BY ORDER_SEQ-->
+<!--	</select>-->
+
+
+
+
+<!--	<sql id="retrieveMntncListSql">-->
+<!--		SELECT INIT_STR_CD AS initStrCd, YYYYMM as yyyymm, TYPE as mntncType -->
+<!--			, VIEW_STR_CD as viewStrCd, STR_NM as strNm-->
+<!--			, VENDOR_NM as vendorNm, VENDOR_USER_NM as vendorUserNm-->
+<!--			, DATE_FORMAT(PROG_START_DTTM, '%Y-%m') as progDttm-->
+<!--		FROM TH_STR_REGULAR_MAINTENANCE-->
+<!--		WHERE YYYYMM > DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 YEAR), '%Y%m%d')-->
+<!--			AND PROG_STAT = 'Y'-->
+<!--		<if test='authId == 3'>-->
+<!--			AND VENDOR_CD IN (-->
+<!--								SELECT VENDOR_CD-->
+<!--								FROM TH_USER_MST-->
+<!--								WHERE USER_ID = #{userId}-->
+<!--							)-->
+<!--		</if>-->
+<!--		<if test='authId == 4'>-->
+<!--			AND INIT_STR_CD IN (-->
+<!--								SELECT AIM.INIT_STR_CD-->
+<!--								FROM TH_USER_STR_MAP USM-->
+<!--									, TH_STR_INFO_MST IM-->
+<!--									, TH_ABS_STR_INFO_MST AIM-->
+<!--								WHERE USM.STR_CD = IM.STR_CD-->
+<!--									AND IM.VIEW_STR_CD = AIM.VIEW_STR_CD-->
+<!--									AND USM.MAP_YN = 'Y'-->
+<!--									AND USM.USER_ID = #{userId}-->
+<!--							)-->
+<!--		</if>-->
+<!--		<if test='strNm != "" and strNm != null '>-->
+<!--			AND STR_NM LIKE CONCAT('%',#{strNm}, '%')-->
+<!--		</if>-->
+<!--		-->
+<!--		<if test='authId == 3'>-->
+<!--		ORDER BY FIELD(VENDOR_USER_ID, #{userId}) desc,PROG_END_DTTM DESC-->
+<!--		</if>-->
+<!--		<if test='authId != 3'>-->
+<!--		ORDER BY PROG_END_DTTM DESC-->
+<!--		</if>-->
+<!--	</sql>-->
+<!--	-->
+<!--	<select id="retrieveMntncList" parameterType="Map" resultType="Map">-->
+<!--		<include refid="retrieveMntncListSql"/>-->
+<!--		LIMIT ${startRow}, ${pagingRowCnt}-->
+<!--	</select>-->
+<!--	-->
+<!--	<select id="retrieveMntncListCnt" parameterType="Map" resultType="int">-->
+<!--		SELECT COUNT(*)-->
+<!--		FROM (-->
+<!--			<include refid="retrieveMntncListSql"/>-->
+<!--		) T-->
+<!--	</select>-->
+<!--	-->
+<!--	<sql id="retrieveAsList">-->
+<!--		SELECT AS_NO as asNo-->
+<!--			, DATE_FORMAT(AS_DTTM, '%Y-%m-%d %H:%i:%s') as asDttm-->
+<!--			, DATE_FORMAT(RESOLVE_DTTM, '%Y-%m-%d %H:%i:%s') as resolveDttm-->
+<!--			, VIEW_STR_CD as viewStrCd, STR_NM as strNm-->
+<!--			, VENDOR_NM as vendorNm, IFNULL(VENDOR_USER_NM, '-') as vendorUserNm-->
+<!--			, ERROR_TYPE as errorType-->
+<!--		FROM TH_STR_AS-->
+<!--		WHERE RESOLVE_DTTM >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 YEAR), '%Y-%m-%d %H:%i:%s')-->
+<!--			AND PROG_STAT = 'Y'-->
+<!--		<if test='authId == 3'>-->
+<!--			AND VENDOR_CD IN (-->
+<!--								SELECT VENDOR_CD-->
+<!--								FROM TH_USER_MST-->
+<!--								WHERE USER_ID = #{userId}-->
+<!--							)-->
+<!--		</if>-->
+<!--		<if test='authId == 4'>-->
+<!--			AND VIEW_STR_CD IN (-->
+<!--								SELECT IM.VIEW_STR_CD-->
+<!--								FROM TH_USER_STR_MAP USM-->
+<!--									, TH_STR_INFO_MST IM-->
+<!--								WHERE USM.STR_CD = IM.STR_CD-->
+<!--									AND USM.MAP_YN = 'Y'-->
+<!--									AND USM.USER_ID = #{userId}-->
+<!--							)-->
+<!--		</if>-->
+<!--		<if test='strNm != "" and strNm != null '>-->
+<!--			AND STR_NM LIKE CONCAT('%',#{strNm}, '%')-->
+<!--		</if>-->
+<!--		-->
+<!--		<if test='authId == 3'>-->
+<!--		ORDER BY FIELD(VENDOR_USER_ID, #{userId}) desc,RESOLVE_DTTM DESC-->
+<!--		</if>-->
+<!--		<if test='authId != 3'>-->
+<!--		ORDER BY RESOLVE_DTTM DESC-->
+<!--		</if>-->
+<!--	</sql>-->
+<!--	-->
+<!--	<select id="retrieveAsList" parameterType="Map" resultType="Map">-->
+<!--		<include refid="retrieveAsList"/>-->
+<!--		LIMIT ${startRow}, ${pagingRowCnt}-->
+<!--	</select>-->
+<!--	-->
+<!--	<select id="retrieveAsListCnt" parameterType="Map" resultType="int">-->
+<!--		SELECT COUNT(*)-->
+<!--		FROM (-->
+<!--			<include refid="retrieveAsList"/>-->
+<!--		)T-->
+<!--	</select>-->
+<!--	-->
+<!--	<select id="retrieveMntnc" parameterType="Map" resultType="Map">-->
+<!--		SELECT RM.STR_NM as strNm, DATE_FORMAT(RM.PROG_START_DTTM, '%Y-%m-%d %H:%i:%s') as startDttm, DATE_FORMAT(RM.PROG_END_DTTM, '%Y-%m-%d %H:%i:%s') as endDttm-->
+<!--			, RM.VENDOR_USER_NM as vendorUserNm, RM.VENDOR_NM as vendorNm, RM.SECTOR_FULL as sectorFull, RM.REPAIR_YN as repairYn-->
+<!--			, RMR.CHECK_JSON as checkJson, RMR.OPER_STAT as operStat, RMR.OPER_NOTE as operNote, RMR.OWNER_NM as ownerNm, RMR.OWNER_TEL_NO as ownerTelNo-->
+<!--			, RMR.NOTE as resolveNote, RMR.SUB_NOTE as resolveSubNote, RMR.OWNER_SIGN_YN as ownerSignYn, RMR.SIGN_IMG as signImg-->
+<!--			, RMR.REPAIR_NOTE as repairNote-->
+<!--		FROM TH_STR_REGULAR_MAINTENANCE RM-->
+<!--			, TH_STR_REGULAR_MAINTENANCE_RESOLVE RMR-->
+<!--		WHERE RM.INIT_STR_CD = RMR.INIT_STR_CD-->
+<!--			AND RM.YYYYMM = RMR.YYYYMM-->
+<!--			AND RM.TYPE = RMR.TYPE-->
+<!--			AND RM.INIT_STR_CD = #{initStrCd}-->
+<!--			AND RM.YYYYMM = #{yyyymm}-->
+<!--			AND RM.TYPE = #{mntncType}-->
+<!--	</select>-->
+<!--	-->
+<!--	<select id="retrieveMntncRepairPart" parameterType="Map" resultType="Map">-->
+<!--		SELECT MAKER_NM as makerNm, MIDDLE_NM as middleNm, SMALL_NM as smallNm, PART_NM as partNm, RMR.PART_TARGET as partTarget-->
+<!--			, GROUP_CONCAT(IF(SUBSTRING_INDEX(RP.PRICE_TARGET, '_', -1) = 'part', RP.PRICE, NULL)) AS partPrice-->
+<!--			, GROUP_CONCAT(IF(SUBSTRING_INDEX(RP.PRICE_TARGET, '_', -1) = 'repair', RP.PRICE, NULL)) as repairPrice-->
+<!--			, GROUP_CONCAT(IF(SUBSTRING_INDEX(RP.PRICE_TARGET, '_', -1) = 'business', RP.PRICE, NULL)) as businessPrice-->
+<!--		FROM TH_STR_REGULAR_MAINTENANCE_REPAIR RMR-->
+<!--			, TH_STR_REGULAR_MAINTENANCE_REPAIR_PRICE RP-->
+<!--		WHERE RMR.INIT_STR_CD = RP.INIT_STR_CD-->
+<!--			AND RMR.YYYYMM = RP.YYYYMM-->
+<!--			AND RMR.TYPE = RP.TYPE-->
+<!--			AND RMR.INDEX_SEQ = RP.INDEX_SEQ-->
+<!--			AND RMR.INIT_STR_CD = #{initStrCd}-->
+<!--			AND RMR.YYYYMM = #{yyyymm}-->
+<!--			AND RMR.TYPE = #{mntncType}-->
+<!--		GROUP BY RMR.INIT_STR_CD, RMR.YYYYMM, RMR.TYPE, RMR.INDEX_SEQ -->
+<!--		ORDER BY RMR.INDEX_SEQ + '@'-->
+<!--	</select>-->
+<!--	-->
+<!--	<select id="retrieveAs" parameterType="Map" resultType="Map">-->
+<!--		SELECT SA.AS_NO as asNo, SA.VIEW_STR_CD as viewStrCd, SA.STR_NM as strNm-->
+<!--			, DATE_FORMAT(SA.AS_DTTM, '%Y-%m-%d %H:%i:%s') as asDttm-->
+<!--			, DATE_FORMAT(SA.RESOLVE_DTTM, '%Y-%m-%d %H:%i:%s') as resolveDttm-->
+<!--			, SA.ERROR_TYPE as errorType, SA.EMERGENCY_LEVEL as emergencyLevel, IFNULL(SA.VENDOR_USER_NM, '-') as vendorUserNm, SA.VENDOR_NM as vendorNm, SA.AS_NOTE as asNote-->
+<!--			, SAR.RESOLVE_NOTE as resolveNote, SAR.SUB_NOTE as subNote, SAR.OWNER_NM as ownerNm, SAR.OWNER_TEL_NO as ownerTelNo, SAR.OWNER_NOTE as ownerNote-->
+<!--			, SAR.OWNER_SIGN_YN as ownerSignYn, SAR.SIGN_IMG as signImg-->
+<!--		FROM TH_STR_AS SA-->
+<!--			, TH_STR_AS_RESOLVE SAR-->
+<!--		WHERE SA.AS_NO = SAR.AS_NO-->
+<!--			AND SA.AS_NO = #{asNo}-->
+<!--	</select>-->
+<!--	-->
+<!--	<select id="retrieveAsRepairPart" parameterType="Map" resultType="Map">-->
+<!--		SELECT SAR.PART_TARGET as partTarget, SAR.MAKER_NM as makerNm, SAR.MIDDLE_NM as middleNm, SAR.SMALL_NM as smallNm, SAR.PART_NM as partNm-->
+<!--			, GROUP_CONCAT(IF(SUBSTRING_INDEX(RP.PRICE_TARGET, '_', -1) = 'part', RP.PRICE, NULL)) AS partPrice-->
+<!--			, GROUP_CONCAT(IF(SUBSTRING_INDEX(RP.PRICE_TARGET, '_', -1) = 'repair', RP.PRICE, NULL)) as repairPrice-->
+<!--			, GROUP_CONCAT(IF(SUBSTRING_INDEX(RP.PRICE_TARGET, '_', -1) = 'business', RP.PRICE, NULL)) as businessPrice-->
+<!--		FROM TH_STR_AS_REPAIR SAR-->
+<!--			, TH_STR_AS_REPAIR_PRICE RP-->
+<!--		WHERE SAR.AS_NO = RP.AS_NO-->
+<!--			AND SAR.INDEX_SEQ = RP.INDEX_SEQ-->
+<!--			AND SAR.AS_NO = #{asNo}-->
+<!--		GROUP BY SAR.AS_NO, SAR.INDEX_SEQ-->
+<!--		ORDER BY SAR.INDEX_SEQ-->
+<!--	</select>-->
+</mapper>

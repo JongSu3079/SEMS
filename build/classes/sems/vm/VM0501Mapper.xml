@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM0501Mapper">
+	
+	<select id="getFrigeStatList" parameterType="map" resultType="map">
+	/* VM0501Mapper.getFrigeStatList */
+	<![CDATA[
+		SELECT	#{strCd} AS strCd, T.*, A.COMM_CD_NM AS ALARM_TEXT
+		FROM	(
+					SELECT	CASE	WHEN A.TEMON_TYPE = 'T' THEN 'TEMON'
+									WHEN A.TEMON_TYPE = 'A' THEN 'ALMON'
+									WHEN A.TEMON_TYPE = 'Z' THEN 'ZIGBEE'
+									WHEN A.TEMON_TYPE = 'B' THEN 'HACONMON'
+									ELSE '-'
+							END AS moduleNm
+							, A.TEMON_ID				AS moduleId,	A.TEMON_TYPE				AS temonType
+							, A.PORT_NO					AS portNo,		A.DEVICE_LOC				AS deviceLoc
+							, CASE	WHEN A.CONTENTS IS NULL	THEN ''
+									WHEN A.CONTENTS = ''	THEN ''
+									ELSE CONCAT('(',A.CONTENTS, ')')
+							END AS contents
+							, A.DEVICE_TYPE				AS deviceType,	A.DEVICE_CODE				AS deviceCode
+							, C.COMM_CD_NM				AS frigeTypeNm
+							, CASE	WHEN B.ALARM_YN = 'E' THEN '-'
+									ELSE IFNULL(IF(B.TEMON_TYPE = 'B', ROUND(B.SENS_TEMP/10, 2), B.SENS_TEMP),'-')
+							END AS senseTemp
+							, IFNULL(B.ALARM_YN, 'E')	AS alarmYn,		IFNULL(RC.ALARM_CNT, 0)		AS alarmCnt
+							, IFNULL(BR.BATTERY, '-')	AS battery,		IFNULL(BR.RSSI, '-')		AS rssi
+							, A.MAX_TEMP				as maxTemp, 	A.MIN_TEMP					as minTemp
+							, A.DELAY_TIME				as delayTime, 	A.PUSH_TERM					as pushTerm
+							, CASE 
+						        WHEN O.MAX_TEMP IS NULL THEN 0
+						        WHEN A.TEMON_TYPE = 'B' THEN O.MAX_TEMP / 10
+						        ELSE O.MAX_TEMP	END	as maxTempOwner
+							, CASE 
+						        WHEN O.MIN_TEMP IS NULL THEN 0
+						        WHEN A.TEMON_TYPE = 'B' THEN O.MIN_TEMP / 10
+						        ELSE O.MIN_TEMP	END		as minTempOwner
+							, IFNULL(O.DELAY_TIME, 0)	as delayTimeOwner, IFNULL(O.PUSH_TERM, 0)	as pushTermOwner
+							, CASE 
+							    WHEN O.MAX_TEMP IS NULL THEN 'N'
+							    ELSE 'Y'
+							  END AS saveYn
+					FROM	TH_STR_REMS_DEVICE_MST A
+							LEFT OUTER JOIN TH_OWNER_PUSH_TEMP_MST O
+								ON O.STR_CD = A.STR_CD AND O.TEMON_ID = A.TEMON_ID AND O.TEMON_TYPE = A.TEMON_TYPE AND O.PORT_NO = A.PORT_NO
+							LEFT OUTER JOIN (
+									SELECT	*
+									FROM	TH_STR_REMS_DEVICE_BASE
+									WHERE	STR_CD			= #{strCd}
+										AND	REPORT_DTTM = ( SELECT REPORT_DTTM FROM TH_STR_REMS_DEVICE_BASE WHERE STR_CD = #{strCd} AND REPORT_DTTM BETWEEN DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1455 MINUTE), '%Y-%m-%d %H:%i:00') AND DATE_FORMAT(NOW(), '%Y-%m-%d 23:59:59') ORDER BY REPORT_DTTM DESC LIMIT 1)
+							) B
+									ON	A.STR_CD		= B.STR_CD			AND	A.TEMON_ID	= B.TEMON_ID
+									AND	A.TEMON_TYPE	= B.TEMON_TYPE		AND	A.PORT_NO	= B.PORT_NO
+							LEFT OUTER JOIN (
+								SELECT	STR_CD, TEMON_ID, TEMON_TYPE, PORT_NO, COUNT(PUSH_NO) AS ALARM_CNT
+								FROM	TH_PUSH_AS_RESULT
+								WHERE	STR_CD		= #{strCd}
+									AND	REPORT_DTTM	> DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 30 DAY), '%Y-%m-%d 00:00:00')
+								GROUP BY STR_CD, TEMON_ID, TEMON_TYPE, PORT_NO
+							) RC
+									ON	A.STR_CD		= RC.STR_CD			AND	A.TEMON_ID	= RC.TEMON_ID
+									AND	A.TEMON_TYPE	= RC.TEMON_TYPE		AND	A.PORT_NO	= RC.PORT_NO
+							LEFT OUTER JOIN (
+									SELECT	STR_CD, TEMON_ID, TEMON_TYPE, PORT_NO, BATTERY, RSSI
+									FROM	TH_STR_REMS_BATTERY_BASE
+									WHERE	STR_CD			= #{strCd}
+										AND	REPORT_DTTM	BETWEEN DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1455 MINUTE), '%Y-%m-%d %H:%i:00') AND DATE_FORMAT(NOW(), '%Y-%m-%d 23:59:59')
+									GROUP BY STR_CD, TEMON_ID, TEMON_TYPE, PORT_NO
+									ORDER BY REPORT_DTTM DESC
+							) BR
+									ON	A.STR_CD		= BR.STR_CD			AND	A.TEMON_ID	= BR.TEMON_ID
+									AND	A.TEMON_TYPE	= BR.TEMON_TYPE		AND	A.PORT_NO	= BR.PORT_NO
+							, (
+								SELECT	COMM_CD, COMM_CD_NM
+								FROM	TH_COMM_CD
+								WHERE	COMM_GRP_CD = 'MAST02'
+							) C
+					WHERE	A.USE_YN		= 'Y'
+						AND	A.TEMON_TYPE	IN ( 'T', 'B', 'Z', 'A' )
+						AND	A.DEVICE_TYPE	= C.COMM_CD
+						AND	A.STR_CD		= #{strCd}
+					
+					UNION ALL
+					
+					SELECT	MODULE_NM		AS moduleNm			, A.HUB_ID			AS moduleId
+							, A.TEMON_TYPE	AS temonType		, A.PORT_NO			AS portNo
+							, DEVICE_LOC	AS deviceLoc		, CONTENTS			AS contents
+							, DEVICE_TYPE	AS deviceType		, DEVICE_CODE		AS deviceCode
+							, FRIGE_TYPE_NM	AS frigeTypeNm
+							, SENSE_TEMP	AS senseTemp		, ALARM_YN			AS alarmYn
+							, FORMAT(IFNULL(CNT,0),0) AS alarmCnt
+							, '-' AS battery					, '-' AS rssi
+							, '' maxTemp,	'' minTemp, '' delayTime, '' pushTerm
+							, '' maxTempOwner,	'' minTempOwner, '' delayTimeOwner, '' pushTermOwner
+							, '' saveYn
+					FROM	(
+								SELECT	'INV' as MODULE_NM
+										, A.HUB_ID
+										, A.PORT_NO
+										, A.DEVICE_LOC
+										, CASE	WHEN A.CONTENTS IS NULL THEN ''
+												WHEN A.CONTENTS = '' THEN ''
+												ELSE CONCAT('(',A.CONTENTS, ')')
+										END AS CONTENTS
+										, 'I' AS TEMON_TYPE
+										, A.DEVICE_TYPE
+										, A.DEVICE_CODE
+										, C.COMM_CD_NM AS FRIGE_TYPE_NM
+										, CASE	WHEN ( B.ALARM_SP = '0000000000000000' AND B.OPER_MODE = '0' ) THEN '-'
+												ELSE IFNULL(B.SENS_TEMP,'-')
+										END AS SENSE_TEMP
+										, CASE	WHEN ( B.ALARM_SP = '0000000000000000' AND B.OPER_MODE != '0' ) THEN 'N'
+												ELSE 'Y'
+										END AS ALARM_YN
+										, CASE	WHEN length(replace(B.ALARM_SP , "0",'')) > 1 THEN '복합'
+												WHEN SUBSTRING(B.ALARM_SP,1,1) = 1 THEN '기타'
+												WHEN SUBSTRING(B.ALARM_SP,2,1) = 1 THEN '기타'
+												WHEN SUBSTRING(B.ALARM_SP,3,1) = 1 THEN '기타'
+												WHEN SUBSTRING(B.ALARM_SP,4,1) = 1 THEN '기타'
+												WHEN SUBSTRING(B.ALARM_SP,5,1) = 1 THEN '기타'
+												WHEN SUBSTRING(B.ALARM_SP,6,1) = 1 THEN '기타'
+												WHEN SUBSTRING(B.ALARM_SP,7,1) = 1 THEN '기타'
+												WHEN SUBSTRING(B.ALARM_SP,8,1) = 1 THEN '기타'
+												WHEN SUBSTRING(B.ALARM_SP,9,1) = 1 THEN '링크'
+												WHEN SUBSTRING(B.ALARM_SP,10,1) = 1 THEN '압축'
+												WHEN SUBSTRING(B.ALARM_SP,11,1) = 1 THEN '저압'
+												WHEN SUBSTRING(B.ALARM_SP,12,1) = 1 THEN '고압'
+												WHEN SUBSTRING(B.ALARM_SP,13,1) = 1 THEN 'TDF'
+												WHEN SUBSTRING(B.ALARM_SP,14,1) = 1 THEN 'TRA'
+												WHEN SUBSTRING(B.ALARM_SP,15,1) = 1 THEN '저온'
+												WHEN SUBSTRING(B.ALARM_SP,16,1) = 1 THEN '고온' 
+												ELSE ( CASE WHEN B.OPER_MODE  != '0' THEN '정상' ELSE '통신' END )
+										END AS ALARM_TEXT
+								FROM	TH_STR_INV_HUB_MST A
+										, TH_STR_INV_HUB_BASE B
+										, TH_COMM_CD C
+								WHERE	A.STR_CD		= B.STR_CD		AND	A.HUB_ID		= B.HUB_ID
+									AND	A.PORT_NO		= B.PORT_NO		AND	A.USE_YN		= 'Y'
+									AND	A.DEVICE_TYPE	= C.COMM_CD		AND	C.COMM_GRP_CD	= 'MAST02'
+									AND	B.REPORT_DTTM 	= (
+											SELECT	REPORT_DTTM
+											FROM	TH_STR_INV_HUB_BASE
+											WHERE	STR_CD		= #{strCd}
+												AND REPORT_DTTM BETWEEN DATE_FORMAT(NOW(),'%Y-%m-%d 00:00:00') AND DATE_FORMAT(NOW(),'%Y-%m-%d 23:59:59')
+											ORDER BY REPORT_DTTM DESC LIMIT 1
+										)
+									AND	A.STR_CD		= #{strCd}
+							) A
+							LEFT OUTER JOIN (
+								SELECT	HUB_ID
+										, PORT_NO
+										, COUNT(IFNULL(ALARM_SP,0)) AS CNT
+								FROM	TH_STR_INV_HUB_BASE
+								WHERE	REPORT_DTTM	BETWEEN DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 30 DAY), '%Y-%m-%d 00:00:00')
+														AND DATE_FORMAT(NOW(), '%Y%-m-%d 23:59:59')
+									AND	(
+											ALARM_SP != '0000000000000000'
+											AND
+											ALARM_SP != '0000000010000000'
+										)
+									AND	STR_CD = #{strCd}
+								GROUP BY PORT_NO
+							) B
+									ON	A.HUB_ID	= B.HUB_ID
+									AND	A.PORT_NO	= B.PORT_NO
+				) T
+				, (
+					SELECT	COMM_CD, COMM_CD_NM
+					FROM	TH_COMM_CD
+					WHERE	COMM_GRP_CD = 'VIEW08'
+				) A
+		WHERE	T.alarmYn = A.COMM_CD
+		ORDER BY	portNo+0
+					, (
+						CASE alarmYn	WHEN 'Y' THEN 1
+										WHEN 'H' THEN 2
+										WHEN 'L' THEN 3
+										WHEN 'E' THEN 4
+										ELSE 5
+						END
+					)
+					, (
+						CASE deviceType	WHEN 'W' THEN 1
+										WHEN 'O' THEN 2
+										WHEN 'R' THEN 3
+										WHEN 'I' THEN 4
+										ELSE 5
+						END
+					)
+	]]>
+	</select>
+	
+	<select id="getFrigeStatList_except_inv" parameterType="map" resultType="map">
+	<![CDATA[
+		SELECT	#{strCd} AS strCd, T.*, A.COMM_CD_NM AS ALARM_TEXT
+		FROM	(
+					SELECT	CASE	WHEN A.TEMON_TYPE = 'T' THEN 'TEMON'
+									WHEN A.TEMON_TYPE = 'A' THEN 'ALMON'
+									WHEN A.TEMON_TYPE = 'Z' THEN 'ZIGBEE'
+									WHEN A.TEMON_TYPE = 'B' THEN 'HACONMON'
+									ELSE '-'
+							END AS moduleNm
+							, A.TEMON_ID				AS moduleId,	A.TEMON_TYPE				AS temonType
+							, A.PORT_NO					AS portNo,		A.DEVICE_LOC				AS deviceLoc
+							, CASE	WHEN A.CONTENTS IS NULL	THEN ''
+									WHEN A.CONTENTS = ''	THEN ''
+									ELSE CONCAT('(',A.CONTENTS, ')')
+							END AS contents
+							, A.DEVICE_TYPE				AS deviceType,	C.COMM_CD_NM	AS frigeTypeNm
+							, CASE	WHEN B.ALARM_YN = 'E' THEN '-'
+									ELSE IFNULL(IF(B.TEMON_TYPE = 'B', ROUND(B.SENS_TEMP/10, 2), B.SENS_TEMP),'-')
+							END AS senseTemp
+							, IFNULL(B.ALARM_YN, 'E')	AS alarmYn,		IFNULL(RC.ALARM_CNT, 0)		AS alarmCnt
+							, IFNULL(BR.BATTERY, '-')	AS battery,		IFNULL(BR.RSSI, '-')		AS rssi
+					FROM	TH_STR_REMS_DEVICE_MST A
+							LEFT OUTER JOIN (
+								SELECT	*
+								FROM	(
+											SELECT	*
+											FROM	TH_STR_REMS_DEVICE_BASE
+											WHERE	STR_CD			= #{strCd}
+												AND	REPORT_DTTM		>= DATE_SUB(NOW(), INTERVAL 15 MINUTE )
+											ORDER BY REPORT_DTTM DESC
+										) T
+								GROUP BY STR_CD, TEMON_ID, TEMON_TYPE, PORT_NO
+							) B
+									ON	A.STR_CD		= B.STR_CD			AND	A.TEMON_ID	= B.TEMON_ID
+									AND	A.TEMON_TYPE	= B.TEMON_TYPE		AND	A.PORT_NO	= B.PORT_NO
+							LEFT OUTER JOIN (
+								SELECT	STR_CD, TEMON_ID, TEMON_TYPE, PORT_NO, COUNT(NO) AS ALARM_CNT
+								FROM	TH_PUSH_AS_RESULT
+								WHERE	STR_CD		=#{strCd}
+									AND	REPORT_DTTM	>= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 29 DAY), '%Y-%m-%d 00:00:00')
+								GROUP BY STR_CD, TEMON_ID, TEMON_TYPE, PORT_NO
+							) RC
+									ON	A.STR_CD		= RC.STR_CD			AND	A.TEMON_ID	= RC.TEMON_ID
+									AND	A.TEMON_TYPE	= RC.TEMON_TYPE		AND	A.PORT_NO	= RC.PORT_NO
+							LEFT OUTER JOIN (
+								SELECT	*
+								FROM	(
+											SELECT	STR_CD, TEMON_ID, TEMON_TYPE, PORT_NO, BATTERY, RSSI
+											FROM	TH_STR_REMS_BATTERY_BASE
+											WHERE	STR_CD			= #{strCd}
+												AND REPORT_DTTM		>= DATE_SUB(NOW(), INTERVAL 15 MINUTE )
+											ORDER BY REPORT_DTTM DESC
+										) T
+								GROUP BY STR_CD, TEMON_ID, TEMON_TYPE, PORT_NO
+							) BR
+									ON	A.STR_CD		= BR.STR_CD			AND	A.TEMON_ID	= BR.TEMON_ID
+									AND	A.TEMON_TYPE	= BR.TEMON_TYPE		AND	A.PORT_NO	= BR.PORT_NO
+							, (
+								SELECT	COMM_CD, COMM_CD_NM
+								FROM	TH_COMM_CD
+								WHERE	COMM_GRP_CD = 'MAST02'
+							) C
+					WHERE	A.USE_YN		= 'Y'
+						AND	A.TEMON_TYPE	IN ( 'T', 'B', 'Z', 'A' )
+						AND	A.DEVICE_TYPE	= C.COMM_CD
+						AND	A.STR_CD		= #{strCd}
+				) T
+				, (
+					SELECT COMM_CD, COMM_CD_NM
+					FROM TH_COMM_CD
+					WHERE COMM_GRP_CD = 'VIEW08'
+				) A
+		WHERE	T.alarmYn = A.COMM_CD
+		ORDER BY	portNo+0
+					, (
+						CASE alarmYn	WHEN 'Y' THEN 1
+										WHEN 'H' THEN 2
+										WHEN 'L' THEN 3
+										WHEN 'E' THEN 4
+										ELSE 5
+						END
+					)
+					, (
+						CASE deviceType	WHEN 'W' THEN 1
+										WHEN 'O' THEN 2
+										WHEN 'R' THEN 3
+										WHEN 'I' THEN 4
+										ELSE 5
+						END
+					)
+	]]>
+	</select>
+	
+	<select id="getPauseAlarm" parameterType="Map" resultType="Map">
+		SELECT STR_CD as strCd, TEMON_ID as temonId, TEMON_TYPE as temonType, PORT_NO as portNo, PAUSE_TYPE as pauseType, PAUSE_DAYS as pauseDays, PAUSE_VALUE as pauseValue, PAUSE_YN as pauseYn
+		FROM TH_STR_REMS_DEVICE_ALARM_PAUSE
+		WHERE STR_CD = #{strCd}
+			AND TEMON_ID = #{moduleId}
+			AND TEMON_TYPE = #{temonType}
+			AND PORT_NO = #{portNo}
+			AND PAUSE_TYPE = #{pauseType}
+	</select>
+	
+	<update id="updatePauseAlarm"  parameterType="Map">
+		INSERT
+		INTO TH_STR_REMS_DEVICE_ALARM_PAUSE
+		SET STR_CD = #{strCd}
+			,TEMON_ID = #{moduleId}
+			,TEMON_TYPE = #{temonType}
+			,PORT_NO = #{portNo}
+			,PAUSE_TYPE = #{pauseType}
+		<if test='pauseDays != null and pauseDays != ""'>
+			,PAUSE_DAYS = #{pauseDays}
+		</if>
+		<if test='pauseDttm != null and pauseDttm != ""'>
+			,PAUSE_VALUE = #{pauseDttm}
+		</if>
+			,PAUSE_YN = #{pauseYn}
+			,REGI_ID = #{userId}
+			,REGI_DTTM = NOW()
+			,FINAL_MOD_ID = #{userId}
+			,FINAL_MOD_DTTM = NOW()
+		ON DUPLICATE KEY UPDATE
+		<if test='pauseDays != null and pauseDays != ""'>
+			PAUSE_DAYS = #{pauseDays}
+			,
+		</if>
+		<if test='pauseDttm != null and pauseDttm != ""'>
+			PAUSE_VALUE = #{pauseDttm}
+			,
+		</if>
+			PAUSE_YN = #{pauseYn}
+			,FINAL_MOD_ID = #{userId}
+			,FINAL_MOD_DTTM = NOW()
+	</update>
+	
+	<update id="updateIccLoc" parameterType="Map">
+		UPDATE TH_STR_REMS_DEVICE_MST
+		SET DEVICE_LOC = #{deviceLoc}
+			,FINAL_MOD_ID = #{userId}
+			,FINAL_MOD_DTTM = NOW()
+		WHERE STR_CD = #{strCd}
+			AND TEMON_ID = #{temonId}
+			AND TEMON_TYPE = #{temonType}
+			AND PORT_NO = #{portNo}
+	</update>
+	
+	<select id="getPauseList" parameterType="Map" resultType="Map">
+		SELECT STR_CD as strCd, TEMON_ID as temonId, TEMON_TYPE as temonType, PORT_NO as portNo
+			, PAUSE_TYPE as pauseType, PAUSE_DAYS as pauseDays, PAUSE_YN as pauseYn, PAUSE_VALUE as pauseValue
+		FROM TH_STR_REMS_DEVICE_ALARM_PAUSE
+		WHERE STR_CD = #{strCd}
+			AND (
+				PAUSE_TYPE = 'days'
+				OR (PAUSE_TYPE = 'period' AND (DATE_FORMAT(NOW(),'%Y-%m-%d') <![CDATA[<=]]> SUBSTRING(PAUSE_VALUE, 12, 21)))
+			)
+			AND PAUSE_YN = 'Y'
+		ORDER BY TEMON_ID, TEMON_TYPE, PORT_NO, FIELD(PAUSE_TYPE, 'period', 'days')
+	</select>
+	
+	<select id="retrieveCommCd" parameterType="Map" resultType="Map">
+		SELECT	COMM_CD			AS commCd
+				, COMM_CD_NM	AS commCdNm
+		FROM	TH_COMM_CD
+		WHERE	COMM_GRP_CD = 'MAST02'
+			AND USE_YN = 'Y'
+			AND COMM_CD NOT IN ('E', 'F')
+		ORDER BY ORDER_SEQ ASC
+	</select>
+	
+	<update id="saveFrigeSetting" parameterType="Map">
+		UPDATE TH_STR_REMS_DEVICE_MST
+		SET DEVICE_TYPE 	= #{deviceType}
+			,DEVICE_CODE 	= #{deviceCode}
+			,DEVICE_LOC 	= #{deviceLoc}
+			,MAX_TEMP 		= #{maxTemp}
+			,MIN_TEMP 		= #{minTemp}
+			,DELAY_TIME 	= #{delayTime}
+			,PUSH_TERM 		= #{pushTerm}
+			,FINAL_MOD_ID 	= #{userId}
+			,FINAL_MOD_DTTM = #{now}
+		WHERE STR_CD 		= #{strCd}
+			AND TEMON_ID 	= #{moduleId}
+			AND TEMON_TYPE 	= #{temonType}
+			AND PORT_NO 	= #{portNo}
+		
+	</update>
+
+	<select id="getFrigeListSimple" parameterType="String" resultType="Map">
+		SELECT A.DEVICE_LOC AS deviceLoc
+			, CASE WHEN B.ALARM_YN = 'N' THEN '정상' 
+				ELSE '이상' END AS fridgeStat 
+		FROM  TH_STR_REMS_DEVICE_MST A 
+			INNER JOIN (
+				SELECT * FROM (
+					SELECT STR_CD, TEMON_ID, TEMON_TYPE, PORT_NO, ALARM_YN 
+					FROM TH_STR_REMS_DEVICE_BASE 
+					WHERE STR_CD = #{strCd} 
+						AND REPORT_DTTM BETWEEN DATE_SUB(NOW(), INTERVAL 15 MINUTE) AND NOW()
+					ORDER BY REPORT_DTTM DESC
+			        ) M
+			        GROUP BY STR_CD, TEMON_ID, TEMON_TYPE, PORT_NO
+				)B
+		    	ON  A.STR_CD = B.STR_CD AND A.TEMON_ID = B.TEMON_ID AND A.TEMON_TYPE = B.TEMON_TYPE AND A.PORT_NO = B.PORT_NO
+		UNION DISTINCT 
+		SELECT B.DEVICE_LOC AS deviceLoc
+			, CASE WHEN A.ALARM_SP != '0000000000000000' OR (A.ALARM_SP = '0000000000000000' AND A.OPER_MODE = '0') THEN '정상' 
+				ELSE '이상' END AS fridgeStat 
+		FROM TH_STR_INV_HUB_MST B 
+			INNER JOIN(	
+				SELECT * FROM (
+					SELECT STR_CD, HUB_ID, PORT_NO, ALARM_SP, OPER_MODE, REPORT_DTTM
+					FROM TH_STR_INV_HUB_BASE 
+					WHERE STR_CD = 	#{strCd} 
+		            	AND REPORT_DTTM  BETWEEN DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 15 MINUTE), '%Y-%m-%d %H:%i:00') AND NOW()
+		           	ORDER BY REPORT_DTTM DESC
+		        	) M
+		        	GROUP BY STR_CD, HUB_ID, PORT_NO
+		        )A 
+				ON A.STR_CD = B.STR_CD AND A.HUB_ID = B.HUB_ID AND A.PORT_NO = B.PORT_NO AND A.STR_CD
+	</select>
+	
+	<select id="retrieveDeviceCd" parameterType="Map" resultType="Map">
+		SELECT DEVICE_CODE as deviceCode, DEVICE_NAME as deviceName, DEVICE_TYPE as deviceType
+		FROM TH_STR_REMS_DEVICE_CRITERIA
+		WHERE USE_YN = 'Y'
+		ORDER BY deviceName
+	</select>
+	
+	<update id="saveOwnerSetting" parameterType="Map">
+		INSERT INTO TH_OWNER_PUSH_TEMP_MST
+		SET STR_CD = #{strCd}
+			, TEMON_ID = #{temonId}
+			, TEMON_TYPE = #{temonType}
+			, PORT_NO = #{portNo}
+			, MAX_TEMP = #{maxTemp}
+			, MIN_TEMP = #{minTemp}
+			, PUSH_TERM = #{pushTerm}
+			, DELAY_TIME = #{delayTime}
+			, REGI_ID = #{userId}
+			, REGI_DTTM = #{now}
+			, FINAL_MOD_ID = #{userId}
+			, FINAL_MOD_DTTM = #{now}
+		ON DUPLICATE KEY UPDATE
+			MAX_TEMP = #{maxTemp}
+			, MIN_TEMP = #{minTemp}
+			, PUSH_TERM = #{pushTerm}
+			, DELAY_TIME = #{delayTime}
+			, FINAL_MOD_ID = #{userId}
+			, FINAL_MOD_DTTM = #{now}
+	</update>
+	
+	<update id="deleteOwnerSetting" parameterType="Map">
+		DELETE FROM TH_OWNER_PUSH_TEMP_MST
+		WHERE STR_CD = #{strCd}
+			AND TEMON_ID = #{temonId}
+			AND TEMON_TYPE = #{temonType}
+			AND PORT_NO = #{portNo}
+	</update>
+</mapper>

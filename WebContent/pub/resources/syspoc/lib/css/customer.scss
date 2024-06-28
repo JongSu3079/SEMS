@@ -1,0 +1,50 @@
+/*******************************************
+ * file : customer.css
+ * publisher : 
+ * reporting date : 
+ * email : 
+ * explanation : 에너지 관제시스템
+ *******************************************/
+@charset "utf-8";
+
+@import '_theme', '../../../common/lib/css_theme/_common';
+
+#header_sub .icon_gnb .btn_gnb, 
+#header_search .icon_gnb .btn_gnb {font-size:0;line-height:0;}
+
+body.login {background:#000;}
+body.login #container {background:url(/syspoc/images/login_bg.png) no-repeat center 32px;background-size:235px 153px;}
+
+.message_list.type2 li:after {display:none;}
+
+.header_button_group li .btn_noti {width:36px;}
+.header_button_group li .btn_noti:before {position:absolute;top:calc(50% - 16px);left:calc(50% - 15px);display:block;content:"";background:url(/syspoc/images/icon_issue.png) no-repeat center center;background-size:50%;width:30px;height:30px;}
+
+.id_input label::before {background-image:url(/syspoc/images/login_label.png);}
+.id_input input {border-color:#9d7d6c;}
+.pw_input label::before {background-image:url(/syspoc/images/login_label.png);}
+.pw_input input {border-color:#9d7d6c;}
+.auto_login {color:#fff;}
+
+.today_weather {background:#4f3f36;}
+.today_weather .day_area ul li:first-child {grid-column:1/4;text-align:center;}
+.today_weather ul li .time {display:inline-block;}
+.today_weather ul li .w_text {color:#e9da9c;}
+
+.tab a, 
+.tab span {background-color:#fff;}
+.tab a.tab_off {border-bottom-color:#fff;}
+
+.facilities_state {padding:10px;background-color:#eae6e3;font-size:11px;}
+.facilities_state ul {display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+.facilities_state ul li {position:relative;}
+.facilities_state ul li a {position:relative;height:100%;display:flex;flex-direction:column;background-color:#fff;}
+.facilities_state ul li a:hover {background-color:#ccc6bf;}
+.facilities_state ul li a:before {position:absolute;top:calc( (100% - 19px) / 2 );left:7px;content:"";background:url(/syspoc/images/icon_state.png) no-repeat 0 0;background-size:50px 50px;width:19px;height:19px;}
+.facilities_state ul li a[data-check="on"]:before {background-position:0 -25px;}
+.facilities_state ul li .state_box {flex-grow:1;display:flex;flex-direction:column;padding:12px 8px 12px 32px;}
+.facilities_state ul li .name {flex-grow:1;display:flex;align-items:center;}
+.facilities_state ul li .value {align-self:unset;padding:8px 0 0;}
+.facilities_state[data-type="alarm"] {}
+.facilities_state[data-type="alarm"] ul li a:before {background-position:-25px -25px;width:20px;height:20px;}
+.facilities_state[data-type="alarm"] ul li a[data-check="fire"]:before {background-position:-25px 0px;}

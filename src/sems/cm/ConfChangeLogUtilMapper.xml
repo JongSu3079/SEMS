@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sems.cm.persistence.ConfChangeLogUtilMapper">
+	
+	<insert id="loggingAction" parameterType="LoggingVo">
+		INSERT
+		INTO	TH_LOG_STR_CONF_CHANGE 
+		SET		WHO = #{who}
+				, EXECUTE_DTTM = #{executeTime}
+				, USER_ID = #{userId}
+				, STR_CD = #{strCd}
+				, TABLE_NAME = #{tableName}
+				, COLUMN_NAME = #{columnName}
+				, PREVIOUS_VALUE = #{previousValue}
+				, CURRENT_VALUE = #{currentValue}
+	</insert>
+	
+	<insert id="loggingActions" parameterType="java.util.List">
+		INSERT
+		INTO	TH_LOG_STR_CONF_CHANGE 
+			(
+				WHO,
+				EXECUTE_DTTM,
+				USER_ID,
+				STR_CD,
+				TABLE_NAME,
+				COLUMN_NAME,
+				PREVIOUS_VALUE,
+				CURRENT_VALUE
+			)
+		VALUES
+			<foreach collection="list" index="index" item="item" separator=",">
+				(
+					#{item.who},
+					#{item.executeTime},
+					#{item.userId},
+					#{item.strCd},
+					#{item.tableName},
+					#{item.columnName},
+					#{item.previousValue},
+					#{item.currentValue}
+				)
+			</foreach>
+	</insert>
+	
+</mapper>

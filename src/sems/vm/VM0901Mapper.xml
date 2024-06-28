@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM0901Mapper">
+    <select id="retrieveConf" parameterType="String" resultType="map">
+		SELECT CONF_SP AS confSp
+			, CONF_VAL AS confVal
+			, IF(UM.VENDOR_CD = 'GSR', 'Y', 'N') AS managerYn
+		FROM TH_USER_MST UM
+			, TH_USER_MOBILE_PUSH_CONFIG MUE
+		WHERE UM.USER_ID = MUE.USER_ID
+			AND UM.USER_ID = #{userId}
+			AND MUE.CONF_SP IN ('PEAK', 'SISUL', 'SIGN', 'MNTNC','PKLV','NOTICE','WTHRW', 'STATE', 'SISUL2ND', 'HAPPYC')
+	</select>
+    
+    <select id="saveConf" parameterType="Map">
+        INSERT
+          INTO TH_USER_MOBILE_PUSH_CONFIG
+             ( USER_ID
+             , CONF_SP
+             , CONF_VAL
+             , REGI_ID
+             , REGI_DTTM
+             , FINAL_MOD_ID
+             , FINAL_MOD_DTTM
+             )
+        VALUES
+             ( #{userId}
+             , #{confSp}
+             , #{confVal}
+             , #{userId}
+             , #{now}
+             , #{userId}
+             , #{now}
+             )
+            ON DUPLICATE KEY UPDATE
+               CONF_VAL = #{confVal}
+             , FINAL_MOD_ID = #{userId}
+             , FINAL_MOD_DTTM = #{now}
+    </select>
+	
+	<update id="updateSendSp">
+		UPDATE TH_PUSH_MESSAGE_REJECTED
+		SET SEND_SP = 2
+			,FINAL_MOD_ID = #{userId}
+			,FINAL_MOD_DTTM = NOW()
+		WHERE STR_CD IN (
+						SELECT STR_CD
+						FROM TH_VENDOR_USER_STR_MAP
+						WHERE USER_ID = #{userId}
+						)
+	</update>
+	
+    <select id="retrieveUserPw" parameterType="Map" resultType="Map">
+        SELECT A.USER_ID
+        , CAST(AES_DECRYPT(A.USER_PW,#{encKey}) as char(100)) AS userPw
+        FROM TH_USER_MST A
+        WHERE A.USER_ID = #{userId}
+        AND A.USE_YN  = 'Y'
+    </select>
+    
+    <select id="saveUserPw" parameterType="Map">
+        UPDATE TH_USER_MST
+        SET USER_PW = AES_ENCRYPT(#{userNewPw},#{encKey})
+        , FINAL_MOD_ID = #{userId}
+        , FINAL_MOD_DTTM = #{now}
+        WHERE USER_ID = #{userId}
+        AND USE_YN = 'Y'
+    </select>
+    
+</mapper>

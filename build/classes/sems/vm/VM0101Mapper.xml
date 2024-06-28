@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM0101Mapper">
+
+	<select id="getDashboardDataMonth" parameterType="map" resultType="map">
+	/* VM0101Mapper.getDashboardDataMonth */
+	<![CDATA[
+	SELECT   T.weatherCd	, T.weatherNm	, T.forecastTemp	AS forecastTemp	, T.sensibleTemp	AS sensibleTemp	, IFNULL(T.senseTemp, '-') AS senseTemp
+		, CASE
+				WHEN T.pm10Grade = '좋음'		THEN 1
+				WHEN T.pm10Grade = '보통'		THEN 2
+				WHEN T.pm10Grade = '나쁨'		THEN 3
+				WHEN T.pm10Grade = '매우 나쁨'	THEN 4
+			ELSE 0
+		END AS pm10grade
+		, IF(T.pm10Grade IS NULL OR T.pm10Grade = '-','미세먼지', CONCAT('미세먼지 ', T.pm10Grade)) AS pm10txt
+		, T.temonErrCnt + T.invErrCnt   AS fridgeStat, T.contPower, T.recContPower, T.actualContPower
+		, T.elecInfo, T.tsensorLoc1, T.tsensorLoc2, T.tsensorLoc3
+		, DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i') AS nowTime
+		, scheduleCtrlYn
+		, DATE_FORMAT(LAST_DAY(CURDATE() - INTERVAL 1 MONTH), '%Y%m%d') AS lastDayOfPreviousMonth
+		, T.remsStartDt
+		, T.drYn
+		, T.drCusYn
+		, T.elecKind
+		, T.claimType
+	FROM (
+		SELECT LPAD(IFNULL(FL.WEATHER_CD,0), 2, '0') AS weatherCd, IFNULL(FL.COMM_CD_NM,'날씨') AS weatherNm
+			, IFNULL(FL.FORECAST_TEMP, '-')	AS forecastTemp , IM.SCHEDULE_CTRL_YN AS scheduleCtrlYn
+			, IM.HAEZOOM_DR_YN AS drYn
+			, IM.HAEZOOM_CUS_DR_YN AS drCusYn
+			, ROUND((13.127 + 0.6215*FORECAST_TEMP - 13.947*POW(FORECAST_WSPEED,0.16) + 0.486*POW(FORECAST_WSPEED,0.16)*FORECAST_TEMP), 1) AS sensibleTemp
+			, (
+				SELECT SB.T_SENSOR_TEMP
+				FROM TH_STR_SENSOR_BRIEF SB
+				WHERE SB.STR_CD = IM.STR_CD
+					AND SB.REPORT_DTTM >= DATE_SUB(NOW(), INTERVAL 3 HOUR)
+					AND SB.T_SENSOR_STAT_CD = '1'
+				ORDER BY REPORT_DTTM DESC
+				LIMIT 1
+			) AS senseTemp
+			, (
+				SELECT MD.PM_10_GRADE
+				FROM TH_WEATHER_AREA_MST AM
+					, TH_WEATHER_MICRO_DUST_LATEST MD
+				WHERE AM.LOCAL_AREA_CD = IM.LOCAL_AREA_CD AND MD.COUNTRY_CD = AM.COUNTRY_CD
+					AND AM.COUNTRY_CD = 'KR' AND MD.MICRODUST_AREA_CD = AM.MICRODUST_AREA_CD
+					AND MD.REPORT_DTTM BETWEEN DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 3 HOUR), '%Y-%m-%d %H:00:00') AND DATE_FORMAT(NOW(), '%Y-%m-%d %H:59:59')
+				ORDER BY MD.REPORT_DTTM DESC
+				LIMIT 1
+			) AS pm10Grade
+			, (
+				SELECT SUM(ALARM_YN)
+				FROM (
+					SELECT IF(ALARM_YN = 'H', 1, IF(ALARM_YN = 'L', 1, IF(ALARM_YN = 'Y', 1, IF(ALARM_YN = 'E', 1, 0)))) as ALARM_YN
+					FROM TH_STR_REMS_DEVICE_BASE A
+						, (
+							SELECT MAX(B.REPORT_DTTM) REPORT_DTTM, B.STR_CD, B.TEMON_ID, B.TEMON_TYPE, B.PORT_NO
+							FROM TH_STR_REMS_DEVICE_MST A
+								, TH_STR_REMS_DEVICE_BASE B
+							WHERE A.STR_CD = B.STR_CD AND A.TEMON_ID = B.TEMON_ID AND A.TEMON_TYPE = B.TEMON_TYPE AND A.PORT_NO = B.PORT_NO
+								AND B.REPORT_DTTM BETWEEN DATE_FORMAT(now(),'%Y-%m-%d 00:00:00') AND DATE_FORMAT(now(),'%Y-%m-%d 23:59:59')
+								AND A.STR_CD = #{strCd}
+								AND A.USE_YN = 'Y'
+							GROUP BY B.STR_CD, B.TEMON_ID, B.TEMON_TYPE, B.PORT_NO
+						) B
+					WHERE A.REPORT_DTTM = B.REPORT_DTTM AND A.STR_CD = B.STR_CD AND A.TEMON_ID = B.TEMON_ID AND A.TEMON_TYPE = B.TEMON_TYPE AND A.PORT_NO = B.PORT_NO
+				)T
+			) AS temonErrCnt
+			, (
+				SELECT COUNT(ALARM_SP)
+				FROM TH_STR_INV_HUB_BASE IHB
+					, (
+						SELECT MAX(A.REPORT_DTTM) REPORT_DTTM, A.STR_CD, A.HUB_ID, A.PORT_NO
+						FROM TH_STR_INV_HUB_BASE A
+							,TH_STR_INV_HUB_MST B
+						WHERE A.STR_CD = B.STR_CD AND A.HUB_ID = B.HUB_ID AND A.PORT_NO = B.PORT_NO
+							AND A.REPORT_DTTM BETWEEN DATE_FORMAT(now(),'%Y-%m-%d 00:00:00') AND DATE_FORMAT(now(),'%Y-%m-%d 23:59:59')
+							AND B.USE_YN = 'Y'
+							AND A.STR_CD = #{strCd}
+					) T
+				WHERE IHB.REPORT_DTTM = T.REPORT_DTTM
+					AND IHB.STR_CD = T.STR_CD
+					AND IHB.HUB_ID = T.HUB_ID
+					AND IHB.PORT_NO = T.PORT_NO
+					AND (IHB.ALARM_SP != '0000000000000000' OR (IHB.ALARM_SP = '0000000000000000' AND IHB.OPER_MODE = '0'))
+			) AS invErrCnt
+			, ROUND(IFNULL(IM.CONT_DEMAND_POWER, 0)/1000,0) AS contPower
+			, (
+				SELECT ROUND(IFNULL(ES.RECOMMEND_DEMAND_POWER, 0))
+				FROM TH_ELECTRICENT_STR_MAP ES
+				WHERE ES.STR_CD = IM.STR_CD
+			) AS recContPower
+			, IF(IM.ACTUAL_CONT_DEMAND_POWER <> 0, ROUND(IM.ACTUAL_CONT_DEMAND_POWER/1000,0), '-' ) AS actualContPower
+			, ROUND(IFNULL(IF(IM.ACTUAL_CONT_DEMAND_POWER <> 0 , IM.ACTUAL_CONT_DEMAND_POWER, IM.CONT_DEMAND_POWER), 0)/1000,0) AS rateContPower
+			, IF(IM.ELEC_KIND = 'L', CONCAT('저압',IF(IM.ACTUAL_CONT_DEMAND_POWER < 20000.00, IF(IM.OP_TIME = 'Y', ', 720시간, 최대사용량', ', 450시간, 최대사용량'),', 최대피크')), '고압A, 최대피크') AS elecInfo
+			, IM.REMS_START_DT AS remsStartDt
+			, IM.ELEC_KIND AS elecKind
+			, IM.CLAIM_TYPE AS claimType
+			, CASE 
+					WHEN CM.TSENSOR1_LOC = '0' THEN '미지정'
+					WHEN CM.TSENSOR1_LOC = '1' THEN '하단'
+					WHEN CM.TSENSOR1_LOC = '2' THEN '중간'
+					WHEN CM.TSENSOR1_LOC = '3' THEN '상단'
+				END AS tsensorLoc1
+			, CASE 
+					WHEN CM.TSENSOR2_LOC = '0' THEN '미지정'
+					WHEN CM.TSENSOR2_LOC = '1' THEN '하단'
+					WHEN CM.TSENSOR2_LOC = '2' THEN '중간'
+					WHEN CM.TSENSOR2_LOC = '3' THEN '상단'
+				END AS tsensorLoc2
+			, CASE 
+					WHEN CM.TSENSOR3_LOC = '0' THEN '미지정'
+					WHEN CM.TSENSOR3_LOC = '1' THEN '하단'
+					WHEN CM.TSENSOR3_LOC = '2' THEN '중간'
+					WHEN CM.TSENSOR3_LOC = '3' THEN '상단'
+				END AS tsensorLoc3
+		FROM (
+				SELECT *
+				FROM TH_STR_INFO_MST
+				WHERE STR_CD = #{strCd}
+		) IM
+			LEFT OUTER JOIN (
+				SELECT B.STR_CD, A.*, CC.COMM_CD_NM
+				FROM TH_WEATHER_FORECAST_LATEST A
+					, TH_STR_INFO_MST B
+					, TH_COMM_CD CC
+				WHERE CC.COMM_GRP_CD = 'MAST08'
+					AND CC.COMM_CD = A.WEATHER_CD
+					AND A.LOCAL_AREA_CD = B.LOCAL_AREA_CD
+					AND A.COUNTRY_CD = 'KR'
+					AND B.STR_CD = #{strCd}
+					AND A.REPORT_DTTM <= DATE_SUB(NOW(), INTERVAL MOD(DATE_FORMAT(NOW(), '%H'), 3) HOUR)
+				ORDER BY A.REPORT_DTTM DESC LIMIT 1
+			) FL
+				ON FL.LOCAL_AREA_CD = IM.LOCAL_AREA_CD 
+					AND FL.LOCAL_AREA_CD = IM.LOCAL_AREA_CD
+			LEFT OUTER JOIN TH_STR_REMS_DEVICE_CNT_MNT CM
+				ON CM.STR_CD = IM.STR_CD
+	) T
+	]]>
+	</select>
+	<select id="isExistActual" parameterType="map" resultType="map">
+		SELECT MAA.START_DATE as startDate
+				, MAA.END_DATE as endDate
+				, IM.STR_CD as strCd
+		FROM TH_STR_INFO_MST IM
+		    INNER JOIN TH_STR_CHN_ELEC_USE_MM_AGGR_ACTUAL MAA
+		        ON IM.STR_CD = MAA.STR_CD
+		WHERE MAA.STR_CD = #{strCd}
+		  AND YYYYMM = DATE_FORMAT(NOW(), '%Y%m')
+	</select>
+
+	<select id="getBill" parameterType="map" resultType="map">
+	<![CDATA[
+		SELECT IF(MAX(T.curPredictUsage) = 0, '-', ROUND(((T.rateContPower * 6160) * (T.dayDiff / T.dayCnt)) + (MAX(T.curPredictUsage) * #{baseRate0}) + (MAX(T.curPredictUsage) * 9) + (MAX(T.curPredictUsage) * 5) +
+				((((T.rateContPower * 6160) * (dayDiff / dayCnt)) + (MAX(T.curPredictUsage) * #{baseRate0})) * 0.1) +
+				((((T.rateContPower * 6160) * (dayDiff / dayCnt)) + (MAX(T.curPredictUsage) * #{baseRate0})) *
+													0.037)))							AS curPredictUsage
+			, T.lastYearUsageActual, T.lastYear
+			, T.lastMonthUsageActual, T.latestMonth
+			,T.dayCnt AS dayCnt
+			,T.dayDiff AS dayDiff
+		]]>
+				<if test="startDate != null and endDate != null">
+				, IF(T.lastMonthUsageActual = '-', IF(MAX(T.lastMonthSum)
+					= 0, '-', ROUND((T.rateContPower * 6160)  + (MAX(T.lastMonthSum) * #{baseRate1}) + (MAX(T.lastMonthSum) * 9) + (MAX(T.lastMonthSum) * 5) +
+					(((T.rateContPower * 6160) + (MAX(T.lastMonthSum) * #{baseRate1})) * 0.1) +
+					(((T.rateContPower * 6160) + (MAX(T.lastMonthSum) * #{baseRate1})) * 0.037))), T.lastMonthUsageActual)    AS lastMonthUsage2
+				</if>
+				
+			<![CDATA[
+			FROM (
+				SELECT IFNULL(EA.BILL, '-')		AS lastYearUsageActual, CONCAT(LEFT(EA.YYYYMM, 4), '.', RIGHT(EA.YYYYMM, 2)) 	AS lastYear
+					, IFNULL(EA2.BILL, '-')		AS lastMonthUsageActual,CONCAT(LEFT(EA2.YYYYMM, 4), '.', RIGHT(EA2.YYYYMM, 2)) AS latestMonth
+					, ROUND(IFNULL(MAA.MAIN_EFT_WATAGE, IFNULL(MP.PREDICT_WATAGE, 0)) / 1000)												AS curPredictUsage
+					, ROUND(IFNULL(IF(IM.ACTUAL_CONT_DEMAND_POWER <> 0, IM.ACTUAL_CONT_DEMAND_POWER, IM.CONT_DEMAND_POWER), 0) / 1000, 0)	AS rateContPower
+			]]>
+
+			<choose>
+				<when test="startDate != null and endDate != null">
+				<![CDATA[
+					, DATE_FORMAT(LAST_DAY(#{startDate}), '%d') AS dayCnt
+					, IF(#{endDate} < DATE_FORMAT(NOW(), '%Y%m%d'), DATE_FORMAT(LAST_DAY(#{startDate}), '%d'), TIMESTAMPDIFF(DAY, #{startDate}, NOW())+1)    AS dayDiff
+					, ROUND(DA.lastYearSum / 1000)    AS lastYearSum
+					, ROUND(DA2.lastMonthSum / 1000)  AS lastMonthSum
+					]]>
+				</when>
+				<otherwise>
+					, DATE_FORMAT(LAST_DAY(NOW()), '%d') AS dayCnt
+					, TIMESTAMPDIFF(DAY , LAST_DAY(NOW() - INTERVAL 1 MONTH) + INTERVAL 1 DAY, NOW()) + 1 AS dayDiff
+				</otherwise>
+			</choose>
+			
+		<![CDATA[
+			FROM TH_STR_INFO_MST IM
+				LEFT OUTER JOIN TH_STR_CHN_ELEC_USE_MM_ACTUAL EA
+					ON EA.STR_NM = IM.STR_NM
+						AND EA.YYYYMM = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 YEAR), '%Y%m')
+				LEFT OUTER JOIN (
+					SELECT *
+					FROM (
+						SELECT * 
+						FROM TH_STR_CHN_ELEC_USE_MM_ACTUAL
+						WHERE STR_CD = #{strCd}
+							AND YYYYMM > DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 YEAR), '%Y%m')
+						ORDER BY YYYYMM DESC
+					) T
+					LIMIT 1
+				) EA2
+					ON IM.STR_CD = EA2.STR_CD
+				LEFT OUTER JOIN (
+					SELECT *
+					FROM TH_STR_CHN_ELEC_USE_MM_AGGR_ACTUAL
+					WHERE STR_CD = #{strCd}
+						AND YYYYMM = DATE_FORMAT(NOW(), '%Y%m')
+				) MAA
+					ON MAA.STR_CD = IM.STR_CD
+				LEFT OUTER JOIN (
+					SELECT *
+						FROM TH_STR_ELEC_MM_PREDICT
+						WHERE STR_CD = #{strCd}
+						AND YYYYMMDD = DATE_FORMAT(NOW(), '%Y%m%d')
+					) MP
+						ON MP.STR_CD = IM.STR_CD
+		   ]]>
+				<if test="startDate != null and endDate != null">
+				<![CDATA[
+				LEFT OUTER JOIN (SELECT STR_CD, SUM(EP_1CH_EFT_WATAGE) AS lastYearSum
+					FROM TH_STR_CHN_ELEC_USE_DD_AGGR
+					WHERE STR_CD = #{strCd}
+					AND YYYYMMDD >= DATE_FORMAT(DATE_SUB(#{startDate}, INTERVAL 1 YEAR), '%Y%m%d')
+					AND YYYYMMDD <= DATE_FORMAT(DATE_SUB(#{endDate}, INTERVAL 1 YEAR), '%Y%m%d')
+				) DA
+					ON DA.STR_CD = IM.STR_CD
+				LEFT OUTER JOIN (SELECT STR_CD, SUM(EP_1CH_EFT_WATAGE) AS lastMonthSum
+					FROM TH_STR_CHN_ELEC_USE_DD_AGGR
+					WHERE STR_CD = #{strCd}
+					AND YYYYMMDD >= DATE_FORMAT(DATE_SUB(#{startDate}, INTERVAL 1 MONTH), '%Y%m%d')
+					AND YYYYMMDD <= DATE_FORMAT(DATE_SUB(#{endDate}, INTERVAL 1 MONTH), '%Y%m%d')
+				) DA2
+					ON DA2.STR_CD = IM.STR_CD
+				]]>
+				</if>
+			WHERE IM.STR_CD = #{strCd}
+			) T
+	</select>
+	
+	<select id="getDashboardDataDay" parameterType="String" resultType="map">
+	/* VM0101Mapper.getDashboardDataDay */
+	<![CDATA[
+		SELECT   
+                     ROUND(IFNULL(A.CONT_DEMAND_POWER, 0)/1000,0)   AS contPwPerDay
+                     , C.WEATHER_CD                           AS weatherCd
+                     , CC.COMM_CD_NM                           AS weatherNm
+                     , IFNULL(E.T_SENSOR_TEMP, '--.-' )            AS senseTemp
+                     , DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i')         AS nowTime
+                     , COUNT(F.ALARM_YN) + COUNT(H.ALARM_SP)         AS fridgeStat
+                     , IFNULL(C.FORECAST_TEMP, '--.-' )            AS forecastTemp
+                     , IFNULL((
+                        SELECT   ROUND(EP_1CH_EFT_WATAGE/1000,0)
+                        FROM   TH_STR_CHN_ELEC_USE_DD_AGGR
+                        WHERE   STR_CD = A.STR_CD
+                           AND YYYYMMDD = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 DAY), '%Y%m%d')
+                     ), 0) AS yesterdayUse
+                     , IFNULL((
+                        SELECT   ROUND(EP_1CH_EFT_WATAGE/1000,0)
+                        FROM   TH_STR_CHN_ELEC_USE_DD_AGGR
+                        WHERE   STR_CD = A.STR_CD
+                           AND YYYYMMDD = DATE_FORMAT(NOW(), '%Y%m%d')
+                     ), 0) AS todayUse
+               FROM   
+                     (SELECT * FROM th_str_info_mst WHERE STR_CD = #{strCd}) A
+                     LEFT OUTER JOIN
+                     (
+                           SELECT WEATHER_CD, LOCAL_AREA_CD, FORECAST_TEMP
+                           FROM TH_WEATHER_FORECAST_LATEST
+                           WHERE COUNTRY_CD = 'KR' 
+                              AND LOCAL_AREA_CD = (SELECT LOCAL_AREA_CD FROM th_str_info_mst WHERE STR_CD = #{strCd})
+                              AND REPORT_DTTM <= DATE_SUB(NOW(), INTERVAL MOD(DATE_FORMAT(NOW(), '%H'), 3) HOUR)
+                              AND REPORT_DTTM >= DATE_SUB(NOW(), INTERVAL MOD(DATE_FORMAT(NOW(), '%H'), 24) HOUR)
+                           ORDER BY REPORT_DTTM DESC LIMIT 1
+                     ) C ON A.LOCAL_AREA_CD = C.LOCAL_AREA_CD
+                     
+                     LEFT JOIN TH_COMM_CD CC ON   CC.COMM_CD      = C.WEATHER_CD   AND   CC.COMM_GRP_CD   = 'MAST08'
+
+                     LEFT OUTER JOIN TH_COMPANY_MST D
+                           ON    D.COMPANY_CD = A.STR_CD
+                           AND D.COUNTRY_CD = 'KR'
+                                                         
+                     LEFT OUTER JOIN                            
+                     (
+                           SELECT   STR_CD, T_SENSOR_STAT_CD, T_SENSOR_TEMP
+                           FROM   TH_STR_SENSOR_BRIEF
+                           WHERE   STR_CD = (SELECT STR_CD FROM th_str_info_mst WHERE STR_CD = #{strCd})
+                           AND T_SENSOR_STAT_CD   = '1'
+                           AND REPORT_DTTM <= NOW()
+                           AND REPORT_DTTM >= DATE_SUB(NOW(), INTERVAL MOD(DATE_FORMAT(NOW(), '%H'), 24) HOUR)
+                           ORDER BY REPORT_DTTM DESC 
+                           LIMIT 1
+                     ) E ON E.STR_CD = A.STR_CD
+                     
+                     LEFT OUTER JOIN (   
+                           SELECT STR_CD, TEMON_ID, TEMON_TYPE, PORT_NO, ALARM_YN
+                           FROM   TH_STR_REMS_DEVICE_BASE
+                           WHERE   STR_CD = (SELECT STR_CD FROM th_str_info_mst WHERE STR_CD = #{strCd})
+                           AND REPORT_DTTM <= DATE_SUB(NOW(), INTERVAL MOD(DATE_FORMAT(NOW(), '%H'), 3) HOUR)
+                           AND REPORT_DTTM >= DATE_SUB(NOW(), INTERVAL MOD(DATE_FORMAT(NOW(), '%H'), 24*3) HOUR)                                 
+                           AND ALARM_YN IN ( 'H', 'L' , 'Y', 'E' )
+                           ORDER BY REPORT_DTTM DESC
+                           LIMIT 1
+                     ) F ON F.STR_CD = A.STR_CD
+                     
+                     LEFT OUTER JOIN TH_STR_REMS_DEVICE_MST G
+                                 ON   F.STR_CD=G.STR_CD         AND   F.TEMON_ID=G.TEMON_ID
+                                 AND F.TEMON_TYPE=G.TEMON_TYPE   AND   F.PORT_NO=G.PORT_NO
+                                 AND G.USE_YN='Y'
+                                 AND G.STR_CD = A.STR_CD
+                                 
+                     LEFT OUTER JOIN (
+                        SELECT HUB_ID, PORT_NO, STR_CD, ALARM_SP
+                        FROM TH_STR_INV_HUB_BASE
+                        WHERE STR_CD = #{strCd}
+                           AND (
+                              ALARM_SP != '0000000000000000'
+                              OR   (ALARM_SP = '0000000000000000'   AND OPER_MODE = '0')                        
+                           )
+                        ORDER BY REPORT_DTTM DESC
+                        LIMIT 1000
+                     ) H ON H.STR_CD = #{strCd}
+                     
+                     LEFT OUTER JOIN TH_STR_INV_HUB_MST I
+                           ON   A.STR_CD = I.STR_CD 
+                           AND I.HUB_ID=H.HUB_ID      
+                           AND I.PORT_NO=H.PORT_NO
+                           AND I.USE_YN='Y'
+	]]>
+	</select>
+	
+	<select id="getToday" resultType="String">
+		SELECT	DATE_FORMAT(NOW(), '%Y/%m/%d %h:%i %p') AS today
+	</select>
+	
+	<select id="getDashboardData2" parameterType="Map" resultType="Map">
+		/*VM0101Mapper.getDashboardData2*/
+		<![CDATA[
+		SELECT	IM.STR_CD 								as strCd
+				, IM.STR_NM 							as strNm
+				, IM.OWNER_TYPE							as ownerType
+				, IM.SECTOR								as sector
+				, DATE_FORMAT(T.YYYYMMDD, '%Y/%m/%d') 	as startDt
+				, DATE_FORMAT(T.YYYYMMDD, '%Y/%m/%d') 	as endDt
+				, T.VENDOR_NM							as vendorNm
+				, IFNULL(T.VENDOR_TEL_NO, '-')			as vendorTelNo
+				, IF(IM.BOX_VER <> 1.5,
+					IFNULL(
+						(	
+							SELECT 	CONCAT(DATE_FORMAT(REPORT_DTTM,'%Y.%m.%d %H:%i'), ' / ', SUBSTR(CTRL_TEMP_VAL,1,INSTR(CTRL_TEMP_VAL,'.')-1),'℃')
+							FROM 	TH_LOG_STR_HACON_CTRL
+							WHERE 	STR_CD = #{strCd}
+							ORDER BY REPORT_DTTM DESC
+							LIMIT 1
+						)
+					, '-')
+				, '2.0ver 이상 이력 확인 가능')									AS remsLastCtrl
+				, T.TYPE								as mntncType
+		FROM TH_STR_INFO_MST IM
+			LEFT OUTER JOIN (
+				SELECT *
+				FROM (
+					SELECT IM.STR_CD, RM.YYYYMM, RM.YYYYMMDD, VM.VENDOR_NM, RM.VENDOR_TEL_NO, RM.TYPE
+					FROM TH_STR_REGULAR_MAINTENANCE RM
+						, TH_STR_INFO_MST IM
+						, TH_VENDOR_MST VM
+					WHERE RM.VIEW_sTR_CD = IM.VIEW_STR_CD
+						AND IM.STR_CD = #{strCd}
+						AND RM.YYYYMMDD <= DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 7 DAY),'%Y%m%d')
+						AND RM.YYYYMMDD >= DATE_FORMAT(NOW(),'%Y%m%d') 
+						AND RM.VENDOR_CD = VM.VENDOR_CD
+						
+					UNION ALL
+		
+					SELECT IM.STR_CD, RM.YYYYMM, RM.YYYYMMDD, VM.VENDOR_NM, RM.VENDOR_TEL_NO, 'S'
+					FROM TH_STR_SIGN_REGULAR_MAINTENANCE RM
+						, TH_STR_INFO_MST IM
+						, TH_SIGN_VENDOR_MST VM
+					WHERE RM.VIEW_STR_CD = IM.VIEW_STR_CD
+						AND IM.STR_CD = #{strCd}
+						AND RM.YYYYMMDD <= DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 7 DAY),'%Y%m%d')
+						AND RM.YYYYMMDD >= DATE_FORMAT(NOW(),'%Y%m%d') 
+						AND RM.VENDOR_CD = VM.VENDOR_CD
+				) T
+				ORDER BY T.YYYYMMDD
+				LIMIT 1
+		    ) T
+				ON IM.STR_CD = T.STR_CD
+		WHERE IM.STR_CD = #{strCd}
+		]]>
+	</select>
+	
+	<select id="getNoticeData" parameterType="Map" resultType="Map">
+	<![CDATA[
+		SELECT TITLE as noticeTitle, FAQ_ID as noticeFaq
+		FROM (
+			SELECT 	CONCAT('[',CC.COMM_CD_NM,']',' ',TITLE) AS TITLE, N.PUB_START_DT, N.FAQ_ID
+			FROM  TH_USER_MST UM 
+				, TH_USER_AUTH UA 
+				, TH_NOTICE_MST N 
+				, TH_NOTICE_TARGET NT 
+				, TH_COMM_CD CC 
+			WHERE N.NOTICE_ID = NT.NOTICE_ID 
+				AND N.COMPANY_CD = NT.COMPANY_CD
+				AND UM.USER_ID = UA.USER_ID 
+				AND NT.AUTH_ID = UA.AUTH_ID 
+				AND N.NOTICE_TYPE_CD = CC.COMM_CD 
+				AND CC.COMM_GRP_CD = 'VIEW12' 
+				AND N.PUB_YN = 'Y' 
+				AND N.PUB_START_DTTM <= DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') 
+				AND N.PUB_END_DTTM >= DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') 
+				AND UA.AUTH_ID = #{authId}
+			UNION ALL
+			SELECT 	CONCAT('[',CC.COMM_CD_NM,']',' ',TITLE) AS TITLE, N.PUB_START_DT, N.FAQ_ID
+			FROM TH_NOTICE_MST N
+				,TH_NOTICE_TARGET_USER NU
+				, TH_COMM_CD CC 
+			WHERE N.NOTICE_ID = NU.NOTICE_ID
+				AND N.COMPANY_CD = NU.COMPANY_CD
+				AND N.NOTICE_TYPE_CD = CC.COMM_CD 
+				AND CC.COMM_GRP_CD = 'VIEW12'
+				AND N.PUB_YN = 'Y' 
+				AND N.PUB_START_DTTM <= DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') 
+				AND N.PUB_END_DTTM >= DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') 
+				AND NU.USER_ID = #{userId}
+			) T
+		ORDER BY PUB_START_DT DESC
+		LIMIT 1
+		]]>
+	</select>
+
+
+	<select id="getDrData" parameterType="Map" resultType="Map">
+	<![CDATA[
+		SELECT SM.DR_START_DTTM AS drStartDttm
+			 , SM.DR_END_DTTM AS drEndDttm
+			 , DATE_FORMAT(SM.DR_START_DTTM, '%H')  AS startHour
+			 , DATE_FORMAT(SM.DR_START_DTTM, '%i')  AS startMin
+			 , DATE_FORMAT(SM.DR_END_DTTM, '%H')  AS endHour
+			 , DATE_FORMAT(SM.DR_END_DTTM, '%i')  AS endMin
+		FROM TH_DR_TARGET_STATUS TS
+				 INNER JOIN TH_DR_SCHEDULE_MGNT SM
+							ON TS.DR_NO = SM.DR_NO
+				 INNER JOIN TH_STR_GW_MST GM
+							ON TS.GW_ID = GM.GW_ID
+		WHERE DR_START_DTTM <= NOW()
+			AND DR_END_DTTM >= NOW()
+			AND GM.GW_ADDR != '000000000000'
+			AND GM.GW_IP IS NOT NULL
+			AND GM.STR_CD = #{strCd}
+		ORDER BY drStartDttm DESC
+		LIMIT 1
+		]]>
+	</select>
+	
+	<select id="getWarnData" parameterType="Map" resultType="Map">
+	SELECT DATE_FORMAT(IF(START_TIME IS NOT NULL, START_TIME, END_TIME), '%Y-%m-%d %H:%i') as warnTime
+			,CONCAT(AREA_NM, ' ', CITY_NM) 	AS areaNm
+			,GROUP_CONCAT(weatherWarn)		AS warn
+			,GROUP_CONCAT(WARN_VAR) 		AS warnVar
+			,GROUP_CONCAT(FAQ_ID)			AS faqId
+	FROM (
+		SELECT WARN_AREA_NM, START_TIME, END_TIME, CONCAT(WARN_VAR,WARN_STRESS,' ',WARN_COMMAND) AS weatherWarn, AREA_NM, CITY_NM, WARN_VAR
+			, (SELECT FAQ_ID FROM TH_FAQ F WHERE F.TITLE = WARN_VAR AND PUB_YN = 'Y') AS FAQ_ID
+		FROM (
+				SELECT WW.*,AM.AREA_NM, AM.CITY_NM
+				FROM TH_WEATHER_WARN_LATEST WW
+					,TH_WEATHER_AREA_MST AM
+					,TH_STR_INFO_MST IM
+				WHERE AM.LOCAL_AREA_CD	= IM.LOCAL_AREA_CD AND WW.WARN_AREA_CD = AM.WARN_AREA_CD AND WW.COUNTRY_CD = AM.COUNTRY_CD 
+					AND WW.COUNTRY_CD = 'KR' AND NOTICE_TIME > DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 30 DAY),'%Y-%m-%d %H:%i:%s') 
+					AND IM.STR_CD = #{strCd}
+				ORDER BY NOTICE_TIME DESC
+				LIMIT 1000
+			) T
+		GROUP BY WARN_VAR
+		)T
+	WHERE (END_TIME IS NULL OR END_TIME >= DATE_SUB(NOW(),INTERVAL 3 HOUR))
+	</select>
+	
+	<select id="getSignStat" parameterType="Map" resultType="Map">
+		SELECT	IF(DATE_FORMAT(NOW(),'%H:%m') BETWEEN SUBSTRING_INDEX(CONF_VAL,',',1) AND SUBSTRING_INDEX(CONF_VAL,',',-1), '0', '1') AS signStat
+			,	IF(DATE_FORMAT(NOW(),'%H:%m') BETWEEN SUBSTRING_INDEX(CONF_VAL,',',1) AND SUBSTRING_INDEX(CONF_VAL,',',-1), 'OFF','ON') AS signStatText
+		FROM TH_STR_SIGN_CONF_MST
+		WHERE STR_CD = #{strCd}
+	</select>
+
+
+	<select id="isContElecOver20" parameterType="Map" resultType="Map">
+		<![CDATA[
+		SELECT
+			IF(ACTUAL_CONT_DEMAND_POWER <> 0.00, ACTUAL_CONT_DEMAND_POWER, CONT_DEMAND_POWER) as demandPower
+			, ELEC_KIND as elecKind
+		FROM th_str_info_mst
+		WHERE STR_CD = #{strCd}
+		]]>
+	</select>
+
+	<select id="hasActual" parameterType="Map" resultType="String">
+		SELECT STR_CD as strCd
+		FROM th_str_chn_elec_use_mm_aggr_actual
+		WHERE STR_CD = #{strCd} AND YYYYMM = date_format(now(), '%Y%m')
+	</select>
+
+	<select id="getUsageActualUnder20" parameterType="String" resultType="Map">
+		<![CDATA[
+		SELECT B.START_DATE                                                     					AS startDate,
+			   B.END_DATE                                                       					AS endDate,
+			   DATE_FORMAT(DATE_ADD(B.END_DATE, INTERVAL 1 DAY), '%Y%m%d')                           AS startDate2,
+			   IF(A.OP_TIME = 'Y', ROUND(((A.ACTUAL_CONT_DEMAND_POWER / 1000)
+				   * 720)), ROUND(((A.ACTUAL_CONT_DEMAND_POWER / 1000) * 450))) 					AS totalUsage,
+			   ROUND((B.MAIN_EFT_WATAGE - E.EP_1CH_EFT_WATAGE) / 1000)                              AS predictUsage,
+			   IFNULL(ROUND(SUM(D.EP_1CH_EFT_WATAGE / 1000)), 0)                            		AS predictUsage2
+		FROM TH_STR_INFO_MST A
+				 LEFT OUTER JOIN TH_STR_CHN_ELEC_USE_MM_AGGR_ACTUAL B ON A.STR_CD = B.STR_CD
+				 LEFT OUTER JOIN
+			 TH_STR_CHN_ELEC_USE_MM_AGGR C ON B.STR_CD = C.STR_CD AND C.YYYYMM = DATE_FORMAT(NOW(), '%Y%m')
+				 LEFT OUTER JOIN TH_STR_CHN_ELEC_USE_DD_AGGR D
+								 ON C.STR_CD = D.STR_CD AND D.YYYYMMDD >= DATE_FORMAT(DATE_ADD(B.END_DATE,
+																							   INTERVAL 1 DAY), '%Y%m%d') AND
+									D.YYYYMMDD <= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 DAY), '%Y%m%d')
+				 LEFT OUTER JOIN TH_STR_CHN_ELEC_USE_DD_AGGR E
+								 ON A.STR_CD = E.STR_CD
+									 AND E.YYYYMMDD = DATE_FORMAT(NOW(), '%Y%m%d')
+		WHERE A.USE_YN = 'Y'
+		  AND A.STR_CD = #{strCd}
+		  AND B.YYYYMM = date_format(NOW(), '%Y%m')
+		]]>
+	</select>
+
+	<select id="getUsageSemsUnder20" parameterType="String" resultType="Map">
+	<![CDATA[
+		SELECT DATE_FORMAT((SELECT last_day(now() - INTERVAL 1 MONTH) + INTERVAL 1 DAY FROM dual),
+				   '%Y%m%d')                                     as startDate,
+			   DATE_FORMAT(NOW(), '%Y%m%d')                              as endDate,
+			   ROUND(IF(A.OP_TIME = 'Y',
+						IF(A.ACTUAL_CONT_DEMAND_POWER = 0.00, A.CONT_DEMAND_POWER * 720, A.ACTUAL_CONT_DEMAND_POWER
+							* 720), IF(A.ACTUAL_CONT_DEMAND_POWER = 0.00, A.CONT_DEMAND_POWER * 450, A.ACTUAL_CONT_DEMAND_POWER
+						   * 450)) / 1000)                               AS totalUsage,
+			   ROUND((B.EP_1CH_EFT_WATAGE - C.EP_1CH_EFT_WATAGE) / 1000) AS
+				   predictUsage,
+			   C.EP_1CH_EFT_WATAGE
+		FROM TH_STR_INFO_MST A
+				 LEFT OUTER JOIN TH_STR_CHN_ELEC_USE_MM_AGGR B ON A.STR_CD
+			= B.STR_CD
+				 LEFT OUTER JOIN TH_STR_CHN_ELEC_USE_DD_AGGR C ON A.STR_CD = C.STR_CD
+		WHERE A.STR_CD
+			= #{strCd}
+		  AND B.YYYYMM = DATE_FORMAT(NOW(), '%Y%m')
+		  AND C.YYYYMMDD = DATE_FORMAT(NOW(),'%Y%m%d');
+		]]>
+	</select>
+
+	<select id="getElecPowerActualOver20" parameterType="String" resultType="Map">
+		<![CDATA[
+		SELECT T.START_DATE                                    AS startDate
+			 , T.END_DATE                                      AS endDate
+			 , DATE_FORMAT(DATE_ADD(T.END_DATE,
+									INTERVAL 1 DAY), '%Y%m%d') AS startDate2
+			 , ROUND(IF(A.ACTUAL_CONT_DEMAND_POWER = '0.00', A.CONT_DEMAND_POWER,
+						A.ACTUAL_CONT_DEMAND_POWER) / 1000)    AS contElec
+			 , ROUND(MAX(B.TOTAL_USE_WATAGE_MAX))              AS maxDemandElec
+			 , IF((DATE_FORMAT(NOW(), '%Y%m%d') = DATE_FORMAT(DATE_ADD(T.END_DATE,
+																	   INTERVAL 1 DAY), '%Y%m%d')), 0, ROUND(MAX(C.TOTAL_USE_WATAGE_MAX)) )              AS maxDemandElec2
+		FROM TH_STR_INFO_MST A
+				 LEFT OUTER JOIN
+			 TH_SUMMARY_STR_ELEC_USE_QTR B ON A.STR_CD = B.STR_CD
+				 LEFT OUTER JOIN (SELECT *
+								  FROM TH_STR_CHN_ELEC_USE_MM_AGGR_ACTUAL
+								  WHERE YYYYMM = DATE_FORMAT(NOW(), '%Y%m')
+									AND STR_CD = #{strCd}) T ON B.STR_CD = T.STR_CD
+				 LEFT OUTER JOIN TH_SUMMARY_STR_ELEC_USE_QTR C
+								 ON B.STR_CD = C.STR_CD AND C.YYYYMMDD >= DATE_FORMAT(DATE_ADD(T.END_DATE,
+																							   INTERVAL 1 DAY), '%Y%m%d') AND
+									C.YYYYMMDD <= DATE_FORMAT(NOW(), '%Y%m%d')
+		WHERE A.USE_YN =
+			  'Y'
+		  AND B.YYYYMMDD >= DATE_FORMAT(T.START_DATE, '%Y%m%d')
+		  AND B.YYYYMMDD <= DATE_FORMAT(DATE_SUB(T.END_DATE,
+												 INTERVAL 1 DAY), '%Y%m%d');
+		]]>
+	</select>
+
+	<select id="getElecPowerSemsOver20" parameterType="String" resultType="Map">
+		<![CDATA[
+		SELECT
+			DATE_FORMAT((SELECT last_day(now()  - INTERVAL 1 MONTH) + INTERVAL 1 DAY FROM dual), '%Y%m%d')             as startDate
+			 ,DATE_FORMAT(NOW(), '%Y%m%d')                                                                              as endDate
+			 ,ROUND(IF(A.OP_TIME = 'Y',
+					   IF(A.ACTUAL_CONT_DEMAND_POWER = 0.00, A.CONT_DEMAND_POWER, A.ACTUAL_CONT_DEMAND_POWER),
+					   IF(A.ACTUAL_CONT_DEMAND_POWER = 0.00, A.CONT_DEMAND_POWER, A.ACTUAL_CONT_DEMAND_POWER)) / 1000) AS contElec
+			,IF(DATE_FORMAT(NOW(), '%d') != '01', ROUND(MAX(B.TOTAL_USE_WATAGE_MAX)), 0)
+																						AS maxDemandElec
+		FROM TH_STR_INFO_MST A
+				 LEFT OUTER JOIN TH_SUMMARY_STR_ELEC_USE_QTR B
+								 ON A.STR_CD = B.STR_CD
+		WHERE B.YYYYMMDD >= DATE_FORMAT((SELECT last_day(now()  - INTERVAL 1 MONTH) + INTERVAL 1 DAY FROM dual), '%Y%m%d')
+			AND B.YYYYMMDD <= IF(DATE_FORMAT(NOW(), '%d') != '01', DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 DAY) , '%Y%m%d'), DATE_FORMAT(NOW(), '%Y%m%d'))
+		  	AND B.STR_CD = #{strCd}
+		]]>
+	</select>
+
+	<select id="changeDrSet" parameterType="String" resultType="Map">
+		UPDATE TH_STR_INFO_MST
+		SET HAEZOOM_CUS_DR_YN = #{drCusYn}
+		WHERE STR_CD = #{strCd}
+	</select>
+
+	<select id="getSignMoffConfVal" parameterType="String" resultType="String">
+		<![CDATA[
+			SELECT STR_CONF_VAL AS strConfVal
+			FROM TH_STR_ENV_CONF_MST
+			WHERE STR_CD = #{strCd}
+			  AND CONF_SP = 'SIGN_MOFF'
+		]]>
+	</select>
+	
+	<select id="getDimmValue" parameterType="Map" resultType="Map">
+		SELECT STR_CD as strCd, BRIGHTNESS_LEVEL as value
+		FROM TH_DIMMING_DEVICE_STATUS 
+		WHERE STR_CD = #{strCd} AND GROUP_ID = '0' AND LIGHTING_ID = '0'
+	</select>
+	
+	<select id="getEmgNoticeList" parameterType="Map" resultType="Map">
+		SELECT EN.NOTICE_ID as notiId, CONCAT('[',CC.COMM_CD_NM,']',EN.TITLE) as title, EN.CONTENTS as contents 
+		FROM TH_EMERGENCY_NOTICE_MST EN
+			LEFT OUTER JOIN TH_COMM_CD CC
+				ON CC.COMM_GRP_CD = 'VIEW12' AND CC.COMM_CD = EN.NOTICE_TYPE_CD
+		WHERE DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') 
+			BETWEEN DATE_FORMAT(EN.PUB_START_DTTM, '%Y-%m-%d %H:%i:%s') 
+				AND DATE_FORMAT(EN.PUB_END_DTTM, '%Y-%m-%d %H:%i:%s') AND EN.COMPANY_CD = #{companyCd}
+			AND CONCAT(',', EN.NOTICE_TARGET_CD, ',') LIKE CONCAT('%,', #{authId}, ',%') AND EN.PUB_YN = 'Y';
+	</select>
+</mapper>

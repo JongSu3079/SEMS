@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sems.vm.persistence.VM0801Mapper">
+
+	<select id="retreiveNotice" parameterType="map" resultType="Notice" >
+	<![CDATA[
+		SELECT	*
+		FROM	(
+					SELECT	X.COMPANY_CD		AS companyCd
+							, X.NOTICE_ID		AS noticeId
+							, X.TITLE			AS title
+							, X.CONTENTS		AS contents
+							, X.PUB_ID			AS pubId
+							, DATE_FORMAT(X.PUB_DTTM, '%Y.%m.%d %H:%i') AS pubDttm
+							, X.PUB_START_DT	AS pubStartDt
+							, X.PUB_END_DT		AS pubEndDt
+							, X.NOTICE_TYPE_CD	AS noticeTypeCd
+							, X.VIEW_CNT		AS viewCnt
+							, X.PUB_YN			AS pubYn
+							, CASE	WHEN Y.READ_ID IS NULL THEN 'Y'
+									ELSE 'N'
+							END AS newYn
+					FROM	(
+						]]>
+							<include refid="retrieveNoticeSql"/>
+						<![CDATA[
+							) X
+							LEFT OUTER JOIN (
+												SELECT	NOTICE_ID AS READ_ID
+												FROM	TH_NOTICE_VIEW
+												WHERE	USER_ID = #{userId}
+							) Y
+									ON X.NOTICE_ID = Y.READ_ID
+				) Z
+		ORDER BY pubDttm DESC
+	]]>
+	</select>
+	
+	<select id="retreiveTotalCountNotice" parameterType="map" resultType="int" >
+	<![CDATA[
+		SELECT	COUNT(*)
+		FROM	(
+	]]>
+		<include refid="retrieveNoticeSql"/>
+	<![CDATA[
+				) X
+				LEFT OUTER JOIN (
+									SELECT	NOTICE_ID AS READ_ID
+									FROM	TH_NOTICE_VIEW
+									WHERE	USER_ID = #{userId}
+				) Y
+						ON X.NOTICE_ID = Y.READ_ID
+	]]>
+	</select>
+	
+	<sql id="retrieveNoticeSql">
+	<![CDATA[
+		SELECT	*
+			FROM	TH_NOTICE_MST A
+			WHERE	(
+						#{authId} = 1
+						OR
+						#{authId} IN (
+										SELECT	AA.AUTH_ID
+										FROM	TH_AUTH_MST AA
+												INNER JOIN TH_NOTICE_TARGET BB
+														ON	AA.COMPANY_CD	= BB.COMPANY_CD
+														AND	AA.AUTH_ID		= BB.AUTH_ID
+										WHERE	AA.COMPANY_CD	= A.COMPANY_CD
+											AND	AA.AUTH_SP		<> 'S'
+											AND	BB.NOTICE_ID	= A.NOTICE_ID
+						)
+						OR
+						#{authId} IN (
+										SELECT	AA.AUTH_ID
+										FROM	TH_AUTH_MST AA
+												INNER JOIN TH_NOTICE_TARGET BB
+														ON	AA.COMPANY_CD	= BB.COMPANY_CD
+														AND AA.AUTH_ID		= BB.AUTH_ID
+												INNER JOIN TH_STR_INFO_MST DD
+														ON AA.COMPANY_CD	= DD.COMPANY_CD
+												LEFT OUTER JOIN TH_USER_MST FF
+														ON FF.USER_ID		= #{userId}
+														AND	DD.COMPANY_CD	= FF.COMPANY_CD
+														AND	DD.STR_CD		= FF.STR_CD
+												LEFT OUTER JOIN TH_USER_STR_MAP GG
+														ON	GG.USER_ID	= #{userId}
+														AND	GG.STR_CD	= FF.STR_CD
+										WHERE	AA.COMPANY_CD	= A.COMPANY_CD
+											AND	AA.AUTH_SP		= 'S'
+											AND	BB.NOTICE_ID	= A.NOTICE_ID
+											AND	(
+													DD.STR_CD	IS NOT NULL
+													OR
+													FF.STR_CD	IS NOT NULL
+												)
+						)
+					)
+				AND	PUB_START_DTTM	<= DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s')
+				AND	PUB_END_DTTM	>= DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s')
+				AND	PUB_YN		= 'Y'
+				
+				UNION ALL
+				
+				SELECT N.*
+				FROM TH_NOTICE_MST N
+					JOIN TH_NOTICE_TARGET_USER NU
+						ON N.COMPANY_CD = NU.COMPANY_CD 
+							AND N.NOTICE_ID = NU.NOTICE_ID AND NU.USER_ID = #{userId}
+				WHERE PUB_START_DTTM <= DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s') 
+					AND PUB_END_DTTM >= DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s') 
+					AND PUB_YN = 'Y'
+	]]>
+	</sql>
+	
+	<select id="viewNotice" parameterType="map" resultType="Notice">
+		<!-- 신규가 아닐때 -->
+		<![CDATA[
+		SELECT	TITLE		AS title
+				, CONTENTS	AS contents
+				, DATE_FORMAT(PUB_DTTM, '%Y.%m.%d %H:%i') AS pubDttm
+				, PIC		AS pic
+				, IF(PIC LIKE '%.mp4' <> 0 OR PIC LIKE '%.MOV' <> 0, 'Y', 'N') as videoYn
+		FROM	TH_NOTICE_MST
+		WHERE	COMPANY_CD	= #{companyCd}
+			AND	NOTICE_ID	= #{noticeId}
+		]]>
+	</select>
+	
+	<select id="insertNoticeView" parameterType="map">
+		<!-- 신규일때 공지사항 뷰테이블에 등록 -->
+		INSERT
+		INTO	TH_NOTICE_VIEW
+				(
+					COMPANY_CD
+					, NOTICE_ID
+					, USER_ID
+					, REGI_DTTM
+				)
+		VALUES	(
+					#{companyCd}
+					, #{noticeId}
+					, #{userId}
+					, now()
+				)
+	</select>
+	
+	<select id="updateViewCnt" parameterType="map">
+		<!-- 신규일때 VIEW_CNT 증가 -->
+		UPDATE	TH_NOTICE_MST
+		SET		VIEW_CNT = (
+							SELECT	COUNT(*)
+							FROM	TH_NOTICE_VIEW
+							WHERE	COMPANY_CD	= #{companyCd}
+								AND	NOTICE_ID	= #{noticeId}
+						)
+		WHERE	NOTICE_ID = #{noticeId}
+	</select>
+	
+	
+	<!-- VM2301 -->
+	<select id="retreiveEmgNotice" parameterType="map" resultType="Notice" >
+	<![CDATA[
+		SELECT	*
+		FROM	(
+					SELECT	X.COMPANY_CD		AS companyCd
+							, X.NOTICE_ID		AS noticeId
+							, X.TITLE			AS title
+							, X.CONTENTS		AS contents
+							, X.FINAL_MOD_ID	AS pubId
+							, DATE_FORMAT(X.PUB_DTTM, '%Y.%m.%d %H:%i') AS pubDttm
+							, X.PUB_START_DTTM	AS pubStartDt
+							, X.PUB_END_DTTM		AS pubEndDt
+							, X.NOTICE_TYPE_CD	AS noticeTypeCd
+							, X.VIEW_CNT		AS viewCnt
+							, X.PUB_YN			AS pubYn
+					FROM	(
+						]]>
+							<include refid="retrieveEmgNoticeSql"/>
+						<![CDATA[
+							) X
+				) Z
+		ORDER BY pubDttm DESC
+	]]>
+	</select>
+	
+	<select id="retreiveTotalCountEmgNotice" parameterType="map" resultType="int" >
+	<![CDATA[
+		SELECT	COUNT(*)
+		FROM	(
+	]]>
+		<include refid="retrieveEmgNoticeSql"/>
+		)A
+	</select>
+	
+	<sql id="retrieveEmgNoticeSql">
+	<![CDATA[
+		SELECT	*
+			FROM	TH_EMERGENCY_NOTICE_MST A
+			WHERE	CONCAT(',', A.NOTICE_TARGET_CD, ',') LIKE CONCAT('%,', #{authId}, ',%')
+				AND	PUB_START_DTTM	<= DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s')
+				AND	PUB_END_DTTM	>= DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s')
+				AND	PUB_YN		= 'Y'
+	]]>
+	</sql>
+	
+	<select id="viewEmgNotice" parameterType="map" resultType="Notice">
+		<!-- 신규가 아닐때 -->
+		<![CDATA[
+		SELECT	TITLE		AS title
+				, CONTENTS	AS contents
+				, DATE_FORMAT(PUB_DTTM, '%Y.%m.%d %H:%i') AS pubDttm
+		FROM	TH_EMERGENCY_NOTICE_MST
+		WHERE	COMPANY_CD	= #{companyCd}
+			AND	NOTICE_ID	= #{noticeId}
+		]]>
+	</select>
+	
+	<select id="updateEmgViewCnt" parameterType="map">
+		<!-- 신규일때 VIEW_CNT 증가 -->
+		UPDATE TH_EMERGENCY_NOTICE_MST
+		SET VIEW_CNT = (SELECT CAST(VIEW_CNT AS SIGNED) + 1
+						FROM TH_EMERGENCY_NOTICE_MST
+						WHERE COMPANY_CD = #{companyCd}
+						AND NOTICE_ID = #{noticeId})
+		WHERE NOTICE_ID = #{noticeId}
+	</select>
+</mapper>
